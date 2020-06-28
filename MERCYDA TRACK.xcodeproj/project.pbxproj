@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2E7F190757A87B9C6E1CCF /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */; };
+		9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */; };
+		ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */; };
 		C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */; };
 		C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */; };
 		C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F224A925A700BA7651 /* ViewController.swift */; };
@@ -16,6 +19,10 @@
 		C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */; };
 		C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D80824A925A800BA7651 /* MERCYDA_TRACKTests.swift */; };
 		C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D81324A925A800BA7651 /* MERCYDA_TRACKUITests.swift */; };
+		C6C9D82324A92BC000BA7651 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D82224A92BC000BA7651 /* IQKeyboardManagerSwift */; };
+		C6C9D82624A92BF600BA7651 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D82524A92BF600BA7651 /* Alamofire */; };
+		C6C9D82924A92C9900BA7651 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D82824A92C9900BA7651 /* SDWebImage */; };
+		C6C9D82B24A92C9900BA7651 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C6C9D82A24A92C9900BA7651 /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E8519C54DD89922301E83E7 /* Pods-MERCYDA TRACK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.debug.xcconfig"; sourceTree = "<group>"; };
+		6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.release.xcconfig"; sourceTree = "<group>"; };
+		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.release.xcconfig"; sourceTree = "<group>"; };
+		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MERCYDA TRACK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +66,7 @@
 		C6C9D80F24A925A800BA7651 /* MERCYDA TRACKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MERCYDA TRACKUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C9D81324A925A800BA7651 /* MERCYDA_TRACKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MERCYDA_TRACKUITests.swift; sourceTree = "<group>"; };
 		C6C9D81524A925A800BA7651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC9A95C3E36F11D855A82808 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C9D82624A92BF600BA7651 /* Alamofire in Frameworks */,
+				C6C9D82B24A92C9900BA7651 /* SDWebImageMapKit in Frameworks */,
+				ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */,
+				C6C9D82924A92C9900BA7651 /* SDWebImage in Frameworks */,
+				C6C9D82324A92BC000BA7651 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +94,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2E7F190757A87B9C6E1CCF /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB136FABD92C56F2DEC4A9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */,
+				7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */,
+				AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C6C9D7E224A925A700BA7651 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +118,8 @@
 				C6C9D80724A925A800BA7651 /* MERCYDA TRACKTests */,
 				C6C9D81224A925A800BA7651 /* MERCYDA TRACKUITests */,
 				C6C9D7EC24A925A700BA7651 /* Products */,
+				CBA94DF2E9CFC8B82B85851C /* Pods */,
+				0DB136FABD92C56F2DEC4A9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +166,19 @@
 			path = "MERCYDA TRACKUITests";
 			sourceTree = "<group>";
 		};
+		CBA94DF2E9CFC8B82B85851C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E8519C54DD89922301E83E7 /* Pods-MERCYDA TRACK.debug.xcconfig */,
+				A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */,
+				CC9A95C3E36F11D855A82808 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.debug.xcconfig */,
+				C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */,
+				73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */,
+				6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,15 +186,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C9D81824A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACK" */;
 			buildPhases = (
+				FF9CE02F2B2686EED5D45A02 /* [CP] Check Pods Manifest.lock */,
 				C6C9D7E724A925A700BA7651 /* Sources */,
 				C6C9D7E824A925A700BA7651 /* Frameworks */,
 				C6C9D7E924A925A700BA7651 /* Resources */,
+				42FBAFDA17E93989B037C2B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "MERCYDA TRACK";
+			packageProductDependencies = (
+				C6C9D82224A92BC000BA7651 /* IQKeyboardManagerSwift */,
+				C6C9D82524A92BF600BA7651 /* Alamofire */,
+				C6C9D82824A92C9900BA7651 /* SDWebImage */,
+				C6C9D82A24A92C9900BA7651 /* SDWebImageMapKit */,
+			);
 			productName = "MERCYDA TRACK";
 			productReference = C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C9D81B24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKTests" */;
 			buildPhases = (
+				27D0F9D79A6FE0CBA1627AA0 /* [CP] Check Pods Manifest.lock */,
 				C6C9D80024A925A800BA7651 /* Sources */,
 				C6C9D80124A925A800BA7651 /* Frameworks */,
 				C6C9D80224A925A800BA7651 /* Resources */,
@@ -173,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6C9D81E24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKUITests" */;
 			buildPhases = (
+				AC54F4F4B9FF18CF3F6860D3 /* [CP] Check Pods Manifest.lock */,
 				C6C9D80B24A925A800BA7651 /* Sources */,
 				C6C9D80C24A925A800BA7651 /* Frameworks */,
 				C6C9D80D24A925A800BA7651 /* Resources */,
+				D07D48D88D4CD7847FA7C830 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,6 +278,11 @@
 				Base,
 			);
 			mainGroup = C6C9D7E224A925A700BA7651;
+			packageReferences = (
+				C6C9D82124A92BC000BA7651 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				C6C9D82424A92BF600BA7651 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C6C9D82724A92C9900BA7651 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = C6C9D7EC24A925A700BA7651 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -256,6 +320,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27D0F9D79A6FE0CBA1627AA0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MERCYDA TRACKTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42FBAFDA17E93989B037C2B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC54F4F4B9FF18CF3F6860D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MERCYDA TRACK-MERCYDA TRACKUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D07D48D88D4CD7847FA7C830 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF9CE02F2B2686EED5D45A02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MERCYDA TRACK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C6C9D7E724A925A700BA7651 /* Sources */ = {
@@ -436,6 +603,7 @@
 		};
 		C6C9D81924A925A800BA7651 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E8519C54DD89922301E83E7 /* Pods-MERCYDA TRACK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +621,7 @@
 		};
 		C6C9D81A24A925A800BA7651 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +639,7 @@
 		};
 		C6C9D81C24A925A800BA7651 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +661,7 @@
 		};
 		C6C9D81D24A925A800BA7651 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +683,7 @@
 		};
 		C6C9D81F24A925A800BA7651 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC9A95C3E36F11D855A82808 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -531,6 +703,7 @@
 		};
 		C6C9D82024A925A800BA7651 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -588,6 +761,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C6C9D82124A92BC000BA7651 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.5;
+			};
+		};
+		C6C9D82424A92BF600BA7651 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+		C6C9D82724A92C9900BA7651 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C6C9D82224A92BC000BA7651 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D82124A92BC000BA7651 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		C6C9D82524A92BF600BA7651 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D82424A92BF600BA7651 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		C6C9D82824A92C9900BA7651 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D82724A92C9900BA7651 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		C6C9D82A24A92C9900BA7651 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6C9D82724A92C9900BA7651 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */ = {
