@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */; };
+		C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */; };
+		C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F224A925A700BA7651 /* ViewController.swift */; };
+		C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C9D7F424A925A700BA7651 /* Main.storyboard */; };
+		C6C9D7F924A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */; };
+		C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C9D7FA24A925A800BA7651 /* Assets.xcassets */; };
+		C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */; };
+		C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D80824A925A800BA7651 /* MERCYDA_TRACKTests.swift */; };
+		C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D81324A925A800BA7651 /* MERCYDA_TRACKUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C6C9D80524A925A800BA7651 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C9D7E324A925A700BA7651 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6C9D7EA24A925A700BA7651;
+			remoteInfo = "MERCYDA TRACK";
+		};
+		C6C9D81024A925A800BA7651 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6C9D7E324A925A700BA7651 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6C9D7EA24A925A700BA7651;
+			remoteInfo = "MERCYDA TRACK";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MERCYDA TRACK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C6C9D7F224A925A700BA7651 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C6C9D7F524A925A700BA7651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C6C9D7F824A925A700BA7651 /* MERCYDA_TRACK.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MERCYDA_TRACK.xcdatamodel; sourceTree = "<group>"; };
+		C6C9D7FA24A925A800BA7651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6C9D7FD24A925A800BA7651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C6C9D7FF24A925A800BA7651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6C9D80424A925A800BA7651 /* MERCYDA TRACKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MERCYDA TRACKTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C9D80824A925A800BA7651 /* MERCYDA_TRACKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MERCYDA_TRACKTests.swift; sourceTree = "<group>"; };
+		C6C9D80A24A925A800BA7651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6C9D80F24A925A800BA7651 /* MERCYDA TRACKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MERCYDA TRACKUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6C9D81324A925A800BA7651 /* MERCYDA_TRACKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MERCYDA_TRACKUITests.swift; sourceTree = "<group>"; };
+		C6C9D81524A925A800BA7651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6C9D7E824A925A700BA7651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80124A925A800BA7651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80C24A925A800BA7651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C6C9D7E224A925A700BA7651 = {
+			isa = PBXGroup;
+			children = (
+				C6C9D7ED24A925A700BA7651 /* MERCYDA TRACK */,
+				C6C9D80724A925A800BA7651 /* MERCYDA TRACKTests */,
+				C6C9D81224A925A800BA7651 /* MERCYDA TRACKUITests */,
+				C6C9D7EC24A925A700BA7651 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C6C9D7EC24A925A700BA7651 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */,
+				C6C9D80424A925A800BA7651 /* MERCYDA TRACKTests.xctest */,
+				C6C9D80F24A925A800BA7651 /* MERCYDA TRACKUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6C9D7ED24A925A700BA7651 /* MERCYDA TRACK */ = {
+			isa = PBXGroup;
+			children = (
+				C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */,
+				C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */,
+				C6C9D7F224A925A700BA7651 /* ViewController.swift */,
+				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
+				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
+				C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */,
+				C6C9D7FF24A925A800BA7651 /* Info.plist */,
+				C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */,
+			);
+			path = "MERCYDA TRACK";
+			sourceTree = "<group>";
+		};
+		C6C9D80724A925A800BA7651 /* MERCYDA TRACKTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6C9D80824A925A800BA7651 /* MERCYDA_TRACKTests.swift */,
+				C6C9D80A24A925A800BA7651 /* Info.plist */,
+			);
+			path = "MERCYDA TRACKTests";
+			sourceTree = "<group>";
+		};
+		C6C9D81224A925A800BA7651 /* MERCYDA TRACKUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C6C9D81324A925A800BA7651 /* MERCYDA_TRACKUITests.swift */,
+				C6C9D81524A925A800BA7651 /* Info.plist */,
+			);
+			path = "MERCYDA TRACKUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C6C9D7EA24A925A700BA7651 /* MERCYDA TRACK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6C9D81824A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACK" */;
+			buildPhases = (
+				C6C9D7E724A925A700BA7651 /* Sources */,
+				C6C9D7E824A925A700BA7651 /* Frameworks */,
+				C6C9D7E924A925A700BA7651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MERCYDA TRACK";
+			productName = "MERCYDA TRACK";
+			productReference = C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C6C9D80324A925A800BA7651 /* MERCYDA TRACKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6C9D81B24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKTests" */;
+			buildPhases = (
+				C6C9D80024A925A800BA7651 /* Sources */,
+				C6C9D80124A925A800BA7651 /* Frameworks */,
+				C6C9D80224A925A800BA7651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6C9D80624A925A800BA7651 /* PBXTargetDependency */,
+			);
+			name = "MERCYDA TRACKTests";
+			productName = "MERCYDA TRACKTests";
+			productReference = C6C9D80424A925A800BA7651 /* MERCYDA TRACKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C6C9D80E24A925A800BA7651 /* MERCYDA TRACKUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6C9D81E24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKUITests" */;
+			buildPhases = (
+				C6C9D80B24A925A800BA7651 /* Sources */,
+				C6C9D80C24A925A800BA7651 /* Frameworks */,
+				C6C9D80D24A925A800BA7651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6C9D81124A925A800BA7651 /* PBXTargetDependency */,
+			);
+			name = "MERCYDA TRACKUITests";
+			productName = "MERCYDA TRACKUITests";
+			productReference = C6C9D80F24A925A800BA7651 /* MERCYDA TRACKUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C6C9D7E324A925A700BA7651 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Team Kochi Dev";
+				TargetAttributes = {
+					C6C9D7EA24A925A700BA7651 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					C6C9D80324A925A800BA7651 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = C6C9D7EA24A925A700BA7651;
+					};
+					C6C9D80E24A925A800BA7651 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = C6C9D7EA24A925A700BA7651;
+					};
+				};
+			};
+			buildConfigurationList = C6C9D7E624A925A700BA7651 /* Build configuration list for PBXProject "MERCYDA TRACK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C6C9D7E224A925A700BA7651;
+			productRefGroup = C6C9D7EC24A925A700BA7651 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6C9D7EA24A925A700BA7651 /* MERCYDA TRACK */,
+				C6C9D80324A925A800BA7651 /* MERCYDA TRACKTests */,
+				C6C9D80E24A925A800BA7651 /* MERCYDA TRACKUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C6C9D7E924A925A700BA7651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */,
+				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
+				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80224A925A800BA7651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80D24A925A800BA7651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6C9D7E724A925A700BA7651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */,
+				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
+				C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */,
+				C6C9D7F924A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80024A925A800BA7651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C9D80B24A925A800BA7651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C6C9D80624A925A800BA7651 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6C9D7EA24A925A700BA7651 /* MERCYDA TRACK */;
+			targetProxy = C6C9D80524A925A800BA7651 /* PBXContainerItemProxy */;
+		};
+		C6C9D81124A925A800BA7651 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6C9D7EA24A925A700BA7651 /* MERCYDA TRACK */;
+			targetProxy = C6C9D81024A925A800BA7651 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C6C9D7F424A925A700BA7651 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6C9D7F524A925A700BA7651 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6C9D7FD24A925A800BA7651 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C6C9D81624A925A800BA7651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C6C9D81724A925A800BA7651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C6C9D81924A925A800BA7651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACK/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6C9D81A24A925A800BA7651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACK/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C6C9D81C24A925A800BA7651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACKTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACKTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MERCYDA TRACK.app/MERCYDA TRACK";
+			};
+			name = Debug;
+		};
+		C6C9D81D24A925A800BA7651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACKTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACKTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MERCYDA TRACK.app/MERCYDA TRACK";
+			};
+			name = Release;
+		};
+		C6C9D81F24A925A800BA7651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACKUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACKUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MERCYDA TRACK";
+			};
+			name = Debug;
+		};
+		C6C9D82024A925A800BA7651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "MERCYDA TRACKUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACKUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MERCYDA TRACK";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C6C9D7E624A925A700BA7651 /* Build configuration list for PBXProject "MERCYDA TRACK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C9D81624A925A800BA7651 /* Debug */,
+				C6C9D81724A925A800BA7651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6C9D81824A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C9D81924A925A800BA7651 /* Debug */,
+				C6C9D81A24A925A800BA7651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6C9D81B24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C9D81C24A925A800BA7651 /* Debug */,
+				C6C9D81D24A925A800BA7651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6C9D81E24A925A800BA7651 /* Build configuration list for PBXNativeTarget "MERCYDA TRACKUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6C9D81F24A925A800BA7651 /* Debug */,
+				C6C9D82024A925A800BA7651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C6C9D7F824A925A700BA7651 /* MERCYDA_TRACK.xcdatamodel */,
+			);
+			currentVersion = C6C9D7F824A925A700BA7651 /* MERCYDA_TRACK.xcdatamodel */;
+			path = MERCYDA_TRACK.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C6C9D7E324A925A700BA7651 /* Project object */;
+}
