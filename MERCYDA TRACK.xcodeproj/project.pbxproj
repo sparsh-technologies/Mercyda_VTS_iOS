@@ -25,6 +25,9 @@
 		C6669FE224AA29750024527E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* Constants.swift */; };
 		C6669FE324AA29750024527E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* Constants.swift */; };
 		C6669FE424AA29750024527E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* Constants.swift */; };
+		C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
+		C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
+		C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
 		C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */; };
 		C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */; };
 		C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F224A925A700BA7651 /* ViewController.swift */; };
@@ -77,6 +80,7 @@
 		C6669FDB24AA24870024527E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		C6669FDD24AA28B10024527E /* ProjectSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSettings.swift; sourceTree = "<group>"; };
 		C6669FE124AA29750024527E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C6669FE524AA41E60024527E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MERCYDA TRACK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
 				C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */,
 				C6C9D7FF24A925A800BA7651 /* Info.plist */,
+				C6669FE524AA41E60024527E /* GoogleService-Info.plist */,
 				C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */,
 			);
 			path = "MERCYDA TRACK";
@@ -284,6 +289,7 @@
 				C6C9D7E824A925A700BA7651 /* Frameworks */,
 				C6C9D7E924A925A700BA7651 /* Resources */,
 				42FBAFDA17E93989B037C2B8 /* [CP] Embed Pods Frameworks */,
+				C6623A8924AA9092003C3519 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -393,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */,
+				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
 			);
@@ -402,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +484,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C6623A8924AA9092003C3519 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/MERCYDA TRACK/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		D07D48D88D4CD7847FA7C830 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -715,6 +742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "MERCYDA TRACK/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

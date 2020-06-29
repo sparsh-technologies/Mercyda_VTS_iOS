@@ -6,6 +6,8 @@ target 'MERCYDA TRACK' do
   use_frameworks!
 
   pod 'SwiftMessages'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
 
   # Pods for MERCYDA TRACK
 
