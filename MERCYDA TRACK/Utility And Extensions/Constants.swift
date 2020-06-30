@@ -12,10 +12,10 @@ import UIKit
 
 struct WebService {
 //URL for live
-static let LiveBaseUrl = "https://live.com/"
+static let LiveBaseUrl = "http://mobile.mercydatrack.com/"
 //URL for Test
-static let DevBaseUrl = "https://dev.com/"
-static let TestBaseUrl = "https://test.com/"
+static let DevBaseUrl = "http://mobile.mercydatrack.com/"
+static let TestBaseUrl = "http://mobile.mercydatrack.com/"
 static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
     
 // API URLS
