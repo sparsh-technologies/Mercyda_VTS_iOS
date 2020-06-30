@@ -8,6 +8,7 @@ target 'MERCYDA TRACK' do
   pod 'SwiftMessages'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'GoogleMaps'
 
   # Pods for MERCYDA TRACK
 
