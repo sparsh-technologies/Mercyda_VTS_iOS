@@ -38,21 +38,19 @@ extension CommonParser: NetworkParser {
     static func parse(_ json: Parameters) -> CompletionState {
         do {
             if let result = try CommonParser(json).result {
-                guard let success = result.success else { return .failure(error: "Response Validation not Available") }
+                guard let success = result.success else { return .failure(error: AppSpecificError.responseValidationError.rawValue) }
                 if success {
                     if let result = result.result {
                         return .success(response: result)
                     } else {
-                        printLog("Result Field Missing")
-                        return .failure(error: "Result Field Missing")
+                        return .failure(error: AppSpecificError.resultFieldMissingError.rawValue)
                     }
                 } else {
                     if let error = result.error {
-                        let errorMessage = error.error_message ?? "Undefined"
+                        let errorMessage = error.error_message ?? AppSpecificError.unknownError.rawValue
                         return .failure(error: errorMessage)
                     } else {
-                        printLog("Error Field Missing")
-                        return .failure(error: "Error Field Missing")
+                        return .failure(error: AppSpecificError.errorFieldMissingError.rawValue)
                     }
                 }
             } else {

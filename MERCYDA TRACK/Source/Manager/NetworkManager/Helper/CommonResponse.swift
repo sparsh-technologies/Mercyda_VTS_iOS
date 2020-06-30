@@ -36,7 +36,3 @@ struct CommonResponse<T : Codable> : Codable {
     }
     
 }
-
-protocol codeExt {
-    var message : String? { get }
-}

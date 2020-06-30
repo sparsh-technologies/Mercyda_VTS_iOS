@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseCrashlytics
 
 class ViewController: UIViewController {
     
@@ -19,8 +18,8 @@ class ViewController: UIViewController {
         
         // self.callLoginservice()
         // self.getVehiclesCount()
-        //self.getVehiclesList()
-        self.getVehicleDetails()
+        self.getVehiclesList()
+        //self.getVehicleDetails()
         //self.getDeviceData()
         
     }
@@ -37,7 +36,7 @@ class ViewController: UIViewController {
                 printLog(error)
                 statusBarMessage(.CustomError, error)
             default:
-                printLog("")
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
     }
@@ -52,7 +51,7 @@ class ViewController: UIViewController {
                 printLog(error)
                 statusBarMessage(.CustomError, error)
             default:
-                printLog("")
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
     }
@@ -67,7 +66,7 @@ class ViewController: UIViewController {
                 printLog(error)
                 statusBarMessage(.CustomError, error)
             default:
-                printLog("")
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
     }
@@ -83,7 +82,7 @@ class ViewController: UIViewController {
                 printLog(error)
                 statusBarMessage(.CustomError, error)
             default:
-                printLog("")
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
     }
@@ -98,7 +97,7 @@ class ViewController: UIViewController {
                 printLog(error)
                 statusBarMessage(.CustomError, error)
             default:
-                printLog("")
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
     }

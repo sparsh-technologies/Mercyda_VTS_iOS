@@ -36,12 +36,6 @@ enum NetworkError: Error {
     case fullResponse
 }
 
-enum InvoiceValidationError: String, Error {
-    case deliveryTypeNotFound = "TXT_PLEASE_SELECT_A_DELEIVERY_TYPE"
-    case collectionTypeNotFound = "TXT_PLEASE_SELECT_A_COLLECTION_TYPE"
-    case minimumStoreValueDoesnotMeetInvoiceValue = "TXT_MIN_INVOICE_AMOUNT_MSG"
-    case invalidDeliveryType = "TXT_YOUR_SELECTED_DELEIVERY_TYPE_IS_INVALID"
-}
 
 import Foundation
 import Alamofire
