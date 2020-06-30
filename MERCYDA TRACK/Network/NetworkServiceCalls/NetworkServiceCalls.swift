@@ -26,4 +26,18 @@ class NetworkServiceCalls: NetworkAdapter {
         }
     }
     
+    // Service call Login
+    
+    func login(userName :String, password :String, _ completion: @escaping CompletionWithSuccessOrFailure) {
+        let params = loginParams(userName :userName, password:password)
+        fetch(params, CommonParser<loginResponse>.self) { (state) in
+            switch state {
+            case .success(let response):
+                completion(.success(response: response))
+            case .failure(let error):
+                completion(.failure(error: error))
+            }
+        }
+    }
+    
 }

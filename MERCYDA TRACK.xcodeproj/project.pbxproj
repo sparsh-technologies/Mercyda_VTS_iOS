@@ -10,6 +10,12 @@
 		4F2E7F190757A87B9C6E1CCF /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */; };
 		9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */; };
 		ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */; };
+		C6623A8B24AB4520003C3519 /* LoginParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8A24AB4520003C3519 /* LoginParams.swift */; };
+		C6623A8C24AB4520003C3519 /* LoginParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8A24AB4520003C3519 /* LoginParams.swift */; };
+		C6623A8D24AB4520003C3519 /* LoginParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8A24AB4520003C3519 /* LoginParams.swift */; };
+		C6623A9024AB6EE8003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8F24AB6EE8003C3519 /* LoginResponse.swift */; };
+		C6623A9124AB6EE8003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8F24AB6EE8003C3519 /* LoginResponse.swift */; };
+		C6623A9224AB6EE8003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623A8F24AB6EE8003C3519 /* LoginResponse.swift */; };
 		C6669FCE24AA20420024527E /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
 		C6669FCF24AA20420024527E /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FCA24AA20420024527E /* NetworkEngine.swift */; };
 		C6669FD024AA20420024527E /* CommonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FCB24AA20420024527E /* CommonParser.swift */; };
@@ -69,6 +75,8 @@
 		A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.release.xcconfig"; sourceTree = "<group>"; };
 		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C6623A8A24AB4520003C3519 /* LoginParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParams.swift; sourceTree = "<group>"; };
+		C6623A8F24AB6EE8003C3519 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C6669FC924AA20420024527E /* URLBuildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuildable.swift; sourceTree = "<group>"; };
 		C6669FCA24AA20420024527E /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		C6669FCB24AA20420024527E /* CommonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonParser.swift; sourceTree = "<group>"; };
@@ -141,9 +149,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C6623A8E24AB6ED2003C3519 /* LoginModels */ = {
+			isa = PBXGroup;
+			children = (
+				C6623A8F24AB6EE8003C3519 /* LoginResponse.swift */,
+			);
+			path = LoginModels;
+			sourceTree = "<group>";
+		};
 		C6669FC424AA1ECC0024527E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C6623A8E24AB6ED2003C3519 /* LoginModels */,
 				C6669FC824AA1FDA0024527E /* ApiModels */,
 				C6669FC724AA1FC70024527E /* RequestParams */,
 				C6669FC624AA1FB40024527E /* NetworkServiceCalls */,
@@ -176,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C6669FD524AA212A0024527E /* DemoParams.swift */,
+				C6623A8A24AB4520003C3519 /* LoginParams.swift */,
 			);
 			path = RequestParams;
 			sourceTree = "<group>";
@@ -594,8 +612,10 @@
 				C6669FD124AA20420024527E /* ErrorStruct.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
 				C6669FD424AA20DD0024527E /* NetworkServiceCalls.swift in Sources */,
+				C6623A8B24AB4520003C3519 /* LoginParams.swift in Sources */,
 				C6669FDC24AA24870024527E /* Utility.swift in Sources */,
 				C6669FD924AA216B0024527E /* DemoResponse.swift in Sources */,
+				C6623A9024AB6EE8003C3519 /* LoginResponse.swift in Sources */,
 				C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */,
 				C6669FD624AA212A0024527E /* DemoParams.swift in Sources */,
 				C6669FD024AA20420024527E /* CommonParser.swift in Sources */,
@@ -608,7 +628,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FDF24AA28B10024527E /* ProjectSettings.swift in Sources */,
+				C6623A8C24AB4520003C3519 /* LoginParams.swift in Sources */,
 				C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */,
+				C6623A9124AB6EE8003C3519 /* LoginResponse.swift in Sources */,
 				C6669FE324AA29750024527E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,7 +640,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FE024AA28B10024527E /* ProjectSettings.swift in Sources */,
+				C6623A8D24AB4520003C3519 /* LoginParams.swift in Sources */,
 				C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */,
+				C6623A9224AB6EE8003C3519 /* LoginResponse.swift in Sources */,
 				C6669FE424AA29750024527E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

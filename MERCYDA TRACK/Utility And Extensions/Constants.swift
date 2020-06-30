@@ -20,6 +20,7 @@ static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
     
 // API URLS
 static let demoDataPath = "api/admin/demo"
+static let loginPath = "mtrack/user/login?username=admin&password=Inf!n!c03312345%23"
 
 }
 

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //self.callDemoWebservice()
+        self.callDemoWebservice()
         //self.crash()
        
     }
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     func callDemoWebservice() {
         //Utility.showLoading()
-        self.networkServiceCalls.demoServiceCalls(param1: "", param2: "") { (state) in
+        self.networkServiceCalls.login(userName: "", password: "") { (state) in
             //  Utility.hideLoading()
             switch state {
             case .success(let result as demoResponse):
