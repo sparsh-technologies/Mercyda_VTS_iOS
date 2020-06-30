@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 /// Base ViewController for all ViewController
 class BaseViewController: UIViewController {
@@ -85,3 +86,63 @@ extension BaseViewController {
 extension BaseViewController {
     
 }
+
+public enum MessageType: String {
+    case ApprovalType = "Approval"
+    case HoldType     = "Hold"
+    case SuggestType  = "Suggest"
+    case DeclineType  = "Decline"
+    case InvalidCredentials = "InvalidCredentials"
+    case CustomError = "CustomError"
+    case CustomSuccess = "CustomSuccess"
+}
+
+
+//extension UIViewController {
+func statusBarMessage(_ messageType: MessageType, _ message: String) {
+        let warning = MessageView.viewFromNib(layout: .cardView)
+        warning.configureTheme(.warning)
+        warning.configureDropShadow()
+        warning.configureTheme(backgroundColor: .white, foregroundColor: .darkGray)
+        let iconText = "⁉️"
+        warning.configureContent(title: "Warning", body: "Consider yourself warned.", iconText: iconText)
+        warning.button?.isHidden = true
+        var warningConfig = SwiftMessages.defaultConfig
+        warningConfig.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+        let success = MessageView.viewFromNib(layout: .cardView)
+        success.configureTheme(.success)
+        success.configureDropShadow()
+        success.configureContent(title: "Success", body: "Your request processed successfully!")
+        success.button?.isHidden = true
+    
+        var successConfig = SwiftMessages.defaultConfig
+        successConfig.presentationStyle = .center
+        successConfig.presentationContext = .window(windowLevel: UIWindow.Level.normal)
+        let successWithCustomMsg = MessageView.viewFromNib(layout: .cardView)
+        successWithCustomMsg.configureTheme(.success)
+        successWithCustomMsg.configureDropShadow()
+    successWithCustomMsg.configureContent(title: "Success", body: message)
+        successWithCustomMsg.button?.isHidden = true
+        var successConfigWithCustomMsg = SwiftMessages.defaultConfig
+        successConfigWithCustomMsg.presentationStyle = .center
+        successConfigWithCustomMsg.presentationContext = .window(windowLevel: UIWindow.Level.normal)
+
+        switch messageType {
+        case .ApprovalType:
+            SwiftMessages.show(config: successConfig, view: success)
+        case .DeclineType:
+            SwiftMessages.show(config: successConfig, view: success)
+        case .HoldType:
+            SwiftMessages.show(config: successConfig, view: success)
+        case .SuggestType:
+            SwiftMessages.show(config: successConfig, view: success)
+        case .InvalidCredentials:
+            warning.configureContent(title: "Invalid Credentials", body: "Check your username or password", iconText: iconText)
+            SwiftMessages.show(config: warningConfig, view: warning)
+        case .CustomError:
+            warning.configureContent(title: "", body: message, iconText: iconText)
+            SwiftMessages.show(config: warningConfig, view: warning)
+        case .CustomSuccess:
+            SwiftMessages.show(config: successConfigWithCustomMsg, view: successWithCustomMsg)
+        }
+    }

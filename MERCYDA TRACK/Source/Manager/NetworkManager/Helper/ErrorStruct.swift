@@ -14,7 +14,7 @@ struct ErrorStruct : Codable {
     
     enum CodingKeys: String, CodingKey {
         case error_code = "error_code"
-        case error_message = "error_message"
+        case error_message = "message"
     }
     init(from decoder: Decoder) throws {
         let values = try? decoder.container(keyedBy: CodingKeys.self)

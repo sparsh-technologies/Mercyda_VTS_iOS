@@ -19,8 +19,13 @@ static let TestBaseUrl = "http://mobile.mercydatrack.com/"
 static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
     
 // API URLS
-static let demoDataPath = "api/admin/demo"
-static let loginPath = "mtrack/user/login?username=admin&password=Inf!n!c03312345%23"
+    
+    static let demoDataPath = "api/admin/demo"
+    static let loginPath = "mtrack/user/login?username=admin&password=Inf!n!c03312345%23"
+    static let getVehiclesCountPath = "mtrack/vehicles/count?username=admin&password=Inf!n!c03312345%23"
+    static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=10&username=admin&password=Inf!n!c03312345%23"
+    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=admin&password=Inf!n!c03312345%23"
+    static let getDeviceDataPath = "mtrack/data?serial_no=test50&source_date=true&start_time=1584988200000&end_time=1585901799000&username=admin&password=Inf!n!c03312345%23"
 
 }
 

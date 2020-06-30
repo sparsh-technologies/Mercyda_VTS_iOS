@@ -48,7 +48,7 @@ extension CommonParser: NetworkParser {
                     }
                 } else {
                     if let error = result.error {
-                        let errorMessage = "ERROR_CODE_\(error.error_code ?? 0)"
+                        let errorMessage = error.error_message ?? "Undefined"
                         return .failure(error: errorMessage)
                     } else {
                         printLog("Error Field Missing")
