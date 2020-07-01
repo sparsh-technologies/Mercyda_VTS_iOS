@@ -10,21 +10,43 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
+   
+    @IBOutlet weak var loginTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
+        loginTableView.register(cellType:LoginTableviewCell.self)
     }
     
+   @objc func loginButtonClicked(_ sender: UIButton){
 
-    /*
-    // MARK: - Navigation
+    let indexpath = IndexPath.init(row:0, section: 0)
+    if let cell = loginTableView.cellForRow(at: indexpath) as?LoginTableviewCell {
+        let userName = cell.usernameTextfeild.text!
+        let passWord = cell.passwordTextfeild.text!
+        print(userName,passWord)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+      }
+  
+}
+}
+
+
+extension LoginViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:CellID.LoginCell.rawValue, for: indexPath) as! LoginTableviewCell
+        cell.selectionStyle = .none
+        cell.loginButton.addTarget(self, action:  #selector(LoginViewController.loginButtonClicked(_:)), for: .touchUpInside)
+     
+        return cell
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.height
+    }
 }

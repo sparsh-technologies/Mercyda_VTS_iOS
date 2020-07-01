@@ -63,6 +63,25 @@
 		52457DF924AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
+		84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
+		84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
+		84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
+		84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */; };
+		84E3E52A24AD0974004CC622 /* LoginTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */; };
+		84E3E52B24AD0974004CC622 /* LoginTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */; };
+		84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */; };
+		84E3E52E24AD09C9004CC622 /* UItableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */; };
+		84E3E52F24AD09C9004CC622 /* UItableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */; };
+		84E3E53124AD09E3004CC622 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */; };
+		84E3E53224AD09E3004CC622 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */; };
+		84E3E53324AD09E3004CC622 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */; };
+		84E3E53524AD09F7004CC622 /* StoryboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */; };
+		84E3E53624AD09F7004CC622 /* StoryboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */; };
+		84E3E53724AD09F7004CC622 /* StoryboardSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */; };
+		84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53824AD0A0D004CC622 /* Constants.swift */; };
+		84E3E53A24AD0A0E004CC622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53824AD0A0D004CC622 /* Constants.swift */; };
+		84E3E53B24AD0A0E004CC622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53824AD0A0D004CC622 /* Constants.swift */; };
+		84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E53C24AD0BE1004CC622 /* Login.storyboard */; };
 		9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */; };
 		ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */; };
 		C6623AC524AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
@@ -173,6 +192,13 @@
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableviewCell.xib; sourceTree = "<group>"; };
+		84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableviewCell.swift; sourceTree = "<group>"; };
+		84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UItableViewExtension.swift; sourceTree = "<group>"; };
+		84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSupport.swift; sourceTree = "<group>"; };
+		84E3E53824AD0A0D004CC622 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		84E3E53C24AD0BE1004CC622 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.release.xcconfig"; sourceTree = "<group>"; };
 		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -310,6 +336,10 @@
 				52457DC924AB7BE70078487A /* UIView+Extension.swift */,
 				52457DCD24AB7BF00078487A /* UserDefaults+Extension.swift */,
 				52457DD124AB7BFB0078487A /* UIColor+Extension.swift */,
+				84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */,
+				84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */,
+				84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */,
+				84E3E53824AD0A0D004CC622 /* Constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +359,7 @@
 			children = (
 				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
 				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
+				84E3E53C24AD0BE1004CC622 /* Login.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -391,12 +422,22 @@
 		52457DEF24AB7FC30078487A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				84E3E52324AD0974004CC622 /* TableviewCell */,
 				52457DEB24AB7F0D0078487A /* View */,
 				52457DED24AB7F240078487A /* ViewModel */,
 				52457DEC24AB7F150078487A /* Models */,
 				52457DEE24AB7F370078487A /* Utilities */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		84E3E52324AD0974004CC622 /* TableviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */,
+				84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */,
+			);
+			path = TableviewCell;
 			sourceTree = "<group>";
 		};
 		C6623AB724AB970C003C3519 /* ApiModels */ = {
@@ -698,7 +739,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 				C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */,
+				84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */,
 				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
@@ -710,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */,
+				84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */,
+				84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +935,7 @@
 				C6669FD224AA20420024527E /* CommonResponse.swift in Sources */,
 				52457DC224AB7BA30078487A /* UIApplication+Extension.swift in Sources */,
 				C6623AC524AB970C003C3519 /* LoginResponse.swift in Sources */,
+				84E3E53124AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FCF24AA20420024527E /* NetworkEngine.swift in Sources */,
 				C6623ACB24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C6669FDE24AA28B10024527E /* ProjectSettings.swift in Sources */,
@@ -904,9 +950,12 @@
 				52457DF924AB83120078487A /* LoginLocalization.swift in Sources */,
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
+				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
+				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
+				84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
 				C6623AD724AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				C6669FD424AA20DD0024527E /* NetworkServiceCalls.swift in Sources */,
@@ -921,6 +970,7 @@
 				52457DB624AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
 				C6669FD024AA20420024527E /* CommonParser.swift in Sources */,
 				52457DDF24AB7CB20078487A /* Styles.swift in Sources */,
+				84E3E53524AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
 				52457DAE24AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
 				C6623AEC24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DCE24AB7BF00078487A /* UserDefaults+Extension.swift in Sources */,
@@ -936,6 +986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52457DF624AB81700078487A /* LoginViewController.swift in Sources */,
+				84E3E53224AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FDF24AA28B10024527E /* ProjectSettings.swift in Sources */,
 				C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C6623ACC24AB970C003C3519 /* Vehicle.swift in Sources */,
@@ -950,15 +1001,18 @@
 				C6623AE424AB9736003C3519 /* LoginParams.swift in Sources */,
 				C6623AD824AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				52457DAF24AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
+				84E3E52A24AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				52457DF224AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */,
 				C6623AC924AB970C003C3519 /* Last_updated_data.swift in Sources */,
 				52457DE024AB7CB20078487A /* Styles.swift in Sources */,
+				84E3E52E24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6623AED24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DD324AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEA24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				52457DDD24AB7CB20078487A /* ThemeManager.swift in Sources */,
 				C6623AF124AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
+				84E3E53624AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
 				52457DC324AB7BA30078487A /* UIApplication+Extension.swift in Sources */,
 				C6669FE324AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD224AB970C003C3519 /* Meta_d.swift in Sources */,
@@ -966,6 +1020,7 @@
 				52457DBF24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52457DE524AB7CF00078487A /* SDKManager.swift in Sources */,
+				84E3E53A24AD0A0E004CC622 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +1029,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52457DF724AB81700078487A /* LoginViewController.swift in Sources */,
+				84E3E53324AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FE024AA28B10024527E /* ProjectSettings.swift in Sources */,
 				C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C6623ACD24AB970C003C3519 /* Vehicle.swift in Sources */,
@@ -988,15 +1044,18 @@
 				C6623AE524AB9736003C3519 /* LoginParams.swift in Sources */,
 				C6623AD924AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				52457DB024AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
+				84E3E52B24AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				52457DF324AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */,
 				C6623ACA24AB970C003C3519 /* Last_updated_data.swift in Sources */,
 				52457DE124AB7CB20078487A /* Styles.swift in Sources */,
+				84E3E52F24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6623AEE24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DD424AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEB24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				52457DDE24AB7CB20078487A /* ThemeManager.swift in Sources */,
 				C6623AF224AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
+				84E3E53724AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
 				52457DC424AB7BA30078487A /* UIApplication+Extension.swift in Sources */,
 				C6669FE424AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD324AB970C003C3519 /* Meta_d.swift in Sources */,
@@ -1004,6 +1063,7 @@
 				52457DC024AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
 				52457DE624AB7CF00078487A /* SDKManager.swift in Sources */,
+				84E3E53B24AD0A0E004CC622 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

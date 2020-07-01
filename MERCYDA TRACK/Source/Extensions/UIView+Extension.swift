@@ -29,4 +29,17 @@ extension UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
     }
+    func roundCorners(_ corners:UIRectCorner, radius: CGFloat) {
+      let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+      let mask = CAShapeLayer()
+      mask.path = path.cgPath
+      self.layer.mask = mask
+    }
+    
+    func addBorder(color:UIColor,borderwidth:CGFloat){
+        self.layer.borderWidth = borderwidth
+        self.layer.borderColor = color.cgColor
+        self.clipsToBounds = true
+    }
+
 }
