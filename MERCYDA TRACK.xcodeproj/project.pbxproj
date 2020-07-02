@@ -63,6 +63,9 @@
 		52457DF924AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
+		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
@@ -188,6 +191,7 @@
 		52457DF024AB802F0078487A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
+		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.release.xcconfig"; sourceTree = "<group>"; };
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,6 +364,7 @@
 				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
 				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
 				84E3E53C24AD0BE1004CC622 /* Login.storyboard */,
+				527B39E924AE57DA005BA95A /* Dashboard.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */,
 				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
+				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */,
+				527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */,
+				527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
