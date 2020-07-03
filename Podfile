@@ -9,6 +9,8 @@ target 'MERCYDA TRACK' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'GoogleMaps'
+  pod 'MBProgressHUD', '~> 1.2'
+
 
   # Pods for MERCYDA TRACK
 

@@ -17,6 +17,9 @@
 		520D57DE24AF6A10002A775F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520D57DD24AF6A10002A775F /* DashboardViewController.swift */; };
 		520D57DF24AF6A10002A775F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520D57DD24AF6A10002A775F /* DashboardViewController.swift */; };
 		520D57E024AF6A10002A775F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520D57DD24AF6A10002A775F /* DashboardViewController.swift */; };
+		522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
+		522A141124AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
+		522A141224AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
 		52457D9E24AB78C70078487A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457D9D24AB78C70078487A /* CoreDataHelper.swift */; };
 		52457DA024AB78DF0078487A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457D9F24AB78DF0078487A /* Helper.swift */; };
 		52457DA224AB78E80078487A /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DA124AB78E80078487A /* Connectivity.swift */; };
@@ -182,6 +185,7 @@
 		520D57D124AF67BE002A775F /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		520D57D924AF687D002A775F /* DashboardLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLocalization.swift; sourceTree = "<group>"; };
 		520D57DD24AF6A10002A775F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		52457D9D24AB78C70078487A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		52457D9F24AB78DF0078487A /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52457DA124AB78E80078487A /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 		520D57D724AF6844002A775F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1007,6 +1012,7 @@
 				52457DD624AB7C560078487A /* BaseViewController.swift in Sources */,
 				52457DC624AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52457DF924AB83120078487A /* LoginLocalization.swift in Sources */,
+				522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
@@ -1081,6 +1087,7 @@
 				52457DD724AB7C560078487A /* BaseViewController.swift in Sources */,
 				52457DBF24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
+				522A141124AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
 				52457DE524AB7CF00078487A /* SDKManager.swift in Sources */,
 				84E3E53A24AD0A0E004CC622 /* Constants.swift in Sources */,
 			);
@@ -1126,6 +1133,7 @@
 				52457DD824AB7C560078487A /* BaseViewController.swift in Sources */,
 				52457DC024AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
+				522A141224AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
 				52457DE624AB7CF00078487A /* SDKManager.swift in Sources */,
 				84E3E53B24AD0A0E004CC622 /* Constants.swift in Sources */,
 			);

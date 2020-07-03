@@ -8,13 +8,15 @@
 
 import UIKit
 import SwiftMessages
+import MBProgressHUD
 
 /// Base ViewController for all ViewController
 class BaseViewController: UIViewController {
     
     // MARK: - Properties
     
-   
+    let activityIndicator = MBProgressHUD()
+
     
     // MARK: - View Life Cycle
     
@@ -140,7 +142,7 @@ func statusBarMessage(_ messageType: MessageType, _ message: String) {
             warning.configureContent(title: "Invalid Credentials", body: "Check your username or password", iconText: iconText)
             SwiftMessages.show(config: warningConfig, view: warning)
         case .CustomError:
-            warning.configureContent(title: "", body: message, iconText: iconText)
+            warning.configureContent(title: "Something Went Wrong!", body: message, iconText: iconText)
             SwiftMessages.show(config: warningConfig, view: warning)
         case .CustomSuccess:
             SwiftMessages.show(config: successConfigWithCustomMsg, view: successWithCustomMsg)

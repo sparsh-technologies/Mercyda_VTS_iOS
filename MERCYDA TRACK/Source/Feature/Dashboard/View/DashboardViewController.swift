@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class DashboardViewController: UIViewController {
-
+class DashboardViewController: BaseViewController {
+    
     @IBOutlet private weak var movingLbl: UILabel!
     @IBOutlet private weak var idleLbl: UILabel!
     @IBOutlet private weak var sleepLbl: UILabel!
@@ -31,15 +32,18 @@ class DashboardViewController: UIViewController {
     @IBOutlet private weak var alldeviceBtnOutlet: UIButton!
     @IBOutlet  private weak var alertsBtnOutlet: UIButton!
     
+    let dashboardViewModel = DashboardViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        configureUI()
+        configureViewUI()
+        getDashboardVehicleCount()
     }
     
     /// Configure UI with Label Names and Initial Values
-    func configureUI() {
+    func configureViewUI() {
         self.navigationController?.navigationBar.isHidden = true
         movingLbl.text = DashboardLocalization.movingLbl.localized
         sleepLbl.text = DashboardLocalization.sleepLbl.localized
@@ -59,7 +63,7 @@ class DashboardViewController: UIViewController {
         offlineBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
         alertsBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
         alldeviceBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
-
+        
     }
     
     /// Menu Button Action
@@ -76,14 +80,31 @@ class DashboardViewController: UIViewController {
     @objc func menuButtonAction(button: UIButton) {
         print(button.tag)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getDashboardVehicleCount()  {
+        MBProgressHUD.showAdded(to: view, animated: true)
+        dashboardViewModel.getVehicleCount { [weak self] (result) in
+            guard let this = self else {
+                return
+            }
+            MBProgressHUD.hide(for: this.view, animated: false)
+            switch result {
+            case .success(let result):
+                printLog("Vechile details Count \(result)")
+            case .failure(let error):
+                statusBarMessage(.CustomError, error.localizedDescription)
+                printLog(error.localizedDescription)
+            }
+        }
     }
-    */
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
