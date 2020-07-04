@@ -135,6 +135,12 @@
 		C6623AF024AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */; };
 		C6623AF124AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */; };
 		C6623AF224AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */; };
+		C6623AF424B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF324B0CA5D003C3519 /* DeviceDataResponse.swift */; };
+		C6623AF524B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF324B0CA5D003C3519 /* DeviceDataResponse.swift */; };
+		C6623AF624B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF324B0CA5D003C3519 /* DeviceDataResponse.swift */; };
+		C6623AF824B0CA65003C3519 /* D.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF724B0CA65003C3519 /* D.swift */; };
+		C6623AF924B0CA65003C3519 /* D.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF724B0CA65003C3519 /* D.swift */; };
+		C6623AFA24B0CA65003C3519 /* D.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AF724B0CA65003C3519 /* D.swift */; };
 		C6669FCE24AA20420024527E /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
 		C6669FCF24AA20420024527E /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FCA24AA20420024527E /* NetworkEngine.swift */; };
 		C6669FD024AA20420024527E /* CommonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FCB24AA20420024527E /* CommonParser.swift */; };
@@ -237,6 +243,8 @@
 		C6623ADE24AB9736003C3519 /* GetVehicleListParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVehicleListParams.swift; sourceTree = "<group>"; };
 		C6623ADF24AB9736003C3519 /* GetVehiclesCountParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVehiclesCountParams.swift; sourceTree = "<group>"; };
 		C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceDataParams.swift; sourceTree = "<group>"; };
+		C6623AF324B0CA5D003C3519 /* DeviceDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDataResponse.swift; sourceTree = "<group>"; };
+		C6623AF724B0CA65003C3519 /* D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D.swift; sourceTree = "<group>"; };
 		C6669FC924AA20420024527E /* URLBuildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuildable.swift; sourceTree = "<group>"; };
 		C6669FCA24AA20420024527E /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		C6669FCB24AA20420024527E /* CommonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonParser.swift; sourceTree = "<group>"; };
@@ -550,6 +558,8 @@
 		C6623AC424AB970C003C3519 /* GetDeviceDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				C6623AF324B0CA5D003C3519 /* DeviceDataResponse.swift */,
+				C6623AF724B0CA65003C3519 /* D.swift */,
 			);
 			path = GetDeviceDataModel;
 			sourceTree = "<group>";
@@ -1018,6 +1028,7 @@
 				52457DC624AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52457DF924AB83120078487A /* LoginLocalization.swift in Sources */,
 				522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
+				C6623AF824B0CA65003C3519 /* D.swift in Sources */,
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
@@ -1049,6 +1060,7 @@
 				C6623AE624AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
 				C6623ACE24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
 				C6C9D7F924A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld in Sources */,
+				C6623AF424B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
 				52457DDC24AB7CB20078487A /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1091,7 +1103,9 @@
 				52457DC324AB7BA30078487A /* UIApplication+Extension.swift in Sources */,
 				C6669FE324AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD224AB970C003C3519 /* Meta_d.swift in Sources */,
+				C6623AF524B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
 				52457DD724AB7C560078487A /* BaseViewController.swift in Sources */,
+				C6623AF924B0CA65003C3519 /* D.swift in Sources */,
 				52457DBF24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				522A141124AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
@@ -1138,7 +1152,9 @@
 				52457DC424AB7BA30078487A /* UIApplication+Extension.swift in Sources */,
 				C6669FE424AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD324AB970C003C3519 /* Meta_d.swift in Sources */,
+				C6623AF624B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
 				52457DD824AB7C560078487A /* BaseViewController.swift in Sources */,
+				C6623AFA24B0CA65003C3519 /* D.swift in Sources */,
 				52457DC024AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
 				522A141224AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,

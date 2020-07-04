@@ -68,9 +68,9 @@ class NetworkServiceCalls: NetworkAdapter {
     
     // Service for get Device Data
     
-    func getDeviceData( _ completion: @escaping CompletionWithSuccessOrFailure) {
-        let params = getDeviceDataParams()
-        fetch(params, CommonParser<getVehicleDetailResponse>.self) { (state) in
+    func getDeviceData(serialNumber: String, enableSourceDate: String, startTime: String, endTime: String, _ completion: @escaping CompletionWithSuccessOrFailure) {
+        let params = getDeviceDataParams(serialNumber: serialNumber, enableSourceDate: enableSourceDate, startTime: startTime, endTime: endTime)
+        fetch(params, CommonParser<[DeviceDataResponse]>.self) { (state) in
             switch state {
             case .success(let response):
                 completion(.success(response: response))
