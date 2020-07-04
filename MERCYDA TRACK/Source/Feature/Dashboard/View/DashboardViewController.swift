@@ -2,7 +2,7 @@
 //  DashboardViewController.swift
 //  MERCYDA TRACK
 //
-//  Created by test on 03/07/20.
+//  Created by Vinod on 03/07/20.
 //  Copyright © 2020 Team Kochi Dev. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import MBProgressHUD
 
 class DashboardViewController: BaseViewController {
     
+    /// Menu Button Name Labels
     @IBOutlet private weak var movingLbl: UILabel!
     @IBOutlet private weak var idleLbl: UILabel!
     @IBOutlet private weak var sleepLbl: UILabel!
@@ -21,6 +22,14 @@ class DashboardViewController: BaseViewController {
     @IBOutlet private weak var offlineLbl: UILabel!
     @IBOutlet private weak var bottomBannerLbl: UILabel!
     
+    /// Menu Button Notification Label
+    @IBOutlet weak var offlineNotifiLbl: UILabel!
+    @IBOutlet weak var sleepNotifiLbl: UILabel!
+    @IBOutlet weak var idleNotifiLbl: UILabel!
+    @IBOutlet weak var onlineNotfiLbl: UILabel!
+    @IBOutlet weak var movingNotifLbl: UILabel!
+    
+    /// Menu Button Outlets
     @IBOutlet private weak var offlineBtnOutlet: UIButton!
     @IBOutlet private weak var reportsBtnOutlet: UIButton!
     @IBOutlet private weak var dashboardBtnOutlet: UIButton!
@@ -32,6 +41,7 @@ class DashboardViewController: BaseViewController {
     @IBOutlet private weak var alldeviceBtnOutlet: UIButton!
     @IBOutlet  private weak var alertsBtnOutlet: UIButton!
     
+    /// Dashboard ViewModel
     let dashboardViewModel = DashboardViewModel()
     
     override func viewDidLoad() {
@@ -90,12 +100,26 @@ class DashboardViewController: BaseViewController {
             MBProgressHUD.hide(for: this.view, animated: false)
             switch result {
             case .success(let result):
+                this.updateNotificationCOunt(vehicleCount: result)
                 printLog("Vechile details Count \(result)")
             case .failure(let error):
                 statusBarMessage(.CustomError, error.localizedDescription)
                 printLog(error.localizedDescription)
             }
         }
+    }
+    
+    func updateNotificationCOunt(vehicleCount: getVehiclesCountResponse) {
+        var count = Int(vehicleCount.running_count ?? 0)
+        movingNotifLbl.text = String(count)
+        count = Int(vehicleCount.halt_count ?? 0)
+        sleepNotifiLbl.text = String(count)
+        count = Int(vehicleCount.idle_count ?? 0)
+        idleNotifiLbl.text = String(count)
+        count = Int(vehicleCount.running_count ?? 0)
+        onlineNotfiLbl.text = String(Int(vehicleCount.running_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0))
+        count = Int(vehicleCount.inactive_count ?? 0)
+        offlineNotifiLbl.text = String(count)
     }
     /*
      // MARK: - Navigation
