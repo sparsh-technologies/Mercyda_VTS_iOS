@@ -103,8 +103,8 @@ class DashboardViewController: BaseViewController {
                 this.updateNotificationCOunt(vehicleCount: result)
                 printLog("Vechile details Count \(result)")
             case .failure(let error):
-                statusBarMessage(.CustomError, error.localizedDescription)
-                printLog(error.localizedDescription)
+                statusBarMessage(.CustomError, error)
+                printLog(error)
             }
         }
     }

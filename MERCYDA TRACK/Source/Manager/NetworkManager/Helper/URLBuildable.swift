@@ -31,6 +31,11 @@ enum CompletionState {
     case failure(error: String)
 }
 
+enum WebServiceResult<T,C> {
+    case success(response: T)
+    case failure(error: C)
+}
+
 enum NetworkError: Error {
     case emptyResponse
     case fullResponse

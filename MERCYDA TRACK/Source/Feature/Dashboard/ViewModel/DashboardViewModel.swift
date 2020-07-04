@@ -16,18 +16,17 @@ class DashboardViewModel  {
 }
 extension DashboardViewModel {
     
-    func getVehicleCount(completion: @escaping (Result<getVehiclesCountResponse, Error>) -> Void) {
+    func getVehicleCount(completion: @escaping (WebServiceResult<getVehiclesCountResponse, String>) -> Void) {
         self.networkServiceCalls.getVehiclesCount { (state) in
             switch state {
             case .success(let result as getVehiclesCountResponse):
-                completion(.success(result))
+                completion(.success(response: result))
                 printLog("Vechile details Count \(result)")
             case .failure(let error):
-                let localError = ErrorType(somethingBadHappened: error)
-                completion(.failure(localError))
+                completion(.failure(error: error))
                 printLog(error)
             default:
-                printLog("")
+                completion(.failure(error: AppSpecificError.unknownError.rawValue))
             }
         }
     }
