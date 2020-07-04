@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct CustomError: Error {
-    let somethingBadHappened: String
-}
-
 class DashboardViewModel  {
     // MARK: - Properties
     private let networkServiceCalls = NetworkServiceCalls()
@@ -27,8 +23,8 @@ extension DashboardViewModel {
                 completion(.success(result))
                 printLog("Vechile details Count \(result)")
             case .failure(let error):
-                let abc = CustomError(somethingBadHappened: error)
-                completion(.failure(abc))
+                let localError = ErrorType(somethingBadHappened: error)
+                completion(.failure(localError))
                 printLog(error)
             default:
                 printLog("")

@@ -20,6 +20,9 @@
 		522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
 		522A141124AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
 		522A141224AFB2300009DBC3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */; };
+		522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A141324B05B8D0009DBC3 /* ErrorType.swift */; };
+		522A141524B05B8D0009DBC3 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A141324B05B8D0009DBC3 /* ErrorType.swift */; };
+		522A141624B05B8D0009DBC3 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A141324B05B8D0009DBC3 /* ErrorType.swift */; };
 		52457D9E24AB78C70078487A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457D9D24AB78C70078487A /* CoreDataHelper.swift */; };
 		52457DA024AB78DF0078487A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457D9F24AB78DF0078487A /* Helper.swift */; };
 		52457DA224AB78E80078487A /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DA124AB78E80078487A /* Connectivity.swift */; };
@@ -186,6 +189,7 @@
 		520D57D924AF687D002A775F /* DashboardLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLocalization.swift; sourceTree = "<group>"; };
 		520D57DD24AF6A10002A775F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		522A140F24AFB2300009DBC3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		522A141324B05B8D0009DBC3 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		52457D9D24AB78C70078487A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		52457D9F24AB78DF0078487A /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		52457DA124AB78E80078487A /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 				52457D9F24AB78DF0078487A /* Helper.swift */,
 				52457DA124AB78E80078487A /* Connectivity.swift */,
 				52457DA324AB78F30078487A /* Localizable.swift */,
+				522A141324B05B8D0009DBC3 /* ErrorType.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
 				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
+				522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
@@ -1057,6 +1063,7 @@
 				C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C6623ACC24AB970C003C3519 /* Vehicle.swift in Sources */,
 				52457DCB24AB7BE70078487A /* UIView+Extension.swift in Sources */,
+				522A141524B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBB24AB7B900078487A /* String+Extension.swift in Sources */,
 				52457DB324AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623ACF24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
@@ -1103,6 +1110,7 @@
 				C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C6623ACD24AB970C003C3519 /* Vehicle.swift in Sources */,
 				52457DCC24AB7BE70078487A /* UIView+Extension.swift in Sources */,
+				522A141624B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBC24AB7B900078487A /* String+Extension.swift in Sources */,
 				52457DB424AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623AD024AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
