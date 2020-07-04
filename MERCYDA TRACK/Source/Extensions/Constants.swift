@@ -13,3 +13,14 @@ enum CellID:String {
     
     case LoginCell = "LoginTableviewCell"
 }
+
+
+enum StoryboardName :String {
+    case Login = "Login"
+    case Dashboard = "Dashboard"
+
+}
+
+enum StoryboardID :String {
+    case DashboardId = "DashBoardStoryBoard"
+}

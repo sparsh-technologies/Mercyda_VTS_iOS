@@ -9,6 +9,16 @@
 import UIKit
 import SDWebImage
 class Utility: NSObject {
+    
+    class func errorTextFiled(_ textField: UITextField,addBorder:Bool = true)  {
+        textField.placeHolderColor = UIColor.red //UIColor(red: 0.702, green: 0.165, blue: 0.467, alpha: 1.00)
+           if addBorder{
+              // textField.textFieldBorderColor = UIColor.red //UIColor(red: 0.702, green: 0.165, blue: 0.467, alpha: 1.00)
+              // textField.borderWidth = 2
+            textField.addBottomborder(color: UIColor.red)
+           }
+       }
+    
   
 }
 
@@ -23,3 +33,5 @@ extension Utility {
         return ("JSON string = Error")
     }
 }
+
+

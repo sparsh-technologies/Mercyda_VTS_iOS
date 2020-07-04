@@ -7,46 +7,103 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LoginViewController: BaseViewController {
-
-   
-    @IBOutlet weak var loginTableView: UITableView!
+    @IBOutlet weak var topBackgroundImage: UIImageView!
+    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var userNameView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var userNameTextfeild: UITextField!
+    @IBOutlet weak var passwordTextfeild: UITextField!
+    var emailText :String? = nil
+    private let networkServiceCalls = NetworkServiceCalls()
+    let loginViewmodel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        loginTableView.register(cellType:LoginTableviewCell.self)
-    }
-    
-   @objc func loginButtonClicked(_ sender: UIButton){
-
-    let indexpath = IndexPath.init(row:0, section: 0)
-    if let cell = loginTableView.cellForRow(at: indexpath) as?LoginTableviewCell {
-        let userName = cell.usernameTextfeild.text!
-        let passWord = cell.passwordTextfeild.text!
-        print(userName,passWord)
-
-      }
-  
-}
-}
-
-
-extension LoginViewController:UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:CellID.LoginCell.rawValue, for: indexPath) as! LoginTableviewCell
-        cell.selectionStyle = .none
-        cell.loginButton.addTarget(self, action:  #selector(LoginViewController.loginButtonClicked(_:)), for: .touchUpInside)
      
-        return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height
+    override func viewWillLayoutSubviews() {
+    topBackgroundImage.roundCorners([.bottomRight,.bottomLeft], radius: 20)
+    logoView.roundCorners(.allCorners, radius: 20)
+    userNameView.addBorder(color:UIColor.lightGray, borderwidth: 1)
+    passwordView.addBorder(color:UIColor.lightGray, borderwidth: 1)
+    loginButton.roundCorners(.allCorners, radius: 10)
+    }
+
+    @IBAction func forgotPasswordButtonAction(_ sender: Any) {
+        
+        self.showAlert(title:MessageConstants.ForgotPasswordTitle.rawValue, message: MessageConstants.ForotPasswordMessage.rawValue)
+    }
+    
+    @IBAction func loginButtonAction(_ sender: Any) {
+         guard validateData() else {return}
+        MBProgressHUD.showAdded(to: view, animated: true)
+        loginViewmodel.loginUser(withEmail: self.userNameTextfeild.text!, password: self.passwordTextfeild.text!) { [weak self] (result) in
+            guard let this = self else {
+                return
+            }
+         MBProgressHUD.hide(for: this.view, animated: false)
+            switch result {
+            case .success(let result):
+            printLog(result)
+            let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: StoryboardID.DashboardId.rawValue)as! DashboardViewController
+            self?.navigationController?.pushViewController(vc, animated: true)
+            case .failure(let error):
+                statusBarMessage(.CustomError, error.localizedDescription)
+                printLog(error.localizedDescription)
+            }
+        }
+          
+    }
+    
+    
+    
+    func validateData() -> Bool {
+          emailText = userNameTextfeild.text!
+           guard !userNameTextfeild.text!.isEmptyStr else{
+            userNameTextfeild.placeholder = MessageConstants.EmptyUserName.rawValue
+              Utility.errorTextFiled(userNameTextfeild)
+               return false
+           }
+           guard userNameTextfeild.text!.isValidEmail else {
+               userNameTextfeild.text = nil
+            userNameTextfeild.placeholder = MessageConstants.InvalidEmail.rawValue
+               Utility.errorTextFiled( userNameTextfeild)
+               return false
+           }
+           guard !passwordTextfeild.text!.isEmptyStr else {
+            passwordTextfeild.placeholder = MessageConstants.EmptyPasswordErrorMessage.rawValue
+               Utility.errorTextFiled(passwordTextfeild)
+               return false
+           }
+           return true
+           
+       }
+}
+
+
+extension LoginViewController:UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       // textField.placeHolderColor = UIColor.black
+        textField.textFieldBorderColor = UIColor.clear
+        if textField == self.userNameTextfeild{
+            textField.placeholder = "Username"
+            if let text = emailText{
+                textField.text = text
+                emailText = nil
+            }
+        }
+        
+        if textField == self.passwordTextfeild{
+            textField.placeholder = "Password"
+        }
+        
     }
 }

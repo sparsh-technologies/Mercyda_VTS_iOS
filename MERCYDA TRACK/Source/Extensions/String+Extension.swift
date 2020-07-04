@@ -25,6 +25,44 @@ extension String {
         prefix(1).uppercased() + self.lowercased().dropFirst()
     }
     
+    
+     var isEmptyStr:Bool{
+            return self.trimmingCharacters(in: NSCharacterSet.whitespaces).isEmpty
+        }
+        var isValidEmail:Bool {
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            return emailTest.evaluate(with: self)
+        }
+        
+        // MARK:- check valid password
+        var isValidPassword: Bool{
+            let passwordRegEx = "^[a-zA-Z0-9]{6,}$"
+            let passwordTest = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+            return passwordTest.evaluate(with: self)
+        }
+        
+        var firstUppercased: String {
+            guard let first = first else { return "" }
+            let restString = dropFirst().lowercased()
+            return String(first).uppercased() + restString
+        }
+        
+        var url:URL? {
+            
+            guard  let urlString = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: urlString) else {
+                
+                debugPrint("\"\(self)\" is not url convertible")
+                return nil
+                
+            }
+            return url
+        }
+    
+
+    
+    
+    
     /// Return Upper Camel Cased
     func upperCamelCased() -> String? {
         self.lowercased()

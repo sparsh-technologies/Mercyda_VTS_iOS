@@ -78,6 +78,8 @@
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211224B064C7002A3CB1 /* MessageConstants.swift */; };
+		8429211524B06BA2002A3CB1 /* UItextfeild+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */; };
 		84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
@@ -212,6 +214,8 @@
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8429211224B064C7002A3CB1 /* MessageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstants.swift; sourceTree = "<group>"; };
+		8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextfeild+Extension.swift"; sourceTree = "<group>"; };
 		84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableviewCell.xib; sourceTree = "<group>"; };
 		84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableviewCell.swift; sourceTree = "<group>"; };
 		84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UItableViewExtension.swift; sourceTree = "<group>"; };
@@ -395,6 +399,8 @@
 				84E3E53024AD09E3004CC622 /* NSObjectExtension.swift */,
 				84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */,
 				84E3E53824AD0A0D004CC622 /* Constants.swift */,
+				8429211224B064C7002A3CB1 /* MessageConstants.swift */,
+				8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -992,6 +998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6669FCE24AA20420024527E /* URLBuildable.swift in Sources */,
+				8429211524B06BA2002A3CB1 /* UItextfeild+Extension.swift in Sources */,
 				52457DCA24AB7BE70078487A /* UIView+Extension.swift in Sources */,
 				52457DA424AB78F30078487A /* Localizable.swift in Sources */,
 				C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */,
@@ -1042,6 +1049,7 @@
 				520D57DA24AF687D002A775F /* DashboardLocalization.swift in Sources */,
 				C6623AE624AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
 				C6623ACE24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
+				8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */,
 				C6C9D7F924A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld in Sources */,
 				52457DDC24AB7CB20078487A /* ThemeManager.swift in Sources */,
 			);
