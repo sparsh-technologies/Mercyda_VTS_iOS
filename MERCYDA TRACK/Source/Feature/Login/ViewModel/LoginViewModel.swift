@@ -30,13 +30,13 @@ extension LoginViewModel {
             //  Utility.hideLoading()
             switch state {
             case .success(let result as loginResponse):
-                completion(.success(response: result))
+                completion(.success(result))
                 printLog("Success \(result)")
             case .failure(let error):
-                completion(.failure(error: error))
+                completion(.failure(error))
                 printLog(error)
             default:
-                completion(.failure(error: AppSpecificError.unknownError.rawValue))
+                completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
         

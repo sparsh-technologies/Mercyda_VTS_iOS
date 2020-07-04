@@ -32,8 +32,8 @@ enum CompletionState {
 }
 
 enum WebServiceResult<T,C> {
-    case success(response: T)
-    case failure(error: C)
+    case success(_ response: T)
+    case failure(_ error: C)
 }
 
 enum NetworkError: Error {
