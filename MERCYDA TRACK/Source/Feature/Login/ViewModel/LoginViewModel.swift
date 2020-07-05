@@ -25,7 +25,7 @@ extension LoginViewModel {
     ///   - completion: return type failure/success
     func loginUser(withEmail email: String,
                    password: String,
-                   completion: @escaping (Result<loginResponse, Error>) -> Void) {
+                   completion: @escaping (WebServiceResult<loginResponse, String>) -> Void) {
         self.networkServiceCalls.login(userName: "", password: "") { (state) in
             //  Utility.hideLoading()
             switch state {
@@ -33,9 +33,10 @@ extension LoginViewModel {
                 completion(.success(result))
                 printLog("Success \(result)")
             case .failure(let error):
+                completion(.failure(error))
                 printLog(error)
             default:
-                printLog("")
+                completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
         

@@ -25,19 +25,17 @@ static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
     static let getVehiclesCountPath = "mtrack/vehicles/count?username=admin&password=Inf!n!c03312345%23"
     static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=10&username=admin&password=Inf!n!c03312345%23"
     static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=admin&password=Inf!n!c03312345%23"
-    static let getDeviceDataPath = "mtrack/data?serial_no=test50&source_date=true&start_time=1584988200000&end_time=1585901799000&username=admin&password=Inf!n!c03312345%23"
+    static let getDeviceDataPath = "mtrack/data"
 
 }
 
 struct PARAMS {
-    static let PARAM1 = "param1"
-    static let PARAM2 = "param2"
+   
+    static let SERIAL_NO = "serial_no"
+    static let SOURCE_DATE = "source_date"
+    static let START_TIME = "start_time"
+    static let END_TIME = "end_time"
+    static let USERNAME = "username"
+    static let PASSWORD = "password"
     
-}
-
-enum AppSpecificError: String, Error {
-    case unknownError = "Unknown Error"
-    case responseValidationError = "Response Validation not Available"
-    case resultFieldMissingError = "Result Field Missing"
-    case errorFieldMissingError = "Error Field Missing"
 }

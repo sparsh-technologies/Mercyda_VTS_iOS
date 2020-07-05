@@ -88,10 +88,10 @@ class ViewController: UIViewController {
     }
     
     func getDeviceData() {
-        self.networkServiceCalls.getDeviceData { (state) in
+        self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1593628200000", endTime: "1593714600000") { (state) in
             //  Utility.hideLoading()
             switch state {
-            case .success(let result as getVehicleDetailResponse):
+            case .success(let result as [DeviceDataResponse]):
                 printLog("Success \(result)")
             case .failure(let error):
                 printLog(error)
