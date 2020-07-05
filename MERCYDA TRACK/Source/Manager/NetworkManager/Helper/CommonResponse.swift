@@ -13,7 +13,7 @@ struct CommonResponse<T : Codable> : Codable {
     let status : String?
     var success : Bool?  {
         get {
-            return self.status == "success" ? true : false
+            return self.status == "success"
         }
     }
     let result  : T?
