@@ -30,12 +30,14 @@ static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
 }
 
 struct PARAMS {
-   
     static let SERIAL_NO = "serial_no"
     static let SOURCE_DATE = "source_date"
     static let START_TIME = "start_time"
     static let END_TIME = "end_time"
     static let USERNAME = "username"
     static let PASSWORD = "password"
-    
+}
+
+struct APIKeys {
+    static let GOOGLE_API_KEY =  "AIzaSyBNY5ak5Fp4BL2ANNlDDssQiVI_q3X1TVk"
 }

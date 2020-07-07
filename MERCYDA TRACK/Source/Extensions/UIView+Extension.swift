@@ -41,5 +41,9 @@ extension UIView {
         self.layer.borderColor = color.cgColor
         self.clipsToBounds = true
     }
+    
+    func aspectRatio(_ ratio: CGFloat) -> NSLayoutConstraint {
+           return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
+       }
 
 }
