@@ -171,6 +171,12 @@
 		C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
 		C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
 		C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
+		C698D1B824B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
+		C698D1B924B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
+		C698D1BA24B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
+		C698D1BC24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */; };
+		C698D1BD24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */; };
+		C698D1BE24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */; };
 		C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */; };
 		C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */; };
 		C6C9D7F324A925A700BA7651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C9D7F224A925A700BA7651 /* ViewController.swift */; };
@@ -275,6 +281,8 @@
 		C6669FDD24AA28B10024527E /* ProjectSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSettings.swift; sourceTree = "<group>"; };
 		C6669FE124AA29750024527E /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		C6669FE524AA41E60024527E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVCViewModel.swift; sourceTree = "<group>"; };
+		C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVCExtensions.swift; sourceTree = "<group>"; };
 		C6C9D7EB24A925A700BA7651 /* MERCYDA TRACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MERCYDA TRACK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C9D7EE24A925A700BA7651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C9D7F024A925A700BA7651 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -637,7 +645,8 @@
 		C6653BAA24B3535A00DD9D9F /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				C6653BAB24B353A900DD9D9F /* MapVC.swift */,
+				C698D1B624B5C91400F9B32B /* ViewModel */,
+				C698D1B524B5C8F400F9B32B /* View */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -686,6 +695,23 @@
 				522A141324B05B8D0009DBC3 /* ErrorType.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C698D1B524B5C8F400F9B32B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C6653BAB24B353A900DD9D9F /* MapVC.swift */,
+				C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C698D1B624B5C91400F9B32B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C6C9D7E224A925A700BA7651 = {
@@ -1115,6 +1141,7 @@
 				C6623AD724AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				C6669FD424AA20DD0024527E /* NetworkServiceCalls.swift in Sources */,
 				C6623AC824AB970C003C3519 /* Last_updated_data.swift in Sources */,
+				C698D1B824B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				52457DB224AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				52457DE424AB7CF00078487A /* SDKManager.swift in Sources */,
 				52457DA224AB78E80078487A /* Connectivity.swift in Sources */,
@@ -1122,6 +1149,7 @@
 				52457DF524AB81700078487A /* LoginViewController.swift in Sources */,
 				C6669FDC24AA24870024527E /* Utility.swift in Sources */,
 				C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */,
+				C698D1BC24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				52457DB624AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
 				C6669FD024AA20420024527E /* CommonParser.swift in Sources */,
 				52457DDF24AB7CB20078487A /* Styles.swift in Sources */,
@@ -1147,6 +1175,7 @@
 				84E3E53224AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FDF24AA28B10024527E /* ProjectSettings.swift in Sources */,
 				C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */,
+				C698D1BD24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACC24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C6623AFF24B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCB24AB7BE70078487A /* UIView+Extension.swift in Sources */,
@@ -1173,6 +1202,7 @@
 				52457DD324AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEA24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				52457DDD24AB7CB20078487A /* ThemeManager.swift in Sources */,
+				C698D1B924B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF124AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
 				520D57DB24AF687D002A775F /* DashboardLocalization.swift in Sources */,
 				84E3E53624AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
@@ -1199,6 +1229,7 @@
 				84E3E53324AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FE024AA28B10024527E /* ProjectSettings.swift in Sources */,
 				C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */,
+				C698D1BE24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACD24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C6623B0024B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCC24AB7BE70078487A /* UIView+Extension.swift in Sources */,
@@ -1225,6 +1256,7 @@
 				52457DD424AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEB24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				52457DDE24AB7CB20078487A /* ThemeManager.swift in Sources */,
+				C698D1BA24B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF224AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
 				520D57DC24AF687D002A775F /* DashboardLocalization.swift in Sources */,
 				84E3E53724AD09F7004CC622 /* StoryboardSupport.swift in Sources */,

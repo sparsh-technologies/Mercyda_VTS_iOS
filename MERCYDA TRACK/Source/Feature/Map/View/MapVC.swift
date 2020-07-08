@@ -8,7 +8,7 @@
 
 import Foundation
 import GoogleMaps
-import MBProgressHUD
+
 
 protocol MapPickerDelegate: class {
     func didSelectMarkerFromMap(selectedD: D)
@@ -16,12 +16,11 @@ protocol MapPickerDelegate: class {
 
 class MapVC: UIViewController {
     
+    private var viewModel = MapVCViewModel()
     weak var delegateForMapPicker : MapPickerDelegate?
-    var originalArrStoreList = [D]()
-    var arrForStoreLatLong:[CLLocationCoordinate2D] = []
     lazy var mapView : GMSMapView? = GMSMapView()
-    private let networkServiceCalls = NetworkServiceCalls()
     var carMarker:GMSMarker = GMSMarker.init(position: CLLocationCoordinate2D())
+    var polyLineLocations:[CLLocationCoordinate2D] = []
     var animationPolyline = GMSPolyline()
     var path = GMSPath()
     var animationPath = GMSMutablePath()
@@ -43,73 +42,26 @@ class MapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addMapView()
-        self.getDeviceData()
-        // Do any additional setup after loading the view.
+        viewModel.delegate = self
+        viewModel.getDeviceData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func getDeviceData() {
-        MBProgressHUD.showAdded(to: view, animated: true)
-        self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1593628200000", endTime: "1593714600000") { (state) in
-            MBProgressHUD.hide(for: self.view, animated: false)
-            switch state {
-            case .success(let result as [DeviceDataResponse]):
-                self.originalArrStoreList.removeAll()
-                let deviceArray = self.filterActiveDevicePackets(result)
-                self.makeArrayForSleepAndHalt(array: deviceArray)
-                self.originalArrStoreList = self.filterDeviceArray(array: deviceArray)
-                self.updateMap(array: self.originalArrStoreList)
-            case .failure(let error):
-                printLog(error)
-            default:
-                printLog("error")
-            }
-        }
+  
+    func updateMap(_ locationsArray: [CLLocationCoordinate2D]) {
+        self.focusMapToLocation(loctions: locationsArray, padding: 50.0, duration: 0.55, completionFunction: self.draw_polylines(loctions: self.polyLineLocations))
     }
     
-    func filterActiveDevicePackets(_ devices: [DeviceDataResponse]) -> [D] {
-        return devices.compactMap({$0.d}).filter({$0.gnss_fix == 1})
-    }
-    
-    func updateMap(array: [D]) {
-        self.arrForStoreLatLong = array.compactMap({$0.coordinates})
-        self.focusMapToLocation(loctions: self.arrForStoreLatLong, padding: 50.0, duration: 0.55, completionFunction: self.draw_polylines(loctions: self.arrForStoreLatLong))
-    }
-    
-    func filterDeviceArray(array: [D]) -> [D] {
-        return array.filter({$0.vehicle_mode == "M"})
-    }
-    
-    func makeArrayForSleepAndHalt(array: [D]) {
-        let filter = array.filter({$0.vehicle_mode != "M"})
-        if let firstElement = filter.first {
-            var sleepAndHalt = [D]()
-            var type = firstElement.vehicle_mode
-            sleepAndHalt.append(firstElement)
-            for d in filter {
-                if d.vehicle_mode != type {
-                    sleepAndHalt.append(d)
-                    type = d.vehicle_mode
-                }
-            }
-            self.updateParkingMarkers(array: sleepAndHalt)
-            printLog("SleepAndHalt Array: \(sleepAndHalt)")
-        } else {
-            printLog("Array empty")
-        }
-    }
-    
-    func updateParkingMarkers(array: [D]) {
-        let latlonArray = array.compactMap({$0.coordinates})
-        for (index,latlon) in latlonArray.enumerated() {
+    func updateParkingMarkers(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [D]) {
+        for (index,latlon) in locationsArray.enumerated() {
             let marker:GMSMarker = GMSMarker.init(position: latlon)
-            marker.icon = array[index].vehicle_mode == "H" ? UIImage.init(named: "h_pin") : UIImage.init(named: "s_pin")
+            marker.icon = deviceArray[index].vehicle_mode == "H" ? UIImage.init(named: "h_pin") : UIImage.init(named: "s_pin")
             marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
-            marker.title = array[index].vehicle_mode
-            marker.userData = array[index]
+            marker.title = deviceArray[index].vehicle_mode
+            marker.userData = deviceArray[index]
             marker.map = mapView
         }
     }
@@ -206,20 +158,8 @@ class MapVC: UIViewController {
             self.i = 0
             self.setCarMarkers(position: self.path.coordinate(at: self.path.count() - 1))
             self.timer.invalidate()
-            self.focusMapToLocation(loctions: self.arrForStoreLatLong, padding: 50.0, duration: 1.80)
+            self.focusMapToLocation(loctions: self.polyLineLocations, padding: 50.0, duration: 1.80)
             print("last execution")
-        }
-    }
-}
-
-
-extension MapVC: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        if let device = marker.userData as? D {
-            
-            self.dismiss(animated: false) {
-                self.delegateForMapPicker?.didSelectMarkerFromMap(selectedD: device)
-            }
         }
     }
 }
