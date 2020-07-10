@@ -31,19 +31,5 @@ extension DashboardViewModel {
         }
     }
     
-    func getDeviceData(completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1593628200000", endTime: "1593714600000") { (state) in
-            switch state {
-            case .success(let result as [DeviceDataResponse]):
-                completion(.success(result))
-                printLog("Vechile details Count \(result)")
-            case .failure(let error):
-                completion(.failure(error))
-                printLog(error)
-            default:
-                completion(.failure(AppSpecificError.unknownError.rawValue))
-            }
-        }
-    }
 }
 

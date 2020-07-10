@@ -107,6 +107,7 @@ class DashboardViewController: BaseViewController {
                 printLog(error)
             }
         }
+       
     }
     
     func updateNotificationCOunt(vehicleCount: getVehiclesCountResponse) {
