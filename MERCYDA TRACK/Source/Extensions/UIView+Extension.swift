@@ -48,6 +48,9 @@ extension UIView {
           border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
           self.layer.addSublayer(border)
       }
+    func aspectRatio(_ ratio: CGFloat) -> NSLayoutConstraint {
+           return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
+       }
 
    func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
        
