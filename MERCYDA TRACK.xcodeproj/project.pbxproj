@@ -88,6 +88,10 @@
 		8429211524B06BA2002A3CB1 /* UItextfeild+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */; };
 		84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84338A3D24B3A8980005B97B /* Vehicle.storyboard */; };
 		84410DA424B8D92100E6047D /* userLogininfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA324B8D92100E6047D /* userLogininfo.swift */; };
+		84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84410DA524B8F17300E6047D /* VehicleFlow.storyboard */; };
+		84410DAD24B8F18800E6047D /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
+		84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DAA24B8F18700E6047D /* TripDetailsModel.swift */; };
+		84410DAF24B8F18800E6047D /* VehicleFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DAC24B8F18700E6047D /* VehicleFlowViewController.swift */; };
 		8470049F24B5DE32009EDD18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470049E24B5DE31009EDD18 /* CardView.swift */; };
 		84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
@@ -243,6 +247,10 @@
 		8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextfeild+Extension.swift"; sourceTree = "<group>"; };
 		84338A3D24B3A8980005B97B /* Vehicle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vehicle.storyboard; sourceTree = "<group>"; };
 		84410DA324B8D92100E6047D /* userLogininfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLogininfo.swift; sourceTree = "<group>"; };
+		84410DA524B8F17300E6047D /* VehicleFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VehicleFlow.storyboard; sourceTree = "<group>"; };
+		84410DA924B8F18700E6047D /* VehicleFlowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFlowModel.swift; sourceTree = "<group>"; };
+		84410DAA24B8F18700E6047D /* TripDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailsModel.swift; sourceTree = "<group>"; };
+		84410DAC24B8F18700E6047D /* VehicleFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFlowViewController.swift; sourceTree = "<group>"; };
 		8470049E24B5DE31009EDD18 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableviewCell.xib; sourceTree = "<group>"; };
 		84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableviewCell.swift; sourceTree = "<group>"; };
@@ -391,6 +399,7 @@
 		52457DA624AB7A470078487A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				84410DA724B8F18700E6047D /* TripDetails */,
 				C6623B0124B2039F003C3519 /* ListDistance */,
 				C6623AFB24B1FE83003C3519 /* ListVehicle */,
 				520D57D524AF6825002A775F /* Dashboard */,
@@ -453,6 +462,7 @@
 		52457DAB24AB7AA90078487A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84410DA524B8F17300E6047D /* VehicleFlow.storyboard */,
 				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
 				520D57D124AF67BE002A775F /* Color.xcassets */,
 				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
@@ -546,6 +556,32 @@
 				8415080F24B4F15300953660 /* VehicleTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		84410DA724B8F18700E6047D /* TripDetails */ = {
+			isa = PBXGroup;
+			children = (
+				84410DA824B8F18700E6047D /* ViewModel */,
+				84410DAB24B8F18700E6047D /* View */,
+			);
+			path = TripDetails;
+			sourceTree = "<group>";
+		};
+		84410DA824B8F18700E6047D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84410DA924B8F18700E6047D /* VehicleFlowModel.swift */,
+				84410DAA24B8F18700E6047D /* TripDetailsModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84410DAB24B8F18700E6047D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84410DAC24B8F18700E6047D /* VehicleFlowViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		84E3E52324AD0974004CC622 /* TableviewCell */ = {
@@ -899,6 +935,7 @@
 				C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */,
 				84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */,
 				84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */,
+				84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */,
 				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
@@ -1120,14 +1157,17 @@
 				C6623AF824B0CA65003C3519 /* D.swift in Sources */,
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
 				8470049F24B5DE32009EDD18 /* CardView.swift in Sources */,
+				84410DAF24B8F18800E6047D /* VehicleFlowViewController.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
+				84410DAD24B8F18800E6047D /* VehicleFlowModel.swift in Sources */,
 				8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */,
 				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
 				522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
+				84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */,
 				84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
 				C6623AD724AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,

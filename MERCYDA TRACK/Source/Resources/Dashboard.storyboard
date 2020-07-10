@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uu1-Nf-k2h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uu1-Nf-k2h">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Dashboard View Controller-->
         <scene sceneID="gMA-Dm-HF6">
             <objects>
-                <viewController id="tE2-xp-AuY" customClass="DashboardViewController" customModule="MERCYDA_TRACK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DasboardController" id="tE2-xp-AuY" customClass="DashboardViewController" customModule="MERCYDA_TRACK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzK-8V-Jj0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -671,7 +671,7 @@
         <image name="Center" width="430.5" height="430.5"/>
         <image name="Dashboard" width="320" height="320"/>
         <image name="Idle" width="320" height="320"/>
-        <image name="Logo" width="177" height="48.5"/>
+        <image name="Logo" width="235.5" height="64"/>
         <image name="Moving" width="320" height="320"/>
         <image name="Offline" width="320" height="320"/>
         <image name="Online" width="320" height="320"/>
@@ -681,7 +681,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ThemeBlue">
-            <color red="0.15899999439716339" green="0.71299999952316284" blue="0.90799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0078431372549019607" green="0.6588235294117647" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
