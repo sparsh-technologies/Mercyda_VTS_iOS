@@ -12,7 +12,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-import GoogleMaps
 
 struct D : Codable {
 	let emergency_alert_count : Int?
@@ -29,11 +28,11 @@ struct D : Codable {
 	let gnss_fix : Int?
 	let packet_type : String?
 	let valid_status : Bool?
-    var coordinates : CLLocationCoordinate2D {
+    var coordinates : (lat : Double, lon: Double) {
         get {
             let lat = Double(self.latitude ?? "0000.00000")!
             let lon = Double(self.longitude ?? "0000.00000")!
-            return CLLocationCoordinate2D.init(latitude: lat, longitude: lon)
+            return (lat,lon)
         }
     }
     

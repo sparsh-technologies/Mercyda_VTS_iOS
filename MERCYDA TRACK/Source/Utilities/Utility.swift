@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+
+typealias Latlon = (lat : Double, lon : Double)
 class Utility: NSObject {
     
     class func errorTextFiled(_ textField: UITextField,addBorder:Bool = true)  {

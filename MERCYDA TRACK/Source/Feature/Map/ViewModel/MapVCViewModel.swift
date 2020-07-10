@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import GoogleMaps
 
 protocol MapVCViewModelDelegate : class {
-    func updateParkingLocationsOnMap(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [D])
-    func updateMovingLocationsOnMap(Locations locationsArray: [CLLocationCoordinate2D])
+    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [D])
+    func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)
     func showLoader()
     func hideLoader()
@@ -33,8 +32,8 @@ class MapVCViewModel  {
             }
         }
     }
-    var arrForMovingLocations:[CLLocationCoordinate2D] = []
-    var arrForHaltAndStopLocations:[CLLocationCoordinate2D] = []
+    var arrForMovingLocations:[Latlon] = []
+    var arrForHaltAndStopLocations:[Latlon] = []
     weak var delegate : MapVCViewModelDelegate?
 }
 
@@ -82,7 +81,7 @@ extension MapVCViewModel {
         }
     }
     
-    func getCoordinates(_ deviceArray: [D])  -> [CLLocationCoordinate2D] {
+    func getCoordinates(_ deviceArray: [D])  -> [Latlon] {
         return deviceArray.compactMap({$0.coordinates})
     }
 }

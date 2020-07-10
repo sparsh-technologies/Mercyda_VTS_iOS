@@ -12,13 +12,13 @@ import MBProgressHUD
 
 extension MapVC : MapVCViewModelDelegate {
     
-    func updateParkingLocationsOnMap(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [D]) {
-        self.updateParkingMarkers(Locations: locationsArray, Devices: deviceArray)
+    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [D]) {
+        self.updateParkingMarkers(Locations: locationsArray.toGoogleCoordinates(), Devices: deviceArray)
     }
     
-    func updateMovingLocationsOnMap(Locations locationsArray: [CLLocationCoordinate2D]) {
-        self.polyLineLocations = locationsArray
-        self.updateMap(locationsArray)
+    func updateMovingLocationsOnMap(Locations locationsArray: [Latlon]) {
+        self.polyLineLocations = locationsArray.toGoogleCoordinates()
+        self.updateMap(self.polyLineLocations)
     }
     
     func showLoader() {
@@ -40,5 +40,11 @@ extension MapVC: GMSMapViewDelegate {
                 self.delegateForMapPicker?.didSelectMarkerFromMap(selectedD: device)
             }
         }
+    }
+}
+
+extension Array where Element == Latlon {
+    func toGoogleCoordinates() -> [CLLocationCoordinate2D] {
+        return self.compactMap({CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.lon)})
     }
 }
