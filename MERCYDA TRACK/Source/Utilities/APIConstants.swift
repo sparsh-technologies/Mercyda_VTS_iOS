@@ -21,10 +21,10 @@ static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
 // API URLS
     
     static let demoDataPath = "api/admin/demo"
-    static let loginPath = "mtrack/user/login?username=admin&password=Inf!n!c03312345%23"
-    static let getVehiclesCountPath = "mtrack/vehicles/count?username=admin&password=Inf!n!c03312345%23"
-    static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=10&username=admin&password=Inf!n!c03312345%23"
-    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=admin&password=Inf!n!c03312345%23"
+    static let loginPath = "mtrack/user/login?username=\(userName)&password=\(passWord)"
+    static let getVehiclesCountPath = "mtrack/vehicles/count?username=\(Utility.getUserName())&password=\(Utility.getPassword())"
+    static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
+    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=\(Utility.getUserName())&password=\(Utility.getPassword())"
     static let getDeviceDataPath = "mtrack/data"
 
 }

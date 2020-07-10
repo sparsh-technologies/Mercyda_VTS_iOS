@@ -9,6 +9,10 @@
 import Foundation
 
 
+var userName = ""
+var passWord = ""
+
+
 enum CellID:String {
     
     case LoginCell = "LoginTableviewCell"
@@ -18,9 +22,11 @@ enum CellID:String {
 enum StoryboardName :String {
     case Login = "Login"
     case Dashboard = "Dashboard"
+    case ListVehicle = "Vehicle"
 
 }
 
 enum StoryboardID :String {
-    case DashboardId = "DashBoardStoryBoard"
+    case DashboardId = "DasboardController"
+    case ListVehicle = "ListVehicleControllerID"
 }

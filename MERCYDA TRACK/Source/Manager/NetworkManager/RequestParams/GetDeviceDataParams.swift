@@ -41,7 +41,7 @@ extension getDeviceDataParams: URLBuildable {
     }
     
     func queryString() -> String {
-        return "?\(PARAMS.SERIAL_NO)=\(self.serialNumber)&\(PARAMS.SOURCE_DATE)=\(self.enableSourceDate)&\(PARAMS.START_TIME)=\(self.startTime)&\(PARAMS.END_TIME)=\(self.endTime)&\(PARAMS.USERNAME)=\("admin")&\(PARAMS.PASSWORD)=\("Inf!n!c03312345%23")"
+        return "?\(PARAMS.SERIAL_NO)=\(self.serialNumber)&\(PARAMS.SOURCE_DATE)=\(self.enableSourceDate)&\(PARAMS.START_TIME)=\(self.startTime)&\(PARAMS.END_TIME)=\(self.endTime)&\(PARAMS.USERNAME)=\(Utility.getUserName())&\(PARAMS.PASSWORD)=\(Utility.getPassword())"
     }
 }
 

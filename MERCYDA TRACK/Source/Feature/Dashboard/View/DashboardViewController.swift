@@ -43,13 +43,16 @@ class DashboardViewController: BaseViewController {
     
     /// Dashboard ViewModel
     let dashboardViewModel = DashboardViewModel()
+    var vehicleListData = [Vehicle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+       
         configureViewUI()
         getDashboardVehicleCount()
+        getVehiclesList()
     }
     
     /// Configure UI with Label Names and Initial Values
@@ -63,6 +66,7 @@ class DashboardViewController: BaseViewController {
         dashboardLbl.text = DashboardLocalization.dashboardLbl.localized
         offlineLbl.text = DashboardLocalization.offlineLbl.localized
         bottomBannerLbl.text = DashboardLocalization.bottomBanner.localized
+        onlineLbl.text = DashboardLocalization.onlineLbl.localized
         
         sleepBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
         idleBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
@@ -89,7 +93,36 @@ class DashboardViewController: BaseViewController {
     /// - Parameter button: UIButton Type
     @objc func menuButtonAction(button: UIButton) {
         print(button.tag)
+        switch button.tag {
+            
+        case 10:
+            dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: vehicleListData) { (result) in
+                printLog(result.count)
+                self.navigatetoVehicleListPage(vehiclelist:result)
+            }
+        case 12:
+            dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:vehicleListData) { (result ) in
+                printLog(result.count)
+                 self.navigatetoVehicleListPage(vehiclelist:result)
+            }
+        case 11:
+            dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:vehicleListData) { (result ) in
+            printLog(result.count)
+                self.navigatetoVehicleListPage(vehiclelist:result)
+            }
+        default:
+            printLog("Nothing")
+        }
+        
     }
+        
+        func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
+            let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
+            vc.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehiclelist))
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     
     func getDashboardVehicleCount()  {
         MBProgressHUD.showAdded(to: view, animated: true)
@@ -108,6 +141,25 @@ class DashboardViewController: BaseViewController {
             }
         }
     }
+    
+    
+
+    func getVehiclesList() {
+        vehicleListData.removeAll()
+        dashboardViewModel.getVehicleList { [weak self] (result) in
+             guard let this = self else {
+                           return
+                       }
+            switch result{
+            case .success(let result):
+            this.vehicleListData = result
+            print("count:\(result.count)")
+            case .failure(let error) :
+            printLog(error)
+            }
+        }
+    }
+    
     
     func updateNotificationCOunt(vehicleCount: getVehiclesCountResponse) {
         var count = Int(vehicleCount.running_count ?? 0)

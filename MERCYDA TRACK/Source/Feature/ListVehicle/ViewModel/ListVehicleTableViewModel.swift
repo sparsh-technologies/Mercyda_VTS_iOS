@@ -76,10 +76,25 @@ extension ListVehicleTableDataModal: ListVehicleTableViewModel {
         switch self {
             
         case .itemsCell(vehicles: let vehiclesArray):
-            guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "vehicleCell", for: indexPath) as? UITableViewCell else {
+            guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "VehicleTableViewCell", for: indexPath) as? VehicleTableViewCell else {
                 return UITableViewCell()
             }
+            printLog(vehiclesArray.count)
+            vehicleCell.setVehicleData(vehicle:vehiclesArray[indexPath.row])
             return vehicleCell
         }
     }
+    
+    
+}
+
+
+enum VehicleModel:String{
+    case Lorry = "LORRY"
+    case MiniTruck = "MINI TRUCK"
+     
+}
+enum VehicleMode :String{
+    case Moving = "M"
+    case Sleep = "S"
 }

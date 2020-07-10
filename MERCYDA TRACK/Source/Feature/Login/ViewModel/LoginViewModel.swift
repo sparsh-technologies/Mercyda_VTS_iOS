@@ -26,6 +26,10 @@ extension LoginViewModel {
     func loginUser(withEmail email: String,
                    password: String,
                    completion: @escaping (WebServiceResult<loginResponse, String>) -> Void) {
+        userName = email
+        passWord = password
+        
+        
         self.networkServiceCalls.login(userName: "", password: "") { (state) in
             //  Utility.hideLoading()
             switch state {

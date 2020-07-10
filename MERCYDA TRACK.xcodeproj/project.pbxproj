@@ -81,8 +81,14 @@
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080724B4D7CA00953660 /* ListVehicleController.swift */; };
+		8415081024B4F15300953660 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080E24B4F15300953660 /* VehicleTableViewCell.swift */; };
+		8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8415080F24B4F15300953660 /* VehicleTableViewCell.xib */; };
 		8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211224B064C7002A3CB1 /* MessageConstants.swift */; };
 		8429211524B06BA2002A3CB1 /* UItextfeild+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */; };
+		84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84338A3D24B3A8980005B97B /* Vehicle.storyboard */; };
+		84410DA424B8D92100E6047D /* userLogininfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA324B8D92100E6047D /* userLogininfo.swift */; };
+		8470049F24B5DE32009EDD18 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470049E24B5DE31009EDD18 /* CardView.swift */; };
 		84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
 		84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */; };
@@ -230,8 +236,14 @@
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8415080724B4D7CA00953660 /* ListVehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVehicleController.swift; sourceTree = "<group>"; };
+		8415080E24B4F15300953660 /* VehicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewCell.swift; sourceTree = "<group>"; };
+		8415080F24B4F15300953660 /* VehicleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleTableViewCell.xib; sourceTree = "<group>"; };
 		8429211224B064C7002A3CB1 /* MessageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstants.swift; sourceTree = "<group>"; };
 		8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextfeild+Extension.swift"; sourceTree = "<group>"; };
+		84338A3D24B3A8980005B97B /* Vehicle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vehicle.storyboard; sourceTree = "<group>"; };
+		84410DA324B8D92100E6047D /* userLogininfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLogininfo.swift; sourceTree = "<group>"; };
+		8470049E24B5DE31009EDD18 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		84E3E52424AD0974004CC622 /* LoginTableviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableviewCell.xib; sourceTree = "<group>"; };
 		84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableviewCell.swift; sourceTree = "<group>"; };
 		84E3E52C24AD09C9004CC622 /* UItableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UItableViewExtension.swift; sourceTree = "<group>"; };
@@ -422,6 +434,7 @@
 				84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */,
 				84E3E53824AD0A0D004CC622 /* Constants.swift */,
 				8429211224B064C7002A3CB1 /* MessageConstants.swift */,
+				8470049E24B5DE31009EDD18 /* CardView.swift */,
 				8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */,
 			);
 			path = Extensions;
@@ -445,6 +458,7 @@
 				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
 				84E3E53C24AD0BE1004CC622 /* Login.storyboard */,
 				527B39E924AE57DA005BA95A /* Dashboard.storyboard */,
+				84338A3D24B3A8980005B97B /* Vehicle.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -512,8 +526,26 @@
 				52457DED24AB7F240078487A /* ViewModel */,
 				52457DEC24AB7F150078487A /* Models */,
 				52457DEE24AB7F370078487A /* Utilities */,
+				84410DA324B8D92100E6047D /* userLogininfo.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		8415080624B4D7A500953660 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8415080724B4D7CA00953660 /* ListVehicleController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8415080924B4F0F400953660 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8415080E24B4F15300953660 /* VehicleTableViewCell.swift */,
+				8415080F24B4F15300953660 /* VehicleTableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		84E3E52324AD0974004CC622 /* TableviewCell */ = {
@@ -595,6 +627,8 @@
 		C6623AFB24B1FE83003C3519 /* ListVehicle */ = {
 			isa = PBXGroup;
 			children = (
+				8415080924B4F0F400953660 /* TableViewCell */,
+				8415080624B4D7A500953660 /* View */,
 				C6623AFC24B1FF00003C3519 /* ViewModel */,
 			);
 			path = ListVehicle;
@@ -861,8 +895,10 @@
 			files = (
 				84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
 				520D57D224AF67BE002A775F /* Color.xcassets in Resources */,
+				8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */,
 				C6C9D7FE24A925A800BA7651 /* LaunchScreen.storyboard in Resources */,
 				84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */,
+				84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */,
 				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
@@ -1066,11 +1102,13 @@
 				520D57DE24AF6A10002A775F /* DashboardViewController.swift in Sources */,
 				84E3E53124AD09E3004CC622 /* NSObjectExtension.swift in Sources */,
 				C6669FCF24AA20420024527E /* NetworkEngine.swift in Sources */,
+				8415081024B4F15300953660 /* VehicleTableViewCell.swift in Sources */,
 				C6623ACB24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C6669FDE24AA28B10024527E /* ProjectSettings.swift in Sources */,
 				52457DF124AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6623AFE24B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DD224AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
+				84410DA424B8D92100E6047D /* userLogininfo.swift in Sources */,
 				C6669FE224AA29750024527E /* APIConstants.swift in Sources */,
 				52457D9E24AB78C70078487A /* CoreDataHelper.swift in Sources */,
 				52457DBA24AB7B900078487A /* String+Extension.swift in Sources */,
@@ -1081,10 +1119,12 @@
 				522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
 				C6623AF824B0CA65003C3519 /* D.swift in Sources */,
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
+				8470049F24B5DE32009EDD18 /* CardView.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
+				8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */,
 				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
 				522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,

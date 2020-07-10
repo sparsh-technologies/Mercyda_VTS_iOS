@@ -41,5 +41,29 @@ extension UIView {
         self.layer.borderColor = color.cgColor
         self.clipsToBounds = true
     }
+    
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+          let border = CALayer()
+          border.backgroundColor = color.cgColor
+          border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+          self.layer.addSublayer(border)
+      }
 
+   func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
+       
+       let gradientLayer = CAGradientLayer()
+       gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+       let width = UIScreen.main.bounds.width
+       let ht = self.frame.height
+       let x = self.frame.origin.x
+       let y = self.frame.origin.y
+       gradientLayer.frame = CGRect(x: x, y: 0, width: width, height: ht)
+       gradientLayer.frame = self.bounds
+      // gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+       //gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+     gradientLayer.startPoint = CGPoint(x:0 , y: 0)
+    gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+       self.layer.insertSublayer(gradientLayer, at: 0)
+   }
+    
 }
