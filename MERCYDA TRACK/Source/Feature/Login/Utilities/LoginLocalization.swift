@@ -24,3 +24,11 @@ enum LoginLocalization: String, Localizable {
     case loginError = "Something went wrong"
     case loginErrorMessage = "Do you want to continue without SignIn"
 }
+
+
+
+enum userDefaultKeys:String{
+    case userLoginInfo = "userLogionDetails"
+    case userName = "userName"
+    case passWord = "passWord"
+}

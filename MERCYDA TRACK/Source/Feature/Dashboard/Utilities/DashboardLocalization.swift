@@ -18,4 +18,7 @@ enum DashboardLocalization: String, Localizable {
     case dashboardLbl = "DASHBOARD"
     case reportsLbl = "REPORTS"
     case totalVechiles = "Total Vechicles"
+    case sleepVehicleKey = "S"
+    case movingVehicleKey = "M"
+    case idleVehicleKey = "H"
 }

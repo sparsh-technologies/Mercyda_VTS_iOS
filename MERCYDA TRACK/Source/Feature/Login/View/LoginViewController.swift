@@ -24,10 +24,10 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-     
-        
+      
     }
     
+       
     override func viewWillLayoutSubviews() {
     topBackgroundImage.roundCorners([.bottomRight,.bottomLeft], radius: 20)
     logoView.roundCorners(.allCorners, radius: 20)
@@ -52,6 +52,10 @@ class LoginViewController: BaseViewController {
             switch result {
             case .success(let result):
             printLog(result)
+            
+            let userLoginInfo = UserLoginInfo.init(userName, pswd:passWord)
+            userLoginInfo.save()
+            
             let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
             let vc = story.instantiateViewController(withIdentifier: StoryboardID.DashboardId.rawValue)as! DashboardViewController
             self?.navigationController?.pushViewController(vc, animated: true)

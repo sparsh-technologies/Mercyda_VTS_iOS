@@ -127,7 +127,7 @@
                                                                 <rect key="frame" x="66" y="0.0" width="306.66666666666669" height="45"/>
                                                                 <color key="textColor" name="ThemeBlue"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="password"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="B9p-FT-v8S" id="iLX-7m-Izz"/>
                                                                 </connections>
