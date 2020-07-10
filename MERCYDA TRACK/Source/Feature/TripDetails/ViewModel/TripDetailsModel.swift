@@ -13,9 +13,9 @@ struct TripDetailsModel {
     var distance = String()
     var startTime = String()
     var averageSpeed = String()
-    var duration = String()
+    var duration = DateComponents()
     
-    init(mode: String, distance: String, startTime: String, avrgSpeed: String, duration: String) {
+    init(mode: String, distance: String, startTime: String, avrgSpeed: String, duration: DateComponents) {
         self.vehicleMode = mode
         self.distance = distance
         self.startTime = startTime

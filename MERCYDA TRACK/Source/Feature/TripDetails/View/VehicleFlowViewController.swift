@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VehicleFlowViewController: UIViewController {
+class VehicleFlowViewController: BaseViewController {
 
     var vehicleFlowViewModel = VehicleFlow()
     
@@ -17,7 +17,9 @@ class VehicleFlowViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = false
         
+
         vehicleFlowViewModel.getDeviceData { (value) in
                    
                }
