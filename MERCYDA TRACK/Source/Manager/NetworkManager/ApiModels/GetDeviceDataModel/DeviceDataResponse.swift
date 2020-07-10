@@ -35,3 +35,9 @@ struct DeviceDataResponse : Codable {
 	}
 
 }
+
+extension Array where Element == DeviceDataResponse {
+    func getActiveDevicePackets() -> [D] {
+           return self.compactMap({$0.d}).filterActivePackets()
+       }
+}
