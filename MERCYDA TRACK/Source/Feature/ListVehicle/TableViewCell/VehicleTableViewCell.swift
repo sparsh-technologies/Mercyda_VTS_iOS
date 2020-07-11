@@ -51,9 +51,11 @@ class VehicleTableViewCell: UITableViewCell {
         
         switch vehicle.last_updated_data?.vehicle_mode {
         case VehicleMode.Moving.rawValue:
-            self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#1AA61D") , secondColor: UIColor.green)
+            self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
         case VehicleMode.Sleep.rawValue:
             self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        case VehicleMode.Idle.rawValue:
+            self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#4252D9"), secondColor: UIColor.blue)
         default:
             self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
         }

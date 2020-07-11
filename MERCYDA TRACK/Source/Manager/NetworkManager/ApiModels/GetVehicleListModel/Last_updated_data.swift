@@ -14,48 +14,53 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct Last_updated_data : Codable {
 	let speed : Int?
-	let vehicle_mode : String?
-	let ignition : String?
-	let gsm_signal_strength : Int?
-	let imei_no : String?
-	let source_date : Int?
-	let longitude : String?
-	let latitude : String?
-	let data : String?
-	let gnss_fix : Int?
-	let packet_type : String?
-	let valid_status : Bool?
+    let vehicle_mode : String?
+    let ignition : String?
+    let gsm_signal_strength : Int?
+    let imei_no : String?
+    let source_date : Int?
+    let longitude : String?
+    let latitude : String?
+    let overspeed_alert_count : Int?
+    let data : String?
+    let gnss_fix : Int?
+    let serial_no : String?
+    let packet_type : String?
+    let valid_status : Bool?
 
 	enum CodingKeys: String, CodingKey {
-
-		case speed = "speed"
-		case vehicle_mode = "vehicle_mode"
-		case ignition = "ignition"
-		case gsm_signal_strength = "gsm_signal_strength"
-		case imei_no = "imei_no"
-		case source_date = "source_date"
-		case longitude = "longitude"
-		case latitude = "latitude"
-		case data = "data"
-		case gnss_fix = "gnss_fix"
-		case packet_type = "packet_type"
-		case valid_status = "valid_status"
+        case speed = "speed"
+        case vehicle_mode = "vehicle_mode"
+        case ignition = "ignition"
+        case gsm_signal_strength = "gsm_signal_strength"
+        case imei_no = "imei_no"
+        case source_date = "source_date"
+        case longitude = "longitude"
+        case latitude = "latitude"
+        case overspeed_alert_count = "overspeed_alert_count"
+        case data = "data"
+        case gnss_fix = "gnss_fix"
+        case serial_no = "serial_no"
+        case packet_type = "packet_type"
+        case valid_status = "valid_status"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		speed = try? values.decodeIfPresent(Int.self, forKey: .speed)
-		vehicle_mode = try? values.decodeIfPresent(String.self, forKey: .vehicle_mode)
-		ignition = try? values.decodeIfPresent(String.self, forKey: .ignition)
-		gsm_signal_strength = try? values.decodeIfPresent(Int.self, forKey: .gsm_signal_strength)
-		imei_no = try? values.decodeIfPresent(String.self, forKey: .imei_no)
-		source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
-		longitude = try? values.decodeIfPresent(String.self, forKey: .longitude)
-		latitude = try? values.decodeIfPresent(String.self, forKey: .latitude)
-		data = try? values.decodeIfPresent(String.self, forKey: .data)
-		gnss_fix = try? values.decodeIfPresent(Int.self, forKey: .gnss_fix)
-		packet_type = try? values.decodeIfPresent(String.self, forKey: .packet_type)
-		valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
+        speed = try values.decodeIfPresent(Int.self, forKey: .speed)
+        vehicle_mode = try values.decodeIfPresent(String.self, forKey: .vehicle_mode)
+        ignition = try values.decodeIfPresent(String.self, forKey: .ignition)
+        gsm_signal_strength = try values.decodeIfPresent(Int.self, forKey: .gsm_signal_strength)
+        imei_no = try values.decodeIfPresent(String.self, forKey: .imei_no)
+        source_date = try values.decodeIfPresent(Int.self, forKey: .source_date)
+        longitude = try values.decodeIfPresent(String.self, forKey: .longitude)
+        latitude = try values.decodeIfPresent(String.self, forKey: .latitude)
+        overspeed_alert_count = try values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
+        data = try values.decodeIfPresent(String.self, forKey: .data)
+        gnss_fix = try values.decodeIfPresent(Int.self, forKey: .gnss_fix)
+        serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
+        packet_type = try values.decodeIfPresent(String.self, forKey: .packet_type)
+        valid_status = try values.decodeIfPresent(Bool.self, forKey: .valid_status)
 	}
 
 }

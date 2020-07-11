@@ -70,8 +70,15 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if  let vehicle =  vehicleDataSource[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
+            printLog(vehicle.vehicle_registration!)
+            printLog(vehicle.last_updated_data!.serial_no!)
+        }
         
+       
+       
     }
+    
     
     
 }

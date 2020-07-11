@@ -97,4 +97,5 @@ enum VehicleModel:String{
 enum VehicleMode :String{
     case Moving = "M"
     case Sleep = "S"
+    case Idle = "H"
 }

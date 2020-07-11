@@ -57,7 +57,7 @@ class DashboardViewController: BaseViewController {
     
     /// Configure UI with Label Names and Initial Values
     func configureViewUI() {
-        self.navigationController?.navigationBar.isHidden = true
+      //  self.navigationController?.navigationBar.isHidden = true
         movingLbl.text = DashboardLocalization.movingLbl.localized
         sleepLbl.text = DashboardLocalization.sleepLbl.localized
         alertsLbl.text = DashboardLocalization.alertsLbl.localized
