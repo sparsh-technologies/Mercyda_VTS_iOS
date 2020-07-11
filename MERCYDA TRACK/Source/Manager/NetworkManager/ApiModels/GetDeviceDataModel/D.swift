@@ -12,6 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
+
 struct D : Codable {
 	let emergency_alert_count : Int?
 	let speed : Int?
@@ -27,7 +28,14 @@ struct D : Codable {
 	let gnss_fix : Int?
 	let packet_type : String?
 	let valid_status : Bool?
-
+    var coordinates : Latlon {
+        get {
+            let lat = Double(self.latitude ?? "0000.00000")!
+            let lon = Double(self.longitude ?? "0000.00000")!
+            return (lat,lon)
+        }
+    }
+    
 	enum CodingKeys: String, CodingKey {
 
 		case emergency_alert_count = "emergency_alert_count"
@@ -64,4 +72,37 @@ struct D : Codable {
 		valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
 	}
 
+}
+
+extension Array where Element == D {
+    func filterActivePackets() -> [D] {
+        return self.filter({$0.gnss_fix == 1})
+    }
+    func getMovingPackets() -> [D] {
+        return self.filter({$0.vehicle_mode == "M"})
+    }
+    func getNonMovingPackets() -> [D] {
+        return self.filter({$0.vehicle_mode != "M"})
+    }
+    func getCoordinates()  -> [Latlon] {
+        return self.compactMap({$0.coordinates})
+    }
+    func getSleepAndHaltDeviceArray() -> [D]? {
+        let filter = self.getNonMovingPackets()
+        if let firstElement = filter.first {
+            var sleepAndHalt = [D]()
+            var type = firstElement.vehicle_mode
+            sleepAndHalt.append(firstElement)
+            for d in filter {
+                if d.vehicle_mode != type {
+                    sleepAndHalt.append(d)
+                    type = d.vehicle_mode
+                }
+            }
+            return sleepAndHalt
+        } else {
+            printLog("Array empty")
+            return nil
+        }
+    }
 }
