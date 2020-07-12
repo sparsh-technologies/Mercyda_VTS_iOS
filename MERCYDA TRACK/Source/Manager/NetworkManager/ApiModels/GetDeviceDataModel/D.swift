@@ -22,7 +22,7 @@ struct D : Codable {
 	let alert_count : Int?
 	let imei_no : String?
 	let longitude : String?
-	let source_date : Int?
+	var source_date : Int?
 	let latitude : String?
 	let data : String?
 	let gnss_fix : Int?
@@ -46,7 +46,6 @@ struct D : Codable {
 		case alert_count = "alert_count"
 		case imei_no = "imei_no"
 		case longitude = "longitude"
-		case source_date = "source_date"
 		case latitude = "latitude"
 		case data = "data"
 		case gnss_fix = "gnss_fix"
@@ -64,7 +63,6 @@ struct D : Codable {
 		alert_count = try? values.decodeIfPresent(Int.self, forKey: .alert_count)
 		imei_no = try? values.decodeIfPresent(String.self, forKey: .imei_no)
 		longitude = try? values.decodeIfPresent(String.self, forKey: .longitude)
-		source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
 		latitude = try? values.decodeIfPresent(String.self, forKey: .latitude)
 		data = try? values.decodeIfPresent(String.self, forKey: .data)
 		gnss_fix = try? values.decodeIfPresent(Int.self, forKey: .gnss_fix)

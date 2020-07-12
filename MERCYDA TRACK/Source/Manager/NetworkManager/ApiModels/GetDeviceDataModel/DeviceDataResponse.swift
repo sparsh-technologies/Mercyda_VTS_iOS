@@ -13,7 +13,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct DeviceDataResponse : Codable {
-	let d : D?
+    var d : D?
 	let id : String?
 	let serial_no : String?
 	let source_date : Int?
@@ -32,6 +32,7 @@ struct DeviceDataResponse : Codable {
 		id = try? values.decodeIfPresent(String.self, forKey: .id)
 		serial_no = try? values.decodeIfPresent(String.self, forKey: .serial_no)
 		source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
+        d?.source_date = self.source_date
 	}
 
 }
