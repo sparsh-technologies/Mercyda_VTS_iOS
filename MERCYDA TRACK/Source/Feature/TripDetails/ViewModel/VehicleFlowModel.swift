@@ -46,15 +46,7 @@ extension VehicleFlow {
     func performFiltering(packets: [DeviceDataResponse])  {
         let gnssFixFilterArray = packets.getActiveDevicePackets()
         let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
-        var singleDimensionArray : [D] {
-           var arr = [D]()
-            twoDimArray.forEach { (array) in
-                array.forEach { (element) in
-                    arr.append(element)
-                }
-            }
-            return arr
-        }
+        let singleDimensionArray = Array(twoDimArray.joined())
         let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()
         calculateDistance(packets: filteredTwoDimArray)
     }
