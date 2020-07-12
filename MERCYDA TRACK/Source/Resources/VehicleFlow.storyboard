@@ -11,13 +11,32 @@
         <!--Vehicle Flow View Controller-->
         <scene sceneID="dlt-Mr-xBY">
             <objects>
-                <viewController storyboardIdentifier="flow" id="wy4-aQ-K48" customClass="VehicleFlowViewController" customModule="MERCYDA_TRACK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VehicleFlowID" id="wy4-aQ-K48" customClass="VehicleFlowViewController" customModule="MERCYDA_TRACK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xoa-dM-ttr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p0t-aL-aMr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wy4-aQ-K48" id="Ntl-Kg-FUr"/>
+                                    <outlet property="delegate" destination="wy4-aQ-K48" id="kfd-OB-0iB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Vhj-Fa-baf" firstAttribute="trailing" secondItem="p0t-aL-aMr" secondAttribute="trailing" id="CSh-zT-vNM"/>
+                            <constraint firstItem="Vhj-Fa-baf" firstAttribute="bottom" secondItem="p0t-aL-aMr" secondAttribute="bottom" id="QC7-Zv-5qz"/>
+                            <constraint firstItem="p0t-aL-aMr" firstAttribute="leading" secondItem="Vhj-Fa-baf" secondAttribute="leading" id="hC6-bB-Dva"/>
+                            <constraint firstItem="p0t-aL-aMr" firstAttribute="top" secondItem="Vhj-Fa-baf" secondAttribute="top" id="mjG-vh-N18"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Vhj-Fa-baf"/>
                     </view>
+                    <connections>
+                        <outlet property="tableViewOutlet" destination="p0t-aL-aMr" id="qCk-NH-sSn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljs-Kr-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

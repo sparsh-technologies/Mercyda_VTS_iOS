@@ -75,7 +75,7 @@ extension URLBuildable {
         urlRequest.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         if let params = parameters {
             do {
-                printLog(Utility.printJsonText(object: params))
+//                printLog(Utility.printJsonText(object: params))
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
             } catch {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))

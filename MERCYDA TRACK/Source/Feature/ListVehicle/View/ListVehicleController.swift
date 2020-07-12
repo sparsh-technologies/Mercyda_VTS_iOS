@@ -71,14 +71,17 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if  let vehicle =  vehicleDataSource[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
-            printLog(vehicle.vehicle_registration!)
-            printLog(vehicle.last_updated_data!.serial_no!)
+//            printLog(vehicle.vehicle_registration!)
+//            printLog(vehicle.last_updated_data!.serial_no!)
+            callViewController(serialNo: vehicle.last_updated_data?.serial_no ?? "InvalidSerialNo")
         }
-        
-       
-       
     }
     
-    
-    
+    func callViewController(serialNo: String) {
+        let story = UIStoryboard(name: StoryboardName.VehicleFlow.rawValue, bundle: nil)
+        let vehicleFlowVC = story.instantiateViewController(withIdentifier: StoryboardID.VehicleFlow.rawValue)as! VehicleFlowViewController
+        vehicleFlowVC.serialNumber = serialNo
+        self.navigationController?.pushViewController(vehicleFlowVC, animated: true)
+        
+    }
 }

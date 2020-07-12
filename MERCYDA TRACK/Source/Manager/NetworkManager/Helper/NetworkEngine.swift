@@ -58,7 +58,7 @@ final class NetworkEngine {
      */
     func fetch<T: NetworkParser>(_ parser: T.Type, response: Any, _ completion: CompletionWithSuccessOrFailure) {
         if let parameters = response as? Parameters {
-             printLog(Utility.printJsonText(object: parameters))
+//             printLog(Utility.printJsonText(object: parameters))
             self.parse(parser, parametes: parameters, completion)
         } else {
             completion(.failure(error: "Invalid response format"))

@@ -16,6 +16,29 @@ class VehicleFlow  {
     var packetsFiltered: [[DeviceDataResponse]] = []
     var processedResult: [TripDetailsModel] = []
     
+    var tempArray = [DeviceDataResponse]()
+    var base = [[DeviceDataResponse]]()
+    
+    weak var delegate: VehicleFlowControllerDelegate?
+    
+    
+}
+extension VehicleFlow {
+    
+    /// Return Number of Sections for UITableView
+    var numberOfSections: Int {
+        return 1
+    }
+    
+    /// Return Number of Rows in Sections for UITableView
+    /// - Parameter section: Int Value
+    func numberOfRowsInSection(_ section: Int) -> Int {
+        return self.processedResult.count
+    }
+    
+    func dataPointForIndex(index: Int) -> TripDetailsModel {
+        return TripDetailsModel.init(mode: processedResult[index].vehicleMode, distance: processedResult[index].distance, startTime: processedResult[index].startTime, avrgSpeed: processedResult[index].averageSpeed, duration: processedResult[index].duration)
+    }
 }
 
 extension VehicleFlow {
@@ -23,33 +46,37 @@ extension VehicleFlow {
     func performFiltering(packets: [DeviceDataResponse])  {
         let gnssFixFilterArray = packets.filter({ $0.d?.gnss_fix == 1})
         var type = gnssFixFilterArray.first
-        var temArray: [DeviceDataResponse] = []
-        temArray.removeAll()
-        packetsFiltered.removeAll()
-        
-        for (index, value) in gnssFixFilterArray.enumerated() {
-            if value.d?.vehicle_mode == type?.d?.vehicle_mode {
-                temArray.append(value)
-            }
-            else {
-                if temArray.count > 1 {
-                    packetsFiltered.append(temArray)
+        let constant = "M"
+        var clear = true
+        for (index, element) in gnssFixFilterArray.enumerated() {
+            type = element
+            if type?.d?.vehicle_mode == constant {
+                if !clear {
+                    appendArray(array: tempArray)
+                    clear = !clear
                 }
-                temArray.removeAll()
-                temArray.append(value)
-                type = value
-            }
-            
-            if index == packets.count-1 {
-                if temArray.count > 1 {
-                    packetsFiltered.append(temArray)
+            } else {
+                if clear {
+                    appendArray(array: tempArray)
+                    clear = !clear
                 }
-                temArray.removeAll()
+            }
+            tempArray.append(element)
+            if index == gnssFixFilterArray.count - 1 {
+                appendArray(array: tempArray)
             }
         }
-        calculateDistance(packets: packetsFiltered)
+        
+        let removeSingleArray = base.filter({ $0.count > 1 })
+        
+        calculateDistance(packets: removeSingleArray)
     }
-    
+    func appendArray(array: [DeviceDataResponse]) {
+        if tempArray.count > 0 {
+            base.append(tempArray)
+        }
+        tempArray.removeAll()
+    }
     func calculateDistance(packets: [[DeviceDataResponse]]) {
         var distanceFromCoordinates = Double()
         var distanceFromSpeed = Double()
@@ -58,10 +85,13 @@ extension VehicleFlow {
         var mode = String()
         var tripDetails: [TripDetailsModel] = []
         var averageSpeed: Int = 0
+        var totalDistance = Double()
+        
         
         
         _ = packets.map({ eachPacket in
             totalDistanceFromPacket = 0.0
+            averageSpeed = 0
             mode = eachPacket.first?.d?.vehicle_mode ?? "Unknown"
             _ = eachPacket.map({ value in
                 averageSpeed = averageSpeed + (value.d?.speed ?? 0)
@@ -78,17 +108,20 @@ extension VehicleFlow {
                 if distance.isNaN {
                     
                 }
-                print("\n Coordinates ", distanceFromCoordinates)
-                print("Speed ", distanceFromSpeed)
-                print("Highest Distance ", maxDistance)
-                totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
+                //                print("\n Coordinates ", distanceFromCoordinates)
+                //                print("Speed ", distanceFromSpeed)
+                //                print("Highest Distance ", maxDistance)
+                totalDistanceFromPacket = totalDistanceFromPacket + distanceFromCoordinates
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
-                print("Total Distanec ", totalDistanceFromPacket)
+                //                print("Total Distanec ", totalDistanceFromPacket)
             }
-            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket), startTime: "", avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)))
+            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)))
             tripDetails.append(trip)
+            totalDistance = totalDistance + totalDistanceFromPacket
         })
-        print("\n\n\n Result Array ", tripDetails)
+        //        print("\n\n\n Result Array ", tripDetails)
+        processedResult = tripDetails
+        self.delegate?.loadData(vm: tripDetails)
     }
     
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
@@ -118,6 +151,16 @@ extension VehicleFlow {
             
         }
         return 0
+    }
+    
+    func milliSecondsToTime(milliSeconds: Double) -> String {
+        let date = NSDate(timeIntervalSince1970: milliSeconds / 1000)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        //        print(dateFormatter.string(from: date as Date))
+        return dateFormatter.string(from: date as Date)
     }
     
     func durationInSeconds(packet1Duration: Double, packet2Duration: Double) -> Double {
@@ -150,18 +193,18 @@ extension VehicleFlow {
         let cal = Calendar.current
         let components = cal.dateComponents([.hour, .minute , .second ], from: startDate, to: endDate)
         let diff = components
-//        print("******DATE******* \n", diff)
+        //        print("******DATE******* \n", diff)
         return diff
     }
     
-    func getDeviceData(completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1594276200000", endTime: "1594362540000") { [weak self] (state) in
+    func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: "1594492200000", endTime: "1594578540000") { [weak self] (state) in
             guard let this = self else {
                 return
             }
             switch state {
             case .success(let result as [DeviceDataResponse]):
-                //                completion(.success(result))
+                completion(.success(result))
                 this.performFiltering(packets: result)
             case .failure(let error):
                 completion(.failure(error))
