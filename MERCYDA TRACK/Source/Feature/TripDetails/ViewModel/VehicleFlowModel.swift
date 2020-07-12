@@ -16,8 +16,8 @@ class VehicleFlow  {
     var packetsFiltered: [[DeviceDataResponse]] = []
     var processedResult: [TripDetailsModel] = []
     
-    var tempArray = [DeviceDataResponse]()
-    var base = [[DeviceDataResponse]]()
+   
+    
     
     weak var delegate: VehicleFlowControllerDelegate?
     
@@ -44,40 +44,14 @@ extension VehicleFlow {
 extension VehicleFlow {
     
     func performFiltering(packets: [DeviceDataResponse])  {
-        let gnssFixFilterArray = packets.filter({ $0.d?.gnss_fix == 1})
-        var type = gnssFixFilterArray.first
-        let constant = "M"
-        var clear = true
-        for (index, element) in gnssFixFilterArray.enumerated() {
-            type = element
-            if type?.d?.vehicle_mode == constant {
-                if !clear {
-                    appendArray(array: tempArray)
-                    clear = !clear
-                }
-            } else {
-                if clear {
-                    appendArray(array: tempArray)
-                    clear = !clear
-                }
-            }
-            tempArray.append(element)
-            if index == gnssFixFilterArray.count - 1 {
-                appendArray(array: tempArray)
-            }
-        }
-        
-        let removeSingleArray = base.filter({ $0.count > 1 })
-        
-        calculateDistance(packets: removeSingleArray)
+        let gnssFixFilterArray = packets.getActiveDevicePackets()
+        let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
+        let singleDimensionArray = Array(twoDimArray.joined())
+        let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()
+        calculateDistance(packets: filteredTwoDimArray)
     }
-    func appendArray(array: [DeviceDataResponse]) {
-        if tempArray.count > 0 {
-            base.append(tempArray)
-        }
-        tempArray.removeAll()
-    }
-    func calculateDistance(packets: [[DeviceDataResponse]]) {
+    
+    func calculateDistance(packets: [[D]]) {
         var distanceFromCoordinates = Double()
         var distanceFromSpeed = Double()
         var maxDistance = Double()
@@ -89,19 +63,19 @@ extension VehicleFlow {
         
         
         
-        _ = packets.map({ eachPacket in
+        packets.forEach({ eachPacket in
             totalDistanceFromPacket = 0.0
             averageSpeed = 0
-            mode = eachPacket.first?.d?.vehicle_mode ?? "Unknown"
-            _ = eachPacket.map({ value in
-                averageSpeed = averageSpeed + (value.d?.speed ?? 0)
+            mode = eachPacket.first?.vehicle_mode ?? "Unknown"
+            eachPacket.forEach({ value in
+                averageSpeed = averageSpeed + (value.speed ?? 0)
             })
-            for item in 0..<eachPacket.count-1 {
-                let packet1 = eachPacket[item]
-                let packet2 = eachPacket[item + 1]
-                distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.d?.latitude ?? "0")!, packet2Lat: Double(packet2.d?.latitude ?? "0")!, packet1Lon: Double(packet1.d?.longitude ?? "0")!, packet2Lon:Double(packet2.d?.longitude ?? "0")!)
+            for index in 0..<eachPacket.count - 1{
+                let packet1 = eachPacket[index]
+                let packet2 = eachPacket[index + 1]
+                distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
                 let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
-                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.d?.speed ?? 0), secondPktSpeed: Double(packet2.d?.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)), packet: packet1)
+                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
                 
                 distanceFromSpeed = time < 600 ? distance : 0
                 maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
@@ -139,7 +113,7 @@ extension VehicleFlow {
         
         return distance
     }
-    func calculateDistanceFormSpeed(firstPktSpeed: Double, secondPktSpeed: Double, duration: Double, packet: DeviceDataResponse) -> Double  {
+    func calculateDistanceFormSpeed(firstPktSpeed: Double, secondPktSpeed: Double, duration: Double) -> Double  {
         if firstPktSpeed == 0 && secondPktSpeed == 0 {
             
         }

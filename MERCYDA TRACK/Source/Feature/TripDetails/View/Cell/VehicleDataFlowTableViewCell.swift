@@ -36,9 +36,12 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
         if let min = value.duration.minute {
             miniutes = min
         }
-        durationLbl.text = String(hours) + "h " + String(miniutes) + "min"
-        averageSpeedLbl.text = "Speed: " + value.averageSpeed
-        KMLbl.text = value.distance + "KM"
+       // durationLbl.text = String(hours) + "h " + String(miniutes) + "min"
+        durationLbl.text = ""
+       // averageSpeedLbl.text = "Speed: " + value.averageSpeed
+        averageSpeedLbl.text = ""
+        //KMLbl.text = value.distance + "KM"
+        KMLbl.text = ""
         startTimeLbl.text = "Time :" + value.startTime
         modeLbl.text = "Mode " + value.vehicleMode
     }
