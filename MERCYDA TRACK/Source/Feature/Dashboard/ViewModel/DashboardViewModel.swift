@@ -22,6 +22,72 @@ extension DashboardViewModel {
          completion(resultData)
     }
     
+    func filterOfflineData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
+        var filteredData = [Vehicle]()
+        for i in 0..<data.count{
+            if let lastUpdatedData = data[i].last_updated_data{
+                printLog(i)
+                let sourTimeInMilliSecond = lastUpdatedData.source_date
+                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+                let dayTimePeriodFormatter = DateFormatter()
+                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+                dayTimePeriodFormatter.timeZone = .current
+                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+                printLog(dateString)
+                
+                
+                let calender:Calendar = Calendar.current
+                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+                printLog("Minute :\(String(components.minute!))")
+                if components.minute! > 10{
+                    filteredData.append(data[i])
+                }
+                
+            }else{
+                filteredData.append(data[i])
+            }
+        }
+        completion(filteredData)
+    }
+    
+    func filterOnlineData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
+        var filteredData = [Vehicle]()
+               for i in 0..<data.count{
+                   if let lastUpdatedData = data[i].last_updated_data{
+                       printLog(i)
+                       let sourTimeInMilliSecond = lastUpdatedData.source_date
+                       let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+                       let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+                       let dayTimePeriodFormatter = DateFormatter()
+                       dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                               // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+                       dayTimePeriodFormatter.timeZone = .current
+                       let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+                       printLog(dateString)
+                       
+                       
+                       let calender:Calendar = Calendar.current
+                       let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+                       printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+                       let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+                       printLog("Minute :\(String(components.minute!))")
+                       if components.minute! < 10{
+                        
+                           printLog("appendData")
+                           filteredData.append(data[i])
+                       }
+                       
+                   }
+               }
+               completion(filteredData)
+    }
+    
+    
+    
     func getVehicleCount(completion: @escaping (WebServiceResult<getVehiclesCountResponse, String>) -> Void) {
         self.networkServiceCalls.getVehiclesCount { (state) in
             switch state {
@@ -64,6 +130,13 @@ extension DashboardViewModel {
                 completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
+    }
+   func getCurrentDateTime() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateTime = formatter.string(from: date)
+        return dateTime
     }
 }
 

@@ -53,8 +53,10 @@ class LoginViewController: BaseViewController {
             case .success(let result):
             printLog(result)
             
-            let userLoginInfo = UserLoginInfo.init(userName, pswd:passWord)
+        
+            let userLoginInfo = UserLoginInfo.init(userName, pswd: passWord, isLogedIn:true)
             userLoginInfo.save()
+            
             
             let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
             let vc = story.instantiateViewController(withIdentifier: StoryboardID.DashboardId.rawValue)as! DashboardViewController

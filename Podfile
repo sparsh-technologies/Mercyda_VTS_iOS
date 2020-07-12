@@ -10,7 +10,7 @@ target 'MERCYDA TRACK' do
   pod 'Firebase/Crashlytics'
   pod 'GoogleMaps'
   pod 'MBProgressHUD', '~> 1.2'
-
+  pod 'TPKeyboardAvoiding'
 
   # Pods for MERCYDA TRACK
 

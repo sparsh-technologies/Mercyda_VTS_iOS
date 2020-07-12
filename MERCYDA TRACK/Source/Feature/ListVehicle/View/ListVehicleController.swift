@@ -22,6 +22,13 @@ class ListVehicleController: BaseViewController {
         super.viewDidLoad()
         mainTableView.register(cellType: VehicleTableViewCell.self)
         print(vehicleDataSource.count)
+        self.navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.007843137255, green: 0.6588235294, blue: 0.862745098, alpha: 1)
+        let logo = UIImage.init(named:"logosmall")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .center
+        self.navigationItem.titleView = imageView
+        self.navigationController?.navigationBar.tintColor = .white
     }
     override func viewWillLayoutSubviews() {
         

@@ -31,4 +31,5 @@ enum userDefaultKeys:String{
     case userLoginInfo = "userLogionDetails"
     case userName = "userName"
     case passWord = "passWord"
+    case isLogin = "isLogin"
 }

@@ -22,9 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSServices.provideAPIKey(APIKeys.GOOGLE_API_KEY)
         IQKeyboardManager.shared.enable = true
+        checklogin()
         return true
     }
     // MARK: UISceneSession Lifecycle
+    
+    
+    func checklogin(){
+         if let userInfo = UserLoginInfo.getUserInfo(){
+            
+            if userInfo.isLoggedIn == true{
+            let navigation = UINavigationController()
+            let dashBoardStoryboard = UIStoryboard(name:StoryboardName.Dashboard.rawValue, bundle: nil)
+            let startupVC = dashBoardStoryboard.instantiateViewController(withIdentifier:StoryboardID.DashboardId.rawValue)
+            navigation.setViewControllers([startupVC], animated: true)
+            self.window?.rootViewController = navigation
+            self.window?.makeKeyAndVisible()
+            }else{
+                let loginStoryboard = UIStoryboard(name:StoryboardName.Login.rawValue, bundle: nil)
+                let startupVC = loginStoryboard.instantiateViewController(withIdentifier:StoryboardID.LoginStoryBoardId.rawValue)
+                self.window?.rootViewController = startupVC
+                self.window?.makeKeyAndVisible()
+            }
+        }
+        
+    }
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
