@@ -105,4 +105,39 @@ extension Array where Element == D {
             return nil
         }
     }
+    
+    func get2DimensionalFilterArray() -> [[D]] {
+        var base = [[D]]()
+        var tempArray = [D]()
+        var type = self.first
+        let constant = "M"
+        var clear = true
+        
+        func appendArray() {
+            if tempArray.count > 0 {
+                base.append(tempArray)
+            }
+            tempArray.removeAll()
+        }
+        
+        for (index, element) in self.enumerated() {
+            type = element
+            if type?.vehicle_mode == constant {
+                if !clear {
+                    appendArray()
+                    clear = !clear
+                }
+            } else {
+                if clear {
+                    appendArray()
+                    clear = !clear
+                }
+            }
+            tempArray.append(element)
+            if index == self.count - 1 {
+                appendArray()
+            }
+        }
+        return base.filter({ $0.count > 1 })
+    }
 }
