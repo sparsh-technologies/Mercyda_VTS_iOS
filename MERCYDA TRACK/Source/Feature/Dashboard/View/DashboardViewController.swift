@@ -147,10 +147,12 @@ class DashboardViewController: BaseViewController {
 
     func getVehiclesList() {
         vehicleListData.removeAll()
+        MBProgressHUD.showAdded(to: view, animated: true)
         dashboardViewModel.getVehicleList { [weak self] (result) in
              guard let this = self else {
                            return
                        }
+            MBProgressHUD.hide(for: this.view, animated: false)
             switch result{
             case .success(let result):
             this.vehicleListData = result
