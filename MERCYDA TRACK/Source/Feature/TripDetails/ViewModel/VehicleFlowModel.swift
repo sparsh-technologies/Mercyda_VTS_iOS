@@ -16,8 +16,8 @@ class VehicleFlow  {
     var packetsFiltered: [[DeviceDataResponse]] = []
     var processedResult: [TripDetailsModel] = []
     
-    var tempArray = [DeviceDataResponse]()
-    var base = [[DeviceDataResponse]]()
+   
+    
     
     weak var delegate: VehicleFlowControllerDelegate?
     
@@ -44,39 +44,47 @@ extension VehicleFlow {
 extension VehicleFlow {
     
     func performFiltering(packets: [DeviceDataResponse])  {
-        let gnssFixFilterArray = packets.filter({ $0.d?.gnss_fix == 1})
+        var base = [[String]]()
+        let gnssFixFilterArray = packets.getActiveDevicePackets()
+        var tempArray = [String]()
         var type = gnssFixFilterArray.first
         let constant = "M"
         var clear = true
+        
+        func appendArray() {
+            if tempArray.count > 0 {
+                base.append(tempArray)
+            }
+            tempArray.removeAll()
+        }
+        
         for (index, element) in gnssFixFilterArray.enumerated() {
             type = element
-            if type?.d?.vehicle_mode == constant {
+            if type?.vehicle_mode == constant {
                 if !clear {
-                    appendArray(array: tempArray)
+                    appendArray()
                     clear = !clear
                 }
             } else {
                 if clear {
-                    appendArray(array: tempArray)
+                    appendArray()
                     clear = !clear
                 }
             }
-            tempArray.append(element)
+            tempArray.append(element.vehicle_mode ?? "Not Available")
             if index == gnssFixFilterArray.count - 1 {
-                appendArray(array: tempArray)
+                appendArray()
             }
         }
         
-        let removeSingleArray = base.filter({ $0.count > 1 })
-        
-        calculateDistance(packets: removeSingleArray)
-    }
-    func appendArray(array: [DeviceDataResponse]) {
-        if tempArray.count > 0 {
-            base.append(tempArray)
+        base.forEach { (element) in
+            print("\(element) \n")
         }
-        tempArray.removeAll()
+        
+       // let removeSingleArray = base.filter({ $0.count > 1 })
+     //   calculateDistance(packets: removeSingleArray)
     }
+    
     func calculateDistance(packets: [[DeviceDataResponse]]) {
         var distanceFromCoordinates = Double()
         var distanceFromSpeed = Double()
