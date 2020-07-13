@@ -10,15 +10,24 @@ import Foundation
 
 let buildEnvironment: BuildEnvironment = .prod
 enum BuildEnvironment {
-
+    
     case  prod
     case  staging
-    case  google
+    
     var baseUrl: String {
         switch self {
         case .prod:     return WebService.LiveBaseUrl
         case .staging:  return WebService.TestBaseUrl
-        case .google:   return WebService.GoogleApiBaseUrl
+        }
+    }
+    var locationUrl : String {
+        switch self {
+        case .prod, .staging: return WebService.locationUrl
+        }
+    }
+    var googleUrl : String {
+        switch self {
+        case .prod, .staging: return WebService.GoogleApiBaseUrl
         }
     }
 }

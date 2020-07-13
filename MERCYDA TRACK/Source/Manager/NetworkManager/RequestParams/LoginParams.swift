@@ -22,6 +22,9 @@ struct loginParams {
 }
 
 extension loginParams: URLBuildable {
+    var domainType: BaseAdressType {
+        return .MainDomain
+    }
     
     var parameters: Parameters? {
         return nil

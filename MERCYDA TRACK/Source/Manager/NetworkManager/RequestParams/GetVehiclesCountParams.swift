@@ -16,6 +16,9 @@ struct getVehiclesCountParams {
 }
 
 extension getVehiclesCountParams: URLBuildable {
+    var domainType: BaseAdressType {
+        return .MainDomain
+    }
     
     var parameters: Parameters? {
         return nil

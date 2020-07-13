@@ -26,6 +26,9 @@ struct getDeviceDataParams {
 }
 
 extension getDeviceDataParams: URLBuildable {
+    var domainType: BaseAdressType {
+        return .MainDomain
+    }
     
     var parameters: Parameters? {
         return nil

@@ -16,7 +16,9 @@ struct getVehicleListParams {
 }
 
 extension getVehicleListParams: URLBuildable {
-    
+    var domainType: BaseAdressType {
+        return .MainDomain
+    }
     var parameters: Parameters? {
         return nil
     }
