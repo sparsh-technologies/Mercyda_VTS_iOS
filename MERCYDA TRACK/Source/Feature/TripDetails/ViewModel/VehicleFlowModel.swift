@@ -44,6 +44,11 @@ extension VehicleFlow {
 extension VehicleFlow {
     
     func performFiltering(packets: [DeviceDataResponse])  {
+        packetsFiltered.removeAll()
+        processedResult.removeAll()
+        totalDistance = 0
+        minSpeed = 0
+        maxSpeed = 0
         let gnssFixFilterArray = packets.getActiveDevicePackets()
         let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
         let singleDimensionArray = Array(twoDimArray.joined())

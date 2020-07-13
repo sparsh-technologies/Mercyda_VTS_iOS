@@ -22,6 +22,7 @@ class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var tableViewOutlet: UITableView!
     var vehicleFlowViewModel = VehicleFlow()
     var serialNumber = String()
+    var APItimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,22 +34,34 @@ class VehicleFlowViewController: BaseViewController {
         getDeviceDetails()
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        APItimer?.invalidate()
+    }
     
     func getDeviceDetails()  {
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
-                           return
-                       }
-                       MBProgressHUD.hide(for: this.view, animated: false)
-                       switch result {
-                       case .success(_):
-                           print("")
-                       case .failure(let error):
-                           statusBarMessage(.CustomError, error)
-                           printLog(error)
-                       }
+                return
+            }
+            MBProgressHUD.hide(for: this.view, animated: false)
+            switch result {
+            case .success(_):
+                this.APItimer = Timer.scheduledTimer(timeInterval: 15, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+                print("")
+            case .failure(let error):
+                statusBarMessage(.CustomError, error)
+                printLog(error)
+            }
         }
+    }
+    @objc   func getDeviceDetailsWithOutActivityInd()  {
+        vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) { (_) in
+            
+        }
+    }
+    deinit {
+        
     }
     /*
      // MARK: - Navigation
