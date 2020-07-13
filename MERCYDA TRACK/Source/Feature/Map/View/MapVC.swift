@@ -16,7 +16,7 @@ protocol MapPickerDelegate: class {
 
 class MapVC: UIViewController {
     
-    private var viewModel = MapVCViewModel()
+    var viewModel = MapVCViewModel()
     weak var delegateForMapPicker : MapPickerDelegate?
     lazy var mapView : GMSMapView? = GMSMapView()
     var carMarker:GMSMarker = GMSMarker.init(position: CLLocationCoordinate2D())
@@ -72,10 +72,10 @@ class MapVC: UIViewController {
     
     
     func addMapView() {
-        mapView?.delegate = self
         mapView?.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         if let map = mapView {
+            map.delegate = self
             self.view.addSubview(map)
             NSLayoutConstraint.activate([
                 map.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),

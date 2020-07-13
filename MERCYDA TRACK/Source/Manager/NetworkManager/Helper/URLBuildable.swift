@@ -41,6 +41,11 @@ enum NetworkError: Error {
     case fullResponse
 }
 
+enum BaseAdressType {
+    case LocationDomain
+    case MainDomain
+    case google
+}
 
 import Foundation
 import Alamofire
@@ -54,12 +59,25 @@ protocol URLBuildable: URLRequestConvertible {
     var parameters: Parameters? {get}
     //Accept type in header
     var acceptType: ContentType {get}
+    // selection of Base Address of API
+    var domainType: BaseAdressType { get }
+        
+        
 }
+
 
 extension URLBuildable {
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
         var urlCopy = buildEnvironment.baseUrl
+        switch domainType {
+        case .LocationDomain:
+            urlCopy = buildEnvironment.locationUrl
+        case .MainDomain:
+            urlCopy = buildEnvironment.baseUrl
+        case .google:
+            urlCopy = buildEnvironment.googleUrl
+        }
         if let pathCopy = path {
             let removeWhiteSpace = pathCopy.components(separatedBy: .whitespaces).joined()
             urlCopy += removeWhiteSpace
@@ -75,7 +93,7 @@ extension URLBuildable {
         urlRequest.addValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         if let params = parameters {
             do {
-//                printLog(Utility.printJsonText(object: params))
+                //                printLog(Utility.printJsonText(object: params))
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
             } catch {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))

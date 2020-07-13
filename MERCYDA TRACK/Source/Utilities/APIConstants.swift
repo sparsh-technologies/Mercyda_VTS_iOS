@@ -17,6 +17,7 @@ static let LiveBaseUrl = "http://mobile.mercydatrack.com:8080/"
 static let DevBaseUrl = "http://mobile.mercydatrack.com:8080/"
 static let TestBaseUrl = "http://mobile.mercydatrack.com:8080/"
 static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
+static let locationUrl = "https://nominatim.openstreetmap.org/reverse?format=json"
     
 // API URLS
     
@@ -36,6 +37,8 @@ struct PARAMS {
     static let END_TIME = "end_time"
     static let USERNAME = "username"
     static let PASSWORD = "password"
+    static let LATITUDE = "lat"
+    static let LONGITUDE = "lon"
 }
 
 struct APIKeys {

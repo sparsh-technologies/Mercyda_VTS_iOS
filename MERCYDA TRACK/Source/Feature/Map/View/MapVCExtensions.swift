@@ -35,11 +35,22 @@ extension MapVC : MapVCViewModelDelegate {
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         if let device = marker.userData as? D {
-            
-            self.dismiss(animated: false) {
-                self.delegateForMapPicker?.didSelectMarkerFromMap(selectedD: device)
+            self.getLocationDetails(mapView: mapView, marker: marker, device: device)
+        }
+    }
+    
+    func getLocationDetails(mapView: GMSMapView, marker: GMSMarker, device: D) {
+        self.viewModel.networkServiceCalls.getLocationDetails(locationCoordinates: device.coordinates) { (result) in
+            switch result {
+            case .success(response: let response as LocationDetailsResponse):
+                printLog("success \(response)")
+            case .failure(error: let error):
+                statusBarMessage(.CustomError, error)
+            default:
+                statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
             }
         }
+        //  self.delegateForMapPicker?.didSelectMarkerFromMap(selectedD: device)
     }
 }
 

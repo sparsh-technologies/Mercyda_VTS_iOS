@@ -81,4 +81,18 @@ class NetworkServiceCalls: NetworkAdapter {
     }
     
     
+    // Service for getting location Address
+       
+       func getLocationDetails(locationCoordinates: Latlon, _ completion: @escaping CompletionWithSuccessOrFailure) {
+           let params = getLocationAddressParams(locationCoordinates: locationCoordinates)
+           fetch(params, LocationParser<LocationDetailsResponse>.self) { (state) in
+               switch state {
+               case .success(let response):
+                   completion(.success(response: response))
+               case .failure(let error):
+                   completion(.failure(error: error))
+               }
+           }
+       }
+    
 }
