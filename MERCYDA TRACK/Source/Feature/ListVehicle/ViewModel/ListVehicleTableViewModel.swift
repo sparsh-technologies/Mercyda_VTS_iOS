@@ -92,6 +92,7 @@ extension ListVehicleTableDataModal: ListVehicleTableViewModel {
 enum VehicleModel:String{
     case Lorry = "LORRY"
     case MiniTruck = "MINI TRUCK"
+    case Car = "CAR"
      
 }
 enum VehicleMode :String{

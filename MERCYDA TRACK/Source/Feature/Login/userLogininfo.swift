@@ -12,21 +12,25 @@ class UserLoginInfo:NSObject,NSCoding {
     
     let username:String?
     let password:String?
-    
-    init(_ usId: String?,pswd: String?){
+    let isLoggedIn:Bool?
+    init(_ usId: String?,pswd: String?,isLogedIn:Bool){
         self.username = usId
         self.password = pswd
+        self.isLoggedIn = isLogedIn
     }
     required convenience init (coder aDecoder: NSCoder) {
            let userName = aDecoder.decodeObject(forKey: userDefaultKeys.userName.rawValue) as? String ?? ""
            let passWord = aDecoder.decodeObject(forKey: userDefaultKeys.passWord.rawValue ) as? String ?? ""
-        self.init(userName, pswd: passWord)
+           let isLogin =  aDecoder.decodeObject(forKey: userDefaultKeys.isLogin.rawValue ) as? Bool ?? false
+                    
+        self.init(userName, pswd: passWord,isLogedIn:isLogin)
         
         
     }
     func encode(with aCoder: NSCoder) {
          aCoder.encode(userName, forKey:  userDefaultKeys.userName.rawValue)
          aCoder.encode(passWord, forKey: userDefaultKeys.passWord.rawValue)
+         aCoder.encode(isLoggedIn, forKey: userDefaultKeys.isLogin.rawValue)
     }
     func save() {
            
@@ -50,6 +54,17 @@ class UserLoginInfo:NSObject,NSCoding {
            }
            else {
                return nil
+           }
+       }
+    class func flushData() {
+           
+          
+           
+           let defaults = UserDefaults.standard
+           defaults.removeObject(forKey:  userDefaultKeys.userLoginInfo.rawValue)
+                  
+           if  !defaults.synchronize() {
+               UserLoginInfo.flushData()
            }
        }
        

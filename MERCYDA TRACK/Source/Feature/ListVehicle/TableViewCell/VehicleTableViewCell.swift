@@ -37,13 +37,15 @@ class VehicleTableViewCell: UITableViewCell {
     func setVehicleData(vehicle:Vehicle){
         self.vehicleNumberLabel.text = vehicle.vehicle_registration
         self.selectionStyle = .none
-        self.timeLabel.text = Utility.getDate(unixdate:vehicle.createdTime!)
+        self.timeLabel.text = Utility.getDate(unixdateinMilliSeconds:vehicle.modifiedTime!)
         printLog(vehicle.createdTime!)
         switch vehicle.vehicle_type {
         case VehicleModel.Lorry.rawValue:
         self.vehicleImage.image = UIImage.init(named:"Lorry")
         case VehicleModel.MiniTruck.rawValue:
         self.vehicleImage.image = UIImage.init(named: "minilorry")
+        case VehicleModel.Car.rawValue:
+        self.vehicleImage.image = UIImage.init(named: "car")
         default:
         self.vehicleImage.image = UIImage.init(named:"Lorry")
         }
@@ -55,7 +57,7 @@ class VehicleTableViewCell: UITableViewCell {
         case VehicleMode.Sleep.rawValue:
             self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         case VehicleMode.Idle.rawValue:
-            self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#4252D9"), secondColor: UIColor.blue)
+            self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
         default:
             self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
         }

@@ -48,11 +48,16 @@ class DashboardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
        
         configureViewUI()
-        getDashboardVehicleCount()
-        getVehiclesList()
+     
+            self.getDashboardVehicleCount()
+            self.getVehiclesList()
+            
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+         self.navigationController?.navigationBar.isHidden = true
     }
     
     /// Configure UI with Label Names and Initial Values
@@ -110,19 +115,48 @@ class DashboardViewController: BaseViewController {
             printLog(result.count)
                 self.navigatetoVehicleListPage(vehiclelist:result)
             }
+        case 14:
+            dashboardViewModel.filterOfflineData(data:vehicleListData) { (result ) in
+            printLog(result.count)
+            self.navigatetoVehicleListPage(vehiclelist: result)
+            }
+        case 13:
+            dashboardViewModel.filterOnlineData(data: vehicleListData) { (result ) in
+            self.navigatetoVehicleListPage(vehiclelist: result)
+            }
+            
         default:
             printLog("Nothing")
         }
         
     }
+    
         
-        func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        UserLoginInfo.flushData()
+        let story = UIStoryboard(name: StoryboardName.Login.rawValue, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: StoryboardID.LOginViewControllerID.rawValue)as! LoginViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
             let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
             let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
             vc.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehiclelist))
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        getDashboardVehicleCount()
+    }
+    
+    @IBAction func aboutUsButtonClicked(_ sender: Any) {
+        
+        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: StoryboardID.AboutusViewControllerId.rawValue)as! Aboutuscontroller
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func getDashboardVehicleCount()  {
         MBProgressHUD.showAdded(to: view, animated: true)
@@ -131,6 +165,7 @@ class DashboardViewController: BaseViewController {
                 return
             }
             MBProgressHUD.hide(for: this.view, animated: false)
+            printLog(result)
             switch result {
             case .success(let result):
                 this.updateNotificationCOunt(vehicleCount: result)
@@ -155,9 +190,11 @@ class DashboardViewController: BaseViewController {
             MBProgressHUD.hide(for: this.view, animated: false)
             switch result{
             case .success(let result):
+            MBProgressHUD.hide(for: this.view, animated: false)
             this.vehicleListData = result
             print("count:\(result.count)")
             case .failure(let error) :
+            MBProgressHUD.hide(for: this.view, animated: false)
             printLog(error)
             }
         }
@@ -167,9 +204,9 @@ class DashboardViewController: BaseViewController {
     func updateNotificationCOunt(vehicleCount: getVehiclesCountResponse) {
         var count = Int(vehicleCount.running_count ?? 0)
         movingNotifLbl.text = String(count)
-        count = Int(vehicleCount.halt_count ?? 0)
-        sleepNotifiLbl.text = String(count)
         count = Int(vehicleCount.idle_count ?? 0)
+        sleepNotifiLbl.text = String(count)
+        count = Int(vehicleCount.halt_count ?? 0)
         idleNotifiLbl.text = String(count)
         count = Int(vehicleCount.running_count ?? 0)
         onlineNotfiLbl.text = String(Int(vehicleCount.running_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0))

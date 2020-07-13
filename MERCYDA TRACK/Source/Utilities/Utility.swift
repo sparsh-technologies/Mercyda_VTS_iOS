@@ -36,18 +36,40 @@ extension Utility {
     }
     
     
-   class func getDate(unixdate: Int) -> String {
-          printLog(unixdate)
-            
-            let timeStamp = Double(unixdate)
+    
+     class  func topMostController() -> UIViewController {
+           var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+           while (topController.presentedViewController != nil) {
+               topController = topController.presentedViewController!
+           }
+           return topController
+           
+       }
+    
+   class func getDate(unixdateinMilliSeconds: Int) -> String {
+    
+            let convertToOriginalTimestamp = unixdateinMilliSeconds/1000
+            let timeStamp = Double(convertToOriginalTimestamp)
             if timeStamp == 0 {return ""}
-            let date = NSDate(timeIntervalSince1970: TimeInterval(1594224981))
+            let date = NSDate(timeIntervalSince1970: timeStamp)
+  
             let dayTimePeriodFormatter = DateFormatter()
             dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-            dayTimePeriodFormatter.timeZone = NSTimeZone(name:"en_US") as TimeZone?
+           // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+            dayTimePeriodFormatter.timeZone = .current
             let dateString = dayTimePeriodFormatter.string(from: date as Date)
             return dateString
+
         }
+    
+    class func getDateFromTimeStamp(sourceDate:Int) -> Date{
+                let timeStamp = Double(sourceDate)
+                let date = NSDate(timeIntervalSince1970: timeStamp)
+               let dayTimePeriodFormatter = DateFormatter()
+               dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+               dayTimePeriodFormatter.timeZone = .current
+               return date as Date
+    }
     
     
     class func getUserName() -> String {

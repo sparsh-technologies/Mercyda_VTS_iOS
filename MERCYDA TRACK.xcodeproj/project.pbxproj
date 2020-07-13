@@ -130,6 +130,9 @@
 		84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E53C24AD0BE1004CC622 /* Login.storyboard */; };
 		9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */; };
 		ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */; };
+		C627F10224BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
+		C627F10324BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
+		C627F10424BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
 		C6623AC524AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
@@ -294,6 +297,7 @@
 		A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.release.xcconfig"; sourceTree = "<group>"; };
 		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aboutuscontroller.swift; sourceTree = "<group>"; };
 		C6623AB924AB970C003C3519 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C6623ABB24AB970C003C3519 /* Last_updated_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Last_updated_data.swift; sourceTree = "<group>"; };
 		C6623ABC24AB970C003C3519 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 		52457DA624AB7A470078487A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C627F10024BC63ED0026F1E7 /* Aboutus */,
 				84410DA724B8F18700E6047D /* TripDetails */,
 				C6653BAA24B3535A00DD9D9F /* Map */,
 				C6623B0124B2039F003C3519 /* ListDistance */,
@@ -649,6 +654,14 @@
 				84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */,
 			);
 			path = TableviewCell;
+			sourceTree = "<group>";
+		};
+		C627F10024BC63ED0026F1E7 /* Aboutus */ = {
+			isa = PBXGroup;
+			children = (
+				C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */,
+			);
+			path = Aboutus;
 			sourceTree = "<group>";
 		};
 		C6623AB724AB970C003C3519 /* ApiModels */ = {
@@ -1264,6 +1277,7 @@
 				84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */,
 				84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
+				C627F10224BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */,
 				C6623AD724AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				C6669FD424AA20DD0024527E /* NetworkServiceCalls.swift in Sources */,
 				C6623AC824AB970C003C3519 /* Last_updated_data.swift in Sources */,
@@ -1311,6 +1325,7 @@
 				52457DB324AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623ACF24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
 				C6623AE724AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
+				C627F10324BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */,
 				52457DB724AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
 				52457DCF24AB7BF00078487A /* UserDefaults+Extension.swift in Sources */,
 				52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */,
@@ -1370,6 +1385,7 @@
 				52457DB424AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623AD024AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
 				C6623AE824AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
+				C627F10424BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */,
 				52457DB824AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
 				52457DD024AB7BF00078487A /* UserDefaults+Extension.swift in Sources */,
 				52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */,

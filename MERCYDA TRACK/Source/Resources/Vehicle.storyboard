@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,23 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2J-ax-7IG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="71.5"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NavigationBarLogo" translatesAutoresizingMaskIntoConstraints="NO" id="J89-8t-aFE">
-                                        <rect key="frame" x="114" y="5" width="186" height="61.5"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" name="ThemeBlue"/>
-                                <constraints>
-                                    <constraint firstItem="J89-8t-aFE" firstAttribute="centerX" secondItem="U2J-ax-7IG" secondAttribute="centerX" id="13y-x0-8bI"/>
-                                    <constraint firstAttribute="bottom" secondItem="J89-8t-aFE" secondAttribute="bottom" constant="5" id="Q1t-Yo-6Fp"/>
-                                    <constraint firstItem="J89-8t-aFE" firstAttribute="top" secondItem="U2J-ax-7IG" secondAttribute="top" constant="5" id="if9-gb-cNv"/>
-                                    <constraint firstItem="J89-8t-aFE" firstAttribute="width" secondItem="U2J-ax-7IG" secondAttribute="width" multiplier="0.45" id="vIy-P2-GAj"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-FG-VlG">
-                                <rect key="frame" x="0.0" y="115.5" width="414" height="780.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3e4-Si-nLG">
                                         <rect key="frame" x="10" y="10" width="394" height="50"/>
@@ -80,7 +64,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cVt-9m-7hJ">
-                                        <rect key="frame" x="0.0" y="65" width="414" height="715.5"/>
+                                        <rect key="frame" x="0.0" y="65" width="414" height="787"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.39697953345070425" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="hGD-K7-Vu1" id="BjX-Gk-ggO"/>
@@ -104,14 +88,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="W2s-V7-vcH" firstAttribute="trailing" secondItem="U2J-ax-7IG" secondAttribute="trailing" id="2a4-q9-RyN"/>
                             <constraint firstItem="Q8g-FG-VlG" firstAttribute="trailing" secondItem="W2s-V7-vcH" secondAttribute="trailing" id="7cI-3D-7FX"/>
-                            <constraint firstItem="U2J-ax-7IG" firstAttribute="top" secondItem="W2s-V7-vcH" secondAttribute="top" id="FXC-m9-Hjh"/>
+                            <constraint firstItem="Q8g-FG-VlG" firstAttribute="top" secondItem="W2s-V7-vcH" secondAttribute="top" id="Atb-Cn-ycp"/>
                             <constraint firstAttribute="bottom" secondItem="Q8g-FG-VlG" secondAttribute="bottom" id="T6L-GR-RvS"/>
-                            <constraint firstItem="Q8g-FG-VlG" firstAttribute="top" secondItem="U2J-ax-7IG" secondAttribute="bottom" id="c0p-Kw-zHJ"/>
-                            <constraint firstItem="U2J-ax-7IG" firstAttribute="leading" secondItem="W2s-V7-vcH" secondAttribute="leading" id="hDt-45-hNz"/>
                             <constraint firstItem="Q8g-FG-VlG" firstAttribute="leading" secondItem="W2s-V7-vcH" secondAttribute="leading" id="q5t-RO-YMz"/>
-                            <constraint firstItem="U2J-ax-7IG" firstAttribute="height" secondItem="6i2-pg-fNW" secondAttribute="height" multiplier="0.08" id="w19-kj-cwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W2s-V7-vcH"/>
                     </view>
@@ -129,11 +109,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NavigationBarLogo" width="100" height="27.5"/>
         <image name="Search" width="32" height="32"/>
         <image name="close" width="32" height="32"/>
-        <namedColor name="ThemeBlue">
-            <color red="0.15899999439716339" green="0.71299999952316284" blue="0.90799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
