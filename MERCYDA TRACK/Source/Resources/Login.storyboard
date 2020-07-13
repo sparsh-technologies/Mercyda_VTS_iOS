@@ -174,8 +174,8 @@
                                                 <rect key="frame" x="20.666666666666657" y="483.66666666666663" width="372.66666666666674" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3p-Yt-Jy3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="237" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="233" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Forgot Password?">
                                                             <color key="titleColor" name="ThemeBlue"/>
                                                         </state>
@@ -184,7 +184,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okg-UR-8D5">
-                                                        <rect key="frame" x="257" y="0.0" width="115.66666666666669" height="50"/>
+                                                        <rect key="frame" x="253.00000000000003" y="0.0" width="119.66666666666666" height="50"/>
                                                         <color key="backgroundColor" name="ThemeBlue"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                         <state key="normal" title="LOGIN">

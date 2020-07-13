@@ -100,6 +100,7 @@
 		8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080724B4D7CA00953660 /* ListVehicleController.swift */; };
 		8415081024B4F15300953660 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080E24B4F15300953660 /* VehicleTableViewCell.swift */; };
 		8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8415080F24B4F15300953660 /* VehicleTableViewCell.xib */; };
+		841BC61924BCC96200A3127D /* AbouUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841BC61824BCC96200A3127D /* AbouUs.storyboard */; };
 		8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211224B064C7002A3CB1 /* MessageConstants.swift */; };
 		8429211524B06BA2002A3CB1 /* UItextfeild+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */; };
 		84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84338A3D24B3A8980005B97B /* Vehicle.storyboard */; };
@@ -290,6 +291,7 @@
 		8415080724B4D7CA00953660 /* ListVehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVehicleController.swift; sourceTree = "<group>"; };
 		8415080E24B4F15300953660 /* VehicleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTableViewCell.swift; sourceTree = "<group>"; };
 		8415080F24B4F15300953660 /* VehicleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleTableViewCell.xib; sourceTree = "<group>"; };
+		841BC61824BCC96200A3127D /* AbouUs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AbouUs.storyboard; sourceTree = "<group>"; };
 		8429211224B064C7002A3CB1 /* MessageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstants.swift; sourceTree = "<group>"; };
 		8429211424B06BA1002A3CB1 /* UItextfeild+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextfeild+Extension.swift"; sourceTree = "<group>"; };
 		84338A3D24B3A8980005B97B /* Vehicle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vehicle.storyboard; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				C6653BA624B3533100DD9D9F /* Maps.storyboard */,
 				84E3E53C24AD0BE1004CC622 /* Login.storyboard */,
 				527B39E924AE57DA005BA95A /* Dashboard.storyboard */,
+				841BC61824BCC96200A3127D /* AbouUs.storyboard */,
 				84338A3D24B3A8980005B97B /* Vehicle.storyboard */,
 			);
 			path = Resources;
@@ -1055,6 +1058,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E3E52624AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
+				841BC61924BCC96200A3127D /* AbouUs.storyboard in Resources */,
 				C6653BA724B3533100DD9D9F /* Maps.storyboard in Resources */,
 				520D57D224AF67BE002A775F /* Color.xcassets in Resources */,
 				8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */,

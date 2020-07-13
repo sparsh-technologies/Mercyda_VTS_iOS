@@ -152,7 +152,7 @@ class DashboardViewController: BaseViewController {
     
     @IBAction func aboutUsButtonClicked(_ sender: Any) {
         
-        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let story = UIStoryboard(name: StoryboardName.AboutUs.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.AboutusViewControllerId.rawValue)as! Aboutuscontroller
         self.navigationController?.pushViewController(vc, animated: true)
     }
