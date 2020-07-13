@@ -36,6 +36,11 @@ extension VehicleFlowViewController: UITableViewDataSource, UITableViewDelegate 
            }
         let dataPoints = self.vehicleFlowViewModel.dataPointForIndex(index: indexPath.row)
            cell.updateUI(value: dataPoints)
+        if indexPath.row == 0 {
+            cell.topLineView.isHidden = true
+        } else {
+            cell.topLineView.isHidden = false
+        }
            return cell
        }
 }

@@ -172,7 +172,7 @@ extension VehicleFlow {
     }
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: "1594492200000", endTime: "1594578540000") { [weak self] (state) in
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
             }
@@ -187,6 +187,27 @@ extension VehicleFlow {
                 completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
+    }
+    func getTimeStampForAPI(flag: Int) -> String {
+        
+        let startDateFormatter = DateFormatter()
+        startDateFormatter.dateFormat = "yyyy-MM-dd"
+        let now = NSDate()
+        let currentYear = startDateFormatter.string(from: now as Date)
+        let dateString = "00:01:00 " + currentYear
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
+        let s = dateFormatter.date(from: dateString)
+        let startDate = s!.timeIntervalSince1970 * 1000
+        let endDate = NSDate().timeIntervalSince1970 * 1000
+        
+        if flag == 1 {
+            return String(Int(startDate))
+        }
+        if flag == 2 {
+            return String(Int(endDate))
+        }
+        return ""
     }
     
 }

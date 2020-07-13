@@ -10,10 +10,13 @@ import UIKit
 
 class VehicleDataFlowTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var modeLbl: UILabel!
+    @IBOutlet weak var topLineView: UIView!
+    @IBOutlet weak var modeImageView: UIImageView!
+    @IBOutlet weak var modeView: UIView!
     @IBOutlet weak var durationLbl: UILabel!
     @IBOutlet weak var averageSpeedLbl: UILabel!
     @IBOutlet weak var KMLbl: UILabel!
+    @IBOutlet weak var bottomLineView: UIView!
     @IBOutlet weak var startTimeLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +30,10 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func updateUI(value: TripDetailsModel) {
+        modeView.layer.cornerRadius = modeView.frame.height/2
+        modeView.layer.borderWidth = 1
+        modeView.layer.borderColor = UIColor.black.cgColor
+        modeView.backgroundColor = UIColor.white
         var hours = Int()
         var miniutes = Int()
         
@@ -36,13 +43,17 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
         if let min = value.duration.minute {
             miniutes = min
         }
-       // durationLbl.text = String(hours) + "h " + String(miniutes) + "min"
-        durationLbl.text = ""
-       // averageSpeedLbl.text = "Speed: " + value.averageSpeed
-        averageSpeedLbl.text = ""
-        //KMLbl.text = value.distance + "KM"
-        KMLbl.text = ""
-        startTimeLbl.text = "Time :" + value.startTime
-        modeLbl.text = "Mode " + value.vehicleMode
+        if value.vehicleMode == "M" {
+            modeImageView.image = UIImage.init(named: "carMove")
+        }
+        else {
+            modeImageView.image = UIImage.init(named: "carPark")
+
+        }
+        durationLbl.text = String(hours) + "h " + String(miniutes) + "mins"
+        averageSpeedLbl.text = value.averageSpeed + " km/hr"
+        KMLbl.text = value.distance + " km"
+        startTimeLbl.text = value.startTime
+       
     }
 }
