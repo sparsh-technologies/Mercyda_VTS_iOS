@@ -11,11 +11,14 @@ import MBProgressHUD
 
 /// Protocol
 protocol VehicleFlowControllerDelegate: class {
-    func loadData(vm: [TripDetailsModel])
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double)
     
 }
 class VehicleFlowViewController: BaseViewController {
+    @IBOutlet weak var totalDistLbl: UILabel!
     
+    @IBOutlet weak var maxSpdLbl: UILabel!
+    @IBOutlet weak var minSpdLbl: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
     var vehicleFlowViewModel = VehicleFlow()
     var serialNumber = String()
@@ -60,7 +63,10 @@ class VehicleFlowViewController: BaseViewController {
 }
 
 extension VehicleFlowViewController: VehicleFlowControllerDelegate {
-    func loadData(vm: [TripDetailsModel]) {
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double) {
         tableViewOutlet.reloadData()
+        minSpdLbl.text = String(minSpd.truncate(places: 2)) + " km/hr"
+        maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
+        totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
     }
 }

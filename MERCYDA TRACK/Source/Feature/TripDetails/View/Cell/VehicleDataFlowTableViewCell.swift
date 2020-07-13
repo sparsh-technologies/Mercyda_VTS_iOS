@@ -10,6 +10,8 @@ import UIKit
 
 class VehicleDataFlowTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var waitImageView: UIImageView!
+    @IBOutlet weak var spdTimeImageView: UIImageView!
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var modeImageView: UIImageView!
     @IBOutlet weak var modeView: UIView!
@@ -44,16 +46,31 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
             miniutes = min
         }
         if value.vehicleMode == "M" {
+            spdTimeImageView.image = UIImage.init(named: "speed_16")
             modeImageView.image = UIImage.init(named: "carMove")
+            if hours == 0 {
+                durationLbl.text = String(miniutes) + " mins"
+            } else {
+                durationLbl.text = String(hours) + " h " + String(miniutes) + " mins"
+            }
+            averageSpeedLbl.text = value.averageSpeed + " km/hr"
+            durationLbl.isHidden = false
+            waitImageView.isHidden = false
         }
         else {
+            spdTimeImageView.image = UIImage.init(named: "time_sm")
+            durationLbl.isHidden = true
+            waitImageView.isHidden = true
             modeImageView.image = UIImage.init(named: "carPark")
-
+            if hours == 0 {
+                averageSpeedLbl.text = String(miniutes) + " mins"
+            } else {
+                averageSpeedLbl.text = String(hours) + " h " + String(miniutes) + " mins"
+            }
         }
-        durationLbl.text = String(hours) + "h " + String(miniutes) + "mins"
-        averageSpeedLbl.text = value.averageSpeed + " km/hr"
+        
         KMLbl.text = value.distance + " km"
         startTimeLbl.text = value.startTime
-       
+        
     }
 }

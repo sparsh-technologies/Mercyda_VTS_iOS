@@ -15,9 +15,9 @@ class VehicleFlow  {
     private let networkServiceCalls = NetworkServiceCalls()
     var packetsFiltered: [[DeviceDataResponse]] = []
     var processedResult: [TripDetailsModel] = []
-    
-   
-    
+    var totalDistance = Double()
+    var minSpeed = Double()
+    var maxSpeed = Double()
     
     weak var delegate: VehicleFlowControllerDelegate?
     
@@ -53,14 +53,13 @@ extension VehicleFlow {
     
     func calculateDistance(packets: [[D]]) {
         var distanceFromCoordinates = Double()
-        var distanceFromSpeed = Double()
-        var maxDistance = Double()
+        //        var distanceFromSpeed = Double()
         var totalDistanceFromPacket = Double()
         var mode = String()
         var tripDetails: [TripDetailsModel] = []
         var averageSpeed: Int = 0
-        var totalDistance = Double()
-        
+        maxSpeed = 0
+        minSpeed = 0
         
         
         packets.forEach({ eachPacket in
@@ -73,15 +72,25 @@ extension VehicleFlow {
             for index in 0..<eachPacket.count - 1{
                 let packet1 = eachPacket[index]
                 let packet2 = eachPacket[index + 1]
-                distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
-                let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
-                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                let maxSpeedPkt1 = packet1.speed ?? 0
+                let maxSpeedPkt2 = packet2.speed ?? 0
+                let minSpeedPkt1 = packet1.speed ?? 0
+                let minSpeedPkt2 = packet2.speed ?? 0
+                let tempMax = Double(maxSpeedPkt1 > maxSpeedPkt2 ? maxSpeedPkt1 : maxSpeedPkt2)
                 
-                distanceFromSpeed = time < 600 ? distance : 0
-                maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
-                if distance.isNaN {
-                    
-                }
+                
+                maxSpeed = maxSpeed < tempMax ? tempMax : maxSpeed
+                minSpeed = Double(minSpeedPkt1 < minSpeedPkt2 ? minSpeedPkt1 : minSpeedPkt2)
+                
+                distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
+                //                let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
+                //                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                //
+                //                distanceFromSpeed = time < 600 ? distance : 0
+                //                maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
+                //                if distance.isNaN {
+                //
+                //                }
                 //                print("\n Coordinates ", distanceFromCoordinates)
                 //                print("Speed ", distanceFromSpeed)
                 //                print("Highest Distance ", maxDistance)
@@ -95,7 +104,7 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
-        self.delegate?.loadData(vm: tripDetails)
+        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
     }
     
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
