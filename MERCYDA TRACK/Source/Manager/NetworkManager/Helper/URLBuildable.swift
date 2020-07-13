@@ -65,11 +65,6 @@ protocol URLBuildable: URLRequestConvertible {
         
 }
 
-extension URLBuildable {
-    var domainType: BaseAdressType? {
-        return .MainDomain
-    }
-}
 
 extension URLBuildable {
     // MARK: - URLRequestConvertible

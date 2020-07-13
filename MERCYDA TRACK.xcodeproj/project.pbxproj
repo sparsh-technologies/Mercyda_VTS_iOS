@@ -133,6 +133,18 @@
 		C627F10224BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
 		C627F10324BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
 		C627F10424BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
+		C627F10624BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10524BC6D660026F1E7 /* GetLocationAddressParams.swift */; };
+		C627F10724BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10524BC6D660026F1E7 /* GetLocationAddressParams.swift */; };
+		C627F10824BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10524BC6D660026F1E7 /* GetLocationAddressParams.swift */; };
+		C627F10A24BC85340026F1E7 /* LocationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10924BC85340026F1E7 /* LocationParser.swift */; };
+		C627F10B24BC85340026F1E7 /* LocationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10924BC85340026F1E7 /* LocationParser.swift */; };
+		C627F10C24BC85340026F1E7 /* LocationParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10924BC85340026F1E7 /* LocationParser.swift */; };
+		C627F10F24BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */; };
+		C627F11024BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */; };
+		C627F11124BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */; };
+		C627F11324BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
+		C627F11424BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
+		C627F11524BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
 		C6623AC524AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
@@ -298,6 +310,10 @@
 		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aboutuscontroller.swift; sourceTree = "<group>"; };
+		C627F10524BC6D660026F1E7 /* GetLocationAddressParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationAddressParams.swift; sourceTree = "<group>"; };
+		C627F10924BC85340026F1E7 /* LocationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationParser.swift; sourceTree = "<group>"; };
+		C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsResponse.swift; sourceTree = "<group>"; };
+		C627F11224BC96710026F1E7 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C6623AB924AB970C003C3519 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C6623ABB24AB970C003C3519 /* Last_updated_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Last_updated_data.swift; sourceTree = "<group>"; };
 		C6623ABC24AB970C003C3519 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -664,9 +680,19 @@
 			path = Aboutus;
 			sourceTree = "<group>";
 		};
+		C627F10D24BC95E40026F1E7 /* LocationDetailsModels */ = {
+			isa = PBXGroup;
+			children = (
+				C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */,
+				C627F11224BC96710026F1E7 /* Address.swift */,
+			);
+			path = LocationDetailsModels;
+			sourceTree = "<group>";
+		};
 		C6623AB724AB970C003C3519 /* ApiModels */ = {
 			isa = PBXGroup;
 			children = (
+				C627F10D24BC95E40026F1E7 /* LocationDetailsModels */,
 				C6623AB824AB970C003C3519 /* LoginModels */,
 				C6623ABA24AB970C003C3519 /* GetVehicleListModel */,
 				C6623ABD24AB970C003C3519 /* GetVehicleDetailModel */,
@@ -724,6 +750,7 @@
 			children = (
 				C6623ADC24AB9736003C3519 /* LoginParams.swift */,
 				C6623ADD24AB9736003C3519 /* GetVehicleDetailParams.swift */,
+				C627F10524BC6D660026F1E7 /* GetLocationAddressParams.swift */,
 				C6623ADE24AB9736003C3519 /* GetVehicleListParams.swift */,
 				C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */,
 				C6623ADF24AB9736003C3519 /* GetVehiclesCountParams.swift */,
@@ -793,6 +820,7 @@
 				C6669FCC24AA20420024527E /* ErrorStruct.swift */,
 				C6669FCA24AA20420024527E /* NetworkEngine.swift */,
 				C6669FC924AA20420024527E /* URLBuildable.swift */,
+				C627F10924BC85340026F1E7 /* LocationParser.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1250,6 +1278,7 @@
 				52457DD224AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				52B7E55824BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,
 				84410DA424B8D92100E6047D /* userLogininfo.swift in Sources */,
+				C627F10624BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				C6669FE224AA29750024527E /* APIConstants.swift in Sources */,
 				52457D9E24AB78C70078487A /* CoreDataHelper.swift in Sources */,
 				52457DBA24AB7B900078487A /* String+Extension.swift in Sources */,
@@ -1274,6 +1303,7 @@
 				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
 				522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */,
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
+				C627F10A24BC85340026F1E7 /* LocationParser.swift in Sources */,
 				84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */,
 				84E3E52D24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
 				C6C9D7EF24A925A700BA7651 /* AppDelegate.swift in Sources */,
@@ -1282,6 +1312,7 @@
 				C6669FD424AA20DD0024527E /* NetworkServiceCalls.swift in Sources */,
 				C6623AC824AB970C003C3519 /* Last_updated_data.swift in Sources */,
 				C698D1B824B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
+				C627F11324BC96710026F1E7 /* Address.swift in Sources */,
 				52457DB224AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				52457DE424AB7CF00078487A /* SDKManager.swift in Sources */,
 				52457DA224AB78E80078487A /* Connectivity.swift in Sources */,
@@ -1290,6 +1321,7 @@
 				C6669FDC24AA24870024527E /* Utility.swift in Sources */,
 				C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */,
 				C698D1BC24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
+				C627F10F24BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
 				52457DB624AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
 				C6669FD024AA20420024527E /* CommonParser.swift in Sources */,
 				52457DDF24AB7CB20078487A /* Styles.swift in Sources */,
@@ -1317,6 +1349,7 @@
 				C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C698D1BD24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACC24AB970C003C3519 /* Vehicle.swift in Sources */,
+				C627F11024BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
 				C6623AFF24B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCB24AB7BE70078487A /* UIView+Extension.swift in Sources */,
 				52B7E56224BB507C00A9881C /* URLBuildable.swift in Sources */,
@@ -1324,6 +1357,7 @@
 				52457DBB24AB7B900078487A /* String+Extension.swift in Sources */,
 				52457DB324AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623ACF24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
+				C627F10B24BC85340026F1E7 /* LocationParser.swift in Sources */,
 				C6623AE724AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
 				C627F10324BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */,
 				52457DB724AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
@@ -1333,6 +1367,7 @@
 				C6623AD824AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				52457DAF24AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
 				84E3E52A24AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
+				C627F11424BC96710026F1E7 /* Address.swift in Sources */,
 				52457DF224AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */,
 				520D57DF24AF6A10002A775F /* DashboardViewController.swift in Sources */,
@@ -1343,6 +1378,7 @@
 				C6623AED24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DD324AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEA24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
+				C627F10724BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				52457DDD24AB7CB20078487A /* ThemeManager.swift in Sources */,
 				C698D1B924B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF124AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
@@ -1377,6 +1413,7 @@
 				C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */,
 				C698D1BE24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACD24AB970C003C3519 /* Vehicle.swift in Sources */,
+				C627F11124BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
 				C6623B0024B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCC24AB7BE70078487A /* UIView+Extension.swift in Sources */,
 				52B7E56324BB507D00A9881C /* URLBuildable.swift in Sources */,
@@ -1384,6 +1421,7 @@
 				52457DBC24AB7B900078487A /* String+Extension.swift in Sources */,
 				52457DB424AB7B7A0078487A /* Dictionary+Extension.swift in Sources */,
 				C6623AD024AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
+				C627F10C24BC85340026F1E7 /* LocationParser.swift in Sources */,
 				C6623AE824AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
 				C627F10424BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */,
 				52457DB824AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
@@ -1393,6 +1431,7 @@
 				C6623AD924AB970C003C3519 /* GetVehiclesCountResponse.swift in Sources */,
 				52457DB024AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
 				84E3E52B24AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
+				C627F11524BC96710026F1E7 /* Address.swift in Sources */,
 				52457DF324AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */,
 				520D57E024AF6A10002A775F /* DashboardViewController.swift in Sources */,
@@ -1403,6 +1442,7 @@
 				C6623AEE24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DD424AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				C6623AEB24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
+				C627F10824BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				52457DDE24AB7CB20078487A /* ThemeManager.swift in Sources */,
 				C698D1BA24B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF224AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,

@@ -18,7 +18,7 @@ protocol MapVCViewModelDelegate : class {
 
 class MapVCViewModel  {
     // MARK: - Properties
-    private let networkServiceCalls = NetworkServiceCalls()
+    let networkServiceCalls = NetworkServiceCalls()
     var originalDeviceList : [D]? {
         didSet {
             if let array = self.originalDeviceList {

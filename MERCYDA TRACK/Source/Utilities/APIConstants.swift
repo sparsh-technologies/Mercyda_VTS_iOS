@@ -37,6 +37,8 @@ struct PARAMS {
     static let END_TIME = "end_time"
     static let USERNAME = "username"
     static let PASSWORD = "password"
+    static let LATITUDE = "lat"
+    static let LONGITUDE = "lon"
 }
 
 struct APIKeys {
