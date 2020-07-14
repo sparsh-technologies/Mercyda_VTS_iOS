@@ -23,8 +23,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .appBackground
-        configureUI()
         statusBarColor()
+        configureUI()
     }
 }
 
@@ -78,11 +78,7 @@ extension BaseViewController {
     
     /// Setup initial UI
     func configureUI() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemBlue.cgColor, UIColor.systemTeal.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.insertSublayer(gradient, at: 0)
-        gradient.frame = view.frame
+        self.view.backgroundColor = UIColor.init(named: "ThemeBlue")
     }
     
     /// Custom StatusBar Colour

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p0t-aL-aMr">
-                                <rect key="frame" x="0.0" y="375.5" width="414" height="520.5"/>
+                                <rect key="frame" x="0.0" y="419.5" width="414" height="476.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wy4-aQ-K48" id="Ntl-Kg-FUr"/>
@@ -26,7 +26,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCX-nM-rY7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="331.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="331.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxx-zj-nby">
                                         <rect key="frame" x="0.0" y="175.5" width="414" height="146"/>
@@ -179,6 +179,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vhj-Fa-baf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="45N-Qm-iEt">
+                        <barButtonItem key="backBarButtonItem" title=" " id="f8q-Dk-w5S"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="maxSpdLbl" destination="BHn-g9-QTf" id="K5a-XP-XLR"/>
                         <outlet property="minSpdLbl" destination="0M3-hu-9Kg" id="fe7-5O-ZE9"/>
@@ -187,6 +190,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljs-Kr-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718.84057971014499" y="-21.428571428571427"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2T0-D3-dfm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k7b-Ff-kfL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OM2-oE-Swj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wy4-aQ-K48" kind="relationship" relationship="rootViewController" id="xTt-HN-PJt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGu-Ds-FZ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-191.30434782608697" y="-21.428571428571427"/>
         </scene>

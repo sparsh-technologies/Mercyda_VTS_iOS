@@ -523,13 +523,13 @@
 		52457DAB24AB7AA90078487A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84410DA524B8F17300E6047D /* VehicleFlow.storyboard */,
 				C6C9D7FA24A925A800BA7651 /* Assets.xcassets */,
 				520D57D124AF67BE002A775F /* Color.xcassets */,
 				C6C9D7F424A925A700BA7651 /* Main.storyboard */,
 				C6653BA624B3533100DD9D9F /* Maps.storyboard */,
 				84E3E53C24AD0BE1004CC622 /* Login.storyboard */,
 				527B39E924AE57DA005BA95A /* Dashboard.storyboard */,
+				84410DA524B8F17300E6047D /* VehicleFlow.storyboard */,
 				841BC61824BCC96200A3127D /* AbouUs.storyboard */,
 				84338A3D24B3A8980005B97B /* Vehicle.storyboard */,
 			);
