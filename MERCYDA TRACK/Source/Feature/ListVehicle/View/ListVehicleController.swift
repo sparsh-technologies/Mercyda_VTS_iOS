@@ -15,7 +15,9 @@ class ListVehicleController: BaseViewController {
     @IBOutlet weak var serachView: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var mainTableView: UITableView!
-    
+    var listVehicleviewmodel = ListVehicleViewModel()
+    var searChedData:[ListVehicleTableViewModel] = []
+    var searching:Bool = false
     var vehicleDataSource:[ListVehicleTableViewModel] = []
     
     override func viewDidLoad() {
@@ -47,7 +49,8 @@ class ListVehicleController: BaseViewController {
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
-        
+        searching = false
+        mainTableView.reloadData()
         if serachView.isHidden == false{
             serachView.isHidden = true
             searchButton.isHidden = false
@@ -57,6 +60,9 @@ class ListVehicleController: BaseViewController {
             searchButton.isHidden = true
         }
     }
+   
+    
+    
     
 }
 
@@ -66,14 +72,29 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
    
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return vehicleDataSource.count
-        let section = vehicleDataSource[section]
-        return section.numberOfRowsInSection()
+        if searching{
+      let section = searChedData[section]
+     return section.numberOfRowsInSection()
+        }
+        else{
+            let section = vehicleDataSource[section]
+            return section.numberOfRowsInSection()
+        }
        }
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           // let list = vehicleDataSource[indexPath.row]
-            let list = vehicleDataSource[indexPath.section]
+        if searching{
+            let list = searChedData[indexPath.section]
          //  return list.getCellForRow(tableView: tableView, delegate: self, indexPath: indexPath)
+         
+           
         return list.getCellForRowsInSection(tableView:tableView, delegateClass: self, indexPath: indexPath)
+        }
+        else{
+            let list = vehicleDataSource[indexPath.section]
+             //  return list.getCellForRow(tableView: tableView, delegate: self, indexPath: indexPath)
+            return list.getCellForRowsInSection(tableView:tableView, delegateClass: self, indexPath: indexPath)
+        }
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,5 +111,20 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
         vehicleFlowVC.serialNumber = serialNo
         self.navigationController?.pushViewController(vehicleFlowVC, animated: true)
         
+    }
+    
+}
+
+
+extension ListVehicleController:UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        searching = true
+        let searchText  = searchTextfeild.text! + string
+         searChedData.removeAll()
+           listVehicleviewmodel.searchData(key: searchText, data: vehicleDataSource[0].getVehicleItemCellData()) { (result ) in
+            self.searChedData.append(ListVehicleTableDataModal.itemsCell(vehicles: result))
+            self.mainTableView.reloadData()
+        }
+         return true
     }
 }

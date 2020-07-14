@@ -20,6 +20,7 @@ protocol ListVehicleTableViewModel {
     func heightForHeaderInSection(section: Int) -> CGFloat
     func heightForFooterInSection(section: Int) -> CGFloat
     func selectedItemAtIndexPath(indexPath: IndexPath) -> Any?
+    func getVehicleItemCellData() -> [Vehicle]
 }
 
 enum ListVehicleTableDataModal {
@@ -42,6 +43,13 @@ extension ListVehicleTableDataModal: ListVehicleTableViewModel {
         case .itemsCell(vehicles: let vehiclesArray):
             return vehiclesArray[indexPath.row]
         }
+    }
+    
+    func getVehicleItemCellData() -> [Vehicle]{
+        switch self {
+              case .itemsCell(vehicles: let vehiclesArray):
+                  return vehiclesArray
+              }
     }
     
     func heightForHeaderInSection(section: Int) -> CGFloat {
