@@ -37,7 +37,7 @@ extension VehicleFlow {
     }
     
     func dataPointForIndex(index: Int) -> TripDetailsModel {
-        return TripDetailsModel.init(mode: processedResult[index].vehicleMode, distance: processedResult[index].distance, startTime: processedResult[index].startTime, avrgSpeed: processedResult[index].averageSpeed, duration: processedResult[index].duration)
+        return TripDetailsModel.init(mode: processedResult[index].vehicleMode, distance: processedResult[index].distance, startTime: processedResult[index].startTime, avrgSpeed: processedResult[index].averageSpeed, duration: processedResult[index].duration, lat: processedResult[index].latitude, long: processedResult[index].longitude)
     }
 }
 
@@ -103,7 +103,7 @@ extension VehicleFlow {
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                 //                print("Total Distanec ", totalDistanceFromPacket)
             }
-            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)))
+            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!)
             tripDetails.append(trip)
             totalDistance = totalDistance + totalDistanceFromPacket
         })
