@@ -56,10 +56,8 @@ class VehicleFlowViewController: BaseViewController {
         }
     }
     @objc   func getDeviceDetailsWithOutActivityInd()  {
-        vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) { (_) in
-            
-        }
-    }
+        vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) {(_) in}}
+    
     deinit {
         
     }
