@@ -150,6 +150,9 @@
 		C627F11324BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
 		C627F11424BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
 		C627F11524BC96710026F1E7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F11224BC96710026F1E7 /* Address.swift */; };
+		C627F12524BFA5100026F1E7 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F12424BFA5100026F1E7 /* Dispatcher.swift */; };
+		C627F12624BFA5100026F1E7 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F12424BFA5100026F1E7 /* Dispatcher.swift */; };
+		C627F12724BFA5100026F1E7 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F12424BFA5100026F1E7 /* Dispatcher.swift */; };
 		C6623AC524AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC624AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
 		C6623AC724AB970C003C3519 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6623AB924AB970C003C3519 /* LoginResponse.swift */; };
@@ -322,6 +325,7 @@
 		C627F10924BC85340026F1E7 /* LocationParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationParser.swift; sourceTree = "<group>"; };
 		C627F10E24BC96630026F1E7 /* LocationDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsResponse.swift; sourceTree = "<group>"; };
 		C627F11224BC96710026F1E7 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		C627F12424BFA5100026F1E7 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		C6623AB924AB970C003C3519 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C6623ABB24AB970C003C3519 /* Last_updated_data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Last_updated_data.swift; sourceTree = "<group>"; };
 		C6623ABC24AB970C003C3519 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -864,6 +868,7 @@
 			children = (
 				C6653BAB24B353A900DD9D9F /* MapVC.swift */,
 				C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */,
+				C627F12424BFA5100026F1E7 /* Dispatcher.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1290,6 +1295,7 @@
 				52457DD224AB7BFB0078487A /* UIColor+Extension.swift in Sources */,
 				52B7E55824BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,
 				84410DA424B8D92100E6047D /* userLogininfo.swift in Sources */,
+				C627F12524BFA5100026F1E7 /* Dispatcher.swift in Sources */,
 				C627F10624BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				C6669FE224AA29750024527E /* APIConstants.swift in Sources */,
 				52457D9E24AB78C70078487A /* CoreDataHelper.swift in Sources */,
@@ -1410,6 +1416,7 @@
 				52B7E54E24BA003700A9881C /* VehicleFlowModel.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */,
+				C627F12624BFA5100026F1E7 /* Dispatcher.swift in Sources */,
 				C6623B0424B203CD003C3519 /* ListDistanceTableViewModel.swift in Sources */,
 				52B7E55924BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,
 				522A141124AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
@@ -1475,6 +1482,7 @@
 				52B7E54F24BA003800A9881C /* VehicleFlowModel.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
 				52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */,
+				C627F12724BFA5100026F1E7 /* Dispatcher.swift in Sources */,
 				C6623B0524B203CD003C3519 /* ListDistanceTableViewModel.swift in Sources */,
 				52B7E55A24BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,
 				522A141224AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,

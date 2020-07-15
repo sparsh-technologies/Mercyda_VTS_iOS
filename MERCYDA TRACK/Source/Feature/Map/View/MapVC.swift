@@ -27,6 +27,8 @@ class MapVC: UIViewController {
     var i: UInt = 0
     var timer: Timer!
     
+    private var dispatcher: Dispatcher?
+    
     let closeButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action:#selector(MapVC.dismissView) , for: .touchUpInside)
@@ -137,7 +139,28 @@ class MapVC: UIViewController {
         nonAnimatingPolyline.map = self.mapView
         
         self.timer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
+        for (index,coordinates) in viewModel.arrForHaltAndStopLocations.enumerated() {
+            getLocationDetails(locationCoordinates: coordinates, count: index)
+            
+        }
         
+        
+    }
+    
+    func getLocationDetails(locationCoordinates: Latlon, count: Int) {
+        defer {
+            self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
+                printLog("Execute DispatchWork \(count)")
+                printLog("\(cityAddress) \n")
+                if count == self.viewModel.arrForHaltAndStopLocations.count - 1 {
+                    self.dispatcher = nil
+                }
+            }
+        }
+        guard self.dispatcher != nil else {
+            self.dispatcher = Dispatcher()
+            return
+        }
     }
     
     @objc func animatePolylinePath() {
