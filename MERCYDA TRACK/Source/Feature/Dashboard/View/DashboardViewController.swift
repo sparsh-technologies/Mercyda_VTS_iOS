@@ -52,7 +52,7 @@ class DashboardViewController: BaseViewController {
         configureViewUI()
      
             self.getDashboardVehicleCount()
-            self.getVehiclesList()
+           // self.getVehiclesList()
             
         
     }
@@ -97,34 +97,9 @@ class DashboardViewController: BaseViewController {
     /// Tag 18 = All Devices
     /// - Parameter button: UIButton Type
     @objc func menuButtonAction(button: UIButton) {
-        print(button.tag)
         switch button.tag {
-            
-        case 10:
-            dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: vehicleListData) { (result) in
-                printLog(result.count)
-                self.navigatetoVehicleListPage(vehiclelist:result)
-            }
-        case 12:
-            dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:vehicleListData) { (result ) in
-                printLog(result.count)
-                 self.navigatetoVehicleListPage(vehiclelist:result)
-            }
-        case 11:
-            dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:vehicleListData) { (result ) in
-            printLog(result.count)
-                self.navigatetoVehicleListPage(vehiclelist:result)
-            }
-        case 14:
-            dashboardViewModel.filterOfflineData(data:vehicleListData) { (result ) in
-            printLog(result.count)
-            self.navigatetoVehicleListPage(vehiclelist: result)
-            }
-        case 13:
-            dashboardViewModel.filterOnlineData(data: vehicleListData) { (result ) in
-            self.navigatetoVehicleListPage(vehiclelist: result)
-            }
-            
+        case 10,11,12,13,14,18:
+            getVehiclesList(tag:button.tag)
         default:
             printLog("Nothing")
         }
@@ -180,7 +155,7 @@ class DashboardViewController: BaseViewController {
     
     
 
-    func getVehiclesList() {
+    func getVehiclesList(tag:Int) {
         vehicleListData.removeAll()
         MBProgressHUD.showAdded(to: view, animated: true)
         dashboardViewModel.getVehicleList { [weak self] (result) in
@@ -192,6 +167,33 @@ class DashboardViewController: BaseViewController {
             case .success(let result):
             MBProgressHUD.hide(for: this.view, animated: false)
             this.vehicleListData = result
+            switch tag {
+            case 18:
+                this.navigatetoVehicleListPage(vehiclelist:result)
+            case 10:
+            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
+            this.navigatetoVehicleListPage(vehiclelist:filterdResult)
+            }
+            case 12:
+            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
+            this.navigatetoVehicleListPage(vehiclelist:filterdResult)
+            }
+            case 11:
+            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
+            this.navigatetoVehicleListPage(vehiclelist:filteredResult)
+            }
+            case 14:
+            this.dashboardViewModel.filterOfflineData(data:result) { (filterdResult ) in
+            this.navigatetoVehicleListPage(vehiclelist: filterdResult)
+            }
+            case 13:
+            this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
+            this.navigatetoVehicleListPage(vehiclelist: filterdResult)
+            }
+            default:
+                printLog("Nothing")
+            }
+            
             print("count:\(result.count)")
             case .failure(let error) :
             MBProgressHUD.hide(for: this.view, animated: false)
