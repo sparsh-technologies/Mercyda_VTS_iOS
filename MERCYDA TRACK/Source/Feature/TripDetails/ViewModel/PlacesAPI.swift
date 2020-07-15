@@ -12,8 +12,8 @@ class PlacesAPI {
 extension PlacesAPI {
     
     func getPlaceName(coordinates: Latlon, completion: @escaping (WebServiceResult<LocationDetailsResponse, String>) -> Void) {
-        networkServiceCalls.getLocationDetails(locationCoordinates: coordinates) { (result) in
-            switch result {
+        networkServiceCalls.getLocationDetails(locationCoordinates: coordinates) { (state) in
+            switch state {
             case .success(let result as LocationDetailsResponse):
                 completion(.success(result))
             case .failure(let error):
