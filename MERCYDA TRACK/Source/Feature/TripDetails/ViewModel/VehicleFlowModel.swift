@@ -9,18 +9,17 @@
 import Foundation
 import CoreLocation
 
-class VehicleFlow  {
+final class VehicleFlow  {
     
     // MARK: - Properties
     private let networkServiceCalls = NetworkServiceCalls()
-    var packetsFiltered: [[DeviceDataResponse]] = []
-    var processedResult: [TripDetailsModel] = []
-    var totalDistance = Double()
-    var minSpeed = Double()
-    var maxSpeed = Double()
-    
+    private let placesCallAPI = PlacesAPI()
+    private var packetsFiltered: [[DeviceDataResponse]] = []
+    private var processedResult: [TripDetailsModel] = []
+    private var totalDistance = Double()
+    private var minSpeed = Double()
+    private var maxSpeed = Double()
     weak var delegate: VehicleFlowControllerDelegate?
-    
     
 }
 extension VehicleFlow {
@@ -37,7 +36,7 @@ extension VehicleFlow {
     }
     
     func dataPointForIndex(index: Int) -> TripDetailsModel {
-        return TripDetailsModel.init(mode: processedResult[index].vehicleMode, distance: processedResult[index].distance, startTime: processedResult[index].startTime, avrgSpeed: processedResult[index].averageSpeed, duration: processedResult[index].duration, lat: processedResult[index].latitude, long: processedResult[index].longitude)
+        return TripDetailsModel.init(mode: processedResult[index].vehicleMode, distance: processedResult[index].distance, startTime: processedResult[index].startTime, avrgSpeed: processedResult[index].averageSpeed, duration: processedResult[index].duration, lat: processedResult[index].latitude, long: processedResult[index].longitude, place: processedResult[index].placeName)
     }
 }
 
@@ -103,7 +102,7 @@ extension VehicleFlow {
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                 //                print("Total Distanec ", totalDistanceFromPacket)
             }
-            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!)
+            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!, place: getPlace(coordinates: (lat : Double(eachPacket.last?.latitude ?? "0")!, lon : Double(eachPacket.last?.longitude ?? "0")!)))
             tripDetails.append(trip)
             totalDistance = totalDistance + totalDistanceFromPacket
         })
@@ -224,4 +223,10 @@ extension VehicleFlow {
         return ""
     }
     
+    func getPlace(coordinates: Latlon) -> String {
+        placesCallAPI.getPlaceName(coordinates: coordinates) { (result) in
+            
+        }
+        return ""
+    }
 }

@@ -78,6 +78,9 @@
 		52457DF924AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
+		52546D6824BF57B40047C6DB /* PlacesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52546D6724BF57B40047C6DB /* PlacesAPI.swift */; };
+		52546D6924BF57B40047C6DB /* PlacesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52546D6724BF57B40047C6DB /* PlacesAPI.swift */; };
+		52546D6A24BF57B40047C6DB /* PlacesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52546D6724BF57B40047C6DB /* PlacesAPI.swift */; };
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
@@ -280,6 +283,7 @@
 		52457DF024AB802F0078487A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
+		52546D6724BF57B40047C6DB /* PlacesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAPI.swift; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+Extensions.swift"; sourceTree = "<group>"; };
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
@@ -655,6 +659,7 @@
 			children = (
 				84410DA924B8F18700E6047D /* VehicleFlowModel.swift */,
 				84410DAA24B8F18700E6047D /* TripDetailsModel.swift */,
+				52546D6724BF57B40047C6DB /* PlacesAPI.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1293,6 +1298,7 @@
 				52457DD624AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6653BAC24B353A900DD9D9F /* MapVC.swift in Sources */,
 				52457DC624AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
+				52546D6824BF57B40047C6DB /* PlacesAPI.swift in Sources */,
 				52457DF924AB83120078487A /* LoginLocalization.swift in Sources */,
 				522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
 				52B7E55F24BB4AF900A9881C /* Double+Extensions.swift in Sources */,
@@ -1379,6 +1385,7 @@
 				52457DF224AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D80924A925A800BA7651 /* MERCYDA_TRACKTests.swift in Sources */,
 				520D57DF24AF6A10002A775F /* DashboardViewController.swift in Sources */,
+				52546D6924BF57B40047C6DB /* PlacesAPI.swift in Sources */,
 				C6623AC924AB970C003C3519 /* Last_updated_data.swift in Sources */,
 				52457DE024AB7CB20078487A /* Styles.swift in Sources */,
 				84E3E52E24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
@@ -1443,6 +1450,7 @@
 				52457DF324AB802F0078487A /* LoginViewModel.swift in Sources */,
 				C6C9D81424A925A800BA7651 /* MERCYDA_TRACKUITests.swift in Sources */,
 				520D57E024AF6A10002A775F /* DashboardViewController.swift in Sources */,
+				52546D6A24BF57B40047C6DB /* PlacesAPI.swift in Sources */,
 				C6623ACA24AB970C003C3519 /* Last_updated_data.swift in Sources */,
 				52457DE124AB7CB20078487A /* Styles.swift in Sources */,
 				84E3E52F24AD09C9004CC622 /* UItableViewExtension.swift in Sources */,
