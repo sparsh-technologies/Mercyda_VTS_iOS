@@ -43,16 +43,15 @@ class DashboardViewController: BaseViewController {
     
     /// Dashboard ViewModel
     let dashboardViewModel = DashboardViewModel()
-    var vehicleListData = [Vehicle]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
        
-        configureViewUI()
-     
+            configureViewUI()
             self.getDashboardVehicleCount()
-           // self.getVehiclesList()
+          
             
         
     }
@@ -114,11 +113,12 @@ class DashboardViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    
     func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
-            let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
-            vc.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehiclelist))
-            self.navigationController?.pushViewController(vc, animated: true)
+        let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
+        vc.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehiclelist))
+        self.navigationController?.pushViewController(vc, animated: true)
         }
         
     @IBAction func refreshButtonPressed(_ sender: Any) {
@@ -156,7 +156,6 @@ class DashboardViewController: BaseViewController {
     
 
     func getVehiclesList(tag:Int) {
-        vehicleListData.removeAll()
         MBProgressHUD.showAdded(to: view, animated: true)
         dashboardViewModel.getVehicleList { [weak self] (result) in
              guard let this = self else {
@@ -166,7 +165,6 @@ class DashboardViewController: BaseViewController {
             switch result{
             case .success(let result):
             MBProgressHUD.hide(for: this.view, animated: false)
-            this.vehicleListData = result
             switch tag {
             case 18:
                 this.navigatetoVehicleListPage(vehiclelist:result)
