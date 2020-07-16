@@ -112,6 +112,7 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
+       restorePlacesName()
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
         for (index, item) in processedResult.enumerated() {
             if item.vehicleMode != "M" {
@@ -121,7 +122,7 @@ extension VehicleFlow {
             }
         }
     }
-    
+   
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
         //        Previous Location
         let prevlocation = CLLocation(latitude: packet1Lat, longitude: packet1Lon)
@@ -250,5 +251,10 @@ extension VehicleFlow {
             return
         }
     }
-
+    func restorePlacesName() {
+           for item in placesArray.enumerated() {
+               processedResult[item.element.index].placeName = item.element.name
+           }
+           self.delegate?.reloadData()
+       }
 }
