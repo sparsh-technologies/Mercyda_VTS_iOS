@@ -11,6 +11,8 @@ import CoreLocation
 
 final class VehicleFlow  {
     
+    typealias placeNameIndex = (name: String, index: Int)
+    
     // MARK: - Properties
     private let networkServiceCalls = NetworkServiceCalls()
     private let placesCallAPI = PlacesAPI()
@@ -20,7 +22,8 @@ final class VehicleFlow  {
     private var minSpeed = Double()
     private var maxSpeed = Double()
     weak var delegate: VehicleFlowControllerDelegate?
-    private var placesArray: [LocationDetailsResponse] = []
+    private var placesArray: [placeNameIndex] = []
+    private var dispatcher: Dispatcher?
     
 }
 extension VehicleFlow {
@@ -110,6 +113,13 @@ extension VehicleFlow {
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
+//        for (index, item) in processedResult.enumerated() {
+//            if item.vehicleMode != "M" {
+//                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
+//                    self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+//                }
+//            }
+//        }
     }
     
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
@@ -186,7 +196,7 @@ extension VehicleFlow {
     }
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: "1594837860000", endTime: "1594924140000") { [weak self] (state) in
             guard let this = self else {
                 return
             }
@@ -224,29 +234,21 @@ extension VehicleFlow {
         return ""
     }
     
-    func getPlace() {
-        
-        let group = DispatchGroup()
-        
-        for item in 0..<processedResult.count {
-            let obj = processedResult[item]
-            delay(durationInSeconds: 1.5, completion: {
-                group.enter()
-                self.placesCallAPI.getPlaceName(coordinates: (lat: obj.latitude, lon: obj.longitude)) { (value) in
-                    
-                    switch value {
-                    case .success(let result):
-                        self.placesArray.append(result)
-                    case .failure(let error):
-                        printLog(error)
-                    }
-                    group.leave()
-                }
-                
-            })
+    
+    func getLocationDetails(locationCoordinates: Latlon, count: Int) {
+        defer {
+            self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
+                self.placesArray.append((name: cityAddress, index: count))
+                self.processedResult[count].placeName = cityAddress
+                self.delegate?.reloadData()
+                printLog("\(cityAddress) count:  \(count) \n")
+                self.dispatcher = nil
+            }
         }
-        group.notify(queue: .main) {
-            print("Finished all requests.")
+        guard self.dispatcher != nil else {
+            self.dispatcher = Dispatcher()
+            return
         }
     }
+
 }
