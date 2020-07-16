@@ -23,9 +23,9 @@ static let locationUrl = "https://nominatim.openstreetmap.org/reverse?format=jso
     
     static let demoDataPath = "api/admin/demo"
     static let loginPath = "mtrack/user/login?username=\(userName)&password=\(passWord)&version=v1"
-    static let getVehiclesCountPath = "mtrack/vehicles/count?username=\(Utility.getUserName())&password=\(Utility.getPassword())"
-    static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
-    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=\(Utility.getUserName())&password=\(Utility.getPassword())"
+    static let getVehiclesCountPath = "mtrack/vehicles/count?username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v1"
+    static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v1"
+    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v1"
     static let getDeviceDataPath = "mtrack/data"
 
 }

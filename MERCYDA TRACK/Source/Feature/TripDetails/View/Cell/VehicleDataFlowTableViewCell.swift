@@ -45,11 +45,11 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
         if let min = value.duration.minute {
             miniutes = min
         }
+        startTimeLbl.text = value.startTime
         if value.vehicleMode == "M" {
             spdTimeImageView.image = UIImage.init(named: "speed_16")
             modeImageView.image = UIImage.init(named: "carMove")
             KMLbl.text = value.distance + " km"
-            startTimeLbl.text = value.startTime
             if hours == 0 {
                 durationLbl.text = String(miniutes) + " mins"
             } else {

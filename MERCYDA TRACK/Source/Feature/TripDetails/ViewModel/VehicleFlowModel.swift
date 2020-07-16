@@ -106,20 +106,20 @@ extension VehicleFlow {
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                 //                print("Total Distanec ", totalDistanceFromPacket)
             }
-            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!, place: "")
+            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!, place: "")
             tripDetails.append(trip)
             totalDistance = totalDistance + totalDistanceFromPacket
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
-//        for (index, item) in processedResult.enumerated() {
-//            if item.vehicleMode != "M" {
-//                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
-//                    self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
-//                }
-//            }
-//        }
+        for (index, item) in processedResult.enumerated() {
+            if item.vehicleMode != "M" {
+                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
+                    self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+                }
+            }
+        }
     }
     
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
@@ -196,7 +196,7 @@ extension VehicleFlow {
     }
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: "1594837860000", endTime: "1594924140000") { [weak self] (state) in
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
             }
