@@ -27,7 +27,7 @@ class Dispatcher {
                 case .success(response: let response as LocationDetailsResponse):
                     block("\(response.display_name ?? "")")
                 default:
-                    printLog("")
+                    printLog("api failure")
                     block("")
                 }
             }
