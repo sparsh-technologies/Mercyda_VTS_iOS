@@ -12,7 +12,7 @@ import MBProgressHUD
 /// Protocol
 protocol VehicleFlowControllerDelegate: class {
     func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double)
-    
+    func reloadData()
 }
 class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var totalDistLbl: UILabel!
@@ -47,7 +47,7 @@ class VehicleFlowViewController: BaseViewController {
             MBProgressHUD.hide(for: this.view, animated: false)
             switch result {
             case .success(_):
-                this.APItimer = Timer.scheduledTimer(timeInterval: 15, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+                this.APItimer = Timer.scheduledTimer(timeInterval: 60, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
                 print("")
             case .failure(let error):
                 statusBarMessage(.CustomError, error)
@@ -74,6 +74,11 @@ class VehicleFlowViewController: BaseViewController {
 }
 
 extension VehicleFlowViewController: VehicleFlowControllerDelegate {
+    func reloadData() {
+        tableViewOutlet.invalidateIntrinsicContentSize()
+        tableViewOutlet.reloadData()
+    }
+    
     func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double) {
         tableViewOutlet.reloadData()
         minSpdLbl.text = String(minSpd.truncate(places: 2)) + " km/hr"

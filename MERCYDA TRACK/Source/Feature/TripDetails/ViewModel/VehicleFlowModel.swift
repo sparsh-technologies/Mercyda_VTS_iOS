@@ -11,6 +11,8 @@ import CoreLocation
 
 final class VehicleFlow  {
     
+    typealias placeNameIndex = (name: String, index: Int)
+    
     // MARK: - Properties
     private let networkServiceCalls = NetworkServiceCalls()
     private let placesCallAPI = PlacesAPI()
@@ -20,7 +22,8 @@ final class VehicleFlow  {
     private var minSpeed = Double()
     private var maxSpeed = Double()
     weak var delegate: VehicleFlowControllerDelegate?
-    private var placesArray: [LocationDetailsResponse] = []
+    private var placesArray: [placeNameIndex] = []
+    private var dispatcher: Dispatcher?
     
 }
 extension VehicleFlow {
@@ -103,13 +106,20 @@ extension VehicleFlow {
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                 //                print("Total Distanec ", totalDistanceFromPacket)
             }
-            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.last?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!, place: "")
+            let trip = TripDetailsModel.init(mode: mode, distance: String(totalDistanceFromPacket.truncate(places: 2)), startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)), avrgSpeed: String(averageSpeed / eachPacket.count), duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)), lat: Double(eachPacket.last?.latitude ?? "0")!, long: Double(eachPacket.last?.longitude ?? "0")!, place: "")
             tripDetails.append(trip)
             totalDistance = totalDistance + totalDistanceFromPacket
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
+        for (index, item) in processedResult.enumerated() {
+            if item.vehicleMode != "M" {
+                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
+                    self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+                }
+            }
+        }
     }
     
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
@@ -224,29 +234,21 @@ extension VehicleFlow {
         return ""
     }
     
-    func getPlace() {
-        
-        let group = DispatchGroup()
-        
-        for item in 0..<processedResult.count {
-            let obj = processedResult[item]
-            delay(durationInSeconds: 1.5, completion: {
-                group.enter()
-                self.placesCallAPI.getPlaceName(coordinates: (lat: obj.latitude, lon: obj.longitude)) { (value) in
-                    
-                    switch value {
-                    case .success(let result):
-                        self.placesArray.append(result)
-                    case .failure(let error):
-                        printLog(error)
-                    }
-                    group.leave()
-                }
-                
-            })
+    
+    func getLocationDetails(locationCoordinates: Latlon, count: Int) {
+        defer {
+            self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
+                self.placesArray.append((name: cityAddress, index: count))
+                self.processedResult[count].placeName = cityAddress
+                self.delegate?.reloadData()
+                printLog("\(cityAddress) count:  \(count) \n")
+                self.dispatcher = nil
+            }
         }
-        group.notify(queue: .main) {
-            print("Finished all requests.")
+        guard self.dispatcher != nil else {
+            self.dispatcher = Dispatcher()
+            return
         }
     }
+
 }
