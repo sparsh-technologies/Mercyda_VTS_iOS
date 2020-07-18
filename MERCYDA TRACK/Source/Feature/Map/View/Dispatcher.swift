@@ -17,6 +17,7 @@ class Dispatcher {
     
     func getLocationDetails(locationCoordinates: Latlon, block: @escaping (_ cityAddress: String) -> Void) {
         //dispatchTask?.cancel()
+        
         let task = DispatchWorkItem { [weak self] in
             guard let this = self else {
                 return
@@ -25,11 +26,9 @@ class Dispatcher {
                 switch result {
                 case .success(response: let response as LocationDetailsResponse):
                     block("\(response.display_name ?? "")")
-//                case .failure(error: let error):
-//                    statusBarMessage(.CustomError, error)
                 default:
-                    print("")
-//                    statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
+                    printLog("")
+                    block("")
                 }
             }
         }
