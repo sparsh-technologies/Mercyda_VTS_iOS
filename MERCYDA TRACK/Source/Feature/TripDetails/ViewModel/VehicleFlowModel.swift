@@ -24,6 +24,7 @@ final class VehicleFlow  {
     weak var delegate: VehicleFlowControllerDelegate?
     private var placesArray: [placeNameIndex] = []
     private var dispatcher: Dispatcher?
+    let dispatchGroup = DispatchGroup()
     
 }
 extension VehicleFlow {
@@ -112,14 +113,16 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
-       restorePlacesName()
+        restorePlacesName()
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
         for (index, item) in processedResult.enumerated() {
             if item.vehicleMode != "M" {
-//                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
-                    self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
-//                }
+                self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
             }
+        }
+        dispatchGroup.notify(queue: .main) {
+            printLog("Dispatch works completed")
+            self.dispatcher = nil
         }
     }
    
@@ -238,12 +241,13 @@ extension VehicleFlow {
     
     func getLocationDetails(locationCoordinates: Latlon, count: Int) {
         defer {
+            dispatchGroup.enter()
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
                 self.placesArray.append((name: cityAddress, index: count))
                 self.processedResult[count].placeName = cityAddress
                 self.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
-//                self.dispatcher = nil
+                self.dispatchGroup.leave()
             }
         }
         guard self.dispatcher != nil else {
