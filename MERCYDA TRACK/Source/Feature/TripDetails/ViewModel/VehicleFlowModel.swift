@@ -125,7 +125,7 @@ extension VehicleFlow {
             self.dispatcher = nil
         }
     }
-   
+    
     func calculateDistanceFormCoordinates(packet1Lat: Double, packet2Lat: Double, packet1Lon: Double, packet2Lon: Double) -> Double {
         //        Previous Location
         let prevlocation = CLLocation(latitude: packet1Lat, longitude: packet1Lon)
@@ -216,6 +216,7 @@ extension VehicleFlow {
             }
         }
     }
+    
     func getTimeStampForAPI(flag: Int) -> String {
         
         let startDateFormatter = DateFormatter()
@@ -239,6 +240,36 @@ extension VehicleFlow {
     }
     
     
+    func getDetailsForSpecficDate(serialNo: String, date: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
+        processedResult.removeAll()
+        placesArray.removeAll()
+        let startDateType = "00:01:00 " + date
+        let endDateType = "23:59:00 " + date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
+        let start = dateFormatter.date(from: startDateType)
+        dateFormatter.dateFormat = "HH:mm:ss yyyy-MM-dd"
+        let end = dateFormatter.date(from: endDateType)
+        let startDate = start!.timeIntervalSince1970 * 1000
+        let endDate = end!.timeIntervalSince1970 * 1000
+        
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
+            guard let this = self else {
+                return
+            }
+            switch state {
+            case .success(let result as [DeviceDataResponse]):
+                this.performFiltering(packets: result)
+            case .failure(let error):
+                printLog(error)
+            default:
+                completion(.failure(AppSpecificError.unknownError.rawValue))
+            }
+        }
+        
+    }
+    
+    
     func getLocationDetails(locationCoordinates: Latlon, count: Int) {
         defer {
             dispatchGroup.enter()
@@ -256,9 +287,9 @@ extension VehicleFlow {
         }
     }
     func restorePlacesName() {
-           for item in placesArray.enumerated() {
-               processedResult[item.element.index].placeName = item.element.name
-           }
-           self.delegate?.reloadData()
-       }
+        for item in placesArray.enumerated() {
+            processedResult[item.element.index].placeName = item.element.name
+        }
+        self.delegate?.reloadData()
+    }
 }

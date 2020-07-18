@@ -15,15 +15,21 @@ protocol VehicleFlowControllerDelegate: class {
     func reloadData()
 }
 class VehicleFlowViewController: BaseViewController {
-    @IBOutlet weak var totalDistLbl: UILabel!
+    @IBOutlet weak var pickerContainView: UIView!
     
-    @IBOutlet weak var maxSpdLbl: UILabel!
-    @IBOutlet weak var minSpdLbl: UILabel!
-    @IBOutlet weak var tableViewOutlet: UITableView!
+    @IBOutlet  weak var pickerView: UIView!
+    @IBOutlet  weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var totalDistLbl: UILabel!
+    @IBOutlet  weak var PickerCancelBtn: UIButton!
+    @IBOutlet  weak var pickerDoneBtn: UIButton!
+    @IBOutlet  weak var pickerBtn: UIButton!
+    @IBOutlet private weak var maxSpdLbl: UILabel!
+    @IBOutlet private weak var minSpdLbl: UILabel!
+    @IBOutlet  private weak var tableViewOutlet: UITableView!
+    @IBOutlet private weak var vehicleContainerView: UIView!
     var vehicleFlowViewModel = VehicleFlow()
     var serialNumber = String()
     var APItimer: Timer?
-    @IBOutlet weak var vehicleContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,7 @@ class VehicleFlowViewController: BaseViewController {
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
         vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        showDatePicker()
     }
     
     override func viewWillLayoutSubviews() {
@@ -41,6 +48,10 @@ class VehicleFlowViewController: BaseViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         APItimer?.invalidate()
+    }
+    
+    @IBAction func pickerBtnAction(_ sender: Any) {
+        pickerView.isHidden = false
     }
     
     func getDeviceDetails()  {
