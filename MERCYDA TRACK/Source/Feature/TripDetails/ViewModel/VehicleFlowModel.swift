@@ -15,7 +15,6 @@ final class VehicleFlow  {
     
     // MARK: - Properties
     private let networkServiceCalls = NetworkServiceCalls()
-    private let placesCallAPI = PlacesAPI()
     private var packetsFiltered: [[DeviceDataResponse]] = []
     private var processedResult: [TripDetailsModel] = []
     private var totalDistance = Double()
@@ -23,8 +22,8 @@ final class VehicleFlow  {
     private var maxSpeed = Double()
     weak var delegate: VehicleFlowControllerDelegate?
     private var placesArray: [placeNameIndex] = []
-    private var dispatcher: Dispatcher?
-    let dispatchGroup = DispatchGroup()
+    var dispatcher: Dispatcher?
+    var dispatchGroup: DispatchGroup?
     
 }
 extension VehicleFlow {
@@ -113,14 +112,17 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
-        restorePlacesName()
+       // restorePlacesName()
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
+        if self.dispatchGroup == nil {
+            self.dispatchGroup = DispatchGroup()
+        }
         for (index, item) in processedResult.enumerated() {
             if item.vehicleMode != "M" {
                 self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
             }
         }
-        dispatchGroup.notify(queue: .main) {
+        dispatchGroup?.notify(queue: .main) {
             printLog("Dispatch works completed")
             self.dispatcher = nil
         }
@@ -240,10 +242,9 @@ extension VehicleFlow {
     }
     
     
-    func getDetailsForSpecficDate(serialNo: String, date: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        processedResult.removeAll()
-        placesArray.removeAll()
-        dispatcher = nil
+    func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping () -> Void) {
+        self.dispatcher = nil
+        self.dispatchGroup = nil
         let startDateType = "00:01:00 " + date
         let endDateType = "23:59:00 " + date
         let dateFormatter = DateFormatter()
@@ -255,31 +256,30 @@ extension VehicleFlow {
         let endDate = end!.timeIntervalSince1970 * 1000
         
         self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
-            guard let this = self else {
-                return
-            }
+            completion()
             switch state {
             case .success(let result as [DeviceDataResponse]):
-                this.performFiltering(packets: result)
+                self?.placesArray.removeAll()
+                self?.performFiltering(packets: result)
             case .failure(let error):
                 printLog(error)
             default:
-                completion(.failure(AppSpecificError.unknownError.rawValue))
+                printLog(AppSpecificError.unknownError.rawValue)
             }
+            
         }
-        
     }
     
     
     func getLocationDetails(locationCoordinates: Latlon, count: Int) {
         defer {
-            dispatchGroup.enter()
-            self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
-                self.placesArray.append((name: cityAddress, index: count))
-                self.processedResult[count].placeName = cityAddress
-                self.delegate?.reloadData()
+            dispatchGroup?.enter()
+            self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
+                self?.placesArray.append((name: cityAddress, index: count))
+                self?.processedResult[count].placeName = cityAddress
+                self?.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
-                self.dispatchGroup.leave()
+                self?.dispatchGroup?.leave()
             }
         }
         guard self.dispatcher != nil else {

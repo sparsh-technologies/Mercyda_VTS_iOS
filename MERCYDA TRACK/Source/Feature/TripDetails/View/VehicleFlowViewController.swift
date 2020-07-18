@@ -28,16 +28,16 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet private weak var minSpdLbl: UILabel!
     @IBOutlet  private weak var tableViewOutlet: UITableView!
     @IBOutlet private weak var vehicleContainerView: UIView!
-    var vehicleFlowViewModel = VehicleFlow()
+    var vehicleFlowViewModel : VehicleFlow?
     var serialNumber = String()
     var APItimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        vehicleFlowViewModel = VehicleFlow()
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
-        vehicleFlowViewModel.delegate = self
+        vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
         vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
@@ -49,7 +49,13 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         APItimer?.invalidate()
+        APItimer = nil
+        self.vehicleFlowViewModel?.dispatcher = nil
+        self.vehicleFlowViewModel?.dispatchGroup = nil
+        self.vehicleFlowViewModel = nil
+        
     }
     
     @IBAction func pickerBtnAction(_ sender: Any) {
@@ -58,7 +64,7 @@ final class VehicleFlowViewController: BaseViewController {
     
     func getDeviceDetails()  {
         MBProgressHUD.showAdded(to: view, animated: true)
-        vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
+        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
                 return
             }
@@ -75,10 +81,10 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     @objc   func getDeviceDetailsWithOutActivityInd()  {
-        vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) {(_) in}}
+        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) {(_) in}}
     
     deinit {
-        
+        printLog("ViewController Released from memory : VehicleFlowViewController")
     }
     /*
      // MARK: - Navigation

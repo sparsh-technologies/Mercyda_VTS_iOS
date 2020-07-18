@@ -20,15 +20,13 @@ extension VehicleFlowViewController {
     
     @objc func donedatePicker(){
         pickerView.isHidden = true
+        APItimer?.invalidate()
         APItimer = nil
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         pickerBtn.titleLabel?.text = formatter.string(from: datePicker.date)
         MBProgressHUD.showAdded(to: view, animated: true)
-        vehicleFlowViewModel.getDetailsForSpecficDate(serialNo: serialNumber, date: formatter.string(from: datePicker.date)) { [weak self] (result) in
-            guard let self = self else {
-                return
-            }
+        vehicleFlowViewModel?.getDetailsForSpecficDate(serialNo: serialNumber, date: formatter.string(from: datePicker.date)) {
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
