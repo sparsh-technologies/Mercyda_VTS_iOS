@@ -32,12 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          if let userInfo = UserLoginInfo.getUserInfo(){
             
             if userInfo.isLoggedIn == true{
-            let navigation = UINavigationController()
             let dashBoardStoryboard = UIStoryboard(name:StoryboardName.Dashboard.rawValue, bundle: nil)
             let startupVC = dashBoardStoryboard.instantiateViewController(withIdentifier:StoryboardID.DashboardId.rawValue)
-            navigation.setViewControllers([startupVC], animated: true)
-            self.window?.rootViewController = navigation
-            self.window?.makeKeyAndVisible()
+            let navigationController = UINavigationController(rootViewController: startupVC)
+            navigationController.setViewControllers([startupVC], animated: true)
+            UIApplication.shared.windows.first?.rootViewController = navigationController
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
             }else{
                 let loginStoryboard = UIStoryboard(name:StoryboardName.Login.rawValue, bundle: nil)
                 let startupVC = loginStoryboard.instantiateViewController(withIdentifier:StoryboardID.LoginStoryBoardId.rawValue)
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+        // 
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 

@@ -23,6 +23,7 @@ class VehicleFlowViewController: BaseViewController {
     var vehicleFlowViewModel = VehicleFlow()
     var serialNumber = String()
     var APItimer: Timer?
+    @IBOutlet weak var vehicleContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,11 @@ class VehicleFlowViewController: BaseViewController {
         vehicleFlowViewModel.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
-        
+        vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        vehicleContainerView.roundCorners(.allCorners, radius: 15)
     }
     override func viewWillDisappear(_ animated: Bool) {
         APItimer?.invalidate()

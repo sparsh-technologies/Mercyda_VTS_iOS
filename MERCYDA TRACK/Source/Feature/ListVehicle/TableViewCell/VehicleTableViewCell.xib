@@ -189,6 +189,6 @@
         <image name="Gps" width="32" height="32"/>
         <image name="clock" width="32" height="32"/>
         <image name="locationMarker" width="32" height="32"/>
-        <image name="signal" width="26.5" height="26.5"/>
+        <image name="signal" width="27" height="19.5"/>
     </resources>
 </document>
