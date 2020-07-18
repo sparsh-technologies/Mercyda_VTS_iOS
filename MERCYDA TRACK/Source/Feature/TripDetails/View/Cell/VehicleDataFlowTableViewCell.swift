@@ -32,10 +32,10 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func updateUI(value: TripDetailsModel) {
+        modeView.addBorder(color: UIColor.black, borderwidth: 1)
         modeView.layer.cornerRadius = modeView.frame.height/2
-        modeView.layer.borderWidth = 1
-        modeView.layer.borderColor = UIColor.black.cgColor
         modeView.backgroundColor = UIColor.white
+        modeView.addShadow(customView: modeView)
         var hours = Int()
         var miniutes = Int()
         

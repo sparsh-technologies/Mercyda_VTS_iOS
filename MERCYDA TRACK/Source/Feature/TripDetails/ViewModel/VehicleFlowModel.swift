@@ -116,9 +116,9 @@ extension VehicleFlow {
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
         for (index, item) in processedResult.enumerated() {
             if item.vehicleMode != "M" {
-                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
+//                Timer.scheduledTimer(withTimeInterval: Double(index - 1), repeats: false) { (val) in
                     self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
-                }
+//                }
             }
         }
     }
@@ -243,7 +243,7 @@ extension VehicleFlow {
                 self.processedResult[count].placeName = cityAddress
                 self.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
-                self.dispatcher = nil
+//                self.dispatcher = nil
             }
         }
         guard self.dispatcher != nil else {
