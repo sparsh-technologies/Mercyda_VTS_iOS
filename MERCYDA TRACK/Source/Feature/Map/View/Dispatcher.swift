@@ -25,16 +25,17 @@ class Dispatcher {
                 switch result {
                 case .success(response: let response as LocationDetailsResponse):
                     block("\(response.display_name ?? "")")
-                case .failure(error: let error):
-                    statusBarMessage(.CustomError, error)
+//                case .failure(error: let error):
+//                    statusBarMessage(.CustomError, error)
                 default:
-                    statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
+                    print("")
+//                    statusBarMessage(.CustomError, AppSpecificError.unknownError.rawValue)
                 }
             }
         }
         self.dispatchTask = task
         queue.asyncAfter(deadline: time, execute: task)
-        time = time + 1.5
+        time = time + 1
     }
     
 }
