@@ -243,6 +243,7 @@ extension VehicleFlow {
     func getDetailsForSpecficDate(serialNo: String, date: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
         processedResult.removeAll()
         placesArray.removeAll()
+        dispatcher = nil
         let startDateType = "00:01:00 " + date
         let endDateType = "23:59:00 " + date
         let dateFormatter = DateFormatter()

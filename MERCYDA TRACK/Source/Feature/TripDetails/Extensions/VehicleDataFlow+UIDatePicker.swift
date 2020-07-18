@@ -10,6 +10,7 @@ extension VehicleFlowViewController {
     
     func showDatePicker(){
         //Formate Date
+        pickerView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         pickerView.isHidden = true
         PickerCancelBtn.addTarget(self, action: #selector(cancelDatePicker), for: .touchUpInside)
         pickerDoneBtn.addTarget(self, action: #selector(donedatePicker), for: .touchUpInside)

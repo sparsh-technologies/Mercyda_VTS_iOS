@@ -14,9 +14,10 @@ protocol VehicleFlowControllerDelegate: class {
     func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double)
     func reloadData()
 }
-class VehicleFlowViewController: BaseViewController {
-    @IBOutlet weak var pickerContainView: UIView!
+
+final class VehicleFlowViewController: BaseViewController {
     
+    @IBOutlet weak var pickerContainView: UIView!
     @IBOutlet  weak var pickerView: UIView!
     @IBOutlet  weak var datePicker: UIDatePicker!
     @IBOutlet private weak var totalDistLbl: UILabel!
@@ -46,6 +47,7 @@ class VehicleFlowViewController: BaseViewController {
     override func viewWillLayoutSubviews() {
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         APItimer?.invalidate()
     }
@@ -71,6 +73,7 @@ class VehicleFlowViewController: BaseViewController {
             }
         }
     }
+    
     @objc   func getDeviceDetailsWithOutActivityInd()  {
         vehicleFlowViewModel.getDeviceData(serialNO: serialNumber) {(_) in}}
     
@@ -90,6 +93,7 @@ class VehicleFlowViewController: BaseViewController {
 }
 
 extension VehicleFlowViewController: VehicleFlowControllerDelegate {
+    
     func reloadData() {
         tableViewOutlet.invalidateIntrinsicContentSize()
         tableViewOutlet.reloadData()

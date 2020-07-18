@@ -273,7 +273,7 @@
                                     <constraint firstAttribute="trailing" secondItem="b0d-v7-s3e" secondAttribute="trailing" id="xjG-YZ-eGt"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QS-fQ-B3R">
@@ -358,7 +358,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="f8q-Dk-w5S"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LEL-Pm-emZ">
-                            <rect key="frame" x="177" y="7" width="115" height="30"/>
+                            <rect key="frame" x="149.5" y="7" width="115" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <connections>
