@@ -551,7 +551,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="271"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="yZ9-LY-Tex">
-                                                        <rect key="frame" x="78.666666666666686" y="117" width="256.66666666666674" height="114"/>
+                                                        <rect key="frame" x="78.666666666666657" y="117" width="256.66666666666674" height="114"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="yZ9-LY-Tex" secondAttribute="height" multiplier="160:71" id="uQa-ix-3zW"/>
                                                         </constraints>

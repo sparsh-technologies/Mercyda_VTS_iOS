@@ -155,13 +155,13 @@
                                                 <rect key="frame" x="10" y="8.5" width="144" height="138.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Lorry" translatesAutoresizingMaskIntoConstraints="NO" id="u08-j9-Vyb">
-                                                        <rect key="frame" x="5" y="10" width="133.5" height="88.5"/>
+                                                        <rect key="frame" x="-6" y="10" width="156" height="103.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="u08-j9-Vyb" secondAttribute="height" multiplier="62:41" id="G4O-dv-sno"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KL051954" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je7-CF-BWO">
-                                                        <rect key="frame" x="30.5" y="108.5" width="83" height="15"/>
+                                                        <rect key="frame" x="30.5" y="123.5" width="83" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>

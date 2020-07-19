@@ -112,7 +112,7 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
-       // restorePlacesName()
+        // restorePlacesName()
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
         if self.dispatchGroup == nil {
             self.dispatchGroup = DispatchGroup()
@@ -242,7 +242,7 @@ extension VehicleFlow {
     }
     
     
-    func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping () -> Void) {
+    func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
         self.dispatcher = nil
         self.dispatchGroup = nil
         let startDateType = "00:01:00 " + date
@@ -256,16 +256,16 @@ extension VehicleFlow {
         let endDate = end!.timeIntervalSince1970 * 1000
         
         self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
-            completion()
             switch state {
             case .success(let result as [DeviceDataResponse]):
                 self?.placesArray.removeAll()
                 self?.performFiltering(packets: result)
+                completion(.success(result))
             case .failure(let error):
+                completion(.failure(error))
                 self?.processedResult.removeAll()
                 self?.placesArray.removeAll()
                 self?.delegate?.reloadData()
-                printLog(error)
             default:
                 printLog(AppSpecificError.unknownError.rawValue)
             }
