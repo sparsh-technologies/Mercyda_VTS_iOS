@@ -45,13 +45,14 @@ final class VehicleFlowViewController: BaseViewController {
         super.viewDidLoad()
         vehicleFlowViewModel = VehicleFlow()
         // Do any additional setup after loading the view.
+        serialNumber = vehicleObj?.last_updated_data?.serial_no ?? ""
         self.navigationController?.navigationBar.isHidden = false
         vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
        // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
-         setuiDatas()
+        setuiDatas()
         
     }
     
@@ -116,7 +117,7 @@ final class VehicleFlowViewController: BaseViewController {
     
     func getDeviceDetails()  {
         MBProgressHUD.showAdded(to: view, animated: true)
-        vehicleFlowViewModel?.getDeviceData(serialNO: (vehicleObj?.last_updated_data?.serial_no)!) { [weak self] (result) in
+        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
                 return
             }
