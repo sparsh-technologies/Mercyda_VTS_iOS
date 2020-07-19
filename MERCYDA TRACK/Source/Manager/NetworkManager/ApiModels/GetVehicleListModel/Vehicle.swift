@@ -38,7 +38,8 @@ struct Vehicle : Codable {
     let distributor : String?
     let emergency_alert_count : Int?
     let password : String?
-    let address : String?
+    var address : String?
+    var address2 : String?
     let use_infinimap_api : Bool?
 
 	enum CodingKeys: String, CodingKey {

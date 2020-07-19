@@ -87,8 +87,10 @@ extension ListVehicleTableDataModal: ListVehicleTableViewModel {
             guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "VehicleTableViewCell", for: indexPath) as? VehicleTableViewCell else {
                 return UITableViewCell()
             }
-            printLog(vehiclesArray.count)
+           
             vehicleCell.setVehicleData(vehicle:vehiclesArray[indexPath.row])
+            vehicleCell.layoutSubviews()
+          
             return vehicleCell
         }
     }
@@ -107,4 +109,9 @@ enum VehicleMode :String{
     case Moving = "M"
     case Sleep = "S"
     case Idle = "H"
+}
+
+enum IgnitionType:String{
+    case OFF = "OFF"
+    case ON = "ON"
 }

@@ -30,8 +30,16 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet private weak var vehicleContainerView: UIView!
     var vehicleFlowViewModel : VehicleFlow?
     var serialNumber = String()
+    var vehicleObj:Vehicle?
     var APItimer: Timer?
     var flagForDateTitle = true
+    @IBOutlet weak var vehicleImageview: UIImageView!
+    @IBOutlet weak var vehicleNumber: UILabel!
+    @IBOutlet weak var signalImageView: UIImageView!
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var ignitionImageView: UIImageView!
+    @IBOutlet weak var isActiveImageView: UIImageView!
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +49,9 @@ final class VehicleFlowViewController: BaseViewController {
         vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
-        vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+       // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
+         setuiDatas()
         
     }
     
@@ -63,13 +72,51 @@ final class VehicleFlowViewController: BaseViewController {
         
     }
     
+    func setuiDatas(){
+        self.vehicleNumber.text = vehicleObj?.vehicle_registration
+        self.addressLabel.text = vehicleObj?.address2
+        if let speed =  vehicleObj?.last_updated_data?.speed{
+            if speed > 0{
+                speedLabel.text = "\(speed)"
+                
+            }
+        }
+        if let signalStrength = vehicleObj?.last_updated_data?.gsm_signal_strength{
+                 setSignalStrength(signalStrength: signalStrength)
+            
+        }
+        
+        if let activeStatus = vehicleObj?.last_updated_data?.valid_status{
+            if activeStatus{
+                isActiveImageView.image = UIImage.init(named:"dishActive")
+            }
+            else{
+                isActiveImageView.image = UIImage.init(named:"dishInactive")
+            }
+        }
+        
+        if let igngitionStatus = vehicleObj?.last_updated_data?.ignition{
+        setIgnition(status:igngitionStatus)
+        }
+        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+                   setVehicleMode(mode:vehicleMode)
+               }
+        getVehicleType(type:(vehicleObj?.vehicle_type!)!)
+        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+                   setVehicleMode(mode:vehicleMode)
+               }
+    }
+    
+    
+    
+    
     @IBAction func pickerBtnAction(_ sender: Any) {
         pickerView.isHidden = false
     }
     
     func getDeviceDetails()  {
         MBProgressHUD.showAdded(to: view, animated: true)
-        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
+        vehicleFlowViewModel?.getDeviceData(serialNO: (vehicleObj?.last_updated_data?.serial_no)!) { [weak self] (result) in
             guard let this = self else {
                 return
             }
@@ -100,6 +147,59 @@ final class VehicleFlowViewController: BaseViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    func setSignalStrength(signalStrength:Int){
+        if signalStrength > 80 {
+            signalImageView.image = UIImage.init(named: "fullrange")
+        }
+        else if (signalStrength >= 65 && signalStrength <= 79) {
+            signalImageView.image = UIImage.init(named: "range75")
+        }
+        else if  (signalStrength >= 35 && signalStrength <= 64) {
+            signalImageView.image = UIImage.init(named: "range50")
+        }
+       else if  (signalStrength >= 5 && signalStrength <= 34) {
+           signalImageView.image = UIImage.init(named: "range25")
+       }
+        else{
+             signalImageView.image = UIImage.init(named: "rangeInactive")
+        }
+    }
+    func setIgnition(status:String){
+           switch status {
+           case IgnitionType.ON.rawValue:
+               ignitionImageView.image = UIImage.init(named:"ignition")
+           case IgnitionType.OFF.rawValue:
+               ignitionImageView.image = UIImage.init(named:"ignitionoff")
+           default:
+                ignitionImageView.image = UIImage.init(named:"ignition")
+           }
+       }
+    
+    func getVehicleType(type:String){
+        switch type{
+        case VehicleModel.Lorry.rawValue:
+        self.vehicleImageview.image = UIImage.init(named:"Lorry")
+        case VehicleModel.MiniTruck.rawValue:
+        self.vehicleImageview.image = UIImage.init(named: "minilorry")
+        case VehicleModel.Car.rawValue:
+        self.vehicleImageview.image = UIImage.init(named: "car")
+        default:
+        self.vehicleImageview.image = UIImage.init(named:"Lorry")
+        }
+    }
+    
+    func setVehicleMode(mode:String){
+          switch mode{
+           case VehicleMode.Moving.rawValue:
+               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+           case VehicleMode.Sleep.rawValue:
+               self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+           case VehicleMode.Idle.rawValue:
+               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+           default:
+               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+           }
+       }
     
 }
 
@@ -117,3 +217,4 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
     }
 }
+  
