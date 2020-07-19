@@ -31,6 +31,7 @@ final class VehicleFlowViewController: BaseViewController {
     var vehicleFlowViewModel : VehicleFlow?
     var serialNumber = String()
     var APItimer: Timer?
+    var flagForDateTitle = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +43,14 @@ final class VehicleFlowViewController: BaseViewController {
         getDeviceDetails()
         vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
+        
     }
     
     override func viewWillLayoutSubviews() {
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
+        if flagForDateTitle {
+            pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: Date())
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

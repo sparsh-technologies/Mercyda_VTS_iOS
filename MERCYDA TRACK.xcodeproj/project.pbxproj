@@ -89,9 +89,9 @@
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		52B7E54E24BA003700A9881C /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
 		52B7E54F24BA003800A9881C /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
-		52B7E55224BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */; };
-		52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */; };
-		52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */; };
+		52B7E55224BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */; };
+		52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */; };
+		52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */; };
 		52B7E55824BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */; };
 		52B7E55924BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */; };
 		52B7E55A24BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */; };
@@ -292,7 +292,7 @@
 		52546D6724BF57B40047C6DB /* PlacesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAPI.swift; sourceTree = "<group>"; };
 		5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlow+UIDatePicker.swift"; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+Extensions.swift"; sourceTree = "<group>"; };
+		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+UITableView.swift"; sourceTree = "<group>"; };
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
 		52B7E55724BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleDataFlowTableViewCell.xib; sourceTree = "<group>"; };
 		52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
@@ -621,7 +621,7 @@
 		52B7E55024BB3B0E00A9881C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift */,
+				52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */,
 				5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */,
 			);
 			path = Extensions;
@@ -1322,7 +1322,7 @@
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
 				84410DAD24B8F18800E6047D /* VehicleFlowModel.swift in Sources */,
-				52B7E55224BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */,
+				52B7E55224BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */,
 				8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */,
 				84E3E53924AD0A0E004CC622 /* Constants.swift in Sources */,
 				522A141424B05B8D0009DBC3 /* ErrorType.swift in Sources */,
@@ -1422,7 +1422,7 @@
 				52457DBF24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52B7E54E24BA003700A9881C /* VehicleFlowModel.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
-				52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */,
+				52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */,
 				C627F12624BFA5100026F1E7 /* Dispatcher.swift in Sources */,
 				C6623B0424B203CD003C3519 /* ListDistanceTableViewModel.swift in Sources */,
 				52B7E55924BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,
@@ -1489,7 +1489,7 @@
 				52457DC024AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52B7E54F24BA003800A9881C /* VehicleFlowModel.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
-				52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+Extensions.swift in Sources */,
+				52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */,
 				C627F12724BFA5100026F1E7 /* Dispatcher.swift in Sources */,
 				C6623B0524B203CD003C3519 /* ListDistanceTableViewModel.swift in Sources */,
 				52B7E55A24BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift in Sources */,

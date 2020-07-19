@@ -262,6 +262,9 @@ extension VehicleFlow {
                 self?.placesArray.removeAll()
                 self?.performFiltering(packets: result)
             case .failure(let error):
+                self?.processedResult.removeAll()
+                self?.placesArray.removeAll()
+                self?.delegate?.reloadData()
                 printLog(error)
             default:
                 printLog(AppSpecificError.unknownError.rawValue)
@@ -292,5 +295,11 @@ extension VehicleFlow {
             processedResult[item.element.index].placeName = item.element.name
         }
         self.delegate?.reloadData()
+    }
+    
+    func titleDateForNavBtn(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MMM-yy"
+        return formatter.string(from: date as Date)
     }
 }

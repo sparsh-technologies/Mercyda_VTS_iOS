@@ -15,16 +15,16 @@ extension VehicleFlowViewController {
         PickerCancelBtn.addTarget(self, action: #selector(cancelDatePicker), for: .touchUpInside)
         pickerDoneBtn.addTarget(self, action: #selector(donedatePicker), for: .touchUpInside)
         datePicker.datePickerMode = .date
-
     }
     
     @objc func donedatePicker(){
         pickerView.isHidden = true
+        flagForDateTitle = false
         APItimer?.invalidate()
         APItimer = nil
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        pickerBtn.titleLabel?.text = formatter.string(from: datePicker.date)
+        pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: datePicker.date)
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDetailsForSpecficDate(serialNo: serialNumber, date: formatter.string(from: datePicker.date)) {
             MBProgressHUD.hide(for: self.view, animated: true)

@@ -155,13 +155,13 @@
                                                 <rect key="frame" x="10" y="8.5" width="144" height="138.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Lorry" translatesAutoresizingMaskIntoConstraints="NO" id="u08-j9-Vyb">
-                                                        <rect key="frame" x="-6" y="10" width="156" height="103.5"/>
+                                                        <rect key="frame" x="5" y="10" width="133.5" height="88.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="u08-j9-Vyb" secondAttribute="height" multiplier="62:41" id="G4O-dv-sno"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KL051954" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je7-CF-BWO">
-                                                        <rect key="frame" x="30.5" y="123.5" width="83" height="0.0"/>
+                                                        <rect key="frame" x="30.5" y="108.5" width="83" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -274,10 +274,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QS-fQ-B3R">
-                                        <rect key="frame" x="30" y="242" width="354" height="290"/>
+                                        <rect key="frame" x="30" y="259" width="354" height="290"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Amc-d0-gbF">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="240"/>
@@ -346,8 +346,8 @@
                             <constraint firstItem="OCX-nM-rY7" firstAttribute="top" secondItem="Vhj-Fa-baf" secondAttribute="top" id="Hai-L1-uN6"/>
                             <constraint firstItem="Hy7-VX-9Aa" firstAttribute="leading" secondItem="Xoa-dM-ttr" secondAttribute="leading" id="Iga-cU-nNf"/>
                             <constraint firstItem="Vhj-Fa-baf" firstAttribute="trailing" secondItem="OCX-nM-rY7" secondAttribute="trailing" id="JHD-Qa-EhH"/>
+                            <constraint firstAttribute="bottom" secondItem="Hy7-VX-9Aa" secondAttribute="bottom" id="N1M-rK-9j1"/>
                             <constraint firstAttribute="bottom" secondItem="p0t-aL-aMr" secondAttribute="bottom" id="QC7-Zv-5qz"/>
-                            <constraint firstItem="Vhj-Fa-baf" firstAttribute="bottom" secondItem="Hy7-VX-9Aa" secondAttribute="bottom" id="VqC-Q7-JKQ"/>
                             <constraint firstItem="p0t-aL-aMr" firstAttribute="top" secondItem="OCX-nM-rY7" secondAttribute="bottom" id="cm7-BG-jCL"/>
                             <constraint firstItem="p0t-aL-aMr" firstAttribute="leading" secondItem="Vhj-Fa-baf" secondAttribute="leading" id="hC6-bB-Dva"/>
                             <constraint firstAttribute="trailing" secondItem="Hy7-VX-9Aa" secondAttribute="trailing" id="vjb-92-jX2"/>
@@ -357,10 +357,19 @@
                     <navigationItem key="navigationItem" id="45N-Qm-iEt">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="f8q-Dk-w5S"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LEL-Pm-emZ">
-                            <rect key="frame" x="149.5" y="7" width="115" height="30"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LEL-Pm-emZ">
+                            <rect key="frame" x="157" y="6" width="100" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="20-Mar-20">
+                                <color key="titleColor" name="ThemeBlue"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="pickerBtnAction:" destination="wy4-aQ-K48" eventType="touchUpInside" id="gLj-dZ-um7"/>
                             </connections>
@@ -413,6 +422,9 @@
         <image name="max_speed" width="9" height="9"/>
         <image name="min_speed" width="9" height="9"/>
         <image name="signal" width="27" height="19.5"/>
+        <namedColor name="ThemeBlue">
+            <color red="0.0078431372549019607" green="0.6588235294117647" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TripDetailLightBlue">
             <color red="0.87699997425079346" green="0.93300002813339233" blue="0.96799999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
