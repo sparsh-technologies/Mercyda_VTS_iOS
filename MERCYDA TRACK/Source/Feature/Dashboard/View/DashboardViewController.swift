@@ -21,6 +21,7 @@ class DashboardViewController: BaseViewController {
     @IBOutlet private weak var reportsLbl: UILabel!
     @IBOutlet private weak var offlineLbl: UILabel!
     @IBOutlet private weak var bottomBannerLbl: UILabel!
+    let vehicleList = [Vehicle]()
     
     /// Menu Button Notification Label
     @IBOutlet weak var offlineNotifiLbl: UILabel!
@@ -117,7 +118,7 @@ class DashboardViewController: BaseViewController {
     func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
         let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
-        vc.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehiclelist))
+        vc.vehiclelist = vehiclelist
         self.navigationController?.pushViewController(vc, animated: true)
         }
         

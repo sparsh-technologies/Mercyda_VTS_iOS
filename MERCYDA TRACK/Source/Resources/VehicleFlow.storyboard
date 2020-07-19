@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -155,13 +155,10 @@
                                                 <rect key="frame" x="10" y="8.5" width="144" height="138.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Lorry" translatesAutoresizingMaskIntoConstraints="NO" id="u08-j9-Vyb">
-                                                        <rect key="frame" x="-6" y="10" width="156" height="103.5"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="u08-j9-Vyb" secondAttribute="height" multiplier="62:41" id="G4O-dv-sno"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="5" y="0.0" width="134" height="113.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KL051954" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je7-CF-BWO">
-                                                        <rect key="frame" x="30.5" y="123.5" width="83" height="0.0"/>
+                                                        <rect key="frame" x="30.5" y="103" width="83" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -169,12 +166,14 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="je7-CF-BWO" firstAttribute="top" secondItem="u08-j9-Vyb" secondAttribute="bottom" constant="10" id="3hL-QA-mIu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="u08-j9-Vyb" secondAttribute="trailing" constant="5" id="458-qr-Coj"/>
                                                     <constraint firstItem="u08-j9-Vyb" firstAttribute="centerX" secondItem="WjJ-AL-UyO" secondAttribute="centerX" id="4mA-Sr-Kwj"/>
                                                     <constraint firstItem="je7-CF-BWO" firstAttribute="centerX" secondItem="WjJ-AL-UyO" secondAttribute="centerX" id="6xe-5j-aOy"/>
                                                     <constraint firstAttribute="width" secondItem="WjJ-AL-UyO" secondAttribute="height" multiplier="1.04" id="U4m-5N-Hun"/>
-                                                    <constraint firstItem="u08-j9-Vyb" firstAttribute="top" secondItem="WjJ-AL-UyO" secondAttribute="top" constant="10" id="bW8-G2-x8g"/>
+                                                    <constraint firstItem="u08-j9-Vyb" firstAttribute="top" secondItem="WjJ-AL-UyO" secondAttribute="top" id="bW8-G2-x8g"/>
+                                                    <constraint firstAttribute="bottom" secondItem="u08-j9-Vyb" secondAttribute="bottom" constant="25" id="ddY-YE-TOR"/>
                                                     <constraint firstAttribute="bottom" secondItem="je7-CF-BWO" secondAttribute="bottom" constant="15" id="fDb-PO-QV6"/>
+                                                    <constraint firstItem="u08-j9-Vyb" firstAttribute="leading" secondItem="WjJ-AL-UyO" secondAttribute="leading" constant="5" id="zpr-MD-kgt"/>
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kmhr" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-RZ-Dr6">
@@ -377,16 +376,23 @@
                     </navigationItem>
                     <connections>
                         <outlet property="PickerCancelBtn" destination="EoK-xj-Ybq" id="O6H-j1-ZlJ"/>
+                        <outlet property="addressLabel" destination="adD-6A-F7x" id="BaQ-wp-DOw"/>
                         <outlet property="datePicker" destination="Amc-d0-gbF" id="dHW-vn-9z0"/>
+                        <outlet property="ignitionImageView" destination="CJS-XH-2a7" id="HXx-dJ-k6X"/>
+                        <outlet property="isActiveImageView" destination="36X-Bz-5cj" id="A9e-M7-4JE"/>
                         <outlet property="maxSpdLbl" destination="BHn-g9-QTf" id="K5a-XP-XLR"/>
                         <outlet property="minSpdLbl" destination="0M3-hu-9Kg" id="fe7-5O-ZE9"/>
                         <outlet property="pickerBtn" destination="LEL-Pm-emZ" id="mkt-Dm-gif"/>
                         <outlet property="pickerContainView" destination="1QS-fQ-B3R" id="M0p-PO-Jrq"/>
                         <outlet property="pickerDoneBtn" destination="anc-RR-SHK" id="L92-WH-Muj"/>
                         <outlet property="pickerView" destination="Hy7-VX-9Aa" id="1ig-Kl-F3l"/>
+                        <outlet property="signalImageView" destination="feV-O6-2d3" id="bMg-Cv-3y7"/>
+                        <outlet property="speedLabel" destination="b4L-c6-Jfl" id="67J-W9-CfS"/>
                         <outlet property="tableViewOutlet" destination="p0t-aL-aMr" id="qCk-NH-sSn"/>
                         <outlet property="totalDistLbl" destination="3pT-rX-nVP" id="zEB-V5-rMo"/>
                         <outlet property="vehicleContainerView" destination="WjJ-AL-UyO" id="qew-Cn-nGI"/>
+                        <outlet property="vehicleImageview" destination="u08-j9-Vyb" id="GW0-k0-TRT"/>
+                        <outlet property="vehicleNumber" destination="je7-CF-BWO" id="sAj-fe-lSX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljs-Kr-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

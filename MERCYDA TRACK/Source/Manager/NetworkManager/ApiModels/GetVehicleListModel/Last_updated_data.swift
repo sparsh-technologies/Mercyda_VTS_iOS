@@ -27,6 +27,13 @@ struct Last_updated_data : Codable {
     let serial_no : String?
     let packet_type : String?
     let valid_status : Bool?
+    var coordinates : Latlon {
+        get {
+            let lat = Double(self.latitude ?? "0000.00000")!
+            let lon = Double(self.longitude ?? "0000.00000")!
+            return (lat,lon)
+        }
+    }
 
 	enum CodingKeys: String, CodingKey {
         case speed = "speed"

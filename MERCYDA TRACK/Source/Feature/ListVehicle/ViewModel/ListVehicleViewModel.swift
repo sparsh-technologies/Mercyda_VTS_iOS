@@ -9,7 +9,11 @@
 import Foundation
 
 
+
 class ListVehicleViewModel{
+    
+    let networkServiceCalls = NetworkServiceCalls()
+    
     
     func searchData(key:String,data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
         printLog("Count:\(data.count)")
@@ -20,3 +24,4 @@ class ListVehicleViewModel{
     }
     
 }
+
