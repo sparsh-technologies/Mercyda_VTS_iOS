@@ -225,7 +225,7 @@ extension VehicleFlow {
         startDateFormatter.dateFormat = "yyyy-MM-dd"
         let now = NSDate()
         let currentYear = startDateFormatter.string(from: now as Date)
-        let dateString = "00:01:00 " + currentYear
+        let dateString = "00:00:00 " + currentYear
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
         let s = dateFormatter.date(from: dateString)
@@ -245,7 +245,7 @@ extension VehicleFlow {
     func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
         self.dispatcher = nil
         self.dispatchGroup = nil
-        let startDateType = "00:01:00 " + date
+        let startDateType = "00:00:00 " + date
         let endDateType = "23:59:00 " + date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
