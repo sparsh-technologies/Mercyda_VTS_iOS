@@ -9,6 +9,7 @@
 import Foundation
 
 struct TripDetailsModel {
+    
     var vehicleMode = String()
     var distance = String()
     var startTime = String()
@@ -17,7 +18,6 @@ struct TripDetailsModel {
     var latitude = Double()
     var longitude = Double()
     var placeName = String()
-    
     
     init(mode: String, distance: String, startTime: String, avrgSpeed: String, duration: DateComponents, lat: Double, long: Double, place: String) {
         self.vehicleMode = mode

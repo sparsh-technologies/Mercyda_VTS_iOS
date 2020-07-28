@@ -143,6 +143,7 @@ extension VehicleFlow {
         
         return distance
     }
+    
     func calculateDistanceFormSpeed(firstPktSpeed: Double, secondPktSpeed: Double, duration: Double) -> Double  {
         if firstPktSpeed == 0 && secondPktSpeed == 0 {
             
@@ -182,6 +183,7 @@ extension VehicleFlow {
         let timeInSeconds = pkt1Duration.timeIntervalSince(pkt2Duration)
         return timeInSeconds
     }
+    
     func durationInEachPacketSet(startDuration: Double, endDuration: Double) -> DateComponents {
         if startDuration == 0 || endDuration == 0 {
             
@@ -290,6 +292,7 @@ extension VehicleFlow {
             return
         }
     }
+    
     func restorePlacesName() {
         for item in placesArray.enumerated() {
             processedResult[item.element.index].placeName = item.element.name
