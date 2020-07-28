@@ -40,7 +40,7 @@ extension MapVC: GMSMapViewDelegate {
     }
     
     func getLocationDetails(mapView: GMSMapView, marker: GMSMarker, device: D) {
-        self.viewModel.networkServiceCalls.getLocationDetails(locationCoordinates: device.coordinates) { (result) in
+        self.viewModel?.networkServiceCalls.getLocationDetails(locationCoordinates: device.coordinates) { (result) in
             switch result {
             case .success(response: let response as LocationDetailsResponse):
                 printLog("success \(response)")

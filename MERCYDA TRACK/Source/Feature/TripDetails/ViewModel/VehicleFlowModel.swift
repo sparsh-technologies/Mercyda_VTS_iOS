@@ -22,6 +22,7 @@ final class VehicleFlow  {
     private var maxSpeed = Double()
     weak var delegate: VehicleFlowControllerDelegate?
     private var placesArray: [placeNameIndex] = []
+    var activePacketList: [D] = []
     var dispatcher: Dispatcher?
     var dispatchGroup: DispatchGroup?
     
@@ -49,10 +50,12 @@ extension VehicleFlow {
     func performFiltering(packets: [DeviceDataResponse])  {
         packetsFiltered.removeAll()
         processedResult.removeAll()
+        activePacketList.removeAll()
         totalDistance = 0
         minSpeed = 0
         maxSpeed = 0
         let gnssFixFilterArray = packets.getActiveDevicePackets()
+        self.activePacketList = gnssFixFilterArray
         let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
         let singleDimensionArray = Array(twoDimArray.joined())
         let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()

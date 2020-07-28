@@ -16,16 +16,18 @@ protocol MapPickerDelegate: class {
 
 class MapVC: UIViewController {
     
-    var viewModel = MapVCViewModel()
+    var viewModel : MapVCViewModel?
     weak var delegateForMapPicker : MapPickerDelegate?
     lazy var mapView : GMSMapView? = GMSMapView()
     var carMarker:GMSMarker = GMSMarker.init(position: CLLocationCoordinate2D())
     var polyLineLocations:[CLLocationCoordinate2D] = []
     var animationPolyline = GMSPolyline()
+    var animationPolylineBase = GMSPolyline()
     var path = GMSPath()
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var timer: Timer!
+
     
     private var dispatcher: Dispatcher?
     
@@ -44,8 +46,8 @@ class MapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addMapView()
-        viewModel.delegate = self
-        viewModel.getDeviceData()
+        viewModel?.delegate = self
+        viewModel?.updateViewController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +56,7 @@ class MapVC: UIViewController {
     
   
     func updateMap(_ locationsArray: [CLLocationCoordinate2D]) {
-        self.focusMapToLocation(loctions: locationsArray, padding: 50.0, duration: 0.55, completionFunction: self.draw_polylines(loctions: self.polyLineLocations))
+        self.focusMapToLocation(loctions: locationsArray, padding: 50.0, duration: 0.55)
     }
     
     func updateParkingMarkers(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [D]) {
@@ -64,7 +66,11 @@ class MapVC: UIViewController {
             marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
             marker.title = deviceArray[index].vehicle_mode
             marker.userData = deviceArray[index]
-            marker.map = mapView
+            marker.appearAnimation = .pop
+            marker.tracksInfoWindowChanges = true
+            UIView.animate(withDuration: 2.1, animations: {
+                marker.map = self.mapView
+            })
         }
     }
     
@@ -87,8 +93,8 @@ class MapVC: UIViewController {
             ])
             self.view.addSubview(closeButton)
             NSLayoutConstraint.activate([
-                closeButton.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor, constant: -5),
-                closeButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 5),
+                closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+                closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
                 closeButton.heightAnchor.constraint(equalToConstant: 35)
             ])
             closeButton.aspectRatio(1.0/1.0).isActive = true
@@ -98,7 +104,7 @@ class MapVC: UIViewController {
     }
     
     
-    func focusMapToLocation(loctions: [CLLocationCoordinate2D], padding: CGFloat = 25, duration: CGFloat = 0.0005, completionFunction : Void? = nil) {
+    func focusMapToLocation(loctions: [CLLocationCoordinate2D], padding: CGFloat = 25, duration: CGFloat = 0.0005, completionFunction : Void? = nil, completionFunction2 : Void? = nil) {
         var bounds = GMSCoordinateBounds()
         for location:CLLocationCoordinate2D in loctions {
             bounds = bounds.includingCoordinate(location)
@@ -106,23 +112,47 @@ class MapVC: UIViewController {
         CATransaction.begin()
         CATransaction.setValue(duration, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock {
-            completionFunction
+            self.draw_polylines(loctions: self.polyLineLocations)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+               self.viewModel?.updateParkingMarkers()
+            }
         }
         mapView?.animate(with: GMSCameraUpdate.fit(bounds, withPadding: padding))
         CATransaction.commit()
     }
     
     
-    func setCarMarkers(position: CLLocationCoordinate2D) {
+    func setCarMarkers(position1: CLLocationCoordinate2D, position2: CLLocationCoordinate2D) {
         carMarker.map = nil
-        let marker:GMSMarker = GMSMarker.init(position: position)
+        let marker:GMSMarker = GMSMarker.init(position: position1)
         marker.icon =  UIImage.init(named: "car_pin")
-        marker.snippet = "Lat \(position.latitude) Lon \(position.longitude)"
+        marker.position = position1
+        marker.groundAnchor = CGPoint.init(x: CGFloat(0.5), y: CGFloat(0.5))
+        marker.rotation = CLLocationDegrees.init(exactly: getHeadingForDirection(fromCoordinate: position1, toCoordinate: position2))!
+        marker.snippet = "Lat \(position1.latitude) Lon \(position1.longitude)"
         marker.title = "User"
         carMarker = marker
+        carMarker.tracksInfoWindowChanges = true
         carMarker.map = mapView
         //marker.userData = position
     }
+    
+    
+    func getHeadingForDirection(fromCoordinate fromLoc: CLLocationCoordinate2D, toCoordinate toLoc: CLLocationCoordinate2D) -> Float {
+        let fLat: Float = Float((fromLoc.latitude).degreesToRadians)
+        let fLng: Float = Float((fromLoc.longitude).degreesToRadians)
+        let tLat: Float = Float((toLoc.latitude).degreesToRadians)
+        let tLng: Float = Float((toLoc.longitude).degreesToRadians)
+        let degree: Float = (atan2(sin(tLng - fLng) * cos(tLat), cos(fLat) * sin(tLat) - sin(fLat) * cos(tLat) * cos(tLng - fLng))).radiansToDegrees
+        if degree >= 0 {
+            return degree
+        }
+        else {
+            return 360 + degree
+        }
+    }
+
+    
     
     
     func draw_polylines(loctions: [CLLocationCoordinate2D]) {
@@ -133,26 +163,25 @@ class MapVC: UIViewController {
         self.path = path
         let nonAnimatingPolyline = GMSPolyline()
         nonAnimatingPolyline.path = path
-        nonAnimatingPolyline.strokeColor = UIColor(red: 05.0, green: 10.5, blue: 0, alpha: 0.1)
+        nonAnimatingPolyline.strokeColor = UIColor(red: 05.0, green: 10.5, blue: 0, alpha: 0.5)
         nonAnimatingPolyline.strokeWidth = 5.0
         nonAnimatingPolyline.geodesic = true
         nonAnimatingPolyline.map = self.mapView
         
         self.timer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
-        for (index,coordinates) in viewModel.arrForHaltAndStopLocations.enumerated() {
-            getLocationDetails(locationCoordinates: coordinates, count: index)
-            
-        }
-        
-        
+//        for (index,coordinates) in viewModel.arrForHaltAndStopLocations.enumerated() {
+//            getLocationDetails(locationCoordinates: coordinates, count: index)
+//
+//        }
     }
     
+   
     func getLocationDetails(locationCoordinates: Latlon, count: Int) {
         defer {
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
                 printLog("Execute DispatchWork \(count)")
                 printLog("\(cityAddress) \n")
-                if count == self.viewModel.arrForHaltAndStopLocations.count - 1 {
+                if count == self.viewModel?.arrForHaltAndStopLocations.count ?? 0 - 1 {
                     self.dispatcher = nil
                 }
             }
@@ -166,22 +195,32 @@ class MapVC: UIViewController {
     @objc func animatePolylinePath() {
         if (self.i < self.path.count()) {
             self.animationPath.add(self.path.coordinate(at: self.i))
+            
+            self.animationPolylineBase.path = self.animationPath
+            self.animationPolylineBase.strokeColor = UIColor.black
+            self.animationPolylineBase.strokeWidth = 7
+            self.animationPolylineBase.geodesic = true
+            self.animationPolylineBase.map = self.mapView
+            
             self.animationPolyline.path = self.animationPath
-            self.animationPolyline.strokeColor = UIColor.cyan
-            self.animationPolyline.strokeWidth = 6
+            self.animationPolyline.strokeWidth = 4
             self.animationPolyline.geodesic = true
             self.animationPolyline.map = self.mapView
-            self.setCarMarkers(position: self.path.coordinate(at: self.i))
-            if self.animationPath.count() > 1 {
-                self.focusMapToLocation(loctions: [self.path.coordinate(at: self.i), self.path.coordinate(at: self.i - 1)], padding: 100.0)
-            }
+            
+            
+            
+            self.setCarMarkers(position1: self.path.coordinate(at: self.i), position2: self.path.coordinate(at: self.i + 1))
+//            if self.animationPath.count() > 1 {
+//                self.focusMapToLocation(loctions: [self.path.coordinate(at: self.i), self.path.coordinate(at: self.i - 1)], padding: 100.0)
+//            }
             self.i += 1
         }
         else {
             self.i = 0
-            self.setCarMarkers(position: self.path.coordinate(at: self.path.count() - 1))
+           // self.setCarMarkers(position: self.path.coordinate(at: self.path.count() - 1))
+            self.setCarMarkers(position1: self.path.coordinate(at: self.path.count() - 1), position2: self.path.coordinate(at: self.path.count() - 1))
             self.timer.invalidate()
-            self.focusMapToLocation(loctions: self.polyLineLocations, padding: 50.0, duration: 1.80)
+           // self.focusMapToLocation(loctions: self.polyLineLocations, padding: 50.0, duration: 1.80)
             print("last execution")
         }
     }

@@ -19,25 +19,37 @@ protocol MapVCViewModelDelegate : class {
 class MapVCViewModel  {
     // MARK: - Properties
     let networkServiceCalls = NetworkServiceCalls()
-    var originalDeviceList : [D]? {
-        didSet {
-            if let array = self.originalDeviceList {
-                if let sleepHaltArray = array.getSleepAndHaltDeviceArray() {
-                    self.arrForHaltAndStopLocations = sleepHaltArray.getCoordinates()
-                    delegate?.updateParkingLocationsOnMap(Locations: self.arrForHaltAndStopLocations, Devices: sleepHaltArray)
-                }
-                let movingDeviceArray = array.getMovingPackets()
-                self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations)
-            }
-        }
-    }
+    var originalDeviceList : [D]?
     var arrForMovingLocations:[Latlon] = []
     var arrForHaltAndStopLocations:[Latlon] = []
     weak var delegate : MapVCViewModelDelegate?
+    
+    required init(deviceList: [D]?) {
+        self.originalDeviceList = deviceList
+    }
+    
 }
 
 extension MapVCViewModel {
+    
+    func updateViewController() {
+        if let array = self.originalDeviceList {
+            let movingDeviceArray = array.getMovingPackets()
+            self.arrForMovingLocations = movingDeviceArray.getCoordinates()
+            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations)
+        }
+    }
+    
+    func updateParkingMarkers() {
+        if let array = self.originalDeviceList {
+        if let sleepHaltArray = array.getSleepAndHaltDeviceArray() {
+            self.arrForHaltAndStopLocations = sleepHaltArray.getCoordinates()
+            delegate?.updateParkingLocationsOnMap(Locations: self.arrForHaltAndStopLocations, Devices: sleepHaltArray)
+        }
+        }
+    }
+    
+    
     func getDeviceData() {
         delegate?.showLoader()
         self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1593628200000", endTime: "1593714600000") { (state) in

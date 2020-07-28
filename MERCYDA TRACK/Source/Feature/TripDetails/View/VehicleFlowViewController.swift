@@ -40,6 +40,7 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var ignitionImageView: UIImageView!
     @IBOutlet weak var isActiveImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var mapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +114,10 @@ final class VehicleFlowViewController: BaseViewController {
     
     @IBAction func pickerBtnAction(_ sender: Any) {
         pickerView.isHidden = false
+    }
+    
+    @IBAction func onClickMapButton(_ sender: Any) {
+        self.goToMaps()
     }
     
     func getDeviceDetails()  {
@@ -216,6 +221,15 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         minSpdLbl.text = String(minSpd.truncate(places: 2)) + " km/hr"
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
+    }
+    
+    func goToMaps() {
+        let storyboard = UIStoryboard(name: "Maps", bundle: nil)
+        guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as? MapVC
+            else { return }
+        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList)
+        mapVC.viewModel = viewModel
+        self.present(mapVC, animated: true, completion: nil)
     }
 }
   
