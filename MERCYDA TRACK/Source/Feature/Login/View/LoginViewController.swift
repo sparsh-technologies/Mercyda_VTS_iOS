@@ -61,8 +61,8 @@ class LoginViewController: BaseViewController {
             let vc = story.instantiateViewController(withIdentifier: StoryboardID.DashboardId.rawValue)as! DashboardViewController
             self?.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
-                statusBarMessage(.CustomError, error)
-                printLog(error)
+            statusBarMessage(.CustomError, error)
+            printLog(error)
             }
         }
           

@@ -116,9 +116,10 @@ class DashboardViewController: BaseViewController {
     }
     
     func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
+        let sortedArray = vehiclelist.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
         let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
-        vc.vehiclelist = vehiclelist
+        vc.vehiclelist = sortedArray
         self.navigationController?.pushViewController(vc, animated: true)
         }
         

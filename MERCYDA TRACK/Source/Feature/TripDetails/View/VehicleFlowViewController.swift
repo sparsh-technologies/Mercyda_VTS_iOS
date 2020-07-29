@@ -160,10 +160,10 @@ final class VehicleFlowViewController: BaseViewController {
         else if (signalStrength >= 65 && signalStrength <= 79) {
             signalImageView.image = UIImage.init(named: "range75")
         }
-        else if  (signalStrength >= 35 && signalStrength <= 64) {
+        else if  (signalStrength >= 30 && signalStrength <= 64) {
             signalImageView.image = UIImage.init(named: "range50")
         }
-       else if  (signalStrength >= 5 && signalStrength <= 34) {
+       else if  (signalStrength >= 5 && signalStrength <= 29) {
            signalImageView.image = UIImage.init(named: "range25")
        }
         else{

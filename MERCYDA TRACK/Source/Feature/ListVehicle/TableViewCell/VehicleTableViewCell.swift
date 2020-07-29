@@ -55,6 +55,9 @@ class VehicleTableViewCell: UITableViewCell {
             if speed > 0{
                 speedLabel.text = "\(speed)"
             }
+            else{
+                speedLabel.text = ""
+            }
         }
         if let activeStatus = vehicle.last_updated_data?.valid_status{
             if activeStatus{
@@ -83,10 +86,10 @@ class VehicleTableViewCell: UITableViewCell {
         else if (signalStrength >= 65 && signalStrength <= 79) {
             signalImageView.image = UIImage.init(named: "range75")
         }
-        else if  (signalStrength >= 35 && signalStrength <= 64) {
+        else if  (signalStrength >= 30 && signalStrength <= 64) {
             signalImageView.image = UIImage.init(named: "range50")
         }
-       else if  (signalStrength >= 5 && signalStrength <= 34) {
+       else if  (signalStrength >= 5 && signalStrength <= 29) {
            signalImageView.image = UIImage.init(named: "range25")
        }
         else{

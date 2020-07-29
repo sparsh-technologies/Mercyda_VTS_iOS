@@ -20,6 +20,8 @@ class VehicleDataFlowTableViewCell: UITableViewCell {
     @IBOutlet weak var KMLbl: UILabel!
     @IBOutlet weak var bottomLineView: UIView!
     @IBOutlet weak var startTimeLbl: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
