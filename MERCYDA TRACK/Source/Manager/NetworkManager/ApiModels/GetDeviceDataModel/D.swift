@@ -108,7 +108,7 @@ extension Array where Element == D {
         var base = [[D]]()
         var tempArray = [D]()
         var type = self.first
-        let constant = "M"
+        let constant = "S"
         var clear = true
         
         func appendArray() {
@@ -136,6 +136,39 @@ extension Array where Element == D {
                 appendArray()
             }
         }
-        return base.filter({ $0.count > 1 })
+        base.swapFirstAndLastSleepIntoMoving(constant: constant)
+        base.combineNearestMoving()
+        return base
     }
+    
+}
+
+extension Array where Element == [D] {
+    mutating func swapFirstAndLastSleepIntoMoving(constant: String) {
+        if self.count > 1 {
+            for index in 0..<self.count - 1 {
+                if let lastElement = self[index].last, lastElement.vehicle_mode ?? "" == constant && self[index + 1].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
+                    self[index + 1].insert(lastElement, at: 0)
+                    self[index].removeLast()
+                } else if let firstElement = self[index + 1].first, firstElement.vehicle_mode ?? "" == constant && self[index].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
+                    self[index + 1].removeFirst()
+                    self[index].append(firstElement)
+                }
+            }
+        }
+        self = self.filter({ $0.count > 1 })
+    }
+    
+    mutating func combineNearestMoving() {
+        if self.count > 1 {
+            for index in 0..<self.count - 1 {
+                if self[index + 1].contains(where: {$0.vehicle_mode ?? "" == "M"}) && self[index].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
+                    self[index].append(contentsOf: self[index + 1])
+                    self[index + 1].removeAll()
+                }
+            }
+        }
+        self = self.filter({ $0.count > 0 })
+    }
+    
 }
