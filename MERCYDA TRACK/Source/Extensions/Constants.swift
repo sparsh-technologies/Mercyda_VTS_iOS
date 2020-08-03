@@ -37,4 +37,13 @@ enum StoryboardID :String {
     case LoginStoryBoardId = "LoginStoryBoardId"
     case LOginViewControllerID = "LoginViewControllerId"
     case AboutusViewControllerId = "AboutusViewcontrollerID"
+    case AboutusWebviewDetailpage = "AboutusWebviewDetailpage"
+}
+
+
+enum AboutusPageUrls:String{
+    case MainUrl = "http://mercyda.co.in/index.html"
+    case ContactUS = "http://mercyda.co.in/contact.html"
+   // case PrivacyPolicy = "http://mercyda.co.in/index.html"
+  // case TermsAndConditions = "http://mercyda.co.in/index.html"
 }

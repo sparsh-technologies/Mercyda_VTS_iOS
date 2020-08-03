@@ -53,20 +53,29 @@ class ListVehicleController: BaseViewController {
         //            self.vehicleDataSource.append(ListVehicleTableDataModal.itemsCell(vehicles: vehicle))
         //            self.mainTableView.reloadData()
         //        }
-        refreshDataSource()
-        if self.dispatchGroup == nil {
-            self.dispatchGroup = DispatchGroup()
-        }
-        for (index, item) in vehiclelist.enumerated()  {
-            if let coordinates =  item.last_updated_data {
-                self.getLocationDetails(locationCoordinates: coordinates.coordinates, count: index)
-            }
-        }
-        dispatchGroup?.notify(queue: .main) {
-            printLog("Dispatch works completed")
-            self.dispatcher = nil
-        }
+         
+       // vehiclelist.sorted(by: { $0.vehicle_registration! < $1.vehicle_registration! })
+    
         
+        refreshDataSource()
+        getAllAddress()
+        
+    }
+    
+    
+    func getAllAddress(){
+        if self.dispatchGroup == nil {
+                   self.dispatchGroup = DispatchGroup()
+               }
+               for (index, item) in vehiclelist.enumerated()  {
+                   if let coordinates =  item.last_updated_data {
+                       self.getLocationDetails(locationCoordinates: coordinates.coordinates, count: index)
+                   }
+               }
+               dispatchGroup?.notify(queue: .main) {
+                   printLog("Dispatch works completed")
+                   self.dispatcher = nil
+               }
     }
     
     func refreshDataSource() {
@@ -112,6 +121,7 @@ class ListVehicleController: BaseViewController {
     @IBAction func closeButtonAction(_ sender: Any) {
         searching = false
         mainTableView.reloadData()
+        getAllAddress()
         if serachView.isHidden == false{
             serachView.isHidden = true
             searchButton.isHidden = false
@@ -164,11 +174,14 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        if searching {
+            if  let vehicle =  searChedData[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
+                       callViewController(vehicleobj: vehicle)}
+        }
+        else{
         if  let vehicle =  vehicleDataSource[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
-//            printLog(vehicle.vehicle_registration!)
-//            printLog(vehicle.last_updated_data!.serial_no!)
-            //callViewController(serialNo: vehicle.last_updated_data?.serial_no ?? "InvalidSerialNo")
-            callViewController(vehicleobj: vehicle)
+            callViewController(vehicleobj: vehicle)}
         }
     }
     
@@ -181,6 +194,7 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
 //    }
     
     func callViewController(vehicleobj: Vehicle) {
+         
             let story = UIStoryboard(name: StoryboardName.VehicleFlow.rawValue, bundle: nil)
             let vehicleFlowVC = story.instantiateViewController(withIdentifier: StoryboardID.VehicleFlow.rawValue)as! VehicleFlowViewController
             vehicleFlowVC.vehicleObj = vehicleobj

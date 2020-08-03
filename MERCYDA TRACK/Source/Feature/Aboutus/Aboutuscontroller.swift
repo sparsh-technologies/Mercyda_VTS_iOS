@@ -14,6 +14,8 @@ class Aboutuscontroller: UIViewController {
     @IBOutlet weak var termsAndConditionView: UIView!
     @IBOutlet weak var contactusView: UIView!
     @IBOutlet weak var websiteView: UIView!
+    @IBOutlet weak var mainWebsiteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     self.navigationController?.navigationBar.tintColor = .white
@@ -30,6 +32,30 @@ class Aboutuscontroller: UIViewController {
     
     }
     
+    @IBAction func webViewDetailPAge(_ sender: UIButton) {
+        //tag 100 for main url
+        // tag 101 for contact us
+        // tag 102 for privacy policy
+        // tag 103 for terms and condition
+        switch sender.tag {
+        case 100:
+        navigate(url:AboutusPageUrls.MainUrl.rawValue)
+        case 101:
+            navigate(url:AboutusPageUrls.ContactUS.rawValue)
+        case 102:
+        navigate(url:AboutusPageUrls.MainUrl.rawValue)
+        case 103:
+        navigate(url:AboutusPageUrls.MainUrl.rawValue)
+        default:
+        printLog("Nothing")
+        }
+    }
     
+    func navigate(url:String){
+        let story = UIStoryboard(name: StoryboardName.AboutUs.rawValue, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: StoryboardID.AboutusWebviewDetailpage.rawValue)as! AboutusWebViewController
+        vc.urlString = url
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
   
 }
