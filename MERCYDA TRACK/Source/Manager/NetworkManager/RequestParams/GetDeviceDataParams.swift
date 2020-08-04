@@ -45,6 +45,10 @@ extension getDeviceDataParams: URLBuildable {
     
     func queryString() -> String {
         return "?\(PARAMS.SERIAL_NO)=\(self.serialNumber)&\(PARAMS.SOURCE_DATE)=\(self.enableSourceDate)&\(PARAMS.START_TIME)=\(self.startTime)&\(PARAMS.END_TIME)=\(self.endTime)&\(PARAMS.USERNAME)=\(Utility.getUserName())&\(PARAMS.PASSWORD)=\(Utility.getPassword())"
+        
+        // For Testing Mockdata
+        // Total Distance is: 2.76km
+//        "?serial_no=BIJUSDEVICE1&start_time=1596479400000&source_date=true&username=admin&password=Inf!n!c03312345%23"
     }
 }
 

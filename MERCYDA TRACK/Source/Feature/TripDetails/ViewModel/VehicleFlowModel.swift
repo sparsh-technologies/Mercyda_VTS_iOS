@@ -64,7 +64,7 @@ extension VehicleFlow {
     
     func calculateDistance(packets: [[D]]) {
         var distanceFromCoordinates = Double()
-        //        var distanceFromSpeed = Double()
+        var distanceFromSpeed = Double()
         var totalDistanceFromPacket = Double()
         var mode = String()
         var tripDetails: [TripDetailsModel] = []
@@ -76,7 +76,9 @@ extension VehicleFlow {
         packets.forEach({ eachPacket in
             totalDistanceFromPacket = 0.0
             averageSpeed = 0
-            mode = eachPacket.first?.vehicle_mode ?? "Unknown"
+//            mode = eachPacket.first?.vehicle_mode ?? "Unknown"
+            mode = eachPacket.contains { value in value.vehicle_mode == "M" || value.vehicle_mode == "H"
+            } ? "M": "S"
             eachPacket.forEach({ value in
                 averageSpeed = averageSpeed + (value.speed ?? 0)
             })
@@ -94,18 +96,18 @@ extension VehicleFlow {
                 minSpeed = Double(minSpeedPkt1 < minSpeedPkt2 ? minSpeedPkt1 : minSpeedPkt2)
                 
                 distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
-                //                let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
-                //                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
-                //
-                //                distanceFromSpeed = time < 600 ? distance : 0
-                //                maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
-                //                if distance.isNaN {
-                //
-                //                }
-                //                print("\n Coordinates ", distanceFromCoordinates)
-                //                print("Speed ", distanceFromSpeed)
-                //                print("Highest Distance ", maxDistance)
-                totalDistanceFromPacket = totalDistanceFromPacket + distanceFromCoordinates
+                                let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
+                                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                
+                                distanceFromSpeed = time < 600 ? distance : 0
+                                let maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
+                                if distance.isNaN {
+                
+                                }
+//                                print("\n Coordinates ", distanceFromCoordinates)
+//                                print("Speed ", distanceFromSpeed)
+//                                print("Highest Distance ", maxDistance)
+                totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
                 //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                 //                print("Total Distanec ", totalDistanceFromPacket)
             }
