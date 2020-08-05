@@ -137,7 +137,7 @@ extension Array where Element == D {
             }
         }
         base.swapFirstAndLastSleepIntoMoving(constant: constant)
-        base.combineNearestMoving()
+       // base.combineNearestMoving()
         return base
     }
     
@@ -149,9 +149,9 @@ extension Array where Element == [D] {
             for index in 0..<self.count - 1 {
                 if let lastElement = self[index].last, lastElement.vehicle_mode ?? "" == constant && self[index + 1].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
                     self[index + 1].insert(lastElement, at: 0)
-                    self[index].removeLast()
+                   // self[index].removeLast()
                 } else if let firstElement = self[index + 1].first, firstElement.vehicle_mode ?? "" == constant && self[index].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
-                    self[index + 1].removeFirst()
+                   // self[index + 1].removeFirst()
                     self[index].append(firstElement)
                 }
             }
