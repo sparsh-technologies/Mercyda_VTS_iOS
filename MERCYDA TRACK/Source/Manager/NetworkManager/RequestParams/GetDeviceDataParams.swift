@@ -48,6 +48,7 @@ extension getDeviceDataParams: URLBuildable {
         
         // For Testing Mockdata
         // Total Distance is: 2.76km
+        // Average Speed for Node = 27.6 km/hr
 //        "?serial_no=BIJUSDEVICE1&start_time=1596479400000&source_date=true&username=admin&password=Inf!n!c03312345%23"
     }
 }
