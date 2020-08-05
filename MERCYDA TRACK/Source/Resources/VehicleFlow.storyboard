@@ -25,14 +25,14 @@
                                     <outlet property="delegate" destination="wy4-aQ-K48" id="kfd-OB-0iB"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="df6-cZ-aY5">
-                                <rect key="frame" x="349" y="797" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="df6-cZ-aY5">
+                                <rect key="frame" x="339" y="787" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="df6-cZ-aY5" secondAttribute="height" multiplier="1:1" id="9je-um-Hej"/>
-                                    <constraint firstAttribute="height" constant="50" id="ekw-Iq-Nlp"/>
+                                    <constraint firstAttribute="height" constant="60" id="ekw-Iq-Nlp"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="View On Map"/>
                                 <connections>
                                     <action selector="onClickMapButton:" destination="wy4-aQ-K48" eventType="touchUpInside" id="udI-C0-MwV"/>
                                 </connections>
@@ -371,7 +371,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="f8q-Dk-w5S"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="LEL-Pm-emZ">
-                            <rect key="frame" x="142" y="6" width="150" height="32"/>
+                            <rect key="frame" x="132" y="6" width="150" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal">
@@ -379,7 +379,7 @@
                                     <fragment content="20-Mar-20">
                                         <attributes>
                                             <color key="NSColor" name="ThemeBlue"/>
-                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <font key="NSFont" metaFont="menu" size="14"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -442,6 +442,7 @@
     </scenes>
     <resources>
         <image name="Lorry" width="133.5" height="133"/>
+        <image name="View On Map" width="100" height="100"/>
         <image name="dishActive" width="30" height="30"/>
         <image name="ignition" width="32" height="32"/>
         <image name="kmhr" width="33.5" height="33.5"/>

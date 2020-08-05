@@ -121,6 +121,7 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     func getDeviceDetails()  {
+        mapButton.isHidden = true
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
@@ -130,6 +131,7 @@ final class VehicleFlowViewController: BaseViewController {
             switch result {
             case .success(_):
                 this.APItimer = Timer.scheduledTimer(timeInterval: 60, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+                this.mapButton.isHidden = false
                 print("")
             case .failure(let error):
                 statusBarMessage(.CustomError, error)

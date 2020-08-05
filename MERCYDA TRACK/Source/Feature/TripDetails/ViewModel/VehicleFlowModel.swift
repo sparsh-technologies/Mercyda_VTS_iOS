@@ -49,16 +49,16 @@ extension VehicleFlow {
     
     func performFiltering(packets: [DeviceDataResponse])  {
         /*
-//        ************************************************
-//        Use this function only for Debug Purpose.
-//        Check Packets Mode
-        
-        debugForPacketsModes(rawPackets: packets)
+         //        ************************************************
+         //        Use this function only for Debug Purpose.
+         //        Check Packets Mode
          
- //        END
-//        ************************************************
- */
-
+         debugForPacketsModes(rawPackets: packets)
+         
+         //        END
+         //        ************************************************
+         */
+        
         packetsFiltered.removeAll()
         processedResult.removeAll()
         activePacketList.removeAll()
@@ -139,7 +139,7 @@ extension VehicleFlow {
         })
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
-        // restorePlacesName()
+        restorePlacesName()
         self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
         if self.dispatchGroup == nil {
             self.dispatchGroup = DispatchGroup()
