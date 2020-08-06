@@ -7,25 +7,29 @@ import UIKit
 import WebKit
 
 class AboutusWebViewController: UIViewController {
-
+    
+    
+    // MARK: - Properties
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var weview: WKWebView!
+    @IBOutlet weak var progressViewHeight: NSLayoutConstraint!
     var urlString:String?
     var observation: NSKeyValueObservation?
-    @IBOutlet weak var progressViewHeight: NSLayoutConstraint!
+    
+    /// view lifecycle method
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-     loadRequest()
+        loadRequest()
     }
     
-
+    
+    /// Function for loading  differnt web pages contactus, privacypolicy etc
     func loadRequest(){
         
         if let url = urlString {
             if let url = URL(string: url) {
-                  weview.load(URLRequest(url: url))
-              }
+                weview.load(URLRequest(url: url))
+            }
         }
         observation = weview.observe(\WKWebView.estimatedProgress, options: .new) { _, change in
             print("Loaded: \(change)")
@@ -43,5 +47,5 @@ class AboutusWebViewController: UIViewController {
     deinit {
         self.observation = nil
     }
-
+    
 }

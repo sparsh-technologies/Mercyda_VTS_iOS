@@ -106,7 +106,9 @@ class DashboardViewController: BaseViewController {
         
     }
     
-        
+    
+    /// 
+    /// - Parameter sender: <#sender description#>
     @IBAction func logoutButtonAction(_ sender: Any) {
         UserLoginInfo.flushData()
         let story = UIStoryboard(name: StoryboardName.Login.rawValue, bundle: nil)
@@ -115,11 +117,12 @@ class DashboardViewController: BaseViewController {
         
     }
     
-    func navigatetoVehicleListPage(vehiclelist:[Vehicle]){
+    func navigatetoVehicleListPage(vehiclelist:[Vehicle],clickedType:String){
         let sortedArray = vehiclelist.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
         let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
         vc.vehiclelist = sortedArray
+        vc.type = clickedType
         self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -164,31 +167,32 @@ class DashboardViewController: BaseViewController {
                            return
                        }
             MBProgressHUD.hide(for: this.view, animated: false)
+            printLog(result)
             switch result{
             case .success(let result):
             MBProgressHUD.hide(for: this.view, animated: false)
             switch tag {
             case 18:
-                this.navigatetoVehicleListPage(vehiclelist:result)
+                this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
             case 10:
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
-            this.navigatetoVehicleListPage(vehiclelist:filterdResult)
+                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Moving.rawValue)
             }
             case 12:
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
-            this.navigatetoVehicleListPage(vehiclelist:filterdResult)
+                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Sleep.rawValue)
             }
             case 11:
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
-            this.navigatetoVehicleListPage(vehiclelist:filteredResult)
+                this.navigatetoVehicleListPage(vehiclelist:filteredResult, clickedType:Vehicletype.Idle.rawValue)
             }
             case 14:
             this.dashboardViewModel.filterOfflineData(data:result) { (filterdResult ) in
-            this.navigatetoVehicleListPage(vehiclelist: filterdResult)
+                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Offline.rawValue)
             }
             case 13:
             this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
-            this.navigatetoVehicleListPage(vehiclelist: filterdResult)
+                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Online.rawValue)
             }
             default:
                 printLog("Nothing")
