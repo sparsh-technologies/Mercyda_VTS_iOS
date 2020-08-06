@@ -137,7 +137,8 @@ extension Array where Element == D {
             }
         }
         base.swapFirstAndLastSleepIntoMoving(constant: constant)
-       // base.combineNearestMoving()
+        base.combineNearestMoving()
+        base.combineNearestMoving()
         return base
     }
     
