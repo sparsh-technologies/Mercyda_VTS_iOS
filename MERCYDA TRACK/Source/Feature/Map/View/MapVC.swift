@@ -16,6 +16,7 @@ protocol MapPickerDelegate: class {
 
 class MapVC: UIViewController {
     
+    @IBOutlet private weak var bottomFeaturesView: UIView!
     var viewModel : MapVCViewModel?
     weak var delegateForMapPicker : MapPickerDelegate?
     lazy var mapView : GMSMapView? = GMSMapView()
@@ -27,7 +28,10 @@ class MapVC: UIViewController {
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var timer: Timer!
-
+    var mapFlag = 1
+    var lat = 0.0
+    var lon = 0.0
+    
     
     private var dispatcher: Dispatcher?
     
@@ -48,14 +52,39 @@ class MapVC: UIViewController {
         self.addMapView()
         viewModel?.delegate = self
         viewModel?.updateViewController()
+        self.view.bringSubviewToFront(bottomFeaturesView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-  
+    @IBAction func changeMapViewBtn(_ sender: Any) {
+        mapFlag += 1
+        if mapFlag % 2 == 0 {
+            mapView?.mapType = .satellite
+        } else {
+            mapView?.mapType = .normal
+            
+        }
+    }
+    
+    @IBAction func routePlayBtn(_ sender: Any) {
+    
+    }
+    
+    @IBAction func currentLocationBtn(_ sender: Any) {
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15)
+        self.mapView?.camera = camera
+        
+    }
+    
+    @IBAction func mapFullScreenBtn(_ sender: Any) {
+    }
+    
     func updateMap(_ locationsArray: [CLLocationCoordinate2D]) {
+        lat = locationsArray.first?.latitude ?? 0
+        lon = locationsArray.last?.longitude ?? 0
         self.focusMapToLocation(loctions: locationsArray, padding: 50.0, duration: 0.55)
     }
     
@@ -114,7 +143,7 @@ class MapVC: UIViewController {
         CATransaction.setCompletionBlock {
             self.draw_polylines(loctions: self.polyLineLocations)
             DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-               self.viewModel?.updateParkingMarkers()
+                self.viewModel?.updateParkingMarkers()
             }
         }
         mapView?.animate(with: GMSCameraUpdate.fit(bounds, withPadding: padding))
@@ -151,7 +180,7 @@ class MapVC: UIViewController {
             return 360 + degree
         }
     }
-
+    
     
     
     
@@ -169,13 +198,13 @@ class MapVC: UIViewController {
         nonAnimatingPolyline.map = self.mapView
         
         self.timer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(animatePolylinePath), userInfo: nil, repeats: true)
-//        for (index,coordinates) in viewModel.arrForHaltAndStopLocations.enumerated() {
-//            getLocationDetails(locationCoordinates: coordinates, count: index)
-//
-//        }
+        //        for (index,coordinates) in viewModel.arrForHaltAndStopLocations.enumerated() {
+        //            getLocationDetails(locationCoordinates: coordinates, count: index)
+        //
+        //        }
     }
     
-   
+    
     func getLocationDetails(locationCoordinates: Latlon, count: Int) {
         defer {
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
@@ -210,17 +239,17 @@ class MapVC: UIViewController {
             
             
             self.setCarMarkers(position1: self.path.coordinate(at: self.i), position2: self.path.coordinate(at: self.i + 1))
-//            if self.animationPath.count() > 1 {
-//                self.focusMapToLocation(loctions: [self.path.coordinate(at: self.i), self.path.coordinate(at: self.i - 1)], padding: 100.0)
-//            }
+            //            if self.animationPath.count() > 1 {
+            //                self.focusMapToLocation(loctions: [self.path.coordinate(at: self.i), self.path.coordinate(at: self.i - 1)], padding: 100.0)
+            //            }
             self.i += 1
         }
         else {
             self.i = 0
-           // self.setCarMarkers(position: self.path.coordinate(at: self.path.count() - 1))
+            // self.setCarMarkers(position: self.path.coordinate(at: self.path.count() - 1))
             self.setCarMarkers(position1: self.path.coordinate(at: self.path.count() - 1), position2: self.path.coordinate(at: self.path.count() - 1))
             self.timer.invalidate()
-           // self.focusMapToLocation(loctions: self.polyLineLocations, padding: 50.0, duration: 1.80)
+            // self.focusMapToLocation(loctions: self.polyLineLocations, padding: 50.0, duration: 1.80)
             print("last execution")
         }
     }
