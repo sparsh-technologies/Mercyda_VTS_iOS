@@ -17,6 +17,7 @@ protocol MapPickerDelegate: class {
 class MapVC: UIViewController {
     
     @IBOutlet private weak var bottomFeaturesView: UIView!
+    @IBOutlet weak var topVehicleView: UIView!
     var viewModel : MapVCViewModel?
     weak var delegateForMapPicker : MapPickerDelegate?
     lazy var mapView : GMSMapView? = GMSMapView()
@@ -29,18 +30,19 @@ class MapVC: UIViewController {
     var i: UInt = 0
     var timer: Timer!
     var mapFlag = 1
+    var isNavFlag = 1
     var lat = 0.0
     var lon = 0.0
     
     
     private var dispatcher: Dispatcher?
     
-    let closeButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action:#selector(MapVC.dismissView) , for: .touchUpInside)
-        button.setBackgroundImage(UIImage(named: "close_black"), for: .normal)
-        return button
-    }()
+//    let closeButton: UIButton = {
+//        let button = UIButton()
+//        button.addTarget(self, action:#selector(MapVC.dismissView) , for: .touchUpInside)
+//        button.setBackgroundImage(UIImage(named: "close_black"), for: .normal)
+//        return button
+//    }()
     
     deinit {
         self.timer = nil
@@ -53,10 +55,12 @@ class MapVC: UIViewController {
         viewModel?.delegate = self
         viewModel?.updateViewController()
         self.view.bringSubviewToFront(bottomFeaturesView)
+        self.view.bringSubviewToFront(topVehicleView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func changeMapViewBtn(_ sender: Any) {
@@ -80,6 +84,12 @@ class MapVC: UIViewController {
     }
     
     @IBAction func mapFullScreenBtn(_ sender: Any) {
+        isNavFlag += 1
+        if isNavFlag % 2 == 0 {
+            self.navigationController?.navigationBar.isHidden = true
+        } else {
+            self.navigationController?.navigationBar.isHidden = false
+        }
     }
     
     func updateMap(_ locationsArray: [CLLocationCoordinate2D]) {
@@ -110,7 +120,7 @@ class MapVC: UIViewController {
     
     func addMapView() {
         mapView?.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
+//        closeButton.translatesAutoresizingMaskIntoConstraints = false
         if let map = mapView {
             map.delegate = self
             self.view.addSubview(map)
@@ -120,13 +130,13 @@ class MapVC: UIViewController {
                 map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
-            self.view.addSubview(closeButton)
-            NSLayoutConstraint.activate([
-                closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-                closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
-                closeButton.heightAnchor.constraint(equalToConstant: 35)
-            ])
-            closeButton.aspectRatio(1.0/1.0).isActive = true
+//            self.view.addSubview(closeButton)
+//            NSLayoutConstraint.activate([
+//                closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+//                closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
+//                closeButton.heightAnchor.constraint(equalToConstant: 35)
+//            ])
+//            closeButton.aspectRatio(1.0/1.0).isActive = true
             let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
             animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
         }

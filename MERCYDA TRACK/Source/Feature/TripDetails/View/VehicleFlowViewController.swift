@@ -231,7 +231,8 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
             else { return }
         let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList)
         mapVC.viewModel = viewModel
-        self.present(mapVC, animated: true, completion: nil)
+        self.show(mapVC, sender: self)
+//        self.present(mapVC, animated: true, completion: nil)
     }
 }
   
