@@ -9,7 +9,7 @@
 import Foundation
 
 
-var userName = ""
+var uame = ""
 var passWord = ""
 
 

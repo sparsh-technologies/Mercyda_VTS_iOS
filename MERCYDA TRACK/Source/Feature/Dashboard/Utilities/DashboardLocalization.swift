@@ -22,3 +22,12 @@ enum DashboardLocalization: String, Localizable {
     case movingVehicleKey = "M"
     case idleVehicleKey = "H"
 }
+
+
+enum Vehicletype:String{
+    case Moving = "moving"
+    case Sleep = "sleep"
+    case Idle = "idle"
+    case Online = "online"
+    case Offline = "offline"
+}
