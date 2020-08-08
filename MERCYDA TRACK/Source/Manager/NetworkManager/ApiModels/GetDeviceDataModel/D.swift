@@ -136,9 +136,12 @@ extension Array where Element == D {
                 appendArray()
             }
         }
-        base.swapFirstAndLastSleepIntoMoving(constant: constant)
-        base.combineNearestMoving()
-        base.combineNearestMoving()
+        var filterWithoutH = base.filter({!($0.count == 1 && $0.contains(where: ({$0.vehicle_mode == "H"})))})
+        filterWithoutH.combineNearestS()
+        filterWithoutH.combineNearestS()
+        filterWithoutH.swapFirstAndLastSleepIntoMoving(constant: constant)
+        filterWithoutH.combineNearestMoving()
+        filterWithoutH.combineNearestMoving()
         return base
     }
     
@@ -164,6 +167,17 @@ extension Array where Element == [D] {
         if self.count > 1 {
             for index in 0..<self.count - 1 {
                 if self[index + 1].contains(where: {$0.vehicle_mode ?? "" == "M"}) && self[index].contains(where: {$0.vehicle_mode ?? "" == "M"}) {
+                    self[index].append(contentsOf: self[index + 1])
+                    self[index + 1].removeAll()
+                }
+            }
+        }
+        self = self.filter({ $0.count > 0 })
+    }
+    mutating func combineNearestS() {
+        if self.count > 1 {
+            for index in 0..<self.count - 1 {
+                if self[index + 1].contains(where: {$0.vehicle_mode ?? "" == "S"}) && self[index].contains(where: {$0.vehicle_mode ?? "" == "S"}) {
                     self[index].append(contentsOf: self[index + 1])
                     self[index + 1].removeAll()
                 }
