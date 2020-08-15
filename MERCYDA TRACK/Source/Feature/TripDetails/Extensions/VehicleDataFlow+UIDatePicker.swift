@@ -44,5 +44,6 @@ extension VehicleFlowViewController {
     
     @objc func cancelDatePicker(){
         pickerView.isHidden = true
+        pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: Date())
     }
 }

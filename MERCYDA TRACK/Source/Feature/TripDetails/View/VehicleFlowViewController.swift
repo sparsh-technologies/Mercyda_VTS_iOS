@@ -51,7 +51,7 @@ final class VehicleFlowViewController: BaseViewController {
         vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
-       // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
         setuiDatas()
         
@@ -84,7 +84,7 @@ final class VehicleFlowViewController: BaseViewController {
             }
         }
         if let signalStrength = vehicleObj?.last_updated_data?.gsm_signal_strength{
-                 setSignalStrength(signalStrength: signalStrength)
+            setSignalStrength(signalStrength: signalStrength)
             
         }
         
@@ -98,15 +98,15 @@ final class VehicleFlowViewController: BaseViewController {
         }
         
         if let igngitionStatus = vehicleObj?.last_updated_data?.ignition{
-        setIgnition(status:igngitionStatus)
+            setIgnition(status:igngitionStatus)
         }
         if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-                   setVehicleMode(mode:vehicleMode)
-               }
+            setVehicleMode(mode:vehicleMode)
+        }
         getVehicleType(type:(vehicleObj?.vehicle_type!)!)
         if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-                   setVehicleMode(mode:vehicleMode)
-               }
+            setVehicleMode(mode:vehicleMode)
+        }
     }
     
     
@@ -141,7 +141,19 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     @objc   func getDeviceDetailsWithOutActivityInd()  {
-        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) {(_) in}}
+        
+        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
+            guard let this = self else {
+                return
+            }
+            switch result {
+            case .success(_):
+                this.mapButton.isHidden = false
+            case .failure(_):
+                this.mapButton.isHidden = true
+            }
+        }
+    }
     
     deinit {
         printLog("ViewController Released from memory : VehicleFlowViewController")
@@ -165,49 +177,49 @@ final class VehicleFlowViewController: BaseViewController {
         else if  (signalStrength >= 30 && signalStrength <= 64) {
             signalImageView.image = UIImage.init(named: "range50")
         }
-       else if  (signalStrength >= 5 && signalStrength <= 29) {
-           signalImageView.image = UIImage.init(named: "range25")
-       }
+        else if  (signalStrength >= 5 && signalStrength <= 29) {
+            signalImageView.image = UIImage.init(named: "range25")
+        }
         else{
-             signalImageView.image = UIImage.init(named: "rangeInactive")
+            signalImageView.image = UIImage.init(named: "rangeInactive")
         }
     }
     func setIgnition(status:String){
-           switch status {
-           case IgnitionType.ON.rawValue:
-               ignitionImageView.image = UIImage.init(named:"ignition")
-           case IgnitionType.OFF.rawValue:
-               ignitionImageView.image = UIImage.init(named:"ignitionoff")
-           default:
-                ignitionImageView.image = UIImage.init(named:"ignition")
-           }
-       }
+        switch status {
+        case IgnitionType.ON.rawValue:
+            ignitionImageView.image = UIImage.init(named:"ignition")
+        case IgnitionType.OFF.rawValue:
+            ignitionImageView.image = UIImage.init(named:"ignitionoff")
+        default:
+            ignitionImageView.image = UIImage.init(named:"ignition")
+        }
+    }
     
     func getVehicleType(type:String){
         switch type{
         case VehicleModel.Lorry.rawValue:
-        self.vehicleImageview.image = UIImage.init(named:"Lorry")
+            self.vehicleImageview.image = UIImage.init(named:"Lorry")
         case VehicleModel.MiniTruck.rawValue:
-        self.vehicleImageview.image = UIImage.init(named: "minilorry")
+            self.vehicleImageview.image = UIImage.init(named: "minilorry")
         case VehicleModel.Car.rawValue:
-        self.vehicleImageview.image = UIImage.init(named: "car")
+            self.vehicleImageview.image = UIImage.init(named: "car")
         default:
-        self.vehicleImageview.image = UIImage.init(named:"Lorry")
+            self.vehicleImageview.image = UIImage.init(named:"Lorry")
         }
     }
     
     func setVehicleMode(mode:String){
-          switch mode{
-           case VehicleMode.Moving.rawValue:
-               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-           case VehicleMode.Sleep.rawValue:
-               self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-           case VehicleMode.Idle.rawValue:
-               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-           default:
-               self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
-           }
-       }
+        switch mode{
+        case VehicleMode.Moving.rawValue:
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        case VehicleMode.Sleep.rawValue:
+            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        case VehicleMode.Idle.rawValue:
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        default:
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+        }
+    }
     
 }
 
@@ -232,7 +244,7 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList)
         mapVC.viewModel = viewModel
         self.show(mapVC, sender: self)
-//        self.present(mapVC, animated: true, completion: nil)
+        //        self.present(mapVC, animated: true, completion: nil)
     }
 }
-  
+

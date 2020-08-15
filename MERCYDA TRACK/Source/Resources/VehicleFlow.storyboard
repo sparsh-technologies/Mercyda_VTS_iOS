@@ -376,7 +376,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="20-Mar-20">
+                                    <fragment content="XX-XXX-XX">
                                         <attributes>
                                             <color key="NSColor" name="ThemeBlue"/>
                                             <font key="NSFont" metaFont="menu" size="14"/>

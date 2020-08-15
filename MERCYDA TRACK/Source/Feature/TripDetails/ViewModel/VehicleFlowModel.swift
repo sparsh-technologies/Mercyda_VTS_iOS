@@ -48,7 +48,7 @@ extension VehicleFlow {
 extension VehicleFlow {
     
     func performFiltering(packets: [DeviceDataResponse])  {
-        /*
+        
          //        ************************************************
          //        Use this function only for Debug Purpose.
          //        Check Packets Mode
@@ -57,7 +57,7 @@ extension VehicleFlow {
          
          //        END
          //        ************************************************
-         */
+         
         
         packetsFiltered.removeAll()
         processedResult.removeAll()
