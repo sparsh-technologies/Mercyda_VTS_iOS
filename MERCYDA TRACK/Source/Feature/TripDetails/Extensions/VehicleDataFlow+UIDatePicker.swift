@@ -36,8 +36,10 @@ extension VehicleFlowViewController {
             switch result {
             case .success(_):
                 print("")
+                self.mapButton.isHidden = false
             case .failure(let error):
                 statusBarMessage(.CustomError, error)
+                self.mapButton.isHidden = true
             }
         }
     }

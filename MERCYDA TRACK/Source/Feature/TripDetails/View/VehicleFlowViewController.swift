@@ -56,6 +56,12 @@ final class VehicleFlowViewController: BaseViewController {
         setuiDatas()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if vehicleFlowViewModel == nil {
+            vehicleFlowViewModel = VehicleFlow()
+            getDeviceDetailsWithOutActivityInd()
+        }
+    }
     
     override func viewWillLayoutSubviews() {
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
@@ -140,7 +146,7 @@ final class VehicleFlowViewController: BaseViewController {
         }
     }
     
-    @objc   func getDeviceDetailsWithOutActivityInd()  {
+    @objc func getDeviceDetailsWithOutActivityInd()  {
         
         vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
