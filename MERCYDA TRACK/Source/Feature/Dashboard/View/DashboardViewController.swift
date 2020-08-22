@@ -100,6 +100,8 @@ class DashboardViewController: BaseViewController {
         switch button.tag {
         case 10,11,12,13,14,18:
             getVehiclesList(tag:button.tag)
+        case 15:
+            navigateToAlertPage()
         default:
             printLog("Nothing")
         }
@@ -125,6 +127,12 @@ class DashboardViewController: BaseViewController {
         vc.type = clickedType
         self.navigationController?.pushViewController(vc, animated: true)
         }
+    
+    func navigateToAlertPage(){
+        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: StoryboardID.AlertVCId.rawValue)as! AlertVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
         
     @IBAction func refreshButtonPressed(_ sender: Any) {
         getDashboardVehicleCount()

@@ -38,6 +38,7 @@ enum StoryboardID :String {
     case LOginViewControllerID = "LoginViewControllerId"
     case AboutusViewControllerId = "AboutusViewcontrollerID"
     case AboutusWebviewDetailpage = "AboutusWebviewDetailpage"
+    case AlertVCId = "AlertVC"
 }
 
 

@@ -134,6 +134,7 @@
 		84E3E53A24AD0A0E004CC622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53824AD0A0D004CC622 /* Constants.swift */; };
 		84E3E53B24AD0A0E004CC622 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3E53824AD0A0D004CC622 /* Constants.swift */; };
 		84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E3E53C24AD0BE1004CC622 /* Login.storyboard */; };
+		84FAE9A724ED9E13001BEE6C /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAE9A624ED9E13001BEE6C /* AlertVC.swift */; };
 		9AB0BB78C854CCC5EC7D5674 /* Pods_MERCYDA_TRACKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */; };
 		ABD695CD5CE4C5FC8828EE7A /* Pods_MERCYDA_TRACK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806926523CCCDA21560AE02F /* Pods_MERCYDA_TRACK.framework */; };
 		C627F10224BC63ED0026F1E7 /* Aboutuscontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627F10124BC63ED0026F1E7 /* Aboutuscontroller.swift */; };
@@ -320,6 +321,7 @@
 		84E3E53424AD09F7004CC622 /* StoryboardSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSupport.swift; sourceTree = "<group>"; };
 		84E3E53824AD0A0D004CC622 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84E3E53C24AD0BE1004CC622 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		84FAE9A624ED9E13001BEE6C /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK/Pods-MERCYDA TRACK.release.xcconfig"; sourceTree = "<group>"; };
 		AEF1BAFD7A7FE354B466991A /* Pods_MERCYDA_TRACKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DEEF8DAF93E0E94EBC33 /* Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACK-MERCYDA TRACKUITests/Pods-MERCYDA TRACK-MERCYDA TRACKUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 		52457DA624AB7A470078487A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				84FAE9A524ED9CA5001BEE6C /* Alert */,
 				84B2F12024D1F22F005FF3C5 /* WebView */,
 				C627F10024BC63ED0026F1E7 /* Aboutus */,
 				84410DA724B8F18700E6047D /* TripDetails */,
@@ -697,6 +700,14 @@
 				84E3E52524AD0974004CC622 /* LoginTableviewCell.swift */,
 			);
 			path = TableviewCell;
+			sourceTree = "<group>";
+		};
+		84FAE9A524ED9CA5001BEE6C /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				84FAE9A624ED9E13001BEE6C /* AlertVC.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		C627F10024BC63ED0026F1E7 /* Aboutus */ = {
@@ -1358,6 +1369,7 @@
 				C698D1BC24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C627F10F24BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
 				52457DB624AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
+				84FAE9A724ED9E13001BEE6C /* AlertVC.swift in Sources */,
 				C6669FD024AA20420024527E /* CommonParser.swift in Sources */,
 				52457DDF24AB7CB20078487A /* Styles.swift in Sources */,
 				84E3E53524AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
