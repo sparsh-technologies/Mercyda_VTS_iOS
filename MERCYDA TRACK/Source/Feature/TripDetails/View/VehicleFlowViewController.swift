@@ -31,7 +31,7 @@ final class VehicleFlowViewController: BaseViewController {
     var vehicleFlowViewModel : VehicleFlow?
     var serialNumber = String()
     var vehicleObj:Vehicle?
-    var APItimer: Timer?
+    weak var APItimer: Timer?
     var flagForDateTitle = true
     @IBOutlet weak var vehicleImageview: UIImageView!
     @IBOutlet weak var vehicleNumber: UILabel!
@@ -74,10 +74,6 @@ final class VehicleFlowViewController: BaseViewController {
         super.viewWillDisappear(animated)
         APItimer?.invalidate()
         APItimer = nil
-        self.vehicleFlowViewModel?.dispatcher = nil
-        self.vehicleFlowViewModel?.dispatchGroup = nil
-        self.vehicleFlowViewModel = nil
-        
     }
     
     func setuiDatas(){
@@ -162,6 +158,9 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     deinit {
+        self.vehicleFlowViewModel?.dispatcher = nil
+        self.vehicleFlowViewModel?.dispatchGroup = nil
+        self.vehicleFlowViewModel = nil
         printLog("ViewController Released from memory : VehicleFlowViewController")
     }
     /*
@@ -260,7 +259,6 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
         self.show(mapVC, sender: self)
-        //        self.present(mapVC, animated: true, completion: nil)
     }
 }
 

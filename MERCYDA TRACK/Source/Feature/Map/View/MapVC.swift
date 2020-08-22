@@ -105,11 +105,7 @@ class MapVC: UIViewController {
     
     @IBAction func mapFullScreenBtn(_ sender: Any) {
         isNavFlag += 1
-        if isNavFlag % 2 == 0 {
-            self.navigationController?.navigationBar.isHidden = true
-        } else {
-            self.navigationController?.navigationBar.isHidden = false
-        }
+        self.navigationController?.setNavigationBarHidden(isNavFlag % 2 == 0, animated: true)
     }
     
     func setuiDatas(){
@@ -141,7 +137,7 @@ class MapVC: UIViewController {
         if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
             setVehicleMode(mode:vehicleMode)
         }
-        getVehicleType(type:(vehicleObject?.vehicle_type!)!)
+        getVehicleType(type: vehicleObject?.vehicle_type ?? "")
         if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
             setVehicleMode(mode:vehicleMode)
         }

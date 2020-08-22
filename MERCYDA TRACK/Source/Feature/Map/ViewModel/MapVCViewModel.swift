@@ -36,7 +36,7 @@ extension MapVCViewModel {
         if let array = self.originalDeviceList {
             let movingDeviceArray = array.getMovingPackets()
             self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations)
+            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
         }
     }
     
