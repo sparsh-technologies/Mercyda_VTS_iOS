@@ -42,6 +42,8 @@ class MapVC: UIViewController {
     var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
     var vehicleObject:Vehicle?
     
+    var mapViewTopConstraint : NSLayoutConstraint!
+    
     
     private var dispatcher: Dispatcher?
     
@@ -97,13 +99,7 @@ class MapVC: UIViewController {
     
     @IBAction func mapFullScreenBtn(_ sender: Any) {
         isNavFlag += 1
-        self.navigationController?.setNavigationBarHidden(isNavFlag % 2 == 0, animated: true)
-        if isNavFlag % 2 == 0 {
-            topVehicleView.isHidden = true
-        } else
-        {
-            topVehicleView.isHidden = false
-        }
+        fullScreenMap(isNavFlag % 2 == 0)
     }
     
     func setuiDatas(){
@@ -241,12 +237,13 @@ class MapVC: UIViewController {
     func addMapView() {
         mapView?.translatesAutoresizingMaskIntoConstraints = false
         if let map = mapView {
+            mapViewTopConstraint = map.topAnchor.constraint(equalTo: self.topVehicleView.bottomAnchor, constant: 0)
             map.delegate = self
             self.view.addSubview(map)
             NSLayoutConstraint.activate([
                 map.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
                 map.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-                map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+                mapViewTopConstraint,
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
             let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
@@ -254,6 +251,17 @@ class MapVC: UIViewController {
         }
     }
     
+    func fullScreenMap(_ show: Bool) {
+        DispatchQueue.main.async {
+            self.mapViewTopConstraint.isActive = false
+            self.mapViewTopConstraint = self.mapView?.topAnchor.constraint(equalTo: show ? self.topVehicleView.bottomAnchor : self.view.topAnchor, constant: 0)
+            self.mapViewTopConstraint.isActive = true
+            self.topVehicleView.isHidden = !show
+            UIView.animate(withDuration: show ? 0.0 : 0.5, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 20.3, options: [.curveEaseInOut], animations: {
+                self.navigationController?.setNavigationBarHidden(!show, animated: false)
+            })
+        }
+    }
     
     func focusMapToLocation(loctions: [CLLocationCoordinate2D], padding: CGFloat = 50, duration: CGFloat = 0.0005, completionFunction : @escaping () -> Void, completionFunction2 : @escaping () -> Void) {
         var bounds = GMSCoordinateBounds()
