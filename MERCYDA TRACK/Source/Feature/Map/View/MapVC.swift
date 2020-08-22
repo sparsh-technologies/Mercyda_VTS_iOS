@@ -36,14 +36,15 @@ class MapVC: UIViewController {
     var polyLineLocations:[CLLocationCoordinate2D] = []
     var animationPolyline = GMSPolyline()
     var animationPolylineBase = GMSPolyline()
-    var path = GMSPath()
+    var path : GMSPath?
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
     var vehicleObject:Vehicle?
+    let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
     
     var mapViewTopConstraint : NSLayoutConstraint!
-    
+    var lastParkingLocation : CLLocationCoordinate2D?
     
     private var dispatcher: Dispatcher?
     
@@ -77,24 +78,29 @@ class MapVC: UIViewController {
     override func viewWillLayoutSubviews() {
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
     }
+    
     @IBAction func changeMapViewBtn(_ sender: Any) {
         mapFlag += 1
-        if mapFlag % 2 == 0 {
-            mapView?.mapType = .satellite
-        } else {
-            mapView?.mapType = .normal
-            
-        }
+        mapView?.mapType = mapFlag % 2 == 0 ? .satellite : .normal
     }
     
     @IBAction func routePlayBtn(_ sender: Any) {
-        
+        mapView?.clear()
+        self.animationPolyline = GMSPolyline()
+        self.animationPolylineBase = GMSPolyline()
+        self.animationPath = GMSMutablePath()
+        animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
+        viewModel?.updateViewController()
     }
     
     @IBAction func currentLocationBtn(_ sender: Any) {
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 15)
-        self.mapView?.camera = camera
-        
+        if let location = self.lastParkingLocation {
+            let camera = GMSCameraPosition.camera(withTarget: location, zoom: 55)
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(2.00)
+            self.mapView?.animate(with: GMSCameraUpdate.setCamera(camera))
+            CATransaction.commit()
+        }
     }
     
     @IBAction func mapFullScreenBtn(_ sender: Any) {
@@ -246,7 +252,6 @@ class MapVC: UIViewController {
                 mapViewTopConstraint,
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
-            let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
             animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
         }
     }
@@ -358,9 +363,10 @@ class MapVC: UIViewController {
     }
     
     @objc func animatePolylinePath() {
+        if let gmsPath = self.path {
         CATransaction.begin()
-        if (self.i < self.path.count()) {
-            self.animationPath.add(self.path.coordinate(at: self.i))
+        if (self.i < gmsPath.count()) {
+            self.animationPath.add(gmsPath.coordinate(at: self.i))
             self.animationPolylineBase.path = self.animationPath
             self.animationPolylineBase.strokeColor = UIColor.black
             self.animationPolylineBase.strokeWidth = 7
@@ -371,16 +377,18 @@ class MapVC: UIViewController {
             self.animationPolyline.strokeWidth = 4
             self.animationPolyline.geodesic = true
             self.animationPolyline.map = self.mapView
-            self.setCarMarkers(position1: self.path.coordinate(at: self.i), position2: self.path.coordinate(at: self.i + 1))
+            self.setCarMarkers(position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
             self.i += 1
         } else {
-            if self.path.count() >= self.i && self.path.count() > 0 {
-                self.setCarMarkers(position1: self.path.coordinate(at: self.i - 1), position2: self.path.coordinate(at: self.i - 1))
+            if gmsPath.count() >= self.i && gmsPath.count() > 0 {
+                self.setCarMarkers(position1: gmsPath.coordinate(at: self.i - 1), position2: gmsPath.coordinate(at: self.i - 1))
+                self.lastParkingLocation = gmsPath.coordinate(at: self.i - 1)
             }
             self.i = 0
             self.dispTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
             print("last execution")
         }
         CATransaction.commit()
+        }
     }
 }
