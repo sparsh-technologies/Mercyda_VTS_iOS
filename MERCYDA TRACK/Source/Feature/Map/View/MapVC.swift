@@ -49,7 +49,7 @@ class MapVC: UIViewController {
     
     var timer: Timer!
     var mapFlag = 1
-    var isNavFlag = 1
+    var isNavFlag = 0
     var lat = 0.0
     var lon = 0.0
     
