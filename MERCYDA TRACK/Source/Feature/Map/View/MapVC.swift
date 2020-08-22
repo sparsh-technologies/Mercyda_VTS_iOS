@@ -51,14 +51,6 @@ class MapVC: UIViewController {
     var lat = 0.0
     var lon = 0.0
     
-    
-    let closeButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action:#selector(MapVC.dismissView) , for: .touchUpInside)
-        button.setBackgroundImage(UIImage(named: "close_black"), for: .normal)
-        return button
-    }()
-    
     deinit {
         printLog("ViewController Released from memory : MapVC")
     }
@@ -106,6 +98,12 @@ class MapVC: UIViewController {
     @IBAction func mapFullScreenBtn(_ sender: Any) {
         isNavFlag += 1
         self.navigationController?.setNavigationBarHidden(isNavFlag % 2 == 0, animated: true)
+        if isNavFlag % 2 == 0 {
+            topVehicleView.isHidden = true
+        } else
+        {
+            topVehicleView.isHidden = false
+        }
     }
     
     func setuiDatas(){
@@ -242,7 +240,6 @@ class MapVC: UIViewController {
     
     func addMapView() {
         mapView?.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
         if let map = mapView {
             map.delegate = self
             self.view.addSubview(map)
@@ -252,13 +249,6 @@ class MapVC: UIViewController {
                 map.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
-            self.view.addSubview(closeButton)
-            NSLayoutConstraint.activate([
-                closeButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-                closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
-                closeButton.heightAnchor.constraint(equalToConstant: 35)
-            ])
-            closeButton.aspectRatio(1.0/1.0).isActive = true
             let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
             animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
         }
