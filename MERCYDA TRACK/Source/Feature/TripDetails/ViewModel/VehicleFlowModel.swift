@@ -53,7 +53,7 @@ extension VehicleFlow {
          //        Use this function only for Debug Purpose.
          //        Check Packets Mode
          
-         debugForPacketsModes(rawPackets: packets)
+//         debugForPacketsModes(rawPackets: packets)
          
          //        END
          //        ************************************************
@@ -140,7 +140,7 @@ extension VehicleFlow {
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         restorePlacesName()
-        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance)
+        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M")
         if self.dispatchGroup == nil {
             self.dispatchGroup = DispatchGroup()
         }

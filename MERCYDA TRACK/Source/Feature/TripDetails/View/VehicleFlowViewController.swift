@@ -11,7 +11,7 @@ import MBProgressHUD
 
 /// Protocol
 protocol VehicleFlowControllerDelegate: class {
-    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double)
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double, mode: String)
     func reloadData()
 }
 
@@ -236,11 +236,20 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         tableViewOutlet.reloadData()
     }
     
-    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double) {
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double, mode: String) {
         tableViewOutlet.reloadData()
         minSpdLbl.text = String(minSpd.truncate(places: 2)) + " km/hr"
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
+        if mode == "M" {
+            vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        }
+        if mode == "H" {
+            vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        }
+        if mode == "S" {
+            vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        }
     }
     
     func goToMaps() {
