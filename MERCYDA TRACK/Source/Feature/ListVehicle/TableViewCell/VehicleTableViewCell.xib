@@ -88,7 +88,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="oT1-hb-YZ6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRO-ZG-xfF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRO-ZG-xfF">
                                 <rect key="frame" x="173" y="63.333333333333329" width="364" height="49.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,7 +134,7 @@
                             <constraint firstItem="Kcn-Df-ehl" firstAttribute="leading" secondItem="42h-Y8-ulw" secondAttribute="trailing" constant="10" id="moM-jx-ohn"/>
                             <constraint firstItem="Tm6-c1-slt" firstAttribute="leading" secondItem="7tN-Vk-XOW" secondAttribute="leading" constant="5" id="n2O-JH-cLA"/>
                             <constraint firstItem="wFm-EN-bit" firstAttribute="leading" secondItem="CvF-Lu-fG0" secondAttribute="trailing" constant="5" id="tgn-JH-tOB"/>
-                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="IRO-ZG-xfF" secondAttribute="bottom" constant="20" id="vJ6-aF-Hih"/>
+                            <constraint firstAttribute="bottom" secondItem="IRO-ZG-xfF" secondAttribute="bottom" constant="20" id="vJ6-aF-Hih"/>
                             <constraint firstItem="42h-Y8-ulw" firstAttribute="leading" secondItem="Tm6-c1-slt" secondAttribute="trailing" constant="10" id="xSN-AM-Bg8"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

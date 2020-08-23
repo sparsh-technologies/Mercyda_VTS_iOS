@@ -92,8 +92,8 @@
                                             <constraint firstAttribute="width" constant="25" id="sqz-Ae-V9l"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-kj-Psu">
-                                        <rect key="frame" x="202" y="62" width="197" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-kj-Psu">
+                                        <rect key="frame" x="197" y="62" width="202" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -114,14 +114,14 @@
                                     <constraint firstItem="LTe-2v-giU" firstAttribute="leading" secondItem="r9C-0t-hBH" secondAttribute="trailing" constant="13" id="ZoV-vo-UKB"/>
                                     <constraint firstItem="bcB-CJ-NIQ" firstAttribute="top" secondItem="mE9-Tw-Pja" secondAttribute="top" constant="20" id="auQ-IB-YJL"/>
                                     <constraint firstItem="r9C-0t-hBH" firstAttribute="top" secondItem="mE9-Tw-Pja" secondAttribute="top" constant="20" id="bBf-Wg-ZbT"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Bhe-kj-Psu" secondAttribute="bottom" constant="20" id="d7A-8a-XY6"/>
                                     <constraint firstItem="Cmd-vf-Kd1" firstAttribute="leading" secondItem="uXT-2n-eQO" secondAttribute="trailing" constant="5" id="euq-Yt-EvD"/>
                                     <constraint firstItem="LTe-2v-giU" firstAttribute="top" secondItem="mE9-Tw-Pja" secondAttribute="top" constant="20" id="f5G-eF-Cse"/>
                                     <constraint firstItem="noN-rN-cfb" firstAttribute="top" secondItem="Cmd-vf-Kd1" secondAttribute="bottom" constant="20" id="flG-Dg-FoB"/>
-                                    <constraint firstItem="Bhe-kj-Psu" firstAttribute="leading" secondItem="noN-rN-cfb" secondAttribute="trailing" constant="10" id="fvZ-ln-X0R"/>
+                                    <constraint firstItem="Bhe-kj-Psu" firstAttribute="leading" secondItem="noN-rN-cfb" secondAttribute="trailing" constant="5" id="fvZ-ln-X0R"/>
                                     <constraint firstItem="xe2-ya-kp0" firstAttribute="leading" secondItem="hZU-bn-wWn" secondAttribute="trailing" constant="2" id="hzs-fs-RcM"/>
                                     <constraint firstItem="uXT-2n-eQO" firstAttribute="centerY" secondItem="mE9-Tw-Pja" secondAttribute="centerY" id="kVc-qK-7z6"/>
                                     <constraint firstItem="Bhe-kj-Psu" firstAttribute="top" secondItem="r9C-0t-hBH" secondAttribute="bottom" constant="15" id="nti-v7-ZEQ"/>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Bhe-kj-Psu" secondAttribute="bottom" constant="48" id="oUE-37-Wqa"/>
                                     <constraint firstAttribute="width" secondItem="mE9-Tw-Pja" secondAttribute="height" multiplier="69:25" id="uzr-bh-NhV"/>
                                     <constraint firstItem="uXT-2n-eQO" firstAttribute="height" secondItem="mE9-Tw-Pja" secondAttribute="height" multiplier="0.9" id="xXN-hq-Mpk"/>
                                 </constraints>
