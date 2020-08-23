@@ -225,7 +225,10 @@ class MapVC: UIViewController {
         
         for (index,latlon) in locationsArray.enumerated() {
             let marker:GMSMarker = GMSMarker.init(position: latlon)
-            let iconImage = deviceArray[index].vehicle_mode == "H" ? UIImage.init(named: "h_pin") : UIImage.init(named: "s_pin")
+            var iconImage = deviceArray[index].vehicle_mode == "H" ? UIImage.init(named: "h_pin") : UIImage.init(named: "s_pin")
+            if index == 0 {
+                iconImage = UIImage.init(named: "startPin")
+            }
             marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
             marker.title = deviceArray[index].vehicle_mode
             marker.userData = deviceArray[index]
