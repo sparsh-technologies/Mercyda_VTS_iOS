@@ -22,6 +22,11 @@ extension DashboardViewModel {
          completion(resultData)
     }
     
+    func filterAlertData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
+         let resultData = data.filter { $0.alert_count != 0}
+         completion(resultData)
+    }
+    
     func filterOfflineData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
         var filteredData = [Vehicle]()
         for i in 0..<data.count{

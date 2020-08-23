@@ -21,7 +21,7 @@ protocol AlertTableViewModel {
 }
 
 enum AlertTableDataModal {
-    case itemsCell(alertDat: [AlertData])
+    case itemsCell(alertDat: [Vehicle])
     
     var numberOfRows : Int {
         get {
@@ -75,11 +75,16 @@ extension AlertTableDataModal: AlertTableViewModel {
     func getCellForRowsInSection<T>(tableView: UITableView, delegateClass: T, indexPath: IndexPath) -> UITableViewCell where T : AlertViewControllerGenericDelegate {
         switch self {
             
-        case .itemsCell(alertDat: let vehiclesArray):
-            guard let vehicleCell = tableView.dequeueReusableCell(withIdentifier: "vehicleCell", for: indexPath) as? UITableViewCell else {
+        case .itemsCell(alertDat: let alertArray):
+            guard let alertCell = tableView.dequeueReusableCell(withIdentifier: "AlertTableVIewCell", for: indexPath) as? AlertTableVIewCell else {
+                
                 return UITableViewCell()
             }
-            return vehicleCell
+            
+            
+            alertCell.selectionStyle = .none
+            alertCell.setAlertdatas(vehicleObject: alertArray[indexPath.row])
+            return alertCell
         }
     }
 }

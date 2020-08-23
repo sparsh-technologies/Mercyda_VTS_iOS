@@ -98,10 +98,10 @@ class DashboardViewController: BaseViewController {
     /// - Parameter button: UIButton Type
     @objc func menuButtonAction(button: UIButton) {
         switch button.tag {
-        case 10,11,12,13,14,18:
+        case 10,11,12,13,14,18,16,15:
             getVehiclesList(tag:button.tag)
-        case 15:
-            navigateToAlertPage()
+        case 17:
+            getReport()
         default:
             printLog("Nothing")
         }
@@ -119,6 +119,14 @@ class DashboardViewController: BaseViewController {
         
     }
     
+    
+    func getReport(){
+        if let url = URL(string: "http://console.mercydatrack.com:8080/mtrack/report?username=\(Utility.getUserName())&password=\(Utility.getPassword())") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    
     func navigatetoVehicleListPage(vehiclelist:[Vehicle],clickedType:String){
         let sortedArray = vehiclelist.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
         let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
@@ -128,9 +136,10 @@ class DashboardViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         }
     
-    func navigateToAlertPage(){
+    func navigateToAlertPage(vehiclelist:[Vehicle]){
         let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.AlertVCId.rawValue)as! AlertVC
+        vc.vehiclelist = vehiclelist
         self.navigationController?.pushViewController(vc, animated: true)
     }
         
@@ -152,6 +161,7 @@ class DashboardViewController: BaseViewController {
             guard let this = self else {
                 return
             }
+        
             MBProgressHUD.hide(for: this.view, animated: false)
             printLog(result)
             switch result {
@@ -180,7 +190,12 @@ class DashboardViewController: BaseViewController {
             case .success(let result):
             MBProgressHUD.hide(for: this.view, animated: false)
             switch tag {
-            case 18:
+            case 15:
+               // this.navigateToAlertPage(vehiclelist: result)
+                this.dashboardViewModel.filterAlertData(data: result) {  (filterdResult ) in
+                    this.navigateToAlertPage(vehiclelist: filterdResult)
+                }
+            case 18,16:
                 this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
             case 10:
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in

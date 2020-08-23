@@ -4,43 +4,52 @@
 //  
 
 import UIKit
+import MBProgressHUD
 
 class AlertVC: UIViewController {
 
-     let alertViewModelObj = AlertViewModel()
+    @IBOutlet weak var alertTableView: UITableView!
+    
+    
+    // var alertDataSource:[AlertTableViewModel] = []
+      var vehiclelist = [Vehicle]()
+     var vehicleDataSource:[AlertTableViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
-        getAlertData()
-        
-
+     //   getAlertData()
+        alertTableView.register(cellType: AlertTableVIewCell.self)
+         self.vehicleDataSource.append(AlertTableDataModal.itemsCell(alertDat: vehiclelist))
     }
-    func getAlertData(){
-       MBProgressHUD.showAdded(to: view, animated: true)
-        alertViewModelObj.getAlertData { [weak self] (result) in
-            guard let this = self else {
-                return
-            }
-            MBProgressHUD.hide(for: this.view, animated: false)
+//    func getAlertData(){
+//       MBProgressHUD.showAdded(to: view, animated: true)
+//        alertViewModelObj.getAlertData { [weak self] (result) in
+//            guard let this = self else {
+//                return
+//            }
+//            MBProgressHUD.hide(for: this.view, animated: false)
+//
+//           switch result {
+//            case .success(let result):
+//                this.setDatas(alertDat:result)
+//              //  printLog("Vechile details Count \
+//            case .failure(let error):
+//                statusBarMessage(.CustomError, error)
+//                printLog(error)
+//            }
+//
+//        }
+//
+//    }
 
-           switch result {
-            case .success(let result):
-                this.setDatas(alertDat:result)
-              //  printLog("Vechile details Count \(result)")
-            case .failure(let error):
-                statusBarMessage(.CustomError, error)
-                printLog(error)
-            }
-
-        }
-       
-    }
-
-    func setDatas(alertDat:AlertResponse){
-        print(alertDat.data?.count)
-        print(alertDat.data![0].id)
-    }
+//    func setDatas(alertDat:AlertResponse){
+//        
+//        if let alertDatsource = alertDat.data {
+//            self.alertDataSource.append(AlertTableDataModal.itemsCell(alertDat: alertDatsource))
+//            self.alertTableView.reloadData()
+//        }
+//    }
     
   func setupUi(){
         self.navigationController?.navigationBar.isHidden = false
@@ -56,5 +65,35 @@ class AlertVC: UIViewController {
     
     @objc func addTapped(){
         
+    }
+    func navigatetoAlertDetail(vehicleObj:Vehicle){
+        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let vehicleFlowVC = story.instantiateViewController(withIdentifier: StoryboardID.AlertDetail.rawValue)as! AlertDetailController
+        vehicleFlowVC.vehicleObj = vehicleObj
+        self.navigationController?.pushViewController(vehicleFlowVC, animated: true)
+    }
+}
+
+
+extension AlertVC:UITableViewDataSource,UITableViewDelegate,AlertViewControllerGenericDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   
+        let section = vehicleDataSource[section]
+        return section.numberOfRowsInSection()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let list = vehicleDataSource[indexPath.section]
+        //  return list.getCellForRow(tableView: tableView, delegate: self, indexPath: indexPath)
+        return list.getCellForRowsInSection(tableView:tableView, delegateClass: self, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if  let vehicle =  vehicleDataSource[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
+            vehicleNumber = vehicle.vehicle_registration!
+            navigatetoAlertDetail(vehicleObj:vehicle)
+        }
     }
 }

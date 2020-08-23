@@ -114,7 +114,27 @@ extension Utility {
            )
        }
        
-    
+ class func getTimeStampForAPI(flag: Int) -> String {
+        
+        let startDateFormatter = DateFormatter()
+        startDateFormatter.dateFormat = "yyyy-MM-dd"
+        let now = NSDate()
+        let currentYear = startDateFormatter.string(from: now as Date)
+        let dateString = "00:00:00 " + currentYear
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
+        let s = dateFormatter.date(from: dateString)
+        let startDate = s!.timeIntervalSince1970 * 1000
+        let endDate = NSDate().timeIntervalSince1970 * 1000
+        
+        if flag == 1 {
+            return String(Int(startDate))
+        }
+        if flag == 2 {
+            return String(Int(endDate))
+        }
+        return ""
+    }
 }
 
 

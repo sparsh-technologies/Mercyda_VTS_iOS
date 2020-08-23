@@ -15,7 +15,7 @@ import Foundation
 struct AlertResponse : Codable {
 	let status : String?
 	let code : Int?
-	let data : [Data]?
+	let data : [AlertData]?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -28,7 +28,7 @@ struct AlertResponse : Codable {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		status = try values.decodeIfPresent(String.self, forKey: .status)
 		code = try values.decodeIfPresent(Int.self, forKey: .code)
-		data = try values.decodeIfPresent([Data].self, forKey: .data)
+		data = try values.decodeIfPresent([AlertData].self, forKey: .data)
 	}
 
 }

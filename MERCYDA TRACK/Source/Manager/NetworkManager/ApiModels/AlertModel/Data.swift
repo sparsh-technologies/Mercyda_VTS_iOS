@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Data : Codable {
+struct AlertData : Codable {
 	let id : String?
 	let d : D?
 	let meta_d : Meta_d?

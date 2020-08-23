@@ -11,6 +11,7 @@ import Foundation
 
 var uame = ""
 var passWord = ""
+var vehicleNumber = ""
 
 
 enum CellID:String {
@@ -39,6 +40,7 @@ enum StoryboardID :String {
     case AboutusViewControllerId = "AboutusViewcontrollerID"
     case AboutusWebviewDetailpage = "AboutusWebviewDetailpage"
     case AlertVCId = "AlertVC"
+    case AlertDetail = "AlertDetailVc"
 }
 
 

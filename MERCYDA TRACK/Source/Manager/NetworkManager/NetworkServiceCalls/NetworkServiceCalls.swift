@@ -96,4 +96,19 @@ class NetworkServiceCalls: NetworkAdapter {
            }
        }
     
+    // Service for getting alert details
+    
+
+    func getAlertDetails( _ completion: @escaping CompletionWithSuccessOrFailure) {
+        let params = GetAlertParams()
+        fetch(params, LocationParser<AlertResponse>.self) { (state) in
+            switch state {
+            case .success(let response):
+                completion(.success(response: response))
+            case .failure(let error):
+                completion(.failure(error: error))
+            }
+        }
+    }
+    
 }
