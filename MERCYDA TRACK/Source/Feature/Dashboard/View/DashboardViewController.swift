@@ -63,15 +63,15 @@ class DashboardViewController: BaseViewController {
     /// Configure UI with Label Names and Initial Values
     func configureViewUI() {
       //  self.navigationController?.navigationBar.isHidden = true
-        movingLbl.text = DashboardLocalization.movingLbl.localized
-        sleepLbl.text = DashboardLocalization.sleepLbl.localized
-        alertsLbl.text = DashboardLocalization.alertsLbl.localized
-        idleLbl.text = DashboardLocalization.idleLbl.localized
-        reportsLbl.text = DashboardLocalization.reportsLbl.localized
-        dashboardLbl.text = DashboardLocalization.dashboardLbl.localized
-        offlineLbl.text = DashboardLocalization.offlineLbl.localized
-        bottomBannerLbl.text = DashboardLocalization.bottomBanner.localized
-        onlineLbl.text = DashboardLocalization.onlineLbl.localized
+        movingLbl.text = DashboardLocalization.movingLbl.rawValue
+        sleepLbl.text = DashboardLocalization.sleepLbl.rawValue
+        alertsLbl.text = DashboardLocalization.alertsLbl.rawValue
+        idleLbl.text = DashboardLocalization.idleLbl.rawValue
+        reportsLbl.text = DashboardLocalization.reportsLbl.rawValue
+        dashboardLbl.text = DashboardLocalization.dashboardLbl.rawValue
+        offlineLbl.text = DashboardLocalization.offlineLbl.rawValue
+        bottomBannerLbl.text = DashboardLocalization.bottomBanner.rawValue
+        onlineLbl.text = DashboardLocalization.onlineLbl.rawValue
         
         sleepBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
         idleBtnOutlet.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
@@ -183,7 +183,7 @@ class DashboardViewController: BaseViewController {
             case 18:
                 this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
             case 10:
-            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
+                this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
                 this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Moving.rawValue)
             }
             case 12:
