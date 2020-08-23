@@ -51,8 +51,6 @@ class MapVC: UIViewController {
     var timer: Timer!
     var mapFlag = 1
     var isNavFlag = 0
-    var lat = 0.0
-    var lon = 0.0
     
     deinit {
         printLog("ViewController Released from memory : MapVC")
@@ -63,8 +61,6 @@ class MapVC: UIViewController {
         self.addMapView()
         viewModel?.delegate = self
         viewModel?.updateViewController()
-        self.view.bringSubviewToFront(bottomFeaturesView)
-        self.view.bringSubviewToFront(topVehicleView)
         setuiDatas()
         
     }
@@ -200,7 +196,7 @@ class MapVC: UIViewController {
     
     
     func updateMap(_ locationsArray: [CLLocationCoordinate2D]) {
-        self.focusMapToLocation(loctions: locationsArray,duration: 3.0, completionFunction: {
+        self.focusMapToLocation(loctions: locationsArray,duration: 2.0, completionFunction: {
             self.draw_polylines(loctions: self.polyLineLocations)
         }) {
             self.viewModel?.updateParkingMarkers()
@@ -216,23 +212,19 @@ class MapVC: UIViewController {
             marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
             marker.title = deviceArray[index].vehicle_mode
             marker.userData = deviceArray[index]
-            // marker.tracksInfoWindowChanges = true
             let iconView = CustomMarkerView.init(image: iconImage ?? UIImage())
             marker.iconView = iconView
             iconView.transform = CGAffineTransform.init(translationX: 0, y: yAnchor )
             yAnchor -= 100
             marker.map = self.mapView
             
-            
             CATransaction.begin()
-            CATransaction.setAnimationDuration(2.50)
-            UIView.animate(withDuration: 2.50, delay: 0.0, options: .curveEaseOut, animations: {
-                iconView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
+            UIView.animate(withDuration: 0.50, delay: 0.0, options: .curveEaseOut, animations: {
+                iconView.transform = CGAffineTransform.identity
             })
             CATransaction.commit()
-            
         }
-        
+        CATransaction.flush()
     }
     
     @objc func dismissView() {
@@ -253,6 +245,11 @@ class MapVC: UIViewController {
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
             animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
+        }
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.bottomFeaturesView)
+            self.view.bringSubviewToFront(self.topVehicleView)
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -277,7 +274,7 @@ class MapVC: UIViewController {
         CATransaction.setValue(duration, forKey: kCATransactionAnimationDuration)
         CATransaction.setCompletionBlock {
             completionFunction()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 completionFunction2()
             }
         }
