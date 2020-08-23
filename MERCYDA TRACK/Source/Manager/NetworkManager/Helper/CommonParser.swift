@@ -47,7 +47,7 @@ extension CommonParser: NetworkParser {
                     }
                 } else {
                     if let error = result.error {
-                        let errorMessage = error.error_message ?? AppSpecificError.unknownError.rawValue
+                        let errorMessage = error 
                         return .failure(error: errorMessage)
                     } else {
                         return .failure(error: AppSpecificError.errorFieldMissingError.rawValue)

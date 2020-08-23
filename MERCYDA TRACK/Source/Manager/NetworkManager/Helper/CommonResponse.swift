@@ -17,7 +17,7 @@ struct CommonResponse<T : Codable> : Codable {
         }
     }
     let result  : T?
-    let error : ErrorStruct?
+    let error : String?
     let code : Int?
     
     enum CodingKeys: String, CodingKey {
@@ -31,7 +31,7 @@ struct CommonResponse<T : Codable> : Codable {
         let values = try? decoder.container(keyedBy: CodingKeys.self)
         status = try? values?.decodeIfPresent(String.self, forKey: .status)
         result = try? values?.decodeIfPresent(T.self, forKey: .result)
-        error = try? values?.decodeIfPresent(ErrorStruct.self, forKey: .result)
+        error = try? values?.decodeIfPresent(String.self, forKey: .error)
         code = try? values?.decodeIfPresent(Int.self, forKey: .code)
     }
     

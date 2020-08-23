@@ -140,7 +140,7 @@ extension VehicleFlow {
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         restorePlacesName()
-        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M")
+        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M", lastLocationName: "")
         if self.dispatchGroup == nil {
             self.dispatchGroup = DispatchGroup()
         }
