@@ -52,11 +52,12 @@ class ListVehicleController: BaseViewController {
         listVehicleviewmodel = ListVehicleViewModel()
         mainTableView.register(cellType: VehicleTableViewCell.self)
         refreshDataSource()
-        getAllAddress()
         cheeckEmpty()
         setupUi()
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getAllAddress()
     }
     
     
