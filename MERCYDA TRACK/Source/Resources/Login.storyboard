@@ -58,7 +58,7 @@
                                                 <rect key="frame" x="41.333333333333343" y="218.66666666666669" width="331.33333333333326" height="100"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="U1Z-vU-Omm">
-                                                        <rect key="frame" x="-70" y="-14" width="471.33333333333331" height="128"/>
+                                                        <rect key="frame" x="47.333333333333329" y="18" width="236.66666666666674" height="64.333333333333329"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="U1Z-vU-Omm" secondAttribute="height" multiplier="3.67969" id="426-OF-RvN"/>
@@ -78,7 +78,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAJ-3Y-Cd6">
                                                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666669" height="52.333333333333336"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fci@gmail.com" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-T9-64d">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-T9-64d">
                                                                 <rect key="frame" x="62.333333333333343" y="0.0" width="310.33333333333326" height="52.333333333333336"/>
                                                                 <color key="textColor" name="ThemeBlue"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -91,7 +91,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="52.333333333333336"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="uoO-U8-T9a">
-                                                                        <rect key="frame" x="-6" y="-5.6666666666666856" width="64" height="64"/>
+                                                                        <rect key="frame" x="10" y="10.333333333333314" width="32" height="32"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="uoO-U8-T9a" secondAttribute="height" multiplier="1:1" id="7cl-ut-mW4"/>
@@ -126,7 +126,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SW0-wm-30f">
                                                         <rect key="frame" x="0.0" y="67.333333333333314" width="372.66666666666669" height="52.333333333333343"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYo-5G-lZ0">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYo-5G-lZ0">
                                                                 <rect key="frame" x="62.333333333333343" y="0.0" width="310.33333333333326" height="52.333333333333336"/>
                                                                 <color key="textColor" name="ThemeBlue"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -139,7 +139,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="52.333333333333336"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="UCl-y3-JQF">
-                                                                        <rect key="frame" x="-6" y="-5.6666666666666856" width="64" height="64"/>
+                                                                        <rect key="frame" x="10" y="10.333333333333314" width="32" height="32"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="UCl-y3-JQF" secondAttribute="height" multiplier="1:1" id="n3S-tH-C3B"/>
                                                                         </constraints>
