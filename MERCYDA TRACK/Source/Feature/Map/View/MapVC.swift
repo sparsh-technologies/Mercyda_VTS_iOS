@@ -130,12 +130,29 @@ class MapVC: UIViewController {
         if let igngitionStatus = vehicleObject?.last_updated_data?.ignition{
             setIgnition(status:igngitionStatus)
         }
-        if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
-            setVehicleMode(mode:vehicleMode)
-        }
+        
         getVehicleType(type: vehicleObject?.vehicle_type ?? "")
-        if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
-            setVehicleMode(mode:vehicleMode)
+        //        if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
+        //            setVehicleMode(mode:vehicleMode)
+        //        }
+        
+        
+        if type == "Moving"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        }
+        else if type == "Sleep"{
+            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        }
+        else if type == "Idle"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        }
+        else if type == "Dashboard"{
+            if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
+                setVehicleMode(mode:vehicleMode)
+            }
+        }
+        else if type == "Offline"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
     }
     
@@ -361,31 +378,31 @@ class MapVC: UIViewController {
     
     @objc func animatePolylinePath() {
         if let gmsPath = self.path {
-        CATransaction.begin()
-        if (self.i < gmsPath.count()) {
-            self.animationPath.add(gmsPath.coordinate(at: self.i))
-            self.animationPolylineBase.path = self.animationPath
-            self.animationPolylineBase.strokeColor = UIColor.black
-            self.animationPolylineBase.strokeWidth = 7
-            self.animationPolylineBase.geodesic = true
-            self.animationPolylineBase.map = self.mapView
-            
-            self.animationPolyline.path = self.animationPath
-            self.animationPolyline.strokeWidth = 4
-            self.animationPolyline.geodesic = true
-            self.animationPolyline.map = self.mapView
-            self.setCarMarkers(position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
-            self.i += 1
-        } else {
-            if gmsPath.count() >= self.i && gmsPath.count() > 0 {
-                self.setCarMarkers(position1: gmsPath.coordinate(at: self.i - 1), position2: gmsPath.coordinate(at: self.i - 1))
-                self.lastParkingLocation = gmsPath.coordinate(at: self.i - 1)
+            CATransaction.begin()
+            if (self.i < gmsPath.count()) {
+                self.animationPath.add(gmsPath.coordinate(at: self.i))
+                self.animationPolylineBase.path = self.animationPath
+                self.animationPolylineBase.strokeColor = UIColor.black
+                self.animationPolylineBase.strokeWidth = 7
+                self.animationPolylineBase.geodesic = true
+                self.animationPolylineBase.map = self.mapView
+                
+                self.animationPolyline.path = self.animationPath
+                self.animationPolyline.strokeWidth = 4
+                self.animationPolyline.geodesic = true
+                self.animationPolyline.map = self.mapView
+                self.setCarMarkers(position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
+                self.i += 1
+            } else {
+                if gmsPath.count() >= self.i && gmsPath.count() > 0 {
+                    self.setCarMarkers(position1: gmsPath.coordinate(at: self.i - 1), position2: gmsPath.coordinate(at: self.i - 1))
+                    self.lastParkingLocation = gmsPath.coordinate(at: self.i - 1)
+                }
+                self.i = 0
+                self.dispTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
+                print("last execution")
             }
-            self.i = 0
-            self.dispTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
-            print("last execution")
-        }
-        CATransaction.commit()
+            CATransaction.commit()
         }
     }
 }

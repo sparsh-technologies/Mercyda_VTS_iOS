@@ -102,13 +102,33 @@ final class VehicleFlowViewController: BaseViewController {
         if let igngitionStatus = vehicleObj?.last_updated_data?.ignition{
             setIgnition(status:igngitionStatus)
         }
-        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-            setVehicleMode(mode:vehicleMode)
-        }
+        
         getVehicleType(type:(vehicleObj?.vehicle_type!)!)
-        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-            setVehicleMode(mode:vehicleMode)
+        
+        
+//        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+//            setVehicleMode(mode:vehicleMode)
+//        }
+        if type == "Moving"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
         }
+        else if type == "Sleep"{
+            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        }
+        else if type == "Idle"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        }
+        else if type == "Dashboard"{
+            if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+                setVehicleMode(mode:vehicleMode)
+                
+            }
+        }
+        else if type == "Offline"{
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
+        }
+        
+        
     }
     
     
