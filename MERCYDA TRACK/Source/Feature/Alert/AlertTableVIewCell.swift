@@ -39,7 +39,7 @@ class AlertTableVIewCell: UITableViewCell {
             alertCountLabel.text = "\(alertCOunt)"
         }
         
-        mainpowerOffView.isHidden = true
+   //    mainpowerOffView.isHidden = true
         
 //        if let mainpowerRemoval = vehicleObject.main_power_removal_alert_count{
 //            if mainpowerRemoval == 0{
