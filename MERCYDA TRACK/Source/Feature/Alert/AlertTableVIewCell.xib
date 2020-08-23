@@ -42,14 +42,14 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-Tl-6SL">
+                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-Tl-6SL">
                         <rect key="frame" x="101" y="43" width="243" height="20"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qll-ay-Rwk">
-                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJd-7D-UFg">
-                                        <rect key="frame" x="3" y="4" width="50.5" height="12"/>
+                                        <rect key="frame" x="3" y="4" width="51" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                 <constraints>
                                     <constraint firstItem="pJd-7D-UFg" firstAttribute="leading" secondItem="qll-ay-Rwk" secondAttribute="leading" constant="3" id="IsT-lZ-ucR"/>
                                     <constraint firstItem="pJd-7D-UFg" firstAttribute="centerY" secondItem="qll-ay-Rwk" secondAttribute="centerY" id="WlO-1F-acf"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="40" id="btq-Kh-5Wk"/>
+                                    <constraint firstAttribute="width" priority="999" constant="40" id="btq-Kh-5Wk"/>
                                     <constraint firstAttribute="height" constant="20" id="duH-YW-yEN"/>
                                     <constraint firstAttribute="trailing" secondItem="pJd-7D-UFg" secondAttribute="trailing" constant="3" id="eVm-pK-QcY"/>
                                 </constraints>
@@ -70,10 +70,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRe-fP-ZzZ">
-                                <rect key="frame" x="61.5" y="0.0" width="56.5" height="20"/>
+                                <rect key="frame" x="62" y="0.0" width="57" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label fdgdgdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-O1-JlQ">
-                                        <rect key="frame" x="3" y="4" width="50.5" height="12"/>
+                                        <rect key="frame" x="3" y="4" width="51" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                                     <constraint firstAttribute="height" constant="20" id="2ra-dF-3Gf"/>
                                     <constraint firstItem="MYp-O1-JlQ" firstAttribute="leading" secondItem="MRe-fP-ZzZ" secondAttribute="leading" constant="3" id="AjG-iz-B86"/>
                                     <constraint firstAttribute="trailing" secondItem="MYp-O1-JlQ" secondAttribute="trailing" constant="3" id="J2f-sW-8c4"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="40" id="qo1-82-R16"/>
+                                    <constraint firstAttribute="width" priority="999" constant="40" id="qo1-82-R16"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -94,10 +94,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfc-gr-TBD">
-                                <rect key="frame" x="123" y="0.0" width="56.5" height="20"/>
+                                <rect key="frame" x="124" y="0.0" width="57" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP8-Z5-S4I">
-                                        <rect key="frame" x="3" y="4" width="50.5" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ggg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP8-Z5-S4I">
+                                        <rect key="frame" x="3" y="4" width="51" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2WU-W7-68b"/>
                                     <constraint firstItem="wP8-Z5-S4I" firstAttribute="leading" secondItem="tfc-gr-TBD" secondAttribute="leading" constant="3" id="42q-Ro-26N"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="40" id="Zlg-Xd-Nxc"/>
+                                    <constraint firstAttribute="width" priority="999" constant="40" id="Zlg-Xd-Nxc"/>
                                     <constraint firstItem="wP8-Z5-S4I" firstAttribute="centerY" secondItem="tfc-gr-TBD" secondAttribute="centerY" id="gUm-C2-iMn"/>
                                     <constraint firstAttribute="trailing" secondItem="wP8-Z5-S4I" secondAttribute="trailing" constant="3" id="nJg-2l-XpJ"/>
                                 </constraints>
@@ -118,10 +118,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18I-Zk-Tii">
-                                <rect key="frame" x="184.5" y="0.0" width="58.5" height="20"/>
+                                <rect key="frame" x="186" y="0.0" width="57" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhc-DA-Qaw">
-                                        <rect key="frame" x="3" y="4" width="52.5" height="12"/>
+                                        <rect key="frame" x="3" y="4" width="51" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                                     <constraint firstItem="Fhc-DA-Qaw" firstAttribute="centerY" secondItem="18I-Zk-Tii" secondAttribute="centerY" id="cbY-Sf-OQk"/>
                                     <constraint firstAttribute="trailing" secondItem="Fhc-DA-Qaw" secondAttribute="trailing" constant="3" id="e2L-mo-wKp"/>
                                     <constraint firstItem="Fhc-DA-Qaw" firstAttribute="leading" secondItem="18I-Zk-Tii" secondAttribute="leading" constant="3" id="eGh-UG-1a5"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="40" id="i5b-PM-adI"/>
+                                    <constraint firstAttribute="width" priority="999" constant="40" id="i5b-PM-adI"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
