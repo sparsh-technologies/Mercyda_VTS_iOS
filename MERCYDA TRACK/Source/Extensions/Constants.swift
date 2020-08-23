@@ -12,6 +12,7 @@ import Foundation
 var uame = ""
 var passWord = ""
 var vehicleNumber = ""
+var type = ""
 
 
 enum CellID:String {

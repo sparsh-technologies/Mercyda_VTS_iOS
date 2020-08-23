@@ -77,8 +77,23 @@ class VehicleTableViewCell: UITableViewCell {
         if let igngitionStatus = vehicle.last_updated_data?.ignition{
             setIgnition(status:igngitionStatus)
         }
-        if let vehicleMode = vehicle.last_updated_data?.vehicle_mode {
-            setVehicleMode(mode:vehicleMode)
+       
+        if type == "Moving"{
+            self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+           }
+           else if type == "Sleep"{
+           self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+           }
+        else if type == "Idle"{
+             self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        }
+        else if type == "Dashboard"{
+            if let vehicleMode = vehicle.last_updated_data?.vehicle_mode {
+                       setVehicleMode(mode:vehicleMode)
+                   }
+        }
+        else if type == "Offline"{
+            self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
     }
     
@@ -134,6 +149,9 @@ class VehicleTableViewCell: UITableViewCell {
     
     /// Function for setting vehicle mode
     /// - Parameter mode: vehiclemode
+    
+   
+    
     func setVehicleMode(mode:String){
         switch mode{
         case VehicleMode.Moving.rawValue:

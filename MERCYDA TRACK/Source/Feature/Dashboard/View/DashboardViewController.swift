@@ -196,24 +196,30 @@ class DashboardViewController: BaseViewController {
                     this.navigateToAlertPage(vehiclelist: filterdResult)
                 }
             case 18,16:
+                 type = "Dashboard"
                 this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
             case 10:
+                type = "Moving"
                 this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
                 this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Moving.rawValue)
             }
             case 12:
+                type = "Sleep"
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
                 this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Sleep.rawValue)
             }
             case 11:
+                 type = "Idle"
             this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
                 this.navigatetoVehicleListPage(vehiclelist:filteredResult, clickedType:Vehicletype.Idle.rawValue)
             }
             case 14:
+                type = "Offline"
             this.dashboardViewModel.filterOfflineData(data:result) { (filterdResult ) in
                 this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Offline.rawValue)
             }
             case 13:
+                type = "Dashboard"
             this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
                 this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Online.rawValue)
             }
