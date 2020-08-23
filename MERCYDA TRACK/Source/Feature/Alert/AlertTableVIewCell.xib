@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,8 +48,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qll-ay-Rwk">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJd-7D-UFg">
-                                        <rect key="frame" x="3" y="4" width="34" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJd-7D-UFg">
+                                        <rect key="frame" x="3" y="10" width="34" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -69,11 +69,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRe-fP-ZzZ">
-                                <rect key="frame" x="45" y="0.0" width="74" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRe-fP-ZzZ">
+                                <rect key="frame" x="45" y="0.0" width="50" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label fdgdgdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-O1-JlQ">
-                                        <rect key="frame" x="3" y="4" width="44" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-O1-JlQ">
+                                        <rect key="frame" x="3" y="10" width="44" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -93,11 +93,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfc-gr-TBD">
-                                <rect key="frame" x="124" y="0.0" width="74" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tfc-gr-TBD">
+                                <rect key="frame" x="100" y="0.0" width="88" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label ggg hhh jjjj" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP8-Z5-S4I">
-                                        <rect key="frame" x="3" y="4" width="44" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wP8-Z5-S4I">
+                                        <rect key="frame" x="3" y="10" width="82" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -118,10 +118,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18I-Zk-Tii">
-                                <rect key="frame" x="203" y="0.0" width="40" height="20"/>
+                                <rect key="frame" x="193" y="0.0" width="50" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhc-DA-Qaw">
-                                        <rect key="frame" x="3" y="4" width="34" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhc-DA-Qaw">
+                                        <rect key="frame" x="3" y="10" width="44" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -205,12 +205,16 @@
             <connections>
                 <outlet property="alertCountLabel" destination="WTU-e1-BaV" id="zRX-Cu-wNc"/>
                 <outlet property="alertDispalayView" destination="wyP-v4-VsG" id="IIc-a4-FnH"/>
+                <outlet property="emergencyAlertLabel" destination="wP8-Z5-S4I" id="2Rq-HO-a02"/>
                 <outlet property="emergencyAlertView" destination="tfc-gr-TBD" id="5jw-IO-xrv"/>
+                <outlet property="mainPowerAlertlabel" destination="pJd-7D-UFg" id="XfJ-GU-Hm2"/>
                 <outlet property="mainpowerOffView" destination="qll-ay-Rwk" id="jeP-cY-5YB"/>
+                <outlet property="overspeedAlertLabel" destination="Fhc-DA-Qaw" id="84z-Q3-rMo"/>
                 <outlet property="overspeedAlertView" destination="18I-Zk-Tii" id="cwa-Ap-2AK"/>
                 <outlet property="vehicleNumberLabel" destination="F8G-d9-5je" id="0cR-uE-iSY"/>
                 <outlet property="vehicleType" destination="9ya-0P-hbJ" id="Qqo-KJ-mAN"/>
                 <outlet property="wireCutAlertView" destination="MRe-fP-ZzZ" id="r5x-We-prr"/>
+                <outlet property="wirecutAlertLabel" destination="MYp-O1-JlQ" id="AiA-Vf-rPq"/>
             </connections>
             <point key="canvasLocation" x="-94.20289855072464" y="70.647321428571431"/>
         </tableViewCell>
