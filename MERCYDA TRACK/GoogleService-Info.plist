@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>31950944277-itkjurtef9duaquh6up4r9bifcv39pa3.apps.googleusercontent.com</string>
+	<string>836302381883-r9e9qpmu088dcm3tdg7s7ad5a7ti0hvm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.31950944277-itkjurtef9duaquh6up4r9bifcv39pa3</string>
+	<string>com.googleusercontent.apps.836302381883-r9e9qpmu088dcm3tdg7s7ad5a7ti0hvm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDsJzrFu8XlvxMtSTw72wR4o8vy0rdsN5A</string>
+	<string>AIzaSyAiKCYuSLx_RFfxvRss7p9BgcBnbTYxoPI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>31950944277</string>
+	<string>836302381883</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.infinicomm.MERCYDA-TRACK</string>
+	<string>com.infinicom.MercydaTrack</string>
 	<key>PROJECT_ID</key>
-	<string>m-track-3061c</string>
+	<string>mercyda-track</string>
 	<key>STORAGE_BUCKET</key>
-	<string>m-track-3061c.appspot.com</string>
+	<string>mercyda-track.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:31950944277:ios:50645a97e0d7632dbc761c</string>
+	<string>1:836302381883:ios:250131f215dc9e317f0d1e</string>
 	<key>DATABASE_URL</key>
-	<string>https://m-track-3061c.firebaseio.com</string>
+	<string>https://mercyda-track.firebaseio.com</string>
 </dict>
 </plist>

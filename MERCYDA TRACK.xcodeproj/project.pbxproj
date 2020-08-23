@@ -100,6 +100,9 @@
 		52B7E56124BB4AF900A9881C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */; };
 		52B7E56224BB507C00A9881C /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
 		52B7E56324BB507D00A9881C /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
+		52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
+		52DC0E9224F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
+		52DC0E9324F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
 		8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080724B4D7CA00953660 /* ListVehicleController.swift */; };
 		8415081024B4F15300953660 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080E24B4F15300953660 /* VehicleTableViewCell.swift */; };
 		8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8415080F24B4F15300953660 /* VehicleTableViewCell.xib */; };
@@ -219,9 +222,6 @@
 		C6669FE224AA29750024527E /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* APIConstants.swift */; };
 		C6669FE324AA29750024527E /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* APIConstants.swift */; };
 		C6669FE424AA29750024527E /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FE124AA29750024527E /* APIConstants.swift */; };
-		C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
-		C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
-		C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6669FE524AA41E60024527E /* GoogleService-Info.plist */; };
 		C698D1B824B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
 		C698D1B924B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
 		C698D1BA24B5C95F00F9B32B /* MapVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */; };
@@ -295,6 +295,7 @@
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
 		52B7E55724BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleDataFlowTableViewCell.xib; sourceTree = "<group>"; };
 		52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.release.xcconfig"; sourceTree = "<group>"; };
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,7 +358,6 @@
 		C6669FDB24AA24870024527E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		C6669FDD24AA28B10024527E /* ProjectSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSettings.swift; sourceTree = "<group>"; };
 		C6669FE124AA29750024527E /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		C6669FE524AA41E60024527E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C698D1B724B5C95F00F9B32B /* MapVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVCViewModel.swift; sourceTree = "<group>"; };
 		C698D1BB24B5FABA00F9B32B /* MapVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVCExtensions.swift; sourceTree = "<group>"; };
 		C6C8CD1E24D20FC700C1DD6D /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
@@ -934,7 +934,7 @@
 				52457DA524AB7A370078487A /* Source */,
 				C6C9D7F224A925A700BA7651 /* ViewController.swift */,
 				C6C9D7FF24A925A800BA7651 /* Info.plist */,
-				C6669FE524AA41E60024527E /* GoogleService-Info.plist */,
+				52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */,
 				C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */,
 				C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */,
 			);
@@ -1104,11 +1104,11 @@
 				84E3E53D24AD0BE2004CC622 /* Login.storyboard in Resources */,
 				84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */,
 				84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */,
-				C6669FE624AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55B24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
+				52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,12 +1116,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6669FE724AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				520D57D324AF67BE002A775F /* Color.xcassets in Resources */,
 				C6653BA824B3533100DD9D9F /* Maps.storyboard in Resources */,
 				527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55C24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
+				52DC0E9224F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,12 +1129,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6669FE824AA41E60024527E /* GoogleService-Info.plist in Resources */,
 				520D57D424AF67BE002A775F /* Color.xcassets in Resources */,
 				C6653BA924B3533100DD9D9F /* Maps.storyboard in Resources */,
 				527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55D24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
+				52DC0E9324F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1682,7 +1682,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACK";
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinicom.MercydaTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1703,7 +1703,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.infinicomm.MERCYDA-TRACK";
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinicom.MercydaTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

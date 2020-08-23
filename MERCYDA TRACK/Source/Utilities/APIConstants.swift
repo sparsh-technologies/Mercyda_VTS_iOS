@@ -42,5 +42,5 @@ struct PARAMS {
 }
 
 struct APIKeys {
-    static let GOOGLE_API_KEY =  "AIzaSyBNY5ak5Fp4BL2ANNlDDssQiVI_q3X1TVk"
+    static let GOOGLE_API_KEY =  "AIzaSyAiKCYuSLx_RFfxvRss7p9BgcBnbTYxoPI"
 }
