@@ -254,6 +254,7 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
     func updateVehicleDetails(lastKnownPlace: String) {
         if addressLabel.text == "" || addressLabel.text == nil {
             addressLabel.text = lastKnownPlace
+            vehicleObj?.address2 = lastKnownPlace
         }
     }
     
