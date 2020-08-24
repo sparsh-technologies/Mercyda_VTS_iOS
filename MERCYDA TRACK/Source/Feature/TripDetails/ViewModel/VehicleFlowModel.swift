@@ -340,7 +340,7 @@ extension VehicleFlow {
             self.delegate?.updateVehicleDetails(lastKnownPlace: processedResult.first?.placeName ?? "")
         } else {
             if processedResult.count > 1 {
-                self.delegate?.updateVehicleDetails(lastKnownPlace:processedResult[1].placeName )
+                self.delegate?.updateVehicleDetails(lastKnownPlace:processedResult[1].placeName)
             }
         }
     }

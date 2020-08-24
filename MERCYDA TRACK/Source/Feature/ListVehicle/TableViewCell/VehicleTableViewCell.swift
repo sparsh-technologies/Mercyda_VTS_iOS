@@ -49,7 +49,7 @@ class VehicleTableViewCell: UITableViewCell {
         
         self.vehicleNumberLabel.text = vehicle.vehicle_registration
         self.selectionStyle = .none
-        self.timeLabel.text = Utility.getDate(unixdateinMilliSeconds:vehicle.modifiedTime!)
+        self.timeLabel.text = Utility.getDate(unixdateinMilliSeconds:vehicle.last_updated_data?.source_date ?? 0)
         self.adressLabel.text = vehicle.address2
         if let signalStrength = vehicle.last_updated_data?.gsm_signal_strength{
             setSignalStrength(signalStrength: signalStrength)

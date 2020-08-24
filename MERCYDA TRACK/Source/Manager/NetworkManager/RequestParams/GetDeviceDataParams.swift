@@ -44,7 +44,7 @@ extension getDeviceDataParams: URLBuildable {
     }
     
     func queryString() -> String {
-        return "?\(PARAMS.SERIAL_NO)=\(self.serialNumber)&\(PARAMS.SOURCE_DATE)=\(self.enableSourceDate)&\(PARAMS.START_TIME)=\(self.startTime)&\(PARAMS.END_TIME)=\(self.endTime)&\(PARAMS.USERNAME)=\(Utility.getUserName())&\(PARAMS.PASSWORD)=\(Utility.getPassword())"
+        return "?\(PARAMS.SERIAL_NO)=\(self.serialNumber)&\(PARAMS.SOURCE_DATE)=\(self.enableSourceDate)&\(PARAMS.START_TIME)=\(self.startTime)&\(PARAMS.END_TIME)=\(self.endTime)&\(PARAMS.USERNAME)=\(Utility.getUserName())&\(PARAMS.PASSWORD)=\(Utility.getPassword())&version=v2"
         
         // For Testing Mockdata
         // Total Distance is: 2.76km
