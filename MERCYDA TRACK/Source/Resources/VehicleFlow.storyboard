@@ -234,7 +234,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adD-6A-F7x">
-                                                <rect key="frame" x="187.5" y="49" width="211.5" height="58.5"/>
+                                                <rect key="frame" x="187.5" y="54" width="211.5" height="53.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -258,7 +258,7 @@
                                             <constraint firstItem="Lw0-ln-4Qf" firstAttribute="top" secondItem="AFD-RZ-Dr6" secondAttribute="bottom" constant="15" id="ZJf-ed-REv"/>
                                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="adD-6A-F7x" secondAttribute="bottom" constant="48" id="gDL-jb-uh1"/>
                                             <constraint firstItem="RMr-xm-ne6" firstAttribute="centerY" secondItem="AFD-RZ-Dr6" secondAttribute="centerY" id="gWi-58-qFI"/>
-                                            <constraint firstItem="adD-6A-F7x" firstAttribute="top" secondItem="Lw0-ln-4Qf" secondAttribute="top" constant="-10" id="h8L-IJ-veb"/>
+                                            <constraint firstItem="adD-6A-F7x" firstAttribute="top" secondItem="Lw0-ln-4Qf" secondAttribute="top" constant="-5" id="h8L-IJ-veb"/>
                                             <constraint firstItem="b4L-c6-Jfl" firstAttribute="centerY" secondItem="AFD-RZ-Dr6" secondAttribute="centerY" id="hEd-or-hMZ"/>
                                             <constraint firstItem="AFD-RZ-Dr6" firstAttribute="leading" secondItem="WjJ-AL-UyO" secondAttribute="trailing" constant="5" id="hFI-pT-NEx"/>
                                             <constraint firstItem="36X-Bz-5cj" firstAttribute="height" secondItem="b0d-v7-s3e" secondAttribute="height" multiplier="0.19" id="iXQ-Nl-WtB"/>
@@ -284,8 +284,8 @@
                                     <constraint firstAttribute="trailing" secondItem="b0d-v7-s3e" secondAttribute="trailing" id="xjG-YZ-eGt"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
-                                <rect key="frame" x="101" y="335" width="313" height="561"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QS-fQ-B3R">
                                         <rect key="frame" x="30" y="259" width="354" height="290"/>
