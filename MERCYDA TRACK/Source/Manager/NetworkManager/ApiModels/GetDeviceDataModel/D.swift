@@ -22,7 +22,7 @@ struct D : Codable {
 	let alert_count : Int?
 	let imei_no : String?
 	let longitude : String?
-	var source_date : Int?
+	let source_date : Int?
 	let latitude : String?
 	let data : String?
 	let gnss_fix : Int?
@@ -51,6 +51,7 @@ struct D : Codable {
 		case gnss_fix = "gnss_fix"
 		case packet_type = "packet_type"
 		case valid_status = "valid_status"
+        case source_date = "source_date"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -68,6 +69,8 @@ struct D : Codable {
 		gnss_fix = try? values.decodeIfPresent(Int.self, forKey: .gnss_fix)
 		packet_type = try? values.decodeIfPresent(String.self, forKey: .packet_type)
 		valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
+        source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
+
 	}
 
 }
