@@ -335,10 +335,11 @@ extension VehicleFlow {
     }
     
     func updateVehicleAddress() {
-        if processedResult.count > 1 {
-            if processedResult[0].vehicleMode == "S" {
-                self.delegate?.updateVehicleDetails(lastKnownPlace: processedResult[0].placeName)
-            } else {
+        
+        if processedResult.first?.vehicleMode == "S" {
+            self.delegate?.updateVehicleDetails(lastKnownPlace: processedResult.first?.placeName ?? "")
+        } else {
+            if processedResult.count > 1 {
                 self.delegate?.updateVehicleDetails(lastKnownPlace:processedResult[1].placeName )
             }
         }
