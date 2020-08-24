@@ -21,6 +21,17 @@ struct AlertData : Codable {
 	let created_date : Int?
 	let created_by : String?
 	let source_date : Int?
+    let packet_type: String?
+    let latitude:String?
+    let longitude:String?
+    var address2:String?
+    var coordinates : Latlon {
+           get {
+               let lat = Double(self.latitude ?? "0000.00000")!
+               let lon = Double(self.longitude ?? "0000.00000")!
+               return (lat,lon)
+           }
+       }
 
 	enum CodingKeys: String, CodingKey {
 
@@ -32,6 +43,10 @@ struct AlertData : Codable {
 		case created_date = "created_date"
 		case created_by = "created_by"
 		case source_date = "source_date"
+        case packet_type = "packet_type"
+        case latitude = "latitude"
+        case longitude = "longitude"
+        
 	}
 
 	init(from decoder: Decoder) throws {
@@ -44,6 +59,9 @@ struct AlertData : Codable {
 		created_date = try values.decodeIfPresent(Int.self, forKey: .created_date)
 		created_by = try values.decodeIfPresent(String.self, forKey: .created_by)
 		source_date = try values.decodeIfPresent(Int.self, forKey: .source_date)
+        packet_type = try values.decodeIfPresent(String.self, forKey: .packet_type)
+        latitude = try values.decodeIfPresent(String.self, forKey: .latitude)
+        longitude = try values.decodeIfPresent(String.self, forKey: .longitude)
 	}
 
 }

@@ -39,36 +39,45 @@ class AlertTableVIewCell: UITableViewCell {
     func setAlertdatas(vehicleObject:Vehicle){
         self.vehicleNumberLabel.text = vehicleObject.vehicle_registration
         getVehicleType(type:vehicleObject.vehicle_type!)
-        if let alertCOunt = vehicleObject.alert_count{
-            alertCountLabel.text = "\(alertCOunt)"
-        }
+//        if let alertCOunt = vehicleObject.o{
+//            alertCountLabel.text = "\(alertCOunt)"
+//        }
+        let mainPoweralertCount = vehicleObject.main_power_removal_alert_count ?? 0
         
         //mainpowerOffView.isHidden = true
         
-        if let mainpowerRemoval = vehicleObject.main_power_removal_alert_count{
+        //if let mainpowerRemoval = vehicleObject.main_power_removal_alert_count{
             
-            mainpowerOffView.isHidden = mainpowerRemoval == 0
-            mainPowerAlertlabel.text = "\(mainpowerRemoval)"
-        }
+            mainpowerOffView.isHidden = mainPoweralertCount == 0
+            mainPowerAlertlabel.text = "\(mainPoweralertCount)"
+        //}
         
-        if let wirecutAlert = vehicleObject.wire_cut_alert_count{
+        let wirecutAlert = vehicleObject.wire_cut_alert_count ?? 0
+        
+       // if let wirecutAlert = vehicleObject.wire_cut_alert_count{
             wireCutAlertView.isHidden = wirecutAlert == 0
             wirecutAlertLabel.text = "\(wirecutAlert)"
             
-        }
+      //  }
         
-        if let emergencyAlert = vehicleObject.emergency_alert_count{
+         let emergencyAlert = vehicleObject.emergency_alert_count ?? 0
+        
+      //  if let emergencyAlert = vehicleObject.emergency_alert_count{
             emergencyAlertView.isHidden = emergencyAlert == 0
             emergencyAlertLabel.text = "\(emergencyAlert)"
-        }
+        //}
         
-        
-        if let overspeed = vehicleObject.emergency_alert_count{
+         let overspeed = vehicleObject.overspeed_alert_count ?? 0
+      
+       // if let overspeed = vehicleObject.overspeed_alert_count{
             
             overspeedAlertView.isHidden = overspeed == 0
             printLog(overspeed)
             overspeedAlertLabel.text = "\(overspeed)"
-        }
+       // }
+         let totalAlertCount = mainPoweralertCount + wirecutAlert + emergencyAlert + overspeed
+         alertCountLabel.text = "\(totalAlertCount) "
+        
         DispatchQueue.main.async {
             self.layoutIfNeeded()
         }
