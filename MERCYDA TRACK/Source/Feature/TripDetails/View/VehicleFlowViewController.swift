@@ -13,6 +13,7 @@ import MBProgressHUD
 protocol VehicleFlowControllerDelegate: class {
     func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double, mode: String, lastLocationName: String)
     func reloadData()
+    func updateVehicleDetails(lastKnownPlace: String)
 }
 
 final class VehicleFlowViewController: BaseViewController {
@@ -249,6 +250,10 @@ final class VehicleFlowViewController: BaseViewController {
 }
 
 extension VehicleFlowViewController: VehicleFlowControllerDelegate {
+    
+    func updateVehicleDetails(lastKnownPlace: String) {
+        addressLabel.text = lastKnownPlace
+    }
     
     func reloadData() {
         tableViewOutlet.invalidateIntrinsicContentSize()

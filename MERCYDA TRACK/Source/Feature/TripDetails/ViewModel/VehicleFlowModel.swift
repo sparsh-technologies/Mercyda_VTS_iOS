@@ -315,6 +315,7 @@ extension VehicleFlow {
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
                 self?.placesArray.append((name: cityAddress, index: count))
                 self?.processedResult[count].placeName = cityAddress
+                self?.updateVehicleAddress()
                 self?.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
                 self?.dispatchGroup?.leave()
@@ -331,6 +332,14 @@ extension VehicleFlow {
             processedResult[item.element.index].placeName = item.element.name
         }
         self.delegate?.reloadData()
+    }
+    
+    func updateVehicleAddress() {
+        if processedResult[0].vehicleMode == "S" {
+            self.delegate?.updateVehicleDetails(lastKnownPlace: processedResult[processedResult.count].placeName)
+        } else {
+            self.delegate?.updateVehicleDetails(lastKnownPlace:processedResult[1].placeName )
+        }
     }
     
     func titleDateForNavBtn(date: Date) -> String {
