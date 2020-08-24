@@ -51,3 +51,11 @@ enum AboutusPageUrls:String{
    // case PrivacyPolicy = "http://mercyda.co.in/index.html"
   // case TermsAndConditions = "http://mercyda.co.in/index.html"
 }
+
+
+enum AlertType:String{
+    case OverSpeed = "Overspeed Alert"
+    case WireCutAlert = "Wire Cut Alert"
+    case EmergencyAlert = "Emergency Alert"
+    case MainPowerRemoval = "Main Power Removal"
+}

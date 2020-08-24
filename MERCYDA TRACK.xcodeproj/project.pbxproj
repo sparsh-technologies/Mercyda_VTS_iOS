@@ -116,6 +116,9 @@
 		84410DAD24B8F18800E6047D /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
 		84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DAA24B8F18700E6047D /* TripDetailsModel.swift */; };
 		84410DAF24B8F18800E6047D /* VehicleFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DAC24B8F18700E6047D /* VehicleFlowViewController.swift */; };
+		844F2D7924F43043003AF25F /* AlertDetailTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F2D7824F43043003AF25F /* AlertDetailTableViewModel.swift */; };
+		844F2D7C24F43232003AF25F /* AlertDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F2D7A24F43232003AF25F /* AlertDetailTableViewCell.swift */; };
+		844F2D7D24F43232003AF25F /* AlertDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F2D7B24F43232003AF25F /* AlertDetailTableViewCell.xib */; };
 		84617A2424BDAA0B002EE1C4 /* ListVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84617A2324BDAA0B002EE1C4 /* ListVehicleViewModel.swift */; };
 		84639DED24F17B1800A97191 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84639DEC24F17B1700A97191 /* Data.swift */; };
 		84639DEF24F17C7300A97191 /* GetAlertParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84639DEE24F17C7300A97191 /* GetAlertParams.swift */; };
@@ -322,6 +325,9 @@
 		84410DA924B8F18700E6047D /* VehicleFlowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFlowModel.swift; sourceTree = "<group>"; };
 		84410DAA24B8F18700E6047D /* TripDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailsModel.swift; sourceTree = "<group>"; };
 		84410DAC24B8F18700E6047D /* VehicleFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleFlowViewController.swift; sourceTree = "<group>"; };
+		844F2D7824F43043003AF25F /* AlertDetailTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailTableViewModel.swift; sourceTree = "<group>"; };
+		844F2D7A24F43232003AF25F /* AlertDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailTableViewCell.swift; sourceTree = "<group>"; };
+		844F2D7B24F43232003AF25F /* AlertDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailTableViewCell.xib; sourceTree = "<group>"; };
 		84617A2324BDAA0B002EE1C4 /* ListVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVehicleViewModel.swift; sourceTree = "<group>"; };
 		84639DEC24F17B1700A97191 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		84639DEE24F17C7300A97191 /* GetAlertParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlertParams.swift; sourceTree = "<group>"; };
@@ -680,6 +686,9 @@
 			isa = PBXGroup;
 			children = (
 				8417055724F250D6001A0AE9 /* AlertDetailController.swift */,
+				844F2D7824F43043003AF25F /* AlertDetailTableViewModel.swift */,
+				844F2D7A24F43232003AF25F /* AlertDetailTableViewCell.swift */,
+				844F2D7B24F43232003AF25F /* AlertDetailTableViewCell.xib */,
 			);
 			path = AlertDetail;
 			sourceTree = "<group>";
@@ -1149,6 +1158,7 @@
 				84338A3E24B3A8990005B97B /* Vehicle.storyboard in Resources */,
 				84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
+				844F2D7D24F43232003AF25F /* AlertDetailTableViewCell.xib in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55B24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
@@ -1387,6 +1397,7 @@
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				84FE4D8C24F1937A00DA310C /* AlertTableviewModel.swift in Sources */,
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
+				844F2D7924F43043003AF25F /* AlertDetailTableViewModel.swift in Sources */,
 				52457DA024AB78DF0078487A /* Helper.swift in Sources */,
 				8491AB3324F0F640008F3C0B /* Last_known_address.swift in Sources */,
 				84410DAD24B8F18800E6047D /* VehicleFlowModel.swift in Sources */,
@@ -1430,6 +1441,7 @@
 				52457DCE24AB7BF00078487A /* UserDefaults+Extension.swift in Sources */,
 				520D57DA24AF687D002A775F /* DashboardLocalization.swift in Sources */,
 				C6623AE624AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
+				844F2D7C24F43232003AF25F /* AlertDetailTableViewCell.swift in Sources */,
 				84617A2424BDAA0B002EE1C4 /* ListVehicleViewModel.swift in Sources */,
 				C6623ACE24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
 				8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */,

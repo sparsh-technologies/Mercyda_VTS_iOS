@@ -88,6 +88,22 @@ extension Utility {
         return "No password"
     }
     
+    class func getTimeOnly(unixdateinMilliSeconds: Int) -> String {
+      
+              let convertToOriginalTimestamp = unixdateinMilliSeconds/1000
+              let timeStamp = Double(convertToOriginalTimestamp)
+              if timeStamp == 0 {return ""}
+              let date = NSDate(timeIntervalSince1970: timeStamp)
+    
+              let dayTimePeriodFormatter = DateFormatter()
+              dayTimePeriodFormatter.dateFormat = "hh:mm a"
+             // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+              dayTimePeriodFormatter.timeZone = .current
+              let dateString = dayTimePeriodFormatter.string(from: date as Date)
+              return dateString
+
+          }
+    
     
   class  func hexStringToUIColor (_ hex:String) -> UIColor
        {
