@@ -345,6 +345,13 @@ extension VehicleFlow {
         }
     }
     
+    func parkingLocationForMap() -> [TripDetailsModel] {
+        let parkingLocationArray = processedResult.filter({ value in
+            value.vehicleMode != "M" && value.duration.hour ?? 0 > 0 || value.duration.minute ?? 0 > 20
+        })
+        return parkingLocationArray
+    }
+    
     func titleDateForNavBtn(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yy"

@@ -287,6 +287,9 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
         self.show(mapVC, sender: self)
+        
+        let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
+        
     }
 }
 
