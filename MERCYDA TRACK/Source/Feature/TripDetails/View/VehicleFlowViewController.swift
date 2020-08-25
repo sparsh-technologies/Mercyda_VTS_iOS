@@ -283,13 +283,11 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         let storyboard = UIStoryboard(name: "Maps", bundle: nil)
         guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as? MapVC
             else { return }
-        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: [])
+        let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
+        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots)
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
         self.show(mapVC, sender: self)
-        
-        let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
-        
     }
 }
 

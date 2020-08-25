@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MapVCViewModelDelegate : class {
-    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [D])
+    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
     func updatePolyLines(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)
@@ -23,7 +23,7 @@ class MapVCViewModel  {
     var originalDeviceList : [D]?
     var lastDevicePacket : D?
     var arrForMovingLocations:[Latlon] = []
-    var arrForHaltAndStopLocations:[D]?
+    var arrForHaltAndStopLocations:[TripDetailsModel]?
     weak var delegate : MapVCViewModelDelegate?
     var serialNumber : String?
     weak var APItimer: Timer?
@@ -37,7 +37,7 @@ class MapVCViewModel  {
         }
     }
     
-    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [D]?) {
+    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?) {
         self.originalDeviceList = deviceList
         self.lastDevicePacket = deviceList?.first
         self.serialNumber = serialNumber

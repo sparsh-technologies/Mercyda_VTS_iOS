@@ -232,17 +232,17 @@ class MapVC: UIViewController {
         }
     }
     
-    func updateParkingMarkers(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [D]) {
+    func updateParkingMarkers(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [TripDetailsModel]) {
         var yAnchor: CGFloat = -500
         
         for (index,latlon) in locationsArray.enumerated() {
             let marker:GMSMarker = GMSMarker.init(position: latlon)
-            var iconImage = deviceArray[index].vehicle_mode == "H" ? UIImage.init(named: "h_pin") : UIImage.init(named: "s_pin")
+            var iconImage =  UIImage.init(named: "h_pin")
             if index == locationsArray.count - 1 {
                 iconImage = UIImage.init(named: "startPin")
             }
             marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
-            marker.title = deviceArray[index].vehicle_mode
+           // marker.title = deviceArray[index].vehicle_mode
             marker.userData = deviceArray[index]
             let iconView = CustomMarkerView.init(image: iconImage ?? UIImage())
             marker.iconView = iconView
