@@ -18,9 +18,78 @@ extension DashboardViewModel {
     
     
     func filterVehicleData(type:String, data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
-        let resultData = data.filter { $0.last_updated_data?.vehicle_mode == type}
+        let OnlineDat = filterOnlineData(data:data)
+        let resultData = OnlineDat.filter { $0.last_updated_data?.vehicle_mode == type}
         completion(resultData)
+        
     }
+    func filterOfflineData(data:[Vehicle]) -> [Vehicle]{
+        var filteredData = [Vehicle]()
+        for i in 0..<data.count{
+            if let lastUpdatedData = data[i].last_updated_data{
+                let sourTimeInMilliSecond = lastUpdatedData.source_date
+                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+                let dayTimePeriodFormatter = DateFormatter()
+                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dayTimePeriodFormatter.timeZone = .current
+                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+                printLog(dateString)
+                let calender:Calendar = Calendar.current
+                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+                printLog("Minute :\(String(components.minute!))")
+                if components.day! > 0 {
+                    printLog("day: \(components.minute!)")
+                    filteredData.append(data[i])
+                }
+                else if components.hour! > 1{
+                    printLog("hour: \(components.minute!)")
+                    filteredData.append(data[i])
+                }
+                else if components.minute! > 20{
+                    printLog("MinuteAppended: \(components.minute!)")
+                    filteredData.append(data[i])
+                }
+                
+            }
+        }
+        return filteredData
+    }
+    
+    func filterOnlineData(data:[Vehicle]) -> [Vehicle]{
+        var filteredData = [Vehicle]()
+        for i in 0..<data.count{
+            if let lastUpdatedData = data[i].last_updated_data{
+                
+                let sourTimeInMilliSecond = lastUpdatedData.source_date
+                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+                let dayTimePeriodFormatter = DateFormatter()
+                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dayTimePeriodFormatter.timeZone = .current
+                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+                printLog(dateString)
+                let calender:Calendar = Calendar.current
+                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+                printLog("Minute :\(String(components.minute!))")
+                if components.day! <= 0{
+                    if components.hour! <= 0{
+                        if components.minute! < 20{
+                            printLog("MinuteAppended: \(components.minute!)")
+                            filteredData.append(data[i])
+                        }
+                    }
+                }
+            }
+        }
+        
+        return filteredData
+    }
+    
     
     func filterAlertData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
         
@@ -38,65 +107,66 @@ extension DashboardViewModel {
     
     func filterOfflineData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
         var filteredData = [Vehicle]()
-        for i in 0..<data.count{
-            if let lastUpdatedData = data[i].last_updated_data{
-                printLog(i)
-                let sourTimeInMilliSecond = lastUpdatedData.source_date
-                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
-                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
-                let dayTimePeriodFormatter = DateFormatter()
-                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
-                dayTimePeriodFormatter.timeZone = .current
-                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
-                printLog(dateString)
-                
-                
-                let calender:Calendar = Calendar.current
-                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
-                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
-                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
-                printLog("Minute :\(String(components.minute!))")
-                if components.minute! > 10{
-                    filteredData.append(data[i])
-                }
-                
-            }else{
-                filteredData.append(data[i])
-            }
-        }
+        //        for i in 0..<data.count{
+        //            if let lastUpdatedData = data[i].last_updated_data{
+        //                printLog(i)
+        //                let sourTimeInMilliSecond = lastUpdatedData.source_date
+        //                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+        //                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+        //                let dayTimePeriodFormatter = DateFormatter()
+        //                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //                // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+        //                dayTimePeriodFormatter.timeZone = .current
+        //                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+        //                printLog(dateString)
+        //
+        //
+        //                let calender:Calendar = Calendar.current
+        //                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+        //                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+        //                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+        //                printLog("Minute :\(String(components.minute!))")
+        //                if components.minute! > 10{
+        //                    filteredData.append(data[i])
+        //                }
+        //
+        //            }else{
+        //                filteredData.append(data[i])
+        //            }
+        //        }
+        filteredData = filterOfflineData(data:data)
         completion(filteredData)
     }
     
     func filterOnlineData(data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
-        var filteredData = [Vehicle]()
-        for i in 0..<data.count{
-            if let lastUpdatedData = data[i].last_updated_data{
-                printLog(i)
-                let sourTimeInMilliSecond = lastUpdatedData.source_date
-                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
-                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
-                let dayTimePeriodFormatter = DateFormatter()
-                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
-                dayTimePeriodFormatter.timeZone = .current
-                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
-                printLog(dateString)
-                
-                
-                let calender:Calendar = Calendar.current
-                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
-                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
-                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
-                printLog("Minute :\(String(components.minute!))")
-                if components.minute! < 10{
-                    
-                    printLog("appendData")
-                    filteredData.append(data[i])
-                }
-                
-            }
-        }
+        let filteredData =  self.filterOnlineData(data: data)
+        //        for i in 0..<data.count{
+        //            if let lastUpdatedData = data[i].last_updated_data{
+        //                printLog(i)
+        //                let sourTimeInMilliSecond = lastUpdatedData.source_date
+        //                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+        //                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+        //                let dayTimePeriodFormatter = DateFormatter()
+        //                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //                // dayTimePeriodFormatter.dateFormat = "dd/mm/YYYY hh:mm a"
+        //                dayTimePeriodFormatter.timeZone = .current
+        //                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+        //                printLog(dateString)
+        //
+        //
+        //                let calender:Calendar = Calendar.current
+        //                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+        //                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+        //                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+        //                printLog("Minute :\(String(components.minute!))")
+        //                if components.minute! < 10{
+        //
+        //                    printLog("appendData")
+        //                    filteredData.append(data[i])
+        //                }
+        //
+        //            }
+        //        }
         completion(filteredData)
     }
     
