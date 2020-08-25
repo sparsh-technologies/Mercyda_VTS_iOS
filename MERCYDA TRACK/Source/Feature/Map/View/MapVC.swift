@@ -41,7 +41,7 @@ class MapVC: UIViewController {
     var i: UInt = 0
     var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
     var vehicleObject:Vehicle?
-    let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
+    let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemBlue)
     
     var mapViewTopConstraint : NSLayoutConstraint!
     //var lastParkingLocation : CLLocationCoordinate2D?
