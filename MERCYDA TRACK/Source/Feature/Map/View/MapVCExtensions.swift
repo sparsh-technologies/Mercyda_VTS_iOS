@@ -11,6 +11,32 @@ import GoogleMaps
 import MBProgressHUD
 
 extension MapVC : MapVCViewModelDelegate {
+    func updatePolyLines(Locations locationsArray: [Latlon]) {
+//        printLog("first")
+//        printLog(locationsArray.first)
+//        printLog("last")
+//        printLog(locationsArray.last)
+//
+        var timer = DispatchTime.now()
+        CATransaction.flush()
+        let locArray : [CLLocationCoordinate2D] = locationsArray.toGoogleCoordinates().reversed()
+        self.polyLineLocations.append(contentsOf: locArray)
+        for i in 0..<locArray.count {
+            DispatchQueue.main.asyncAfter(deadline: timer, execute: {
+                CATransaction.begin()
+                self.animationPath.add(locArray[i])
+                self.path?.add(locArray[i])
+                self.animationPolylineBase.path = self.animationPath
+                self.animationPolylineBase.map = self.mapView
+                self.animationPolyline.path = self.animationPath
+                self.animationPolyline.map = self.mapView
+                self.setCarMarkers(position1: locArray[i], position2: locArray[i == locArray.count - 1 ? i : i+1])
+                CATransaction.commit()
+            })
+            timer = timer + 0.35
+        }
+    }
+    
     
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [D]) {
         self.updateParkingMarkers(Locations: locationsArray.toGoogleCoordinates(), Devices: deviceArray)

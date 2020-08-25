@@ -36,7 +36,7 @@ class MapVC: UIViewController {
     var polyLineLocations:[CLLocationCoordinate2D] = []
     var animationPolyline = GMSPolyline()
     var animationPolylineBase = GMSPolyline()
-    var path : GMSPath?
+    var path : GMSMutablePath?
     var animationPath = GMSMutablePath()
     var i: UInt = 0
     var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
@@ -44,7 +44,7 @@ class MapVC: UIViewController {
     let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemGreen)
     
     var mapViewTopConstraint : NSLayoutConstraint!
-    var lastParkingLocation : CLLocationCoordinate2D?
+    //var lastParkingLocation : CLLocationCoordinate2D?
     
     private var dispatcher: Dispatcher?
     
@@ -53,6 +53,8 @@ class MapVC: UIViewController {
     var isNavFlag = 0
     
     deinit {
+        viewModel?.APItimer?.invalidate()
+        viewModel = nil
         printLog("ViewController Released from memory : MapVC")
     }
     
@@ -71,6 +73,15 @@ class MapVC: UIViewController {
         
     }
     
+    func setUpPolylineConfiguration() {
+        self.animationPolylineBase.strokeColor = UIColor.black
+        self.animationPolylineBase.strokeWidth = 7
+        self.animationPolylineBase.geodesic = true
+        self.animationPolyline.strokeWidth = 4
+        self.animationPolyline.geodesic = true
+        animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
+    }
+    
     override func viewWillLayoutSubviews() {
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
     }
@@ -85,12 +96,13 @@ class MapVC: UIViewController {
         self.animationPolyline = GMSPolyline()
         self.animationPolylineBase = GMSPolyline()
         self.animationPath = GMSMutablePath()
-        animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
-        viewModel?.updateViewController()
+        setUpPolylineConfiguration()
+        self.viewModel?.stopUpdateLocations()
+        self.updateMap(self.polyLineLocations)
     }
     
     @IBAction func currentLocationBtn(_ sender: Any) {
-        if let location = self.lastParkingLocation {
+        if let location = self.polyLineLocations.last {
             let camera = GMSCameraPosition.camera(withTarget: location, zoom: 55)
             CATransaction.begin()
             CATransaction.setAnimationDuration(2.00)
@@ -264,8 +276,8 @@ class MapVC: UIViewController {
                 mapViewTopConstraint,
                 map.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
             ])
-            animationPolyline.spans = [GMSStyleSpan(style: lineGradient)]
         }
+        setUpPolylineConfiguration()
         DispatchQueue.main.async {
             self.view.bringSubviewToFront(self.bottomFeaturesView)
             self.view.bringSubviewToFront(self.topVehicleView)
@@ -368,7 +380,7 @@ class MapVC: UIViewController {
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [unowned self] (cityAddress) in
                 printLog("Execute DispatchWork \(count)")
                 printLog("\(cityAddress) \n")
-                if count == self.viewModel?.arrForHaltAndStopLocations.count ?? 0 - 1 {
+                if count == self.viewModel?.arrForHaltAndStopLocations?.count ?? 0 - 1 {
                     self.dispatcher = nil
                 }
             }
@@ -385,24 +397,19 @@ class MapVC: UIViewController {
             if (self.i < gmsPath.count()) {
                 self.animationPath.add(gmsPath.coordinate(at: self.i))
                 self.animationPolylineBase.path = self.animationPath
-                self.animationPolylineBase.strokeColor = UIColor.black
-                self.animationPolylineBase.strokeWidth = 7
-                self.animationPolylineBase.geodesic = true
                 self.animationPolylineBase.map = self.mapView
                 
                 self.animationPolyline.path = self.animationPath
-                self.animationPolyline.strokeWidth = 4
-                self.animationPolyline.geodesic = true
                 self.animationPolyline.map = self.mapView
                 self.setCarMarkers(position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
                 self.i += 1
             } else {
                 if gmsPath.count() >= self.i && gmsPath.count() > 0 {
                     self.setCarMarkers(position1: gmsPath.coordinate(at: self.i - 1), position2: gmsPath.coordinate(at: self.i - 1))
-                    self.lastParkingLocation = gmsPath.coordinate(at: self.i - 1)
                 }
                 self.i = 0
                 self.dispTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
+                self.viewModel?.startUpdateLocations()
                 print("last execution")
             }
             CATransaction.commit()
