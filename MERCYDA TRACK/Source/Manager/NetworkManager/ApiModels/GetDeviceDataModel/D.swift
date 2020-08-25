@@ -28,6 +28,10 @@ struct D : Codable {
 	let gnss_fix : Int?
 	let packet_type : String?
 	let valid_status : Bool?
+    let overspeed_alert_count : Int?
+    let wire_cut_alert_count : Int?
+    let main_power_removal_alert_count : Int?
+    
     var coordinates : Latlon {
         get {
             let lat = Double(self.latitude ?? "0000.00000")!
@@ -52,6 +56,9 @@ struct D : Codable {
 		case packet_type = "packet_type"
 		case valid_status = "valid_status"
         case source_date = "source_date"
+        case overspeed_alert_count = "overspeed_alert_count"
+        case wire_cut_alert_count = "wire_cut_alert_count"
+        case main_power_removal_alert_count = "main_power_removal_alert_count"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -70,7 +77,9 @@ struct D : Codable {
 		packet_type = try? values.decodeIfPresent(String.self, forKey: .packet_type)
 		valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
         source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
-
+        overspeed_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
+        wire_cut_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
+        main_power_removal_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
 	}
 
 }

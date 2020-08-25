@@ -28,9 +28,9 @@ class AlertDetailTableViewCell: UITableViewCell {
      
         addressLabel.text = alertDat.address2
         timeLabel.text = Utility.getTimeOnly(unixdateinMilliSeconds:alertDat.source_date ?? 0)
-        if let alertType =   alertDat.packet_type{
+        if let alertType =   alertDat.d?.packet_type{
             alertTypeLabel.text =  alertType
-            switch type{
+            switch alertType{
             case AlertType.OverSpeed.rawValue:
                 typeContainerView.backgroundColor = Utility.hexStringToUIColor("#C9A516")
                 typeImageView.image = UIImage.init(named:"speedalert")
@@ -41,7 +41,7 @@ class AlertDetailTableViewCell: UITableViewCell {
                 typeContainerView.backgroundColor = Utility.hexStringToUIColor("#DE0A0A")
                 typeImageView.image = UIImage.init(named:"Alert")
             case AlertType.MainPowerRemoval.rawValue:
-               typeContainerView.backgroundColor = Utility.hexStringToUIColor("##FF5E45")
+               typeContainerView.backgroundColor = Utility.hexStringToUIColor("#FF5E45")
                 typeImageView.image = UIImage.init(named:"mainpoweralertImage")
            
             default:

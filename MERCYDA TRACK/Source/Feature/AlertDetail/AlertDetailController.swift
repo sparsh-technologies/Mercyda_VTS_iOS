@@ -102,50 +102,55 @@ class AlertDetailController: UIViewController {
             if let alertdetaildaatsource = alertresponse.data {
                 
                 alertDat = alertdetaildaatsource
-                refreshDataSource()
-              //  getAllAddress()
+             //   refreshDataSource()
+                getAllAddress()
                
                 print(alertdetaildaatsource)
-                self.alertDetailTableView.reloadData()
+                //self.alertDetailTableView.reloadData()
             }
         }
     
-//    func getAllAddress(){
-//          if self.dispatchGroup == nil {
-//              self.dispatchGroup = DispatchGroup()
-//          }
-//          for (index, item) in alertDat.enumerated()  {
-//             self.getLocationDetails(locationCoordinates: item.coordinates, count: index)
-//
-//          }
-//          dispatchGroup?.notify(queue: .main) {
-//              printLog("Dispatch works completed")
-//              self.dispatcher = nil
-//          }
-//      }
+    func getAllAddress(){
+          if self.dispatchGroup == nil {
+              self.dispatchGroup = DispatchGroup()
+          }
+          for (index, item) in alertDat.enumerated()  {
+            printLog(item.d?.coordinates)
+            self.getLocationDetails(locationCoordinates: item.d!.coordinates, count: index)
+
+          }
+          dispatchGroup?.notify(queue: .main) {
+              printLog("Dispatch works completed")
+              self.dispatcher = nil
+          }
+      }
     
-//    func getLocationDetails(locationCoordinates: Latlon, count: Int) {
-//           defer {
-//               dispatchGroup?.enter()
-//               self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
-//                   //                  self?.placesArray.append((name: cityAddress, index: count))
-//                   //                  self?.processedResult[count].placeName = cityAddress
-//                   //                  self?.delegate?.reloadData()
-//                   self?.alertDat[count].address2 = cityAddress
-//                   self?.refreshDataSource()
-//                   self?.dispatchGroup?.leave()
-//               }
-//           }
-//           guard self.dispatcher != nil else {
-//               self.dispatcher = Dispatcher()
-//               return
-//           }
-//       }
+    func getLocationDetails(locationCoordinates: Latlon, count: Int) {
+           defer {
+               dispatchGroup?.enter()
+               self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
+                   //                  self?.placesArray.append((name: cityAddress, index: count))
+                   //                  self?.processedResult[count].placeName = cityAddress
+                   //                  self?.delegate?.reloadData()
+                printLog(cityAddress)
+                   self?.alertDat[count].address2 = cityAddress
+                   self?.refreshDataSource()
+                   self?.dispatchGroup?.leave()
+               }
+           }
+           guard self.dispatcher != nil else {
+               self.dispatcher = Dispatcher()
+               return
+           }
+       }
     
     func refreshDataSource() {
-       
-      self.alertDataSource.append(AlertDetailTableDataModal.itemsCell(alertDat: alertDat))
-        self.alertDetailTableView.reloadData()
+        DispatchQueue.main.async {
+            self.alertDataSource.removeAll()
+            self.alertDataSource.append(AlertDetailTableDataModal.itemsCell(alertDat: self.alertDat))
+            self.alertDetailTableView.reloadData()
+        }
+     
     }
     override func viewWillDisappear(_ animated: Bool) {
           self.dispatchGroup = nil

@@ -56,6 +56,6 @@ enum AboutusPageUrls:String{
 enum AlertType:String{
     case OverSpeed = "Overspeed Alert"
     case WireCutAlert = "Wire Cut Alert"
-    case EmergencyAlert = "Emergency Alert"
-    case MainPowerRemoval = "Main Power Removal"
+    case EmergencyAlert = "Emergency ON Alert"
+    case MainPowerRemoval = "Main Power Removed Alert"
 }

@@ -29,7 +29,7 @@ static let locationUrl = "https://nominatim.openstreetmap.org/reverse?format=jso
     static let getDeviceDataPath = "mtrack/data"
   //  static let getAlertDataPath = "mtrack/data?start_time=\(Utility.getTimeStampForAPI(flag: 1))&end_time=\(Utility.getTimeStampForAPI(flag: 2))&d.mobile_alert=true&source_date=true&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
   // static let getAlertDataPath = "mtrack/data?start_time=1598034600000&end_time=1598119949140&d.mobile_alert=true&source_date=true&username=fci@gmail.com&password=123456"
-    static let getAlertDataPath = "mtrack/data?&source_date=true&start_time=\(Utility.getTimeStampForAPI(flag: 1))&end_time=\(Utility.getTimeStampForAPI(flag: 2))&d.mobile_alert=true&meta_d.vehicle_registration=\(vehicleNumber)&username=\(Utility.getPassword())&password=\(Utility.getPassword())"
+    static let getAlertDataPath = "mtrack/data?&source_date=true&start_time=\(Utility.getTimeStampForAPI(flag: 1))&end_time=\(Utility.getTimeStampForAPI(flag: 2))&d.mobile_alert=true&meta_d.vehicle_registration=\(vehicleNumber)&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
 
 }
 
