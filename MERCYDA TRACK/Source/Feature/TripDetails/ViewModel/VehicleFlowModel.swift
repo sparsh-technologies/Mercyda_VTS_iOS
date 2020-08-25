@@ -140,7 +140,7 @@ extension VehicleFlow {
         //        print("\n\n\n Result Array ", tripDetails)
         processedResult = tripDetails
         restorePlacesName()
-        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: minSpeed, distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M", lastLocationName: "")
+        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: totalAvrgSpeed(), distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M", lastLocationName: "")
         if self.dispatchGroup == nil {
             self.dispatchGroup = DispatchGroup()
         }
@@ -343,6 +343,23 @@ extension VehicleFlow {
                 self.delegate?.updateVehicleDetails(lastKnownPlace:processedResult[1].placeName)
             }
         }
+    }
+    
+    func totalAvrgSpeed() -> String {
+        var totalMin = 0
+        if processedResult.count > 2 {
+            _ = processedResult.map({ value in
+                if value.vehicleMode == "M" && Double(value.averageSpeed) != 0 {
+                    let hour = value.duration.hour
+                    let min = value.duration.minute
+                    totalMin = totalMin + ((hour ?? 0) * 60) + (min ?? 0)
+                }
+            })
+            let toHour = totalMin / 60
+            let result = totalDistance / Double(toHour)
+            return String(result.truncate(places: 2))
+        }
+        return "--"
     }
     
     func parkingLocationForMap() -> [TripDetailsModel] {

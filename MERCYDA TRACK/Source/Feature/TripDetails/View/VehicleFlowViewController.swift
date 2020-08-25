@@ -11,7 +11,7 @@ import MBProgressHUD
 
 /// Protocol
 protocol VehicleFlowControllerDelegate: class {
-    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double, mode: String, lastLocationName: String)
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: String, distance: Double, mode: String, lastLocationName: String)
     func reloadData()
     func updateVehicleDetails(lastKnownPlace: String)
 }
@@ -263,9 +263,9 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         tableViewOutlet.reloadData()
     }
     
-    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: Double, distance: Double, mode: String, lastLocationName: String) {
+    func loadData(vm: [TripDetailsModel], maxSpd: Double, minSpd: String, distance: Double, mode: String, lastLocationName: String) {
         tableViewOutlet.reloadData()
-        minSpdLbl.text = String(minSpd.truncate(places: 2)) + " km/hr"
+        minSpdLbl.text = minSpd + " km/hr"
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
         if mode == "M" {
