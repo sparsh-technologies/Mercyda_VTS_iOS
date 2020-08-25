@@ -9,8 +9,9 @@
 import Foundation
 
 protocol MapVCViewModelDelegate : class {
-    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [D])
+    func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
+    func updatePolyLines(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)
     func showLoader()
     func hideLoader()
@@ -20,12 +21,27 @@ class MapVCViewModel  {
     // MARK: - Properties
     let networkServiceCalls = NetworkServiceCalls()
     var originalDeviceList : [D]?
+    var lastDevicePacket : D?
     var arrForMovingLocations:[Latlon] = []
-    var arrForHaltAndStopLocations:[Latlon] = []
+    var arrForHaltAndStopLocations:[TripDetailsModel]?
     weak var delegate : MapVCViewModelDelegate?
+    var serialNumber : String?
+    weak var APItimer: Timer?
     
-    required init(deviceList: [D]?) {
+    var latestPackets : [D]? {
+        didSet {
+            self.lastDevicePacket = latestPackets?.first
+            if let packets = latestPackets, packets.count > 0 {
+                self.delegate?.updatePolyLines(Locations: packets.getCoordinates())
+            }
+        }
+    }
+    
+    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?) {
         self.originalDeviceList = deviceList
+        self.lastDevicePacket = deviceList?.first
+        self.serialNumber = serialNumber
+        self.arrForHaltAndStopLocations = parkingLocations
     }
     
 }
@@ -40,29 +56,61 @@ extension MapVCViewModel {
         }
     }
     
-    func updateParkingMarkers() {
-        if let array = self.originalDeviceList {
-        if let sleepHaltArray = array.getSleepAndHaltDeviceArray() {
-            self.arrForHaltAndStopLocations = sleepHaltArray.getCoordinates()
-            delegate?.updateParkingLocationsOnMap(Locations: self.arrForHaltAndStopLocations, Devices: sleepHaltArray)
-        }
-        }
+    func startUpdateLocations() {
+        self.APItimer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(self.getLatestPackets), userInfo: nil, repeats: true)
+    }
+    func stopUpdateLocations() {
+        self.APItimer?.invalidate()
     }
     
-    
-    func getDeviceData() {
-        delegate?.showLoader()
-        self.networkServiceCalls.getDeviceData(serialNumber: "IRNS1309", enableSourceDate: "true", startTime: "1593628200000", endTime: "1593714600000") { (state) in
-            self.delegate?.hideLoader()
+    @objc func getLatestPackets() {
+        guard let startDate = lastDevicePacket?.source_date, let serialNumber = self.serialNumber else {
+            return
+        }
+      //  delegate?.showLoader()
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNumber, enableSourceDate: "true", startTime: String(startDate), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
+            guard let this = self else {
+                return
+            }
+           // this.delegate?.hideLoader()
             switch state {
             case .success(let result as [DeviceDataResponse]):
-                self.originalDeviceList = result.getActiveDevicePackets()
+                this.latestPackets = result.getActiveDevicePackets()
             case .failure(let error):
-                self.delegate?.showError(errorMessage: error)
-                printLog(error)
+                this.delegate?.showError(errorMessage: error)
             default:
-                self.delegate?.showError(errorMessage: AppSpecificError.unknownError.rawValue)
+                this.delegate?.showError(errorMessage: AppSpecificError.unknownError.rawValue)
             }
+        }
+        
+    }
+    
+    func getTimeStampForAPI(flag: Int) -> String {
+        
+        let startDateFormatter = DateFormatter()
+        startDateFormatter.dateFormat = "yyyy-MM-dd"
+        let now = NSDate()
+        let currentYear = startDateFormatter.string(from: now as Date)
+        let dateString = "00:00:00 " + currentYear
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm:ss yyyy-MM-dd"
+        let s = dateFormatter.date(from: dateString)
+        let startDate = s!.timeIntervalSince1970 * 1000
+        let endDate = NSDate().timeIntervalSince1970 * 1000
+        
+        if flag == 1 {
+            return String(Int(startDate))
+        }
+        if flag == 2 {
+            return String(Int(endDate))
+        }
+        return ""
+    }
+    
+    func updateParkingMarkers() {
+        if let array = self.arrForHaltAndStopLocations {
+            let locationCoordinates = array.getCoordinates()
+            delegate?.updateParkingLocationsOnMap(Locations: locationCoordinates, Devices: array)
         }
     }
 }

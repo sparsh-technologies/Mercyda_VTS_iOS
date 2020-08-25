@@ -19,6 +19,14 @@ struct TripDetailsModel {
     var longitude = Double()
     var placeName = String()
     
+    var coordinates : Latlon {
+           get {
+               let lat = self.latitude
+               let lon = self.longitude 
+               return (lat,lon)
+           }
+       }
+    
     init(mode: String, distance: String, startTime: String, avrgSpeed: String, duration: DateComponents, lat: Double, long: Double, place: String) {
         self.vehicleMode = mode
         self.distance = distance
@@ -28,5 +36,11 @@ struct TripDetailsModel {
         self.latitude = lat
         self.longitude = long
         self.placeName = place
+    }
+}
+
+extension Array where Element == TripDetailsModel {
+    func getCoordinates()  -> [Latlon] {
+        return self.compactMap({$0.coordinates})
     }
 }
