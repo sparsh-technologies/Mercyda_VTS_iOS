@@ -93,6 +93,7 @@ extension AlertVC:UITableViewDataSource,UITableViewDelegate,AlertViewControllerG
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if  let vehicle =  vehicleDataSource[indexPath.section].selectedItemAtIndexPath(indexPath: indexPath) as? Vehicle{
             vehicleNumber = vehicle.vehicle_registration!
+            
             navigatetoAlertDetail(vehicleObj:vehicle)
         }
     }
