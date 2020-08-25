@@ -69,7 +69,7 @@ class MapVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         
     }
     
@@ -83,6 +83,7 @@ class MapVC: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
     }
     
