@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,13 +58,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Neeleshwaram -chayyoth-Arayi-ochara,chrirupuram,Hosdurg,Kasargod,Kerala,688521,India " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K16-Dv-gCj">
-                        <rect key="frame" x="103" y="40" width="251" height="39.5"/>
+                        <rect key="frame" x="103" y="40" width="251" height="39.666666666666657"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eVR-y6-6l3">
-                        <rect key="frame" x="0.0" y="101.5" width="364" height="0.5"/>
+                        <rect key="frame" x="0.0" y="101.66666666666667" width="364" height="0.3333333333333286"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="qJF-pA-Fd1"/>
@@ -96,11 +96,13 @@
                     <constraint firstItem="CyW-d5-cwY" firstAttribute="centerY" secondItem="rWA-y9-hSd" secondAttribute="centerY" id="MvX-oa-1CF"/>
                     <constraint firstAttribute="trailing" secondItem="5eQ-nY-Qpw" secondAttribute="trailing" constant="10" id="Og8-g9-72O"/>
                     <constraint firstItem="K16-Dv-gCj" firstAttribute="top" secondItem="rWA-y9-hSd" secondAttribute="bottom" constant="5" id="PsP-kZ-LE5"/>
+                    <constraint firstItem="eVR-y6-6l3" firstAttribute="top" secondItem="eyp-YI-ih6" secondAttribute="bottom" priority="750" constant="21" id="SI7-d7-Dr8"/>
                     <constraint firstItem="rWA-y9-hSd" firstAttribute="leading" secondItem="eyp-YI-ih6" secondAttribute="trailing" constant="10" id="cu5-fs-bV8"/>
                     <constraint firstItem="K16-Dv-gCj" firstAttribute="trailing" secondItem="5eQ-nY-Qpw" secondAttribute="trailing" id="f6c-mg-QbA"/>
                     <constraint firstItem="5eQ-nY-Qpw" firstAttribute="leading" secondItem="CyW-d5-cwY" secondAttribute="trailing" constant="5" id="fsD-mI-8SG"/>
                     <constraint firstItem="vTh-2j-0gV" firstAttribute="leading" secondItem="rWA-y9-hSd" secondAttribute="leading" id="gTB-UO-qNH"/>
                     <constraint firstItem="eyp-YI-ih6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kF9-Z3-gik"/>
+                    <constraint firstItem="eyp-YI-ih6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="750" constant="21" id="shi-ii-Uzc"/>
                     <constraint firstItem="5eQ-nY-Qpw" firstAttribute="centerY" secondItem="rWA-y9-hSd" secondAttribute="centerY" id="srQ-El-Usq"/>
                 </constraints>
             </tableViewCellContentView>
