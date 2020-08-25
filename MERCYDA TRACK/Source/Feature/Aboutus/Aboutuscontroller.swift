@@ -30,7 +30,7 @@ class Aboutuscontroller: UIViewController {
     /// view life cycle method
     /// - Parameter animated:
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         websiteView.roundCorners(.allCorners, radius: 15)
         contactusView.roundCorners([.topLeft,.topRight], radius: 15)
         termsAndConditionView.roundCorners([.bottomLeft,.bottomRight], radius: 15)

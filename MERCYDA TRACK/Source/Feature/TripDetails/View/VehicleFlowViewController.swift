@@ -48,7 +48,7 @@ final class VehicleFlowViewController: BaseViewController {
         vehicleFlowViewModel = VehicleFlow()
         // Do any additional setup after loading the view.
         serialNumber = vehicleObj?.last_updated_data?.serial_no ?? ""
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
@@ -58,6 +58,7 @@ final class VehicleFlowViewController: BaseViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if vehicleFlowViewModel == nil {
             vehicleFlowViewModel = VehicleFlow()
             getDeviceDetailsWithOutActivityInd()
