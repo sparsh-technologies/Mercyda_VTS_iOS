@@ -371,7 +371,7 @@
                                     <fragment content="XX-XXX-XX">
                                         <attributes>
                                             <color key="NSColor" name="ThemeBlue"/>
-                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <font key="NSFont" metaFont="menu" size="14"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -411,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljs-Kr-Izc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718.125" y="-22.183098591549296"/>
+            <point key="canvasLocation" x="717.39130434782612" y="-22.826086956521742"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2T0-D3-dfm">

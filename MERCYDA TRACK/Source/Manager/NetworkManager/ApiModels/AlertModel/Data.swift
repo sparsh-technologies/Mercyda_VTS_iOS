@@ -14,54 +14,37 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct AlertData : Codable {
 	let id : String?
-	let d : D?
-	let meta_d : Meta_d?
-	let serial_no : String?
-	let imei_no : String?
-	let created_date : Int?
-	let created_by : String?
-	let source_date : Int?
-    let packet_type: String?
-    let latitude:String?
-    let longitude:String?
-    var address2:String?
-    var coordinates : Latlon {
-           get {
-               let lat = Double(self.latitude ?? "0000.00000")!
-               let lon = Double(self.longitude ?? "0000.00000")!
-               return (lat,lon)
-           }
-       }
+        let d : D?
+        let meta_d : Meta_d?
+        let serial_no : String?
+        let imei_no : String?
+        let created_date : Int?
+        let created_by : String?
+        let source_date : Int?
+        var address2 :String?
 
-	enum CodingKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
 
-		case id = "id"
-		case d = "d"
-		case meta_d = "meta_d"
-		case serial_no = "serial_no"
-		case imei_no = "imei_no"
-		case created_date = "created_date"
-		case created_by = "created_by"
-		case source_date = "source_date"
-        case packet_type = "packet_type"
-        case latitude = "latitude"
-        case longitude = "longitude"
-        
-	}
+            case id = "id"
+            case d = "d"
+            case meta_d = "meta_d"
+            case serial_no = "serial_no"
+            case imei_no = "imei_no"
+            case created_date = "created_date"
+            case created_by = "created_by"
+            case source_date = "source_date"
+        }
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		d = try values.decodeIfPresent(D.self, forKey: .d)
-		meta_d = try values.decodeIfPresent(Meta_d.self, forKey: .meta_d)
-		serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
-		imei_no = try values.decodeIfPresent(String.self, forKey: .imei_no)
-		created_date = try values.decodeIfPresent(Int.self, forKey: .created_date)
-		created_by = try values.decodeIfPresent(String.self, forKey: .created_by)
-		source_date = try values.decodeIfPresent(Int.self, forKey: .source_date)
-        packet_type = try values.decodeIfPresent(String.self, forKey: .packet_type)
-        latitude = try values.decodeIfPresent(String.self, forKey: .latitude)
-        longitude = try values.decodeIfPresent(String.self, forKey: .longitude)
-	}
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            id = try values.decodeIfPresent(String.self, forKey: .id)
+            d = try values.decodeIfPresent(D.self, forKey: .d)
+            meta_d = try values.decodeIfPresent(Meta_d.self, forKey: .meta_d)
+            serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
+            imei_no = try values.decodeIfPresent(String.self, forKey: .imei_no)
+            created_date = try values.decodeIfPresent(Int.self, forKey: .created_date)
+            created_by = try values.decodeIfPresent(String.self, forKey: .created_by)
+            source_date = try values.decodeIfPresent(Int.self, forKey: .source_date)
+        }
 
-}
+    }
