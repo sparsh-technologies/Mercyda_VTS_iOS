@@ -196,19 +196,19 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FNE-2F-atI">
-                                                <rect key="frame" x="193" y="21.333333333333329" width="201" height="23"/>
+                                                <rect key="frame" x="278" y="21.333333333333329" width="116" height="23"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signal" translatesAutoresizingMaskIntoConstraints="NO" id="feV-O6-2d3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="26.666666666666668" height="23"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="23" id="tHG-sh-PNP"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dishActive" translatesAutoresizingMaskIntoConstraints="NO" id="36X-Bz-5cj">
-                                                        <rect key="frame" x="68" y="0.0" width="54" height="23"/>
+                                                        <rect key="frame" x="41.666666666666686" y="0.0" width="27.333333333333329" height="23"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ignition" translatesAutoresizingMaskIntoConstraints="NO" id="CJS-XH-2a7">
-                                                        <rect key="frame" x="137" y="0.0" width="64" height="23"/>
+                                                        <rect key="frame" x="84" y="0.0" width="32" height="23"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -276,8 +276,8 @@
                                     <constraint firstAttribute="trailing" secondItem="b0d-v7-s3e" secondAttribute="trailing" id="xjG-YZ-eGt"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
-                                <rect key="frame" x="206" y="245" width="208" height="491"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-VX-9Aa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QS-fQ-B3R">
                                         <rect key="frame" x="30" y="201" width="354" height="290"/>
