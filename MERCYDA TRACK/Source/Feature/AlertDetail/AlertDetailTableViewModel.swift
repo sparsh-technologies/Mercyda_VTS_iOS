@@ -79,7 +79,7 @@ extension AlertDetailTableDataModal: AlertDetailTableViewModel {
                 
                 return UITableViewCell()
             }
-            
+            printLog(alertArray[indexPath.row])
             alertCell.setDatas(alertDat: alertArray[indexPath.row])
            
             return alertCell
