@@ -229,7 +229,8 @@ class MapVC: UIViewController {
         self.focusMapToLocation(loctions: locationsArray,duration: 2.0, completionFunction: {
             self.draw_polylines(loctions: self.polyLineLocations)
         }) {
-            self.viewModel?.updateParkingMarkers()
+            // Removed updating markers for now later if needed uncomment the line
+           // self.viewModel?.updateParkingMarkers()
         }
     }
     
