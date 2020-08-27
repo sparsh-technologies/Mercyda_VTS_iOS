@@ -59,6 +59,7 @@ class DashboardViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
          self.navigationController?.navigationBar.isHidden = true
+        getDashboardVehicleCountWithoutActInd()
     }
     
     /// Configure UI with Label Names and Initial Values
@@ -177,6 +178,23 @@ class DashboardViewController: BaseViewController {
        
     }
     
+    func getDashboardVehicleCountWithoutActInd()  {
+        dashboardViewModel.getVehicleCount { [weak self] (result) in
+            guard let this = self else {
+                return
+            }
+            printLog(result)
+            switch result {
+            case .success(let result):
+                this.updateNotificationCOunt(vehicleCount: result)
+                printLog("Vechile details Count \(result)")
+            case .failure(let error):
+                statusBarMessage(.CustomError, error)
+                printLog(error)
+            }
+        }
+        
+    }
     
 
     func getVehiclesList(tag:Int) {

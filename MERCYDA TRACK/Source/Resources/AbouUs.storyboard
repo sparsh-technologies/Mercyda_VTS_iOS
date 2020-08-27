@@ -274,8 +274,10 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="p7q-L2-qot"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buildLbl" destination="JA5-QB-hHY" id="e5h-Tn-1Gn"/>
                         <outlet property="contactusView" destination="D9W-73-hKR" id="0B3-Yl-Z2B"/>
                         <outlet property="termsAndConditionView" destination="pwb-3J-dF3" id="Uzw-F3-n19"/>
+                        <outlet property="versionLbl" destination="X3H-qg-Tjl" id="Iwg-cX-epx"/>
                         <outlet property="websiteView" destination="b46-hC-NTI" id="z3m-UO-VD9"/>
                     </connections>
                 </viewController>

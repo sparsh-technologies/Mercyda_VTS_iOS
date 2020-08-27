@@ -15,7 +15,9 @@ class Aboutuscontroller: UIViewController {
     @IBOutlet weak var contactusView: UIView!
     @IBOutlet weak var websiteView: UIView!
     @IBOutlet weak var mainWebsiteButton: UIButton!
+    @IBOutlet weak var versionLbl: UILabel!
     
+    @IBOutlet weak var buildLbl: UILabel!
     /// view lifecycle method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,8 @@ class Aboutuscontroller: UIViewController {
         websiteView.roundCorners(.allCorners, radius: 15)
         contactusView.roundCorners([.topLeft,.topRight], radius: 15)
         termsAndConditionView.roundCorners([.bottomLeft,.bottomRight], radius: 15)
-        
+        versionLbl.text = "Version: " + (UIApplication.appVersion ?? "")
+        buildLbl.text = "Build: " + (UIApplication.buildVersionNumber ?? "")
     }
     
     

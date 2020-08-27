@@ -14,4 +14,7 @@ import UIKit
     static var appVersion: String? {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
+    static var buildVersionNumber: String? {
+         Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    }
 }
