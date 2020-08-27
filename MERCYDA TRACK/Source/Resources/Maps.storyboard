@@ -64,7 +64,7 @@
                                                                     <constraint firstAttribute="width" secondItem="RGs-2o-LTG" secondAttribute="height" multiplier="1:1" id="eKn-rZ-re5"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24/8/2020 09:11:PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEZ-iL-DDY">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEZ-iL-DDY">
                                                                 <rect key="frame" x="22" y="1.5" width="232" height="14.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,6 +305,7 @@
                         <outlet property="bottomFeaturesView" destination="jgv-WS-vWE" id="Nbr-CP-BiE"/>
                         <outlet property="ignitionImageView" destination="bcB-CJ-NIQ" id="hk9-dE-SWF"/>
                         <outlet property="isActiveImageView" destination="LTe-2v-giU" id="lhi-dx-fPd"/>
+                        <outlet property="lastUpdatedDateLabel" destination="cEZ-iL-DDY" id="7l6-2R-OE6"/>
                         <outlet property="signalImageView" destination="r9C-0t-hBH" id="iqI-w8-6lr"/>
                         <outlet property="speedLabel" destination="hZU-bn-wWn" id="K1H-If-JC2"/>
                         <outlet property="topVehicleView" destination="mE9-Tw-Pja" id="FLv-RO-Ziu"/>

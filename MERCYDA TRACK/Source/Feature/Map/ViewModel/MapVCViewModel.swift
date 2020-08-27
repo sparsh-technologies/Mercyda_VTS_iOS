@@ -11,6 +11,7 @@ import Foundation
 protocol MapVCViewModelDelegate : class {
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
+    func updateSourceDateOfLastPacket(dateString : String)
     func updatePolyLines(Locations locationsArray: [Latlon])
     func updateCarLocationWhenNoMovingLocationFound(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)
@@ -22,7 +23,11 @@ class MapVCViewModel  {
     // MARK: - Properties
     let networkServiceCalls = NetworkServiceCalls()
     var originalDeviceList : [D]?
-    var lastDevicePacket : D?
+    var lastDevicePacket : D? {
+        didSet {
+            self.updateLastDate()
+        }
+    }
     var arrForMovingLocations:[Latlon] = []
     var arrForHaltAndStopLocations:[TripDetailsModel]?
     weak var delegate : MapVCViewModelDelegate?
@@ -51,16 +56,23 @@ extension MapVCViewModel {
     
     func updateViewController() {
         guard let array = self.originalDeviceList else { return }
-            let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
-                self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
-            } else if array.count > 0 {
-                let locations = array.getCoordinates(); if locations.count > 0 {
-                    delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
-                }
+        let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
+            self.arrForMovingLocations = movingDeviceArray.getCoordinates()
+            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+        } else if array.count > 0 {
+            let locations = array.getCoordinates(); if locations.count > 0 {
+                delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
             }
+        }
+        updateLastDate()
     }
     
+    func updateLastDate() {
+       if let packet = self.lastDevicePacket {
+            let dateString = Utility.getDate(unixdateinMilliSeconds:packet.source_date ?? 0)
+            self.delegate?.updateSourceDateOfLastPacket(dateString: dateString)
+        }
+    }
     
     func startUpdateLocations() {
         self.APItimer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(self.getLatestPackets), userInfo: nil, repeats: true)
@@ -73,12 +85,10 @@ extension MapVCViewModel {
         guard let startDate = lastDevicePacket?.source_date, let serialNumber = self.serialNumber else {
             return
         }
-      //  delegate?.showLoader()
         self.networkServiceCalls.getDeviceData(serialNumber: serialNumber, enableSourceDate: "true", startTime: String(startDate), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
             }
-           // this.delegate?.hideLoader()
             switch state {
             case .success(let result as [DeviceDataResponse]):
                 this.latestPackets = result.getActiveDevicePackets()

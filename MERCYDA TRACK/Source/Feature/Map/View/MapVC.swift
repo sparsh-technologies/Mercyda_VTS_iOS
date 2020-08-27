@@ -27,6 +27,7 @@ class MapVC: UIViewController {
     @IBOutlet weak var ignitionImageView: UIImageView!
     @IBOutlet weak var isActiveImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var lastUpdatedDateLabel: UILabel!
     
     
     var viewModel : MapVCViewModel?

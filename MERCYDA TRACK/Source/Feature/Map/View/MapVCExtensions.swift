@@ -11,6 +11,10 @@ import GoogleMaps
 import MBProgressHUD
 
 extension MapVC : MapVCViewModelDelegate {
+    func updateSourceDateOfLastPacket(dateString: String) {
+        self.lastUpdatedDateLabel.text = dateString
+    }
+    
     func updateCarLocationWhenNoMovingLocationFound(Locations locationsArray: [Latlon]) {
         let coordinatesArray = locationsArray.toGoogleCoordinates()
         if coordinatesArray.count > 0 {
@@ -18,17 +22,12 @@ extension MapVC : MapVCViewModelDelegate {
                 self.draw_polylines(loctions: coordinatesArray)
             }) {
                 // Removed updating markers for now later if needed uncomment the line
-               // self.viewModel?.updateParkingMarkers()
+                // self.viewModel?.updateParkingMarkers()
             }
         }
     }
-
+    
     func updatePolyLines(Locations locationsArray: [Latlon]) {
-//        printLog("first")
-//        printLog(locationsArray.first)
-//        printLog("last")
-//        printLog(locationsArray.last)
-//
         var timer = DispatchTime.now()
         CATransaction.flush()
         let locArray : [CLLocationCoordinate2D] = locationsArray.toGoogleCoordinates().reversed()
