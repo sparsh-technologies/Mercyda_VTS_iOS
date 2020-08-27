@@ -12,6 +12,7 @@ protocol MapVCViewModelDelegate : class {
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
     func updateSourceDateOfLastPacket(dateString : String)
+    func updateDistance(distance : String)
     func updatePolyLines(Locations locationsArray: [Latlon])
     func updateCarLocationWhenNoMovingLocationFound(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)

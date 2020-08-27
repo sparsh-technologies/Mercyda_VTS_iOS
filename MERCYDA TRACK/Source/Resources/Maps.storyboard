@@ -344,6 +344,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="Bhe-kj-Psu" id="pYI-M2-BGP"/>
                         <outlet property="bottomFeaturesView" destination="jgv-WS-vWE" id="Nbr-CP-BiE"/>
+                        <outlet property="distanceLabel" destination="lQ6-wW-BOO" id="Yk8-Tg-QOl"/>
                         <outlet property="ignitionImageView" destination="bcB-CJ-NIQ" id="hk9-dE-SWF"/>
                         <outlet property="innerSpeedView" destination="Qlh-LI-J2D" id="l1k-Hz-YcP"/>
                         <outlet property="isActiveImageView" destination="LTe-2v-giU" id="lhi-dx-fPd"/>

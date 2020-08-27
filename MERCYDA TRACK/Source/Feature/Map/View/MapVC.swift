@@ -18,7 +18,6 @@ class MapVC: UIViewController {
     
     @IBOutlet private weak var bottomFeaturesView: UIView!
     @IBOutlet weak var topVehicleView: UIView!
-    
     @IBOutlet weak var speedView: UIView!
     @IBOutlet weak var innerSpeedView: UIView!
     
@@ -31,6 +30,7 @@ class MapVC: UIViewController {
     @IBOutlet weak var isActiveImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var lastUpdatedDateLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     
     var viewModel : MapVCViewModel?

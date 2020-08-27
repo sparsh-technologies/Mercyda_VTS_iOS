@@ -11,6 +11,10 @@ import GoogleMaps
 import MBProgressHUD
 
 extension MapVC : MapVCViewModelDelegate {
+    func updateDistance(distance : String) {
+        self.distanceLabel.text = distance
+    }
+    
     func updateSourceDateOfLastPacket(dateString: String) {
         self.lastUpdatedDateLabel.text = dateString
     }
