@@ -66,6 +66,8 @@ extension MapVCViewModel {
             }
         }
         updateLastDate()
+        // vinod
+        delegate?.updateDistance(distance: "")
     }
     
     func updateLastDate() {
