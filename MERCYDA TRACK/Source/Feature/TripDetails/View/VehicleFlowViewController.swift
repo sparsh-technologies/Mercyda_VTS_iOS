@@ -132,7 +132,6 @@ final class VehicleFlowViewController: BaseViewController {
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
         
-        
     }
     
     
@@ -271,6 +270,7 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         minSpdLbl.text = minSpd + " km/hr"
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
+        
         if mode == "M" {
             vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
         }
@@ -290,6 +290,7 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots)
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
+        mapVC.totalDistance = totalDistLbl.text ?? ""
         self.show(mapVC, sender: self)
     }
 }
