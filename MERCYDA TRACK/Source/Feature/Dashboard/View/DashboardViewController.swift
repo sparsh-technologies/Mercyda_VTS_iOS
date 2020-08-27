@@ -237,6 +237,7 @@ class DashboardViewController: BaseViewController {
     
     
     func updateNotificationCOunt(vehicleCount: getVehiclesCountResponse) {
+        printLog(vehicleCount)
         var count = Int(vehicleCount.running_count ?? 0)
         movingNotifLbl.text = String(count)
         count = Int(vehicleCount.idle_count ?? 0)
@@ -244,7 +245,7 @@ class DashboardViewController: BaseViewController {
         count = Int(vehicleCount.halt_count ?? 0)
         idleNotifiLbl.text = String(count)
         count = Int(vehicleCount.running_count ?? 0)
-        onlineNotfiLbl.text = String(Int(vehicleCount.running_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0))
+        onlineNotfiLbl.text = String(Int(vehicleCount.halt_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0))
         count = Int(vehicleCount.inactive_count ?? 0)
         offlineNotifiLbl.text = String(count)
     }
