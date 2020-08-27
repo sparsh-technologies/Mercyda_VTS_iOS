@@ -12,6 +12,7 @@ protocol MapVCViewModelDelegate : class {
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon])
     func updatePolyLines(Locations locationsArray: [Latlon])
+    func updateCarLocationWhenNoMovingLocationFound(Locations locationsArray: [Latlon])
     func showError(errorMessage: String)
     func showLoader()
     func hideLoader()
@@ -49,12 +50,17 @@ class MapVCViewModel  {
 extension MapVCViewModel {
     
     func updateViewController() {
-        if let array = self.originalDeviceList {
-            let movingDeviceArray = array.getMovingPackets()
-            self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
-        }
+        guard let array = self.originalDeviceList else { return }
+            let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
+                self.arrForMovingLocations = movingDeviceArray.getCoordinates()
+                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+            } else if array.count > 0 {
+                let locations = array.getCoordinates(); if locations.count > 0 {
+                    delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+                }
+            }
     }
+    
     
     func startUpdateLocations() {
         self.APItimer = Timer.scheduledTimer(timeInterval: 7, target: self, selector: #selector(self.getLatestPackets), userInfo: nil, repeats: true)

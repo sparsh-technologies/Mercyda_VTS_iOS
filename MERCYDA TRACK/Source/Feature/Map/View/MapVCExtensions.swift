@@ -11,6 +11,18 @@ import GoogleMaps
 import MBProgressHUD
 
 extension MapVC : MapVCViewModelDelegate {
+    func updateCarLocationWhenNoMovingLocationFound(Locations locationsArray: [Latlon]) {
+        let coordinatesArray = locationsArray.toGoogleCoordinates()
+        if coordinatesArray.count > 0 {
+            self.focusMapToLocation(loctions: coordinatesArray,duration: 2.0, completionFunction: {
+                self.draw_polylines(loctions: coordinatesArray)
+            }) {
+                // Removed updating markers for now later if needed uncomment the line
+               // self.viewModel?.updateParkingMarkers()
+            }
+        }
+    }
+
     func updatePolyLines(Locations locationsArray: [Latlon]) {
 //        printLog("first")
 //        printLog(locationsArray.first)
