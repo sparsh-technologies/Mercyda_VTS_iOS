@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mE9-Tw-Pja" userLabel="VehicleDetailsView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="151"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="149"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="v0W-39-v7c">
                                         <rect key="frame" x="5" y="5" width="401" height="141"/>
@@ -157,7 +158,7 @@
                                 <constraints>
                                     <constraint firstItem="v0W-39-v7c" firstAttribute="top" secondItem="mE9-Tw-Pja" secondAttribute="top" constant="5" id="MFL-Vh-Uti"/>
                                     <constraint firstAttribute="trailing" secondItem="v0W-39-v7c" secondAttribute="trailing" constant="8" id="XOJ-tU-1dv"/>
-                                    <constraint firstAttribute="bottom" secondItem="v0W-39-v7c" secondAttribute="bottom" constant="5" id="pfL-6e-mZR"/>
+                                    <constraint firstAttribute="bottom" secondItem="v0W-39-v7c" secondAttribute="bottom" constant="3" id="pfL-6e-mZR"/>
                                     <constraint firstItem="v0W-39-v7c" firstAttribute="leading" secondItem="mE9-Tw-Pja" secondAttribute="leading" constant="5" id="xTb-bt-odk"/>
                                 </constraints>
                             </view>
@@ -286,17 +287,57 @@
                                     <constraint firstItem="6aA-WQ-4KP" firstAttribute="width" secondItem="jgv-WS-vWE" secondAttribute="width" multiplier="0.13" id="kw4-iI-zk4"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lR-j2-AiC">
+                                <rect key="frame" x="155" y="193" width="104.5" height="47"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qlh-LI-J2D">
+                                        <rect key="frame" x="0.0" y="0.0" width="104.5" height="47"/>
+                                        <color key="backgroundColor" name="ThemeBlue"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="htK-hv-cc6">
+                                        <rect key="frame" x="20" y="3" width="64.5" height="39"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hA-sh-pxP">
+                                                <rect key="frame" x="5.5" y="0.0" width="53" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="63.36 KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQ6-wW-BOO">
+                                                <rect key="frame" x="0.0" y="22" width="64.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="ThemeBlue"/>
+                                <constraints>
+                                    <constraint firstItem="Qlh-LI-J2D" firstAttribute="top" secondItem="3lR-j2-AiC" secondAttribute="top" id="3dR-vB-jwF"/>
+                                    <constraint firstItem="Qlh-LI-J2D" firstAttribute="leading" secondItem="3lR-j2-AiC" secondAttribute="leading" id="C24-Vj-Tjh"/>
+                                    <constraint firstAttribute="bottom" secondItem="htK-hv-cc6" secondAttribute="bottom" constant="5" id="Dtp-7o-WVA"/>
+                                    <constraint firstAttribute="trailing" secondItem="htK-hv-cc6" secondAttribute="trailing" constant="20" id="LHI-HG-AGg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qlh-LI-J2D" secondAttribute="bottom" id="b7p-lS-2v3"/>
+                                    <constraint firstItem="htK-hv-cc6" firstAttribute="top" secondItem="3lR-j2-AiC" secondAttribute="top" constant="3" id="orz-wh-8dw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qlh-LI-J2D" secondAttribute="trailing" id="oyF-BN-Uxm"/>
+                                    <constraint firstItem="htK-hv-cc6" firstAttribute="leading" secondItem="3lR-j2-AiC" secondAttribute="leading" constant="20" id="sOF-pI-Rcz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3lR-j2-AiC" firstAttribute="height" secondItem="v0W-39-v7c" secondAttribute="height" multiplier="1/3" id="4Cq-Pv-EWi"/>
                             <constraint firstItem="mE9-Tw-Pja" firstAttribute="trailing" secondItem="8r7-Ng-nnC" secondAttribute="trailing" id="6di-z5-1kw"/>
                             <constraint firstItem="jgv-WS-vWE" firstAttribute="leading" secondItem="8r7-Ng-nnC" secondAttribute="leading" id="BXb-uJ-4La"/>
+                            <constraint firstItem="3lR-j2-AiC" firstAttribute="centerX" secondItem="mE9-Tw-Pja" secondAttribute="centerX" id="CgE-0Y-unt"/>
                             <constraint firstItem="jgv-WS-vWE" firstAttribute="width" secondItem="pFD-X3-9n6" secondAttribute="width" id="IMO-0u-PJp"/>
                             <constraint firstAttribute="bottom" secondItem="jgv-WS-vWE" secondAttribute="bottom" id="SuL-7U-HUh"/>
                             <constraint firstItem="mE9-Tw-Pja" firstAttribute="top" secondItem="8r7-Ng-nnC" secondAttribute="top" id="W9e-M2-zjt"/>
                             <constraint firstItem="uXT-2n-eQO" firstAttribute="height" secondItem="pFD-X3-9n6" secondAttribute="height" multiplier="1/6.35" id="iGT-jb-7mP"/>
                             <constraint firstItem="8r7-Ng-nnC" firstAttribute="trailing" secondItem="jgv-WS-vWE" secondAttribute="trailing" id="l0M-39-SEW"/>
                             <constraint firstItem="mE9-Tw-Pja" firstAttribute="leading" secondItem="8r7-Ng-nnC" secondAttribute="leading" id="nBx-Mj-IBN"/>
+                            <constraint firstItem="3lR-j2-AiC" firstAttribute="top" secondItem="mE9-Tw-Pja" secondAttribute="bottom" id="wUb-SY-H9a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8r7-Ng-nnC"/>
                     </view>
@@ -304,10 +345,12 @@
                         <outlet property="addressLabel" destination="Bhe-kj-Psu" id="pYI-M2-BGP"/>
                         <outlet property="bottomFeaturesView" destination="jgv-WS-vWE" id="Nbr-CP-BiE"/>
                         <outlet property="ignitionImageView" destination="bcB-CJ-NIQ" id="hk9-dE-SWF"/>
+                        <outlet property="innerSpeedView" destination="Qlh-LI-J2D" id="l1k-Hz-YcP"/>
                         <outlet property="isActiveImageView" destination="LTe-2v-giU" id="lhi-dx-fPd"/>
                         <outlet property="lastUpdatedDateLabel" destination="cEZ-iL-DDY" id="7l6-2R-OE6"/>
                         <outlet property="signalImageView" destination="r9C-0t-hBH" id="iqI-w8-6lr"/>
                         <outlet property="speedLabel" destination="hZU-bn-wWn" id="K1H-If-JC2"/>
+                        <outlet property="speedView" destination="3lR-j2-AiC" id="icG-hO-0un"/>
                         <outlet property="topVehicleView" destination="mE9-Tw-Pja" id="FLv-RO-Ziu"/>
                         <outlet property="vehicleContainerView" destination="uXT-2n-eQO" id="1vR-Qh-yR7"/>
                         <outlet property="vehicleImageview" destination="spV-BW-fuv" id="ZxM-cf-8YP"/>
@@ -331,5 +374,8 @@
         <image name="kmhr" width="33.5" height="33.5"/>
         <image name="locationMarker" width="32" height="32"/>
         <image name="signal" width="27" height="19.5"/>
+        <namedColor name="ThemeBlue">
+            <color red="0.0078431372549019607" green="0.6588235294117647" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

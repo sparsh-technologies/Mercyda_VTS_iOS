@@ -35,6 +35,14 @@ extension Utility {
         return ("JSON string = Error")
     }
     
+    class func setShadow(view: UIView, color: UIColor, cornerRadius: CGFloat) {
+        view.layer.cornerRadius = cornerRadius
+        view.layer.shadowColor = color.cgColor
+        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        view.layer.shadowRadius = 3.0
+        view.layer.shadowOpacity = 0.6
+        view.layer.masksToBounds = false
+    }
     
     
      class  func topMostController() -> UIViewController {

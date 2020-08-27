@@ -19,6 +19,9 @@ class MapVC: UIViewController {
     @IBOutlet private weak var bottomFeaturesView: UIView!
     @IBOutlet weak var topVehicleView: UIView!
     
+    @IBOutlet weak var speedView: UIView!
+    @IBOutlet weak var innerSpeedView: UIView!
+    
     @IBOutlet private weak var vehicleContainerView: UIView!
     @IBOutlet weak var vehicleImageview: UIImageView!
     @IBOutlet weak var vehicleNumber: UILabel!
@@ -86,6 +89,8 @@ class MapVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
+        innerSpeedView.roundCorners([.bottomLeft, .bottomRight], radius: 10)
+        Utility.setShadow(view: self.speedView, color: .lightGray, cornerRadius: 10)
     }
     
     @IBAction func changeMapViewBtn(_ sender: Any) {
@@ -284,6 +289,7 @@ class MapVC: UIViewController {
         DispatchQueue.main.async {
             self.view.bringSubviewToFront(self.bottomFeaturesView)
             self.view.bringSubviewToFront(self.topVehicleView)
+            self.view.bringSubviewToFront(self.speedView)
             self.view.layoutIfNeeded()
         }
     }
@@ -294,6 +300,7 @@ class MapVC: UIViewController {
             self.mapViewTopConstraint = self.mapView?.topAnchor.constraint(equalTo: show ? self.topVehicleView.bottomAnchor : self.view.topAnchor, constant: 0)
             self.mapViewTopConstraint.isActive = true
             self.topVehicleView.isHidden = !show
+            self.speedView.isHidden = !show
             UIView.animate(withDuration: show ? 0.0 : 0.5, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 20.3, options: [.curveEaseInOut], animations: {
                 self.navigationController?.setNavigationBarHidden(!show, animated: false)
             })
