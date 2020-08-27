@@ -29,6 +29,7 @@ class DashboardViewController: BaseViewController {
     @IBOutlet weak var idleNotifiLbl: UILabel!
     @IBOutlet weak var onlineNotfiLbl: UILabel!
     @IBOutlet weak var movingNotifLbl: UILabel!
+    @IBOutlet weak var totalVehicleCountLbl: UILabel!
     
     /// Menu Button Outlets
     @IBOutlet private weak var offlineBtnOutlet: UIButton!
@@ -248,6 +249,8 @@ class DashboardViewController: BaseViewController {
         onlineNotfiLbl.text = String(Int(vehicleCount.halt_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0))
         count = Int(vehicleCount.inactive_count ?? 0)
         offlineNotifiLbl.text = String(count)
+        let totalCount = count + Int(vehicleCount.halt_count ?? 0) + Int(vehicleCount.idle_count ?? 0) + Int(vehicleCount.running_count ?? 0)
+        totalVehicleCountLbl.text = "Total Vehicles : " + String(totalCount)
     }
     /*
      // MARK: - Navigation

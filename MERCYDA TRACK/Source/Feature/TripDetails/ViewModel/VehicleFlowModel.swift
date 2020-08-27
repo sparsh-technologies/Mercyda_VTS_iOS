@@ -355,7 +355,7 @@ extension VehicleFlow {
                     totalMin = totalMin + ((hour ?? 0) * 60) + (min ?? 0)
                 }
             })
-            let toHour = totalMin / 60
+            let toHour = Double (totalMin) / 60.0
             let result = totalDistance / Double(toHour)
             return String(result.truncate(places: 2))
         }
