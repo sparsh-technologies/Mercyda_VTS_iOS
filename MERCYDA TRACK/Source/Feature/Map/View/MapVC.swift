@@ -48,6 +48,7 @@ class MapVC: UIViewController {
     let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemBlue)
     var totalDistance: String = ""
     var mapViewTopConstraint : NSLayoutConstraint!
+    var vehicleType = "car_pin"
     //var lastParkingLocation : CLLocationCoordinate2D?
     
     private var dispatcher: Dispatcher?
@@ -221,12 +222,16 @@ class MapVC: UIViewController {
         switch type{
         case VehicleModel.Lorry.rawValue:
             self.vehicleImageview.image = UIImage.init(named:"Lorry")
+            vehicleType = "ic_lorry"
         case VehicleModel.MiniTruck.rawValue:
             self.vehicleImageview.image = UIImage.init(named: "minilorry")
+            vehicleType = "ic_mini_truck"
         case VehicleModel.Car.rawValue:
             self.vehicleImageview.image = UIImage.init(named: "car")
+            vehicleType = "ic_car"
         default:
             self.vehicleImageview.image = UIImage.init(named:"Lorry")
+            vehicleType = "ic_lorry"
         }
     }
     
@@ -331,7 +336,7 @@ class MapVC: UIViewController {
     func setCarMarkers(position1: CLLocationCoordinate2D, position2: CLLocationCoordinate2D) {
         carMarker.map = nil
         let marker:GMSMarker = GMSMarker.init(position: position1)
-        marker.icon =  UIImage.init(named: "car_pin")
+        marker.icon =  UIImage.init(named: vehicleType)
         marker.position = position1
         marker.groundAnchor = CGPoint.init(x: CGFloat(0.5), y: CGFloat(0.5))
         marker.rotation = CLLocationDegrees.init(exactly: getHeadingForDirection(fromCoordinate: position1, toCoordinate: position2))!
