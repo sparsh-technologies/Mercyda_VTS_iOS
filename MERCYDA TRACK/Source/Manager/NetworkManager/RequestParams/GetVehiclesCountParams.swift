@@ -24,7 +24,8 @@ extension getVehiclesCountParams: URLBuildable {
         return nil
     }
     var path: String? {
-        return WebService.getVehiclesCountPath
+      //  return WebService.getVehiclesCountPath
+        return "mtrack/vehicles/count?username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v2"
     }
     var httpMethod: HTTPMethod {
         return .get
