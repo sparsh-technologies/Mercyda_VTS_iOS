@@ -22,6 +22,7 @@ extension GetAlertParams: URLBuildable {
     }
     var path: String? {
        // return WebService.getAlertDataPath
+        
         return "mtrack/data?&source_date=true&start_time=\(Utility.getTimeStampForAPI(flag: 1))&end_time=\(Utility.getTimeStampForAPI(flag: 2))&d.mobile_alert=true&meta_d.vehicle_registration=\(vehicleNumber)&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
 
     }
