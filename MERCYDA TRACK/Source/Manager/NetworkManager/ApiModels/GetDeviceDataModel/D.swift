@@ -89,7 +89,7 @@ extension Array where Element == D {
         return self.filter({$0.gnss_fix == 1})
     }
     func getMovingPackets() -> [D] {
-        return self.filter({$0.vehicle_mode == "M"})
+        return self.filter({($0.vehicle_mode == "M" || $0.vehicle_mode == "H") && $0.speed ?? 0 > 0})
     }
     func getNonMovingPackets() -> [D] {
         return self.filter({$0.vehicle_mode != "M"})
