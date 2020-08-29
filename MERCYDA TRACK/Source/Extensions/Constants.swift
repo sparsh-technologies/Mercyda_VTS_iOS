@@ -29,6 +29,7 @@ enum StoryboardName :String {
     case ListVehicle = "Vehicle"
     case VehicleFlow = "VehicleFlow"
     case AboutUs = "AbouUs"
+    case Alerts = "Alerts"
 
 }
 

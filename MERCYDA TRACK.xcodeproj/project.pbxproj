@@ -100,6 +100,9 @@
 		52B7E56124BB4AF900A9881C /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */; };
 		52B7E56224BB507C00A9881C /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
 		52B7E56324BB507D00A9881C /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6669FC924AA20420024527E /* URLBuildable.swift */; };
+		52CDB3C224FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
+		52CDB3C324FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
+		52CDB3C424FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
 		52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
 		52DC0E9224F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
 		52DC0E9324F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
@@ -307,6 +310,7 @@
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
 		52B7E55724BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleDataFlowTableViewCell.xib; sourceTree = "<group>"; };
 		52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
 		52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.release.xcconfig"; sourceTree = "<group>"; };
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -575,6 +579,7 @@
 				84410DA524B8F17300E6047D /* VehicleFlow.storyboard */,
 				841BC61824BCC96200A3127D /* AbouUs.storyboard */,
 				84338A3D24B3A8980005B97B /* Vehicle.storyboard */,
+				52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1161,6 +1166,7 @@
 				844F2D7D24F43232003AF25F /* AlertDetailTableViewCell.xib in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55B24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
+				52CDB3C224FA26C40086EBF4 /* Alerts.storyboard in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
 				52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1171,6 +1177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				520D57D324AF67BE002A775F /* Color.xcassets in Resources */,
+				52CDB3C324FA26C40086EBF4 /* Alerts.storyboard in Resources */,
 				C6653BA824B3533100DD9D9F /* Maps.storyboard in Resources */,
 				527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55C24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
@@ -1184,6 +1191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				520D57D424AF67BE002A775F /* Color.xcassets in Resources */,
+				52CDB3C424FA26C40086EBF4 /* Alerts.storyboard in Resources */,
 				C6653BA924B3533100DD9D9F /* Maps.storyboard in Resources */,
 				527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55D24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,

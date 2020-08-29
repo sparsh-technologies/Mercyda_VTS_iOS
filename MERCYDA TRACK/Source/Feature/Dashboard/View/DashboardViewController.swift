@@ -139,7 +139,7 @@ class DashboardViewController: BaseViewController {
         }
     
     func navigateToAlertPage(vehiclelist:[Vehicle]){
-        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let story = UIStoryboard(name: StoryboardName.Alerts.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.AlertVCId.rawValue)as! AlertVC
         vc.vehiclelist = vehiclelist
         self.navigationController?.pushViewController(vc, animated: true)

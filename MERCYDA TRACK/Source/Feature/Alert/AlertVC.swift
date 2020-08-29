@@ -67,7 +67,7 @@ class AlertVC: UIViewController {
         
     }
     func navigatetoAlertDetail(vehicleObj:Vehicle){
-        let story = UIStoryboard(name: StoryboardName.Dashboard.rawValue, bundle: nil)
+        let story = UIStoryboard(name: StoryboardName.Alerts.rawValue, bundle: nil)
         let vehicleFlowVC = story.instantiateViewController(withIdentifier: StoryboardID.AlertDetail.rawValue)as! AlertDetailController
         vehicleFlowVC.vehicleObj = vehicleObj
         self.navigationController?.pushViewController(vehicleFlowVC, animated: true)
