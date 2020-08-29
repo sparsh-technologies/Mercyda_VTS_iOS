@@ -43,8 +43,8 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapButton: UIButton!
     
-    private var totalDistance: Float?
-    private var maximumSpeed: Float?
+    private var totalDistance: Double?
+    private var maximumSpeed: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -283,8 +283,8 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         if mode == "S" {
             vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         }
-        self.totalDistance = Float(distance)
-        self.maximumSpeed = Float(maxSpd)
+        self.totalDistance = distance
+        self.maximumSpeed = maxSpd
     }
     
     func goToMaps() {

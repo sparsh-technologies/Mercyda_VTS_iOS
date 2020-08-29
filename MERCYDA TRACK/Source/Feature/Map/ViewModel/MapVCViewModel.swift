@@ -34,8 +34,8 @@ class MapVCViewModel  {
     weak var delegate : MapVCViewModelDelegate?
     var serialNumber : String?
     weak var APItimer: Timer?
-    private var totalDistance: Float?
-    private var maximumSpeed: Float?
+    private var totalDistance: Double = 0.00
+    private var maximumSpeed: Double = 0.00
     
     var latestPackets : [D]? {
         didSet {
@@ -46,7 +46,7 @@ class MapVCViewModel  {
         }
     }
     
-    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?, totalDistance: Float, maximumSpeed: Float) {
+    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?, totalDistance: Double, maximumSpeed: Double) {
         self.originalDeviceList = deviceList
         self.lastDevicePacket = deviceList?.first
         self.serialNumber = serialNumber
@@ -61,16 +61,22 @@ extension MapVCViewModel {
     
     func updateViewController() {
         guard let array = self.originalDeviceList else { return }
-        let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
-            self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-            delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+        if totalDistance >= 15.00 && maximumSpeed >= 10.00 {
+            let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
+                self.arrForMovingLocations = movingDeviceArray.getCoordinates()
+                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+            } else if array.count > 0 {
+                let locations = array.getCoordinates(); if locations.count > 0 {
+                    delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+                }
+            }
         } else if array.count > 0 {
             let locations = array.getCoordinates(); if locations.count > 0 {
                 delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
             }
         }
         updateLastDate()
-        delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance ?? 0.00)) KM")
+        delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
     }
     
     func updateLastDate() {
