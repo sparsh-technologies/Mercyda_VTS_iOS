@@ -43,6 +43,9 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapButton: UIButton!
     
+    private var totalDistance: Float?
+    private var maximumSpeed: Float?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vehicleFlowViewModel = VehicleFlow()
@@ -145,7 +148,7 @@ final class VehicleFlowViewController: BaseViewController {
         self.goToMaps()
     }
     
-    func getDeviceDetails()  {
+    func getDeviceDetails() {
         mapButton.isHidden = true
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
@@ -280,6 +283,8 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         if mode == "S" {
             vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         }
+        self.totalDistance = Float(distance)
+        self.maximumSpeed = Float(maxSpd)
     }
     
     func goToMaps() {
@@ -287,10 +292,10 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as? MapVC
             else { return }
         let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
-        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots)
+        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots, totalDistance : self.totalDistance ?? 0.00, maximumSpeed: self.maximumSpeed ?? 0.00)
+        
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
-        mapVC.totalDistance = totalDistLbl.text ?? ""
         self.show(mapVC, sender: self)
     }
 }

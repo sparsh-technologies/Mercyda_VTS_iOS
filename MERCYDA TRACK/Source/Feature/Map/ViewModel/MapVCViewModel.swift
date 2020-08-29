@@ -34,6 +34,8 @@ class MapVCViewModel  {
     weak var delegate : MapVCViewModelDelegate?
     var serialNumber : String?
     weak var APItimer: Timer?
+    private var totalDistance: Float?
+    private var maximumSpeed: Float?
     
     var latestPackets : [D]? {
         didSet {
@@ -44,11 +46,13 @@ class MapVCViewModel  {
         }
     }
     
-    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?) {
+    required init(deviceList: [D]?, serialNumber : String, parkingLocations: [TripDetailsModel]?, totalDistance: Float, maximumSpeed: Float) {
         self.originalDeviceList = deviceList
         self.lastDevicePacket = deviceList?.first
         self.serialNumber = serialNumber
         self.arrForHaltAndStopLocations = parkingLocations
+        self.totalDistance = totalDistance
+        self.maximumSpeed = maximumSpeed
     }
     
 }
@@ -66,8 +70,7 @@ extension MapVCViewModel {
             }
         }
         updateLastDate()
-        // vinod
-        delegate?.updateDistance(distance: "")
+        delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance ?? 0.00)) KM")
     }
     
     func updateLastDate() {

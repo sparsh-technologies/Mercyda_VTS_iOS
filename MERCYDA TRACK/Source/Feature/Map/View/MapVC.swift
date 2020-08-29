@@ -46,7 +46,6 @@ class MapVC: UIViewController {
     var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
     var vehicleObject:Vehicle?
     let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemBlue)
-    var totalDistance: String = ""
     var mapViewTopConstraint : NSLayoutConstraint!
     var vehicleType = "car_pin"
     //var lastParkingLocation : CLLocationCoordinate2D?
@@ -174,7 +173,6 @@ class MapVC: UIViewController {
         else if type == "Offline"{
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
-        distanceLabel.text = totalDistance
     }
     
     func setSignalStrength(signalStrength:Int){
