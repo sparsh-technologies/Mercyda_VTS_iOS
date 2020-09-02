@@ -43,6 +43,9 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapButton: UIButton!
     
+    private var totalDistance: Double?
+    private var maximumSpeed: Double?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vehicleFlowViewModel = VehicleFlow()
@@ -296,16 +299,18 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         minSpdLbl.text = minSpd + " km/hr"
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
+        self.totalDistance = distance
+        self.maximumSpeed = maxSpd
         
-//        if mode == "M" {
-//            vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-//        }
-//        if mode == "H" {
-//            vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-//        }
-//        if mode == "S" {
-//            vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-//        }
+        //        if mode == "M" {
+        //            vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        //        }
+        //        if mode == "H" {
+        //            vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        //        }
+        //        if mode == "S" {
+        //            vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        //        }
     }
     
     func goToMaps() {
@@ -313,10 +318,10 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as? MapVC
             else { return }
         let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
-        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots)
+        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots, totalDistance : self.totalDistance ?? 0.00, maximumSpeed: self.maximumSpeed ?? 0.00)
+        
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
-        mapVC.totalDistance = totalDistLbl.text ?? ""
         self.show(mapVC, sender: self)
     }
     
