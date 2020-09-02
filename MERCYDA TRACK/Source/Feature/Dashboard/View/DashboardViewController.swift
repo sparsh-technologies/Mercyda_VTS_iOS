@@ -216,7 +216,8 @@ class DashboardViewController: BaseViewController {
                 }
             case 18,16:
                  type = "Dashboard"
-                this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
+               // this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
+                 this.navigatetoVehicleListPage(vehiclelist:this.dashboardViewModel.allVehicleData(data:result), clickedType:"")   
             case 10:
                 type = "Moving"
                 this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
@@ -238,8 +239,9 @@ class DashboardViewController: BaseViewController {
                 this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Offline.rawValue)
             }
             case 13:
-                type = "Dashboard"
+                type = "Online"
             this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
+                printLog(filterdResult.count)
                 this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Online.rawValue)
             }
             default:
@@ -279,5 +281,5 @@ class DashboardViewController: BaseViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
+  
 }

@@ -67,8 +67,9 @@ extension UIView {
        }
 
    func addGradientBackground(firstColor: UIColor, secondColor: UIColor){
-       
+     
        let gradientLayer = CAGradientLayer()
+       
        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
        let width = UIScreen.main.bounds.width
        let ht = self.frame.height
@@ -79,7 +80,7 @@ extension UIView {
       // gradientLayer.startPoint = CGPoint(x: 0, y: 0)
        //gradientLayer.endPoint = CGPoint(x: 1, y: 1)
      gradientLayer.startPoint = CGPoint(x:0 , y: 0)
-    gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+      gradientLayer.endPoint = CGPoint(x: 0, y: 1)
        self.layer.insertSublayer(gradientLayer, at: 0)
    }
     

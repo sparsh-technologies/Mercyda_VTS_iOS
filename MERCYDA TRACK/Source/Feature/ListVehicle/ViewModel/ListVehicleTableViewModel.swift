@@ -89,7 +89,7 @@ extension ListVehicleTableDataModal: ListVehicleTableViewModel {
             }
            
             vehicleCell.setVehicleData(vehicle:vehiclesArray[indexPath.row])
-            vehicleCell.layoutSubviews()
+           
           
             return vehicleCell
         }
@@ -109,6 +109,7 @@ enum VehicleMode :String{
     case Moving = "M"
     case Sleep = "S"
     case Idle = "H"
+    case Offline = "OFFLINE"
 }
 
 enum IgnitionType:String{

@@ -43,6 +43,7 @@ struct Vehicle : Codable {
     let use_infinimap_api : Bool?
     let main_power_removal_alert_count: Int?
     let wire_cut_alert_count:Int?
+    var type:String?
 
 	enum CodingKeys: String, CodingKey {
         case modifiedBy = "modifiedBy"

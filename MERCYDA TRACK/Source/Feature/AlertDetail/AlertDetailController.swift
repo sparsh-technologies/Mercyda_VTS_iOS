@@ -172,7 +172,7 @@ class AlertDetailController: UIViewController {
              }
          }
     @objc func addTapped(){
-        
+        getAlertData()
     }
 }
 

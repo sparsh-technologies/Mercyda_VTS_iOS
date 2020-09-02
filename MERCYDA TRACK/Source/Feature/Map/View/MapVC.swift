@@ -166,10 +166,19 @@ class MapVC: UIViewController {
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
         }
         else if type == "Dashboard"{
-            if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
+//            if let vehicleMode = vehicleObject?.last_updated_data?.vehicle_mode {
+//                setVehicleMode(mode:vehicleMode)
+//            }
+            if let vehicleMode = vehicleObject?.type{
                 setVehicleMode(mode:vehicleMode)
             }
         }
+         else if type == "Online"{
+            if let vehicleMode =  vehicleObject?.last_updated_data?.vehicle_mode {
+                setVehicleMode(mode:vehicleMode)
+                    }
+            }
+            
         else if type == "Offline"{
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
@@ -205,15 +214,32 @@ class MapVC: UIViewController {
     }
     
     func setVehicleMode(mode:String){
+//        switch mode{
+//        case VehicleMode.Moving.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+//        case VehicleMode.Sleep.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+//        case VehicleMode.Idle.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+//        default:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+//        }
+        
         switch mode{
         case VehicleMode.Moving.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+            printLog("Moving xxxxxxxx")
+        //    self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
         case VehicleMode.Sleep.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+         //   self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+              self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
         case VehicleMode.Idle.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+            //self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+        case VehicleMode.Offline.rawValue:
+            self.vehicleContainerView.backgroundColor = UIColor.red
         default:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+              printLog("nothing")
         }
     }
     func getVehicleType(type:String){

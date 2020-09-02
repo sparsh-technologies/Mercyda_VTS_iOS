@@ -16,10 +16,11 @@ class ListVehicleViewModel{
     
     
     func searchData(key:String,data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
-        printLog("Count:\(data.count)")
+        
         let filtered = data.filter {
             return $0.vehicle_registration?.range(of: key, options: .caseInsensitive) != nil
         }
+        printLog("\(filtered.count)")
         completion(filtered)
     }
     

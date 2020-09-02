@@ -222,6 +222,87 @@ extension DashboardViewModel {
         let dateTime = formatter.string(from: date)
         return dateTime
     }
+    
+    func allVehicleData(data:[Vehicle]) -> [Vehicle]{
+        var dat = data
+        var filteredData = [Vehicle]()
+        for i in 0..<dat.count{
+            if let lastUpdatedData = dat[i].last_updated_data{
+                let sourTimeInMilliSecond = lastUpdatedData.source_date
+                let timeWithotMilliSecond = sourTimeInMilliSecond!/1000
+                let sourceDate = Utility.getDateFromTimeStamp(sourceDate:timeWithotMilliSecond)
+                let dayTimePeriodFormatter = DateFormatter()
+                dayTimePeriodFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dayTimePeriodFormatter.timeZone = .current
+                let dateString = dayTimePeriodFormatter.string(from: sourceDate)
+                printLog(dateString)
+                let calender:Calendar = Calendar.current
+                let currentDateFormat  =  dayTimePeriodFormatter.date(from:getCurrentDateTime())
+                printLog(dayTimePeriodFormatter.string(from: currentDateFormat!))
+                let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
+                printLog("Minute :\(String(components.minute!))")
+                if components.day! > 0 {
+                    printLog("day: \(components.minute!)")
+                    dat[i].type = "OFFLINE"
+                    filteredData.append(dat[i])
+                }
+                else if components.hour! > 1{
+                    printLog("hour: \(components.minute!)")
+                    dat[i].type = "OFFLINE"
+                    filteredData.append(dat[i])
+                }
+                else if components.minute! > 20{
+                    printLog("MinuteAppended: \(components.minute!)")
+                    dat[i].type = "OFFLINE"
+                    filteredData.append(dat[i])
+                    
+                }
+                else if components.minute! < 20{
+                    printLog("MinuteAppended: \(components.minute!)")
+                    if dat[i].last_updated_data?.vehicle_mode == "M"{
+                        dat[i].type = "M"
+                        filteredData.append(dat[i])
+                    }
+                    else if dat[i].last_updated_data?.vehicle_mode == "H"{
+                        dat[i].type = "H"
+                        filteredData.append(dat[i])
+                    }
+                    else if dat[i].last_updated_data?.vehicle_mode == "S"{
+                        dat[i].type = "S"
+                        filteredData.append(dat[i])
+                    }
+                    
+                    
+                }
+                
+                
+                //                else if components.day! <= 0{
+                //                    if components.hour! <= 0{
+                //                        if components.minute! < 20{
+                //                            printLog("MinuteAppended: \(components.minute!)")
+                //                            if dat[i].last_updated_data?.vehicle_mode == "M"{
+                //                                dat[i].type = "M"
+                //                                filteredData.append(dat[i])
+                //                            }
+                //                            else if dat[i].last_updated_data?.vehicle_mode == "H"{
+                //                                dat[i].type = "H"
+                //                                filteredData.append(dat[i])
+                //                            }
+                //                            else if dat[i].last_updated_data?.vehicle_mode == "S"{
+                //                                dat[i].type = "S"
+                //                                filteredData.append(dat[i])
+                //                            }
+                //
+                //
+                //                        }
+                //                    }
+                //                }
+                
+                
+            }
+        }
+        return filteredData
+    }
 }
 
 

@@ -43,9 +43,6 @@ final class VehicleFlowViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapButton: UIButton!
     
-    private var totalDistance: Double?
-    private var maximumSpeed: Double?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         vehicleFlowViewModel = VehicleFlow()
@@ -126,11 +123,20 @@ final class VehicleFlowViewController: BaseViewController {
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
         }
         else if type == "Dashboard"{
-            if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-                setVehicleMode(mode:vehicleMode)
-                
-            }
+//            if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+//                setVehicleMode(mode:vehicleMode)
+//
+//            }
+            if let vehicleMode = vehicleObj?.type{
+                        setVehicleMode(mode:vehicleMode)
+                    }
         }
+        else if type == "Online"{
+            if let vehicleMode =  vehicleObj?.last_updated_data?.vehicle_mode {
+                setVehicleMode(mode:vehicleMode)
+                    }
+            }
+            
         else if type == "Offline"{
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
         }
@@ -148,7 +154,7 @@ final class VehicleFlowViewController: BaseViewController {
         self.goToMaps()
     }
     
-    func getDeviceDetails() {
+    func getDeviceDetails()  {
         mapButton.isHidden = true
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
@@ -240,15 +246,32 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     func setVehicleMode(mode:String){
+//        switch mode{
+//        case VehicleMode.Moving.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+//        case VehicleMode.Sleep.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+//        case VehicleMode.Idle.rawValue:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+//        default:
+//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+//        }
+        
         switch mode{
         case VehicleMode.Moving.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+            printLog("Moving xxxxxxxx")
+        //    self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
         case VehicleMode.Sleep.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+         //   self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+              self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
         case VehicleMode.Idle.rawValue:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+            //self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+        case VehicleMode.Offline.rawValue:
+            self.vehicleContainerView.backgroundColor = UIColor.red
         default:
-            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+              printLog("nothing")
         }
     }
     
@@ -274,17 +297,15 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         maxSpdLbl.text = String(maxSpd.truncate(places: 2)) + " km/hr"
         totalDistLbl.text = String(distance.truncate(places: 2)) + " km"
         
-        if mode == "M" {
-            vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-        }
-        if mode == "H" {
-            vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-        }
-        if mode == "S" {
-            vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-        }
-        self.totalDistance = distance
-        self.maximumSpeed = maxSpd
+//        if mode == "M" {
+//            vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+//        }
+//        if mode == "H" {
+//            vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+//        }
+//        if mode == "S" {
+//            vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+//        }
     }
     
     func goToMaps() {
@@ -292,11 +313,13 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         guard let mapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as? MapVC
             else { return }
         let parkingSlots = vehicleFlowViewModel?.parkingLocationForMap()
-        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots, totalDistance : self.totalDistance ?? 0.00, maximumSpeed: self.maximumSpeed ?? 0.00)
-        
+        let viewModel = MapVCViewModel.init(deviceList: vehicleFlowViewModel?.activePacketList, serialNumber: serialNumber, parkingLocations: parkingSlots)
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
+        mapVC.totalDistance = totalDistLbl.text ?? ""
         self.show(mapVC, sender: self)
     }
+    
+    
 }
 

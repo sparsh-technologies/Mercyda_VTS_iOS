@@ -40,7 +40,15 @@ class ListVehicleController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.dispatchGroup = nil
         self.dispatcher = nil
-        self.listVehicleviewmodel = nil
+       // self.listVehicleviewmodel = nil
+                if searching{
+                closeButton.sendActions(for: .allEvents)
+                    searchTextfeild.text = ""
+                    searChedData.removeAll()
+                  searching = false
+                  
+                    
+                }
     }
     
     
@@ -108,6 +116,7 @@ class ListVehicleController: BaseViewController {
         self.mainTableView.reloadData()
     }
     
+  
     
     
     /// Function for getting Address of each vehicle
@@ -169,6 +178,15 @@ class ListVehicleController: BaseViewController {
 
 
 extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVehicleViewControllerGenericDelegate{
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        if searching{
+//            return searChedData.count
+//        } else {
+//            return vehicleDataSource.count
+//        }
+//    }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -236,8 +254,11 @@ extension ListVehicleController:UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         searching = true
         let searchText  = searchTextfeild.text! + string
+      //  printLog(vehiclelist)
+        printLog(searchText)
         searChedData.removeAll()
-        listVehicleviewmodel?.searchData(key: searchText, data: vehicleDataSource[0].getVehicleItemCellData()) { (result ) in
+       // listVehicleviewmodel?.searchData(key: searchText, data: vehicleDataSource[0].getVehicleItemCellData()) { (result ) in
+        listVehicleviewmodel?.searchData(key: searchText, data: vehiclelist) { (result ) in
             self.searChedData.append(ListVehicleTableDataModal.itemsCell(vehicles: result))
             self.mainTableView.reloadData()
         }
