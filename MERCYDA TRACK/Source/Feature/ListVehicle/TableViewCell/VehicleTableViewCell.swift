@@ -169,16 +169,20 @@ class VehicleTableViewCell: UITableViewCell {
         switch mode{
         case VehicleMode.Moving.rawValue:
             printLog("Moving xxxxxxxx")
-        //    self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-             self.vehicleImageContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
+            //self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+            // self.vehicleImageContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
+            self.addGradient(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"), vie:vehicleImageContainerView)
         case VehicleMode.Sleep.rawValue:
-         //   self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-              self.vehicleImageContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
+           //self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+           //   self.vehicleImageContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
+              self.addGradient(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange, vie:vehicleImageContainerView)
         case VehicleMode.Idle.rawValue:
-            //self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-             self.vehicleImageContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+           // self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+            // self.vehicleImageContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+              self.addGradient(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"), vie:vehicleImageContainerView)
         case VehicleMode.Offline.rawValue:
-            self.vehicleImageContainerView.backgroundColor = UIColor.red
+        //self.vehicleImageContainerView.backgroundColor = UIColor.red
+            self.addGradient(firstColor:UIColor.red, secondColor:UIColor.red, vie:vehicleImageContainerView)
         default:
               printLog("nothing")
         }
@@ -196,7 +200,25 @@ class VehicleTableViewCell: UITableViewCell {
         
     }
     
-    
+    func addGradient(firstColor: UIColor, secondColor: UIColor,vie:UIView){
+        for item in vie.layer.sublayers ?? [] where item.name == "masklayer" {
+                item.removeFromSuperlayer()
+        }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+        let width = UIScreen.main.bounds.width
+        let ht = self.frame.height
+        let x = self.frame.origin.x
+        let y = self.frame.origin.y
+        gradientLayer.frame = CGRect(x: x, y: 0, width: width, height: ht)
+        gradientLayer.frame = self.bounds
+       // gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        //gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.startPoint = CGPoint(x:0 , y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.name = "masklayer"
+        vie.layer.insertSublayer(gradientLayer, at: 0)
+    }
    
     
 }

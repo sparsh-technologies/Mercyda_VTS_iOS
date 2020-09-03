@@ -228,14 +228,14 @@ class MapVC: UIViewController {
         switch mode{
         case VehicleMode.Moving.rawValue:
             printLog("Moving xxxxxxxx")
-        //    self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+          //   self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
         case VehicleMode.Sleep.rawValue:
-         //   self.vehicleImageContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-              self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
+            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+            //  self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
         case VehicleMode.Idle.rawValue:
-            //self.vehicleImageContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-             self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+             //self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
         case VehicleMode.Offline.rawValue:
             self.vehicleContainerView.backgroundColor = UIColor.red
         default:
