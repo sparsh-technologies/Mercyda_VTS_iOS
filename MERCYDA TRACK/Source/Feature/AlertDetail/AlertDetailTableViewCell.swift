@@ -48,6 +48,11 @@ class AlertDetailTableViewCell: UITableViewCell {
                printLog("Nothing")
             }
             
+            
+            if alertType.contains("Overspeed Alert"){
+                typeContainerView.backgroundColor = Utility.hexStringToUIColor("#C9A516")
+                typeImageView.image = UIImage.init(named:"speedalert")
+            }
         }
         
     }
