@@ -26,7 +26,7 @@ extension MapVC : MapVCViewModelDelegate {
                 self.draw_polylines(loctions: coordinatesArray)
             }) {
                 // Removed updating markers for now later if needed uncomment the line
-                // self.viewModel?.updateParkingMarkers()
+                 self.viewModel?.updateParkingMarkers()
             }
         }
     }
@@ -45,13 +45,28 @@ extension MapVC : MapVCViewModelDelegate {
                 self.animationPolylineBase.map = self.mapView
                 self.animationPolyline.path = self.animationPath
                 self.animationPolyline.map = self.mapView
-                self.setCarMarkers(position1: locArray[i], position2: locArray[i == locArray.count - 1 ? i : i+1])
+                if locArray.count == 1 {
+                    self.setCarMarkers(carPosition: locArray[i], position1: self.lastLocation ?? locArray[i], position2: locArray[i])
+                } else {
+                self.setCarMarkers(carPosition: locArray[i], position1: self.lastLocation ?? locArray[i], position2: locArray[i == locArray.count - 1 ? i : i+1])
+                }
+                if !self.isPositionWithinScreen(position: locArray[i]) {
+                    let camera = GMSCameraPosition.camera(withTarget: locArray[i], zoom: 17)
+                    self.mapView?.animate(with: GMSCameraUpdate.setCamera(camera))
+                }
                 CATransaction.commit()
             })
             timer = timer + 0.35
         }
     }
     
+    func isPositionWithinScreen(position: CLLocationCoordinate2D) -> Bool {
+        if let region = self.mapView?.projection.visibleRegion() {
+            let bounds = GMSCoordinateBounds(region: region)
+            return bounds.contains(position)
+        }
+        return true
+    }
     
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel]) {
         self.updateParkingMarkers(Locations: locationsArray.toGoogleCoordinates(), Devices: deviceArray)

@@ -41,6 +41,7 @@ class MapVCViewModel  {
         didSet {
             self.lastDevicePacket = latestPackets?.first
             if let packets = latestPackets, packets.count > 0 {
+                originalDeviceList?.append(contentsOf: packets)
                 self.delegate?.updatePolyLines(Locations: packets.getCoordinates())
             }
         }

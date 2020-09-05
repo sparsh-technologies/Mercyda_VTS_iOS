@@ -48,6 +48,8 @@ class MapVC: UIViewController {
     let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemBlue)
     var mapViewTopConstraint : NSLayoutConstraint!
     var vehicleType = "car_pin"
+    var lastLocation: CLLocationCoordinate2D?
+    var secondLastLocation: CLLocationCoordinate2D?
     //var lastParkingLocation : CLLocationCoordinate2D?
     
     private var dispatcher: Dispatcher?
@@ -266,7 +268,7 @@ class MapVC: UIViewController {
             self.draw_polylines(loctions: self.polyLineLocations)
         }) {
             // Removed updating markers for now later if needed uncomment the line
-           // self.viewModel?.updateParkingMarkers()
+           self.viewModel?.updateParkingMarkers()
         }
     }
     
@@ -279,17 +281,18 @@ class MapVC: UIViewController {
             if index == locationsArray.count - 1 {
                 iconImage = UIImage.init(named: "startPin")
             }
-            marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
+            //marker.snippet = "Lat \(latlon.latitude) Lon \(latlon.longitude)"
            // marker.title = deviceArray[index].vehicle_mode
             marker.userData = deviceArray[index]
             let iconView = CustomMarkerView.init(image: iconImage ?? UIImage())
             marker.iconView = iconView
-            iconView.transform = CGAffineTransform.init(translationX: 0, y: yAnchor )
+           // iconView.transform = CGAffineTransform.init(translationX: 0, y: yAnchor )
+            iconView.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
             yAnchor -= 100
             marker.map = self.mapView
             
             CATransaction.begin()
-            UIView.animate(withDuration: 0.50, delay: 0.0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.70, delay: 0.0, options: .curveEaseOut, animations: {
                 iconView.transform = CGAffineTransform.identity
             })
             CATransaction.commit()
@@ -357,19 +360,21 @@ class MapVC: UIViewController {
     
     
     
-    func setCarMarkers(position1: CLLocationCoordinate2D, position2: CLLocationCoordinate2D) {
+    func setCarMarkers(carPosition: CLLocationCoordinate2D, position1: CLLocationCoordinate2D, position2: CLLocationCoordinate2D) {
         carMarker.map = nil
-        let marker:GMSMarker = GMSMarker.init(position: position1)
+        let marker:GMSMarker = GMSMarker.init(position: carPosition)
         marker.icon =  UIImage.init(named: vehicleType)
-        marker.position = position1
+       // marker.position = position1
         marker.groundAnchor = CGPoint.init(x: CGFloat(0.5), y: CGFloat(0.5))
         marker.rotation = CLLocationDegrees.init(exactly: getHeadingForDirection(fromCoordinate: position1, toCoordinate: position2))!
-        marker.snippet = "Lat \(position1.latitude) Lon \(position1.longitude)"
-        marker.title = "User"
+        //marker.snippet = "Lat \(position1.latitude) Lon \(position1.longitude)"
+       // marker.title = "User"
         
         carMarker = marker
         carMarker.tracksInfoWindowChanges = true
         carMarker.map = mapView
+        self.lastLocation = position1
+        self.secondLastLocation = position2
         //marker.userData = position
     }
     
@@ -441,11 +446,11 @@ class MapVC: UIViewController {
                 
                 self.animationPolyline.path = self.animationPath
                 self.animationPolyline.map = self.mapView
-                self.setCarMarkers(position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
+                self.setCarMarkers(carPosition: gmsPath.coordinate(at: self.i), position1: gmsPath.coordinate(at: self.i), position2: gmsPath.coordinate(at: self.i + 1))
                 self.i += 1
             } else {
                 if gmsPath.count() >= self.i && gmsPath.count() > 0 {
-                    self.setCarMarkers(position1: gmsPath.coordinate(at: self.i - 1), position2: gmsPath.coordinate(at: self.i - 1))
+                    self.setCarMarkers(carPosition: gmsPath.coordinate(at: self.i - 1), position1: gmsPath.coordinate(at: self.i - 2), position2: gmsPath.coordinate(at: self.i - 1))
                 }
                 self.i = 0
                 self.dispTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
