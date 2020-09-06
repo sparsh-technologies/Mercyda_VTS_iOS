@@ -81,6 +81,12 @@
 		5260059024C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
 		5260059124C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
 		5260059224C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
+		52698AB72504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */; };
+		52698AB82504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */; };
+		52698AB92504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */; };
+		52698ABC2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
+		52698ABD2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
+		52698ABE2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
@@ -305,6 +311,8 @@
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
 		5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlow+UIDatePicker.swift"; sourceTree = "<group>"; };
+		52698AB62504DE2000063492 /* DatabaseModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DatabaseModel1.xcdatamodel; sourceTree = "<group>"; };
+		52698ABB2504DE7F00063492 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+UITableView.swift"; sourceTree = "<group>"; };
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
@@ -560,6 +568,7 @@
 		52457DAA24AB7A950078487A /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				52698ABA2504DE5F00063492 /* CoreDataManger */,
 				52457DE224AB7CD40078487A /* SDKManager */,
 				C6669FC424AA1ECC0024527E /* NetworkManager */,
 				52457DD924AB7C7A0078487A /* ThemeManager */,
@@ -650,6 +659,14 @@
 				84410DA324B8D92100E6047D /* userLogininfo.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		52698ABA2504DE5F00063492 /* CoreDataManger */ = {
+			isa = PBXGroup;
+			children = (
+				52698ABB2504DE7F00063492 /* CoreDataStack.swift */,
+			);
+			path = CoreDataManger;
 			sourceTree = "<group>";
 		};
 		52B7E55024BB3B0E00A9881C /* Extensions */ = {
@@ -988,6 +1005,7 @@
 		C6C9D7ED24A925A700BA7651 /* MERCYDA TRACK */ = {
 			isa = PBXGroup;
 			children = (
+				52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */,
 				52457DA524AB7A370078487A /* Source */,
 				C6C9D7F224A925A700BA7651 /* ViewController.swift */,
 				C6C9D7FF24A925A800BA7651 /* Info.plist */,
@@ -1401,6 +1419,7 @@
 				C6623AD124AB970C003C3519 /* Meta_d.swift in Sources */,
 				8470049F24B5DE32009EDD18 /* CardView.swift in Sources */,
 				84410DAF24B8F18800E6047D /* VehicleFlowViewController.swift in Sources */,
+				52698ABC2504DE7F00063492 /* CoreDataStack.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				84FE4D8C24F1937A00DA310C /* AlertTableviewModel.swift in Sources */,
@@ -1445,6 +1464,7 @@
 				84E3E53524AD09F7004CC622 /* StoryboardSupport.swift in Sources */,
 				52457DAE24AB7B670078487A /* DateFormatter+Extension.swift in Sources */,
 				84639DED24F17B1800A97191 /* Data.swift in Sources */,
+				52698AB72504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */,
 				C6623AEC24AB9736003C3519 /* GetVehiclesCountParams.swift in Sources */,
 				52457DCE24AB7BF00078487A /* UserDefaults+Extension.swift in Sources */,
 				520D57DA24AF687D002A775F /* DashboardLocalization.swift in Sources */,
@@ -1501,6 +1521,7 @@
 				C6623AEA24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				C627F10724BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				52457DDD24AB7CB20078487A /* ThemeManager.swift in Sources */,
+				52698AB82504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */,
 				C698D1B924B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF124AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
 				520D57DB24AF687D002A775F /* DashboardLocalization.swift in Sources */,
@@ -1514,6 +1535,7 @@
 				C6623AF924B0CA65003C3519 /* D.swift in Sources */,
 				52457DBF24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52B7E54E24BA003700A9881C /* VehicleFlowModel.swift in Sources */,
+				52698ABD2504DE7F00063492 /* CoreDataStack.swift in Sources */,
 				52457DC724AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52B7E55324BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */,
 				C627F12624BFA5100026F1E7 /* Dispatcher.swift in Sources */,
@@ -1567,6 +1589,7 @@
 				C6623AEB24AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				C627F10824BC6D660026F1E7 /* GetLocationAddressParams.swift in Sources */,
 				52457DDE24AB7CB20078487A /* ThemeManager.swift in Sources */,
+				52698AB92504DE2000063492 /* DatabaseModel1.xcdatamodeld in Sources */,
 				C698D1BA24B5C95F00F9B32B /* MapVCViewModel.swift in Sources */,
 				C6623AF224AB9A29003C3519 /* GetDeviceDataParams.swift in Sources */,
 				520D57DC24AF687D002A775F /* DashboardLocalization.swift in Sources */,
@@ -1580,6 +1603,7 @@
 				C6623AFA24B0CA65003C3519 /* D.swift in Sources */,
 				52457DC024AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				52B7E54F24BA003800A9881C /* VehicleFlowModel.swift in Sources */,
+				52698ABE2504DE7F00063492 /* CoreDataStack.swift in Sources */,
 				52457DC824AB7BC90078487A /* UINavigationController+Extension.swift in Sources */,
 				52B7E55424BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */,
 				C627F12724BFA5100026F1E7 /* Dispatcher.swift in Sources */,
@@ -1961,6 +1985,17 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52698AB62504DE2000063492 /* DatabaseModel1.xcdatamodel */,
+			);
+			currentVersion = 52698AB62504DE2000063492 /* DatabaseModel1.xcdatamodel */;
+			name = DatabaseModel1.xcdatamodeld;
+			path = Source/Feature/TripDetails/ViewModel/DatabaseModel1.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
