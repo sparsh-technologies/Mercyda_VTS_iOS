@@ -12,10 +12,10 @@ import UIKit
 
 struct WebService {
 //URL for live
-static let LiveBaseUrl = "http://mobile.mercydatrack.com:8080/"
+static let LiveBaseUrl = "https://mobiles.mercydatrack.com/"
 //URL for Test
-static let DevBaseUrl = "http://mobile.mercydatrack.com:8080/"
-static let TestBaseUrl = "http://mobile.mercydatrack.com:8080/"
+static let DevBaseUrl = "https://mobiles.mercydatrack.com/"
+static let TestBaseUrl = "https://mobiles.mercydatrack.com/"
 static let GoogleApiBaseUrl = "https://maps.googleapis.com/maps/api/"
 static let locationUrl = "https://nominatim.openstreetmap.org/reverse?format=json"
     
@@ -25,7 +25,7 @@ static let locationUrl = "https://nominatim.openstreetmap.org/reverse?format=jso
     static let loginPath = "mtrack/user/login?username=\(uame)&password=\(passWord)&version=v2"
     static let getVehiclesCountPath = "mtrack/vehicles/count?username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v2"
     static let getVehiclesListPath = "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v2"
-    static let getVehiclesDetailsPath = "mtrack/devices/KL01G1234?username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v2"
+    static let getVehiclesDetailsPath = ""
     static let getDeviceDataPath = "mtrack/data"
   //  static let getAlertDataPath = "mtrack/data?start_time=\(Utility.getTimeStampForAPI(flag: 1))&end_time=\(Utility.getTimeStampForAPI(flag: 2))&d.mobile_alert=true&source_date=true&username=\(Utility.getUserName())&password=\(Utility.getPassword())"
   // static let getAlertDataPath = "mtrack/data?start_time=1598034600000&end_time=1598119949140&d.mobile_alert=true&source_date=true&username=fci@gmail.com&password=123456"

@@ -47,7 +47,7 @@ extension VehicleFlow {
 
 extension VehicleFlow {
     
-    func performFiltering(packets: [DeviceDataResponse])  {
+    func performFiltering(packets: [DeviceDataResponse]) -> Double  {
         
          //        ************************************************
          //        Use this function only for Debug Purpose.
@@ -70,7 +70,7 @@ extension VehicleFlow {
         let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
         // let singleDimensionArray = Array(twoDimArray.joined())
         // let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()
-        calculateDistance(packets: twoDimArray)
+        return calculateDistance(packets: twoDimArray)
     }
     
     func debugForPacketsModes(rawPackets: [DeviceDataResponse]) {
@@ -82,7 +82,7 @@ extension VehicleFlow {
         print("************************\n", debugArray)
     }
     
-    func calculateDistance(packets: [[D]]) {
+    func calculateDistance(packets: [[D]]) -> Double {
         var distanceFromCoordinates = Double()
         var distanceFromSpeed = Double()
         var totalDistanceFromPacket = Double()
@@ -153,6 +153,7 @@ extension VehicleFlow {
             printLog("Dispatch works completed")
             self.dispatcher = nil
         }
+        return totalDistance
     }
     
     func averageSpeedForNode(duration: Double, distance: Double) -> Double {
@@ -244,7 +245,7 @@ extension VehicleFlow {
             switch state {
             case .success(let result as [DeviceDataResponse]):
                 completion(.success(result))
-                this.performFiltering(packets: result)
+               _ =  this.performFiltering(packets: result)
             case .failure(let error):
                 completion(.failure(error))
                 printLog(error)

@@ -55,14 +55,20 @@ class MapVCViewModel  {
         self.totalDistance = totalDistance
         self.maximumSpeed = maximumSpeed
     }
-    
+    // ******** PAUL  **********
+    func Distance() {
+        let vehicleFlowObj = VehicleFlow()
+        //[DeviceDataResponse] give the Api responce as this datatype, no need to filter and operations.
+//        let totalDistance =  vehicleFlowObj.performFiltering(packets: )
+        
+    }
 }
 
 extension MapVCViewModel {
     
     func updateViewController() {
         guard let array = self.originalDeviceList else { return }
-        if totalDistance >= 15.00 && maximumSpeed >= 10.00 {
+        //if totalDistance >= 15.00 && maximumSpeed >= 10.00 {
             let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
                 self.arrForMovingLocations = movingDeviceArray.getCoordinates()
                 delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
@@ -71,15 +77,16 @@ extension MapVCViewModel {
                     delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
                 }
             }
+            /*
         } else if array.count > 0 {
             let locations = array.getCoordinates(); if locations.count > 0 {
                 delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
             }
         }
+          */
         updateLastDate()
         delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
     }
-    
     func updateLastDate() {
        if let packet = self.lastDevicePacket {
             let dateString = Utility.getDate(unixdateinMilliSeconds:packet.source_date ?? 0)
