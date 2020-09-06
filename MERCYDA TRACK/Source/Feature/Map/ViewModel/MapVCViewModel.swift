@@ -45,7 +45,7 @@ class MapVCViewModel  {
                 originalDeviceList?.append(contentsOf: packets)
                 self.delegate?.updatePolyLines(Locations: packets.getCoordinates())
                 if let pkts = originalDeviceList, pkts.count > 0 {
-                   self.delegate?.updateDistance(distance: String(format: "%.2f",vehicleFlowObj.performFiltering(packets: pkts)))
+                   self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: pkts))) KM")
                 }
             }
         }
