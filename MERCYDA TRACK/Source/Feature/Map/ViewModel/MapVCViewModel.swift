@@ -36,6 +36,7 @@ class MapVCViewModel  {
     weak var APItimer: Timer?
     private var totalDistance: Double = 0.00
     private var maximumSpeed: Double = 0.00
+    private let vehicleFlowObj = VehicleFlow()
     
     var latestPackets : [D]? {
         didSet {
@@ -43,6 +44,9 @@ class MapVCViewModel  {
             if let packets = latestPackets, packets.count > 0 {
                 originalDeviceList?.append(contentsOf: packets)
                 self.delegate?.updatePolyLines(Locations: packets.getCoordinates())
+                if let pkts = originalDeviceList, pkts.count > 0 {
+                   self.delegate?.updateDistance(distance: String(format: "%.2f",vehicleFlowObj.performFiltering(packets: pkts)))
+                }
             }
         }
     }
@@ -55,13 +59,7 @@ class MapVCViewModel  {
         self.totalDistance = totalDistance
         self.maximumSpeed = maximumSpeed
     }
-    // ******** PAUL  **********
-    func Distance() {
-        let vehicleFlowObj = VehicleFlow()
-        //[DeviceDataResponse] give the Api responce as this datatype, no need to filter and operations.
-//        let totalDistance =  vehicleFlowObj.performFiltering(packets: )
-        
-    }
+
 }
 
 extension MapVCViewModel {
