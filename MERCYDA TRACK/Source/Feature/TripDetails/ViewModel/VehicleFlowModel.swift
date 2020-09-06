@@ -47,7 +47,7 @@ extension VehicleFlow {
 
 extension VehicleFlow {
     
-    func performFiltering(packets: [DeviceDataResponse]) -> Double  {
+    @discardableResult func performFiltering(packets: [D]) -> Double  {
         
          //        ************************************************
          //        Use this function only for Debug Purpose.
@@ -65,9 +65,8 @@ extension VehicleFlow {
         totalDistance = 0
         minSpeed = 0
         maxSpeed = 0
-        let gnssFixFilterArray = packets.getActiveDevicePackets()
-        self.activePacketList = gnssFixFilterArray
-        let twoDimArray = gnssFixFilterArray.get2DimensionalFilterArray()
+        self.activePacketList = packets
+        let twoDimArray = packets.get2DimensionalFilterArray()
         // let singleDimensionArray = Array(twoDimArray.joined())
         // let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()
         return calculateDistance(packets: twoDimArray)
@@ -245,7 +244,8 @@ extension VehicleFlow {
             switch state {
             case .success(let result as [DeviceDataResponse]):
                 completion(.success(result))
-               _ =  this.performFiltering(packets: result)
+                let gnssFixFilterArray = result.getActiveDevicePackets()
+                this.performFiltering(packets: gnssFixFilterArray)
             case .failure(let error):
                 completion(.failure(error))
                 printLog(error)
@@ -295,7 +295,8 @@ extension VehicleFlow {
             switch state {
             case .success(let result as [DeviceDataResponse]):
                 self?.placesArray.removeAll()
-                self?.performFiltering(packets: result)
+                let gnssFixFilterArray = result.getActiveDevicePackets()
+                self?.performFiltering(packets: gnssFixFilterArray)
                 completion(.success(result))
             case .failure(let error):
                 completion(.failure(error))
