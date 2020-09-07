@@ -81,6 +81,27 @@ struct D : Codable {
         wire_cut_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
         main_power_removal_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
 	}
+    
+    init() {
+        emergency_alert_count = 0
+        speed = 0
+        vehicle_mode = "m"
+        ignition = "k"
+        gsm_signal_strength = 3
+        alert_count = 6
+        imei_no = "ttt"
+        longitude = "6767776777"
+        latitude = "7686765656575757"
+        data = "hhfhfhf"
+        gnss_fix = 7
+        packet_type = "errr"
+        valid_status = true
+        source_date = 567777777
+        overspeed_alert_count = 8
+        wire_cut_alert_count = 5
+        main_power_removal_alert_count = 7
+        decoder = nil
+    }
 
 }
 

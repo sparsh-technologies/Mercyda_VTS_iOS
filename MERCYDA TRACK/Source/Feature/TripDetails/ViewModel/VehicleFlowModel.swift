@@ -258,7 +258,7 @@ extension VehicleFlow {
                 
                 
                 this.performFiltering(packets: gnssFixFilterArray)
-                this.addProductsToDB(deviceID: serialNO, date: "", rawPackets: gnssFixFilterArray)
+                this.addProductsToDB(deviceID: serialNO, date: "", rawPackets: wrapperArray)
             case .failure(let error):
                 completion(.failure(error))
                 printLog(error)

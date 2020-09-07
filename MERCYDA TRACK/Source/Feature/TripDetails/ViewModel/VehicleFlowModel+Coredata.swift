@@ -8,7 +8,7 @@ import CoreData
 
 extension VehicleFlow {
     
-    func addProductsToDB(deviceID: String, date: String, rawPackets: [D]) {
+    func addProductsToDB(deviceID: String, date: String, rawPackets: [vehicleDataWrapper]) {
         
         managedContext = appDelegate.coreDataStack.managedContext
         
@@ -23,7 +23,7 @@ extension VehicleFlow {
             packetsDB.setValue(rawPackets, forKey: "rawPackets")
             
             try managedContext.save()
-//            fetchData()
+            fetchData()
             
         }
         catch let error as NSError {
@@ -37,7 +37,7 @@ extension VehicleFlow {
             let results = try managedContext.fetch(productsFetch)
             for value in results {
                 for res in value.packetsData as! Set<PacketsData> {
-                    print(res.date)
+                    print(res.rawPackets)
                 }
             }
         }
