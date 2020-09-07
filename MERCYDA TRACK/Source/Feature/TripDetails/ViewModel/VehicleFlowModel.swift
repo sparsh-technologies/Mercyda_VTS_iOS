@@ -253,6 +253,10 @@ extension VehicleFlow {
             case .success(let result as [DeviceDataResponse]):
                 completion(.success(result))
                 let gnssFixFilterArray = result.getActiveDevicePackets()
+                
+                let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
+                
+                
                 this.performFiltering(packets: gnssFixFilterArray)
                 this.addProductsToDB(deviceID: serialNO, date: "", rawPackets: gnssFixFilterArray)
             case .failure(let error):
