@@ -87,6 +87,10 @@
 		52698ABC2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
 		52698ABD2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
 		52698ABE2504DE7F00063492 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABB2504DE7F00063492 /* CoreDataStack.swift */; };
+		52698AC0250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */; };
+		52698AC1250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */; };
+		52698AC2250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */; };
+		52698B1125065E1B00063492 /* VehicleDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52698B1025065E1B00063492 /* VehicleDataWrapper.swift */; };
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
@@ -313,6 +317,8 @@
 		5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlow+UIDatePicker.swift"; sourceTree = "<group>"; };
 		52698AB62504DE2000063492 /* DatabaseModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DatabaseModel1.xcdatamodel; sourceTree = "<group>"; };
 		52698ABB2504DE7F00063492 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleFlowModel+Coredata.swift"; sourceTree = "<group>"; };
+		52698B1025065E1B00063492 /* VehicleDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataWrapper.swift; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+UITableView.swift"; sourceTree = "<group>"; };
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
@@ -729,7 +735,9 @@
 			isa = PBXGroup;
 			children = (
 				84410DA924B8F18700E6047D /* VehicleFlowModel.swift */,
+				52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */,
 				84410DAA24B8F18700E6047D /* TripDetailsModel.swift */,
+				52698B1025065E1B00063492 /* VehicleDataWrapper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1410,6 +1418,7 @@
 				C6669FD124AA20420024527E /* ErrorStruct.swift in Sources */,
 				52457DD624AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6653BAC24B353A900DD9D9F /* MapVC.swift in Sources */,
+				52698AC0250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */,
 				52457DC624AB7BC80078487A /* UINavigationController+Extension.swift in Sources */,
 				52457DF924AB83120078487A /* LoginLocalization.swift in Sources */,
 				522A141024AFB2300009DBC3 /* DashboardViewModel.swift in Sources */,
@@ -1455,6 +1464,7 @@
 				C6C9D7F124A925A700BA7651 /* SceneDelegate.swift in Sources */,
 				8491AB3124F0F5FD008F3C0B /* AlertResponse.swift in Sources */,
 				C698D1BC24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
+				52698B1125065E1B00063492 /* VehicleDataWrapper.swift in Sources */,
 				8417055824F250D6001A0AE9 /* AlertDetailController.swift in Sources */,
 				C627F10F24BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
 				52457DB624AB7B890078487A /* NSManagedObjectContext+Extension.swift in Sources */,
@@ -1530,6 +1540,7 @@
 				C6669FE324AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD224AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AF524B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
+				52698AC1250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */,
 				52B7E56024BB4AF900A9881C /* Double+Extensions.swift in Sources */,
 				52457DD724AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6623AF924B0CA65003C3519 /* D.swift in Sources */,
@@ -1598,6 +1609,7 @@
 				C6669FE424AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD324AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AF624B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
+				52698AC2250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */,
 				52B7E56124BB4AF900A9881C /* Double+Extensions.swift in Sources */,
 				52457DD824AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6623AFA24B0CA65003C3519 /* D.swift in Sources */,

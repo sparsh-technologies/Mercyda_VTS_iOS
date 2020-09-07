@@ -8,6 +8,9 @@
 
 import Foundation
 import CoreLocation
+import CoreData
+import UIKit
+
 
 final class VehicleFlow  {
     
@@ -25,6 +28,10 @@ final class VehicleFlow  {
     var activePacketList: [D] = []
     var dispatcher: Dispatcher?
     var dispatchGroup: DispatchGroup?
+    var managedContext: NSManagedObjectContext!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+
     
 }
 extension VehicleFlow {
@@ -48,6 +55,7 @@ extension VehicleFlow {
 extension VehicleFlow {
     
     @discardableResult func performFiltering(packets: [D]) -> Double  {
+        
         
          //        ************************************************
          //        Use this function only for Debug Purpose.
@@ -246,6 +254,7 @@ extension VehicleFlow {
                 completion(.success(result))
                 let gnssFixFilterArray = result.getActiveDevicePackets()
                 this.performFiltering(packets: gnssFixFilterArray)
+                this.addProductsToDB(deviceID: serialNO, date: "", rawPackets: gnssFixFilterArray)
             case .failure(let error):
                 completion(.failure(error))
                 printLog(error)
