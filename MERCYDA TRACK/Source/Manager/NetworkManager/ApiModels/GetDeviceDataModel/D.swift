@@ -100,7 +100,6 @@ struct D : Codable {
         overspeed_alert_count = 8
         wire_cut_alert_count = 5
         main_power_removal_alert_count = 7
-        decoder = nil
     }
 
 }
