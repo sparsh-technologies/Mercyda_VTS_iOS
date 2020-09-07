@@ -14,20 +14,20 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 
 struct D : Codable {
-	let emergency_alert_count : Int?
-	let speed : Int?
-	let vehicle_mode : String?
-	let ignition : String?
-	let gsm_signal_strength : Int?
-	let alert_count : Int?
-	let imei_no : String?
-	let longitude : String?
-	let source_date : Int?
-	let latitude : String?
-	let data : String?
-	let gnss_fix : Int?
-	let packet_type : String?
-	let valid_status : Bool?
+    let emergency_alert_count : Int?
+    let speed : Int?
+    let vehicle_mode : String?
+    let ignition : String?
+    let gsm_signal_strength : Int?
+    let alert_count : Int?
+    let imei_no : String?
+    let longitude : String?
+    let source_date : Int?
+    let latitude : String?
+    let data : String?
+    let gnss_fix : Int?
+    let packet_type : String?
+    let valid_status : Bool?
     let overspeed_alert_count : Int?
     let wire_cut_alert_count : Int?
     let main_power_removal_alert_count : Int?
@@ -40,68 +40,69 @@ struct D : Codable {
         }
     }
     
-	enum CodingKeys: String, CodingKey {
-
-		case emergency_alert_count = "emergency_alert_count"
-		case speed = "speed"
-		case vehicle_mode = "vehicle_mode"
-		case ignition = "ignition"
-		case gsm_signal_strength = "gsm_signal_strength"
-		case alert_count = "alert_count"
-		case imei_no = "imei_no"
-		case longitude = "longitude"
-		case latitude = "latitude"
-		case data = "data"
-		case gnss_fix = "gnss_fix"
-		case packet_type = "packet_type"
-		case valid_status = "valid_status"
+    enum CodingKeys: String, CodingKey {
+        
+        case emergency_alert_count = "emergency_alert_count"
+        case speed = "speed"
+        case vehicle_mode = "vehicle_mode"
+        case ignition = "ignition"
+        case gsm_signal_strength = "gsm_signal_strength"
+        case alert_count = "alert_count"
+        case imei_no = "imei_no"
+        case longitude = "longitude"
+        case latitude = "latitude"
+        case data = "data"
+        case gnss_fix = "gnss_fix"
+        case packet_type = "packet_type"
+        case valid_status = "valid_status"
         case source_date = "source_date"
         case overspeed_alert_count = "overspeed_alert_count"
         case wire_cut_alert_count = "wire_cut_alert_count"
         case main_power_removal_alert_count = "main_power_removal_alert_count"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		emergency_alert_count = try? values.decodeIfPresent(Int.self, forKey: .emergency_alert_count)
-		speed = try? values.decodeIfPresent(Int.self, forKey: .speed)
-		vehicle_mode = try? values.decodeIfPresent(String.self, forKey: .vehicle_mode)
-		ignition = try? values.decodeIfPresent(String.self, forKey: .ignition)
-		gsm_signal_strength = try? values.decodeIfPresent(Int.self, forKey: .gsm_signal_strength)
-		alert_count = try? values.decodeIfPresent(Int.self, forKey: .alert_count)
-		imei_no = try? values.decodeIfPresent(String.self, forKey: .imei_no)
-		longitude = try? values.decodeIfPresent(String.self, forKey: .longitude)
-		latitude = try? values.decodeIfPresent(String.self, forKey: .latitude)
-		data = try? values.decodeIfPresent(String.self, forKey: .data)
-		gnss_fix = try? values.decodeIfPresent(Int.self, forKey: .gnss_fix)
-		packet_type = try? values.decodeIfPresent(String.self, forKey: .packet_type)
-		valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        emergency_alert_count = try? values.decodeIfPresent(Int.self, forKey: .emergency_alert_count)
+        speed = try? values.decodeIfPresent(Int.self, forKey: .speed)
+        vehicle_mode = try? values.decodeIfPresent(String.self, forKey: .vehicle_mode)
+        ignition = try? values.decodeIfPresent(String.self, forKey: .ignition)
+        gsm_signal_strength = try? values.decodeIfPresent(Int.self, forKey: .gsm_signal_strength)
+        alert_count = try? values.decodeIfPresent(Int.self, forKey: .alert_count)
+        imei_no = try? values.decodeIfPresent(String.self, forKey: .imei_no)
+        longitude = try? values.decodeIfPresent(String.self, forKey: .longitude)
+        latitude = try? values.decodeIfPresent(String.self, forKey: .latitude)
+        data = try? values.decodeIfPresent(String.self, forKey: .data)
+        gnss_fix = try? values.decodeIfPresent(Int.self, forKey: .gnss_fix)
+        packet_type = try? values.decodeIfPresent(String.self, forKey: .packet_type)
+        valid_status = try? values.decodeIfPresent(Bool.self, forKey: .valid_status)
         source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
         overspeed_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
         wire_cut_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
         main_power_removal_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
-	}
-    
-    init() {
-        emergency_alert_count = 0
-        speed = 0
-        vehicle_mode = "m"
-        ignition = "k"
-        gsm_signal_strength = 3
-        alert_count = 6
-        imei_no = "ttt"
-        longitude = "6767776777"
-        latitude = "7686765656575757"
-        data = "hhfhfhf"
-        gnss_fix = 7
-        packet_type = "errr"
-        valid_status = true
-        source_date = 567777777
-        overspeed_alert_count = 8
-        wire_cut_alert_count = 5
-        main_power_removal_alert_count = 7
     }
-
+    
+    init(coder aDecoder: NSCoder) {
+        
+        longitude = aDecoder.decodeObject(forKey: "longitude") as? String
+        latitude = aDecoder.decodeObject(forKey: "latitude") as? String
+        emergency_alert_count = aDecoder.decodeObject(forKey: "emergency_alert_count") as? Int
+        speed = aDecoder.decodeObject(forKey: "speed") as? Int
+        vehicle_mode = aDecoder.decodeObject(forKey: "vehicle_mode") as? String
+        ignition = aDecoder.decodeObject(forKey: "ignition") as? String
+        gsm_signal_strength = aDecoder.decodeObject(forKey: "gsm_signal_strength") as? Int
+        alert_count = aDecoder.decodeObject(forKey: "alert_count") as? Int
+        imei_no = aDecoder.decodeObject(forKey: "imei_no") as? String
+        data = aDecoder.decodeObject(forKey: "data") as? String
+        gnss_fix = aDecoder.decodeObject(forKey: "gnss_fix") as? Int
+        packet_type = aDecoder.decodeObject(forKey: "packet_type") as? String
+        valid_status = aDecoder.decodeObject(forKey: "valid_status") as? Bool
+        source_date = aDecoder.decodeObject(forKey: "source_date") as? Int
+        overspeed_alert_count = aDecoder.decodeObject(forKey: "overspeed_alert_count") as? Int
+        wire_cut_alert_count = aDecoder.decodeObject(forKey: "wire_cut_alert_count") as? Int
+        main_power_removal_alert_count = aDecoder.decodeObject(forKey: "main_power_removal_alert_count") as? Int
+    }
+    
 }
 
 extension Array where Element == D {

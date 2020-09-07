@@ -15,12 +15,7 @@ class vehicleDataWrapper: NSObject, NSSecureCoding {
     
     
     required init?(coder aDecoder: NSCoder) {
-//        guard let innerD = aDecoder.decodeObject(forKey: "d") as? D
-//
-//            else {
-//                return nil
-//        }
-        self.innerD = D()
+        self.innerD = D(coder: aDecoder)
     }
     
     
@@ -44,4 +39,10 @@ class vehicleDataWrapper: NSObject, NSSecureCoding {
         coder.encode(self.innerD?.main_power_removal_alert_count, forKey: "main_power_removal_alert_count")
     }
     
+}
+
+extension Array where Element == vehicleDataWrapper {
+func convertToDArray() -> [D] {
+    return self.compactMap({$0.innerD})
+}
 }

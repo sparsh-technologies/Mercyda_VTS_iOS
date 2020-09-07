@@ -19,6 +19,8 @@ extension VehicleFlow {
         do {
             
             vehicleDataDB.deviceNumber = "Test device number32"
+            vehicleDataDB.setValue(rawPackets, forKey: "deviceArray")
+            //vehicleDataDB.deviceArray = rawPackets as NSObject
             packetsDB.date = "today23"
             packetsDB.setValue(rawPackets, forKey: "rawPackets")
             
@@ -36,9 +38,19 @@ extension VehicleFlow {
             let productsFetch: NSFetchRequest<VehicleData> = VehicleData.fetchRequest()
             let results = try managedContext.fetch(productsFetch)
             for value in results {
-                for res in value.packetsData as! Set<PacketsData> {
-                    print(res.rawPackets)
+                /*
+                for res in value.deviceArray as! [NSObject] {
+                    if let cast = res as? vehicleDataWrapper {
+                        dump(cast)
+                    }
                 }
+                */
+                if let vehicleArray = value.deviceArray as? [vehicleDataWrapper] {
+                    let dArray = vehicleArray.convertToDArray()
+                    print(dArray.count)
+                }
+                
+                
             }
         }
         catch let error as NSError {
