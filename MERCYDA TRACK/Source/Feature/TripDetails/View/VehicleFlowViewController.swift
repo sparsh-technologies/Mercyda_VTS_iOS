@@ -45,6 +45,8 @@ final class VehicleFlowViewController: BaseViewController {
     
     private var totalDistance: Double?
     private var maximumSpeed: Double?
+    var isDeviceListCalled = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,7 @@ final class VehicleFlowViewController: BaseViewController {
         vehicleFlowViewModel?.delegate = self
         tableViewOutlet.register(UINib(nibName: "VehicleDataFlowTableViewCell", bundle: nil), forCellReuseIdentifier: CellID.VehicleDataFlowCell.rawValue)
         getDeviceDetails()
+        isDeviceListCalled = 1
         // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
         setuiDatas()
@@ -65,8 +68,10 @@ final class VehicleFlowViewController: BaseViewController {
         if vehicleFlowViewModel == nil {
             vehicleFlowViewModel = VehicleFlow()
         }
-        getDeviceDetailsWithOutActivityInd()
-        APItimer = Timer.scheduledTimer(timeInterval: 40, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+        if isDeviceListCalled != 1 {
+            getDeviceDetailsWithOutActivityInd()
+        }
+        APItimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -79,6 +84,7 @@ final class VehicleFlowViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        isDeviceListCalled = 0
         APItimer?.invalidate()
         APItimer = nil
     }
@@ -113,9 +119,9 @@ final class VehicleFlowViewController: BaseViewController {
         getVehicleType(type:(vehicleObj?.vehicle_type!)!)
         
         
-//        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-//            setVehicleMode(mode:vehicleMode)
-//        }
+        //        if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+        //            setVehicleMode(mode:vehicleMode)
+        //        }
         if type == "Moving"{
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
         }
@@ -126,19 +132,19 @@ final class VehicleFlowViewController: BaseViewController {
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
         }
         else if type == "Dashboard"{
-//            if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
-//                setVehicleMode(mode:vehicleMode)
-//
-//            }
+            //            if let vehicleMode = vehicleObj?.last_updated_data?.vehicle_mode {
+            //                setVehicleMode(mode:vehicleMode)
+            //
+            //            }
             if let vehicleMode = vehicleObj?.type{
-                        setVehicleMode(mode:vehicleMode)
-                    }
+                setVehicleMode(mode:vehicleMode)
+            }
         }
         else if type == "Online"{
             if let vehicleMode =  vehicleObj?.last_updated_data?.vehicle_mode {
                 setVehicleMode(mode:vehicleMode)
-                    }
             }
+        }
             
         else if type == "Offline"{
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.red, secondColor:UIColor.red)
@@ -158,6 +164,7 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     func getDeviceDetails()  {
+      
         mapButton.isHidden = true
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
@@ -167,7 +174,7 @@ final class VehicleFlowViewController: BaseViewController {
             MBProgressHUD.hide(for: this.view, animated: false)
             switch result {
             case .success(_):
-//                this.APItimer = Timer.scheduledTimer(timeInterval: 60, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+                //                this.APItimer = Timer.scheduledTimer(timeInterval: 60, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
                 this.mapButton.isHidden = false
                 print("")
             case .failure(let error):
@@ -249,32 +256,32 @@ final class VehicleFlowViewController: BaseViewController {
     }
     
     func setVehicleMode(mode:String){
-//        switch mode{
-//        case VehicleMode.Moving.rawValue:
-//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-//        case VehicleMode.Sleep.rawValue:
-//            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-//        case VehicleMode.Idle.rawValue:
-//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-//        default:
-//            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
-//        }
+        //        switch mode{
+        //        case VehicleMode.Moving.rawValue:
+        //            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        //        case VehicleMode.Sleep.rawValue:
+        //            self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
+        //        case VehicleMode.Idle.rawValue:
+        //            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
+        //        default:
+        //            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green, secondColor: UIColor.black)
+        //        }
         
         switch mode{
         case VehicleMode.Moving.rawValue:
             printLog("Moving xxxxxxxx")
-          self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
-            // self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
+            self.vehicleContainerView.addGradientBackground(firstColor:UIColor.green , secondColor:Utility.hexStringToUIColor("#1AA61D"))
+        // self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#179b17")
         case VehicleMode.Sleep.rawValue:
             self.vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
-           //   self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
+        //   self.vehicleContainerView.backgroundColor =  Utility.hexStringToUIColor("#dea51e")
         case VehicleMode.Idle.rawValue:
             self.vehicleContainerView.addGradientBackground(firstColor:UIColor.blue, secondColor:Utility.hexStringToUIColor("#4252D9"))
-             //self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
+        //self.vehicleContainerView.backgroundColor = Utility.hexStringToUIColor("#4252D9")
         case VehicleMode.Offline.rawValue:
             self.vehicleContainerView.backgroundColor = UIColor.red
         default:
-              printLog("nothing")
+            printLog("nothing")
         }
     }
     

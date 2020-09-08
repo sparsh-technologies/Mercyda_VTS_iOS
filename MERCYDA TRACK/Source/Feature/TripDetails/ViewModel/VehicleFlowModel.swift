@@ -243,8 +243,16 @@ extension VehicleFlow {
         //        print("******DATE******* \n", diff)
         return diff
     }
+
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
+        
+        let packetsFromDB = fetchPacketsFromDB(deviceID: serialNO, date: getTimeStampForAPI(flag: 1))
+        if packetsFromDB.count > 0 {
+            performFiltering(packets: packetsFromDB)
+            completion(.success([]))
+        } else {
+        
         self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
@@ -255,16 +263,16 @@ extension VehicleFlow {
                 let gnssFixFilterArray = result.getActiveDevicePackets()
                 
                 let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
-                
-                
                 this.performFiltering(packets: gnssFixFilterArray)
-                this.addProductsToDB(deviceID: serialNO, date: "", rawPackets: wrapperArray)
+                this.writePacketsToDB(deviceID: serialNO, date: this.getTimeStampForAPI(flag: 1), devicePackets: wrapperArray)
             case .failure(let error):
                 completion(.failure(error))
                 printLog(error)
             default:
                 completion(.failure(AppSpecificError.unknownError.rawValue))
             }
+        }
+            
         }
     }
     
@@ -304,12 +312,23 @@ extension VehicleFlow {
         let startDate = start!.timeIntervalSince1970 * 1000
         let endDate = end!.timeIntervalSince1970 * 1000
         
+        let packetsFromDB = fetchPacketsFromDB(deviceID: serialNo, date: String(Int(startDate)))
+        if packetsFromDB.count > 0 {
+            performFiltering(packets: packetsFromDB)
+            completion(.success([]))
+        } else {
+        
         self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
+            guard let this = self else {
+                return
+            }
             switch state {
             case .success(let result as [DeviceDataResponse]):
-                self?.placesArray.removeAll()
+                this.placesArray.removeAll()
                 let gnssFixFilterArray = result.getActiveDevicePackets()
-                self?.performFiltering(packets: gnssFixFilterArray)
+                let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
+                this.performFiltering(packets: gnssFixFilterArray)
+                this.writePacketsToDB(deviceID: serialNo, date: String(Int(startDate)), devicePackets: wrapperArray)
                 completion(.success(result))
             case .failure(let error):
                 completion(.failure(error))
@@ -319,7 +338,7 @@ extension VehicleFlow {
             default:
                 printLog(AppSpecificError.unknownError.rawValue)
             }
-            
+            }
         }
     }
     

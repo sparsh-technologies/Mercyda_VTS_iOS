@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
-    <entity name="PacketsData" representedClassName="PacketsData" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="VehicleTable" representedClassName="VehicleTable" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String"/>
-        <attribute name="rawPackets" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
-        <relationship name="vehicleData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleData" inverseName="packetsData" inverseEntity="VehicleData"/>
-    </entity>
-    <entity name="VehicleData" representedClassName=".VehicleData" syncable="YES" codeGenerationType="class">
-        <attribute name="deviceArray" optional="YES" attributeType="Transformable"/>
-        <attribute name="deviceNumber" optional="YES" attributeType="String"/>
-        <attribute name="regNumber" optional="YES" attributeType="String"/>
-        <relationship name="packetsData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PacketsData" inverseName="vehicleData" inverseEntity="PacketsData"/>
+        <attribute name="deviceID" optional="YES" attributeType="String"/>
+        <attribute name="dPackets" optional="YES" attributeType="Transformable"/>
     </entity>
     <elements>
-        <element name="PacketsData" positionX="-54" positionY="-9" width="128" height="88"/>
-        <element name="VehicleData" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="VehicleTable" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>
