@@ -128,20 +128,37 @@ class DashboardViewController: BaseViewController {
         }
     }
     
+//
+//    func navigatetoVehicleListPage(vehiclelist:[Vehicle],clickedType:String){
+////        let sortedArray = vehiclelist.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
+////        let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
+////        let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
+////        vc.vehiclelist = sortedArray
+////        vc.type = clickedType
+////        self.navigationController?.pushViewController(vc, animated: true)
+////        }
+//
+//
+//    }
     
-    func navigatetoVehicleListPage(vehiclelist:[Vehicle],clickedType:String){
-        let sortedArray = vehiclelist.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
-        let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
-        let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
-        vc.vehiclelist = sortedArray
-        vc.type = clickedType
-        self.navigationController?.pushViewController(vc, animated: true)
-        }
+    func navigatetoVehicleListPage(clickedType:String){
+          let story = UIStoryboard(name: StoryboardName.ListVehicle.rawValue, bundle: nil)
+          let vc = story.instantiateViewController(withIdentifier: StoryboardID.ListVehicle.rawValue)as! ListVehicleController
+          vc.clickType = clickedType
+          self.navigationController?.pushViewController(vc, animated: true)
+    }
     
-    func navigateToAlertPage(vehiclelist:[Vehicle]){
+    
+    
+//    func navigateToAlertPage(vehiclelist:[Vehicle]){
+//        let story = UIStoryboard(name: StoryboardName.Alerts.rawValue, bundle: nil)
+//        let vc = story.instantiateViewController(withIdentifier: StoryboardID.AlertVCId.rawValue)as! AlertVC
+//        vc.vehiclelist = vehiclelist
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
+    func navigateToAlertPage(){
         let story = UIStoryboard(name: StoryboardName.Alerts.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.AlertVCId.rawValue)as! AlertVC
-        vc.vehiclelist = vehiclelist
         self.navigationController?.pushViewController(vc, animated: true)
     }
         
@@ -198,62 +215,88 @@ class DashboardViewController: BaseViewController {
     
 
     func getVehiclesList(tag:Int) {
-        MBProgressHUD.showAdded(to: view, animated: true)
-        dashboardViewModel.getVehicleList { [weak self] (result) in
-             guard let this = self else {
-                           return
-                       }
-            MBProgressHUD.hide(for: this.view, animated: false)
-            printLog(result)
-            switch result{
-            case .success(let result):
-            MBProgressHUD.hide(for: this.view, animated: false)
-            switch tag {
-            case 15:
-               // this.navigateToAlertPage(vehiclelist: result)
-                this.dashboardViewModel.filterAlertData(data: result) {  (filterdResult ) in
-                    this.navigateToAlertPage(vehiclelist: filterdResult)
-                }
-            case 18,16:
-                 type = "Dashboard"
-               // this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
-                 this.navigatetoVehicleListPage(vehiclelist:this.dashboardViewModel.allVehicleData(data:result), clickedType:"")   
-            case 10:
-                type = "Moving"
-                this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
-                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Moving.rawValue)
-            }
-            case 12:
-                type = "Sleep"
-            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
-                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Sleep.rawValue)
-            }
-            case 11:
-                 type = "Idle"
-            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
-                this.navigatetoVehicleListPage(vehiclelist:filteredResult, clickedType:Vehicletype.Idle.rawValue)
-            }
-            case 14:
-                type = "Offline"
-            this.dashboardViewModel.filterOfflineData(data:result) { (filterdResult ) in
-                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Offline.rawValue)
-            }
-            case 13:
-                type = "Online"
-            this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
-                printLog(filterdResult.count)
-                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Online.rawValue)
-            }
-            default:
-                printLog("Nothing")
-            }
-            
-            print("count:\(result.count)")
-            case .failure(let error) :
-            MBProgressHUD.hide(for: this.view, animated: false)
-            printLog(error)
-            }
+//        MBProgressHUD.showAdded(to: view, animated: true)
+//        dashboardViewModel.getVehicleList { [weak self] (result) in
+//             guard let this = self else {
+//                           return
+//                       }
+//            MBProgressHUD.hide(for: this.view, animated: false)
+//            printLog(result)
+//            switch result{
+//            case .success(let result):
+//            MBProgressHUD.hide(for: this.view, animated: false)
+//            switch tag {
+//            case 15:
+//               // this.navigateToAlertPage(vehiclelist: result)
+//                this.dashboardViewModel.filterAlertData(data: result) {  (filterdResult ) in
+//                    this.navigateToAlertPage(vehiclelist: filterdResult)
+//                }
+//            case 18,16:
+//                 type = "Dashboard"
+//               // this.navigatetoVehicleListPage(vehiclelist:result, clickedType:"")
+//                 this.navigatetoVehicleListPage(vehiclelist:this.dashboardViewModel.allVehicleData(data:result), clickedType:"")
+//            case 10:
+//                type = "Moving"
+//                this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
+//                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Moving.rawValue)
+//            }
+//            case 12:
+//                type = "Sleep"
+//            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
+//                this.navigatetoVehicleListPage(vehiclelist:filterdResult, clickedType:Vehicletype.Sleep.rawValue)
+//            }
+//            case 11:
+//                 type = "Idle"
+//            this.dashboardViewModel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
+//                this.navigatetoVehicleListPage(vehiclelist:filteredResult, clickedType:Vehicletype.Idle.rawValue)
+//            }
+//            case 14:
+//                type = "Offline"
+//            this.dashboardViewModel.filterOfflineData(data:result) { (filterdResult ) in
+//                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Offline.rawValue)
+//            }
+//            case 13:
+//                type = "Online"
+//            this.dashboardViewModel.filterOnlineData(data: result) { (filterdResult ) in
+//                printLog(filterdResult.count)
+//                this.navigatetoVehicleListPage(vehiclelist: filterdResult, clickedType:Vehicletype.Online.rawValue)
+//            }
+//            default:
+//                printLog("Nothing")
+//            }
+//
+//            print("count:\(result.count)")
+//            case .failure(let error) :
+//            MBProgressHUD.hide(for: this.view, animated: false)
+//            printLog(error)
+//            }
+//        }
+        switch tag {
+        case 18,16:
+        type = "Dashboard"
+        self.navigatetoVehicleListPage(clickedType:"")
+        case 10:
+        type = "Moving"
+        self.navigatetoVehicleListPage(clickedType:Vehicletype.Moving.rawValue)
+        case 11:
+        type = "Idle"
+        self.navigatetoVehicleListPage(clickedType:Vehicletype.Idle.rawValue)
+        case 12:
+        type = "Sleep"
+        self.navigatetoVehicleListPage(clickedType:Vehicletype.Sleep.rawValue)
+        case 13:
+        type = "Online"
+        self.navigatetoVehicleListPage(clickedType:Vehicletype.Online.rawValue)
+        case 14:
+        type = "Offline"
+        self.navigatetoVehicleListPage(clickedType:Vehicletype.Offline.rawValue)
+        case 15:
+        self.navigateToAlertPage()
+        
+        default:
+         print("Nothing")
         }
+           
     }
     
     

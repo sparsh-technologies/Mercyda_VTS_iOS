@@ -12,15 +12,16 @@ class AlertVC: UIViewController {
     
     
     // var alertDataSource:[AlertTableViewModel] = []
-      var vehiclelist = [Vehicle]()
+    let dashboardViewmodel =  DashboardViewModel()
+     
      var vehicleDataSource:[AlertTableViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
      //   getAlertData()
-        alertTableView.register(cellType: AlertTableVIewCell.self)
-         self.vehicleDataSource.append(AlertTableDataModal.itemsCell(alertDat: vehiclelist))
+         alertTableView.register(cellType: AlertTableVIewCell.self)
+        
     }
 //    func getAlertData(){
 //       MBProgressHUD.showAdded(to: view, animated: true)
@@ -51,6 +52,37 @@ class AlertVC: UIViewController {
 //        }
 //    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getVehiclesList()
+    }
+    
+    func getVehiclesList(){
+        vehicleDataSource.removeAll()
+            MBProgressHUD.showAdded(to: view, animated: true)
+                   dashboardViewmodel.getVehicleList { [weak self] (result) in
+                        guard let this = self else {
+                                      return
+                                  }
+                       MBProgressHUD.hide(for: this.view, animated: false)
+                       printLog(result)
+                       switch result{
+                           
+                           case .success(let result):
+                                this.dashboardViewmodel.filterAlertData(data: result) {  (filterdResult ) in
+                                    this.vehicleDataSource.append(AlertTableDataModal.itemsCell(alertDat: filterdResult))
+                                    this.alertTableView.reloadData()
+                                           
+                        }
+                         
+                           case .failure(let error) :
+                           MBProgressHUD.hide(for: this.view, animated: false)
+                           printLog(error)
+                       }
+           }
+       }
+       
+    
+    
   func setupUi(){
         self.navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.007843137255, green: 0.6588235294, blue: 0.862745098, alpha: 1)
@@ -77,9 +109,11 @@ class AlertVC: UIViewController {
 
 extension AlertVC:UITableViewDataSource,UITableViewDelegate,AlertViewControllerGenericDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
+        if vehicleDataSource.count != 0{
         let section = vehicleDataSource[section]
         return section.numberOfRowsInSection()
+        }
+        return 0
         
     }
     

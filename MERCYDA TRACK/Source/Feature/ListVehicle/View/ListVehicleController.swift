@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ListVehicleController: BaseViewController {
     
@@ -21,13 +22,14 @@ class ListVehicleController: BaseViewController {
     @IBOutlet weak var noResultLabel: UILabel!
     
     var listVehicleviewmodel: ListVehicleViewModel?
+    var dashboardViewmodel = DashboardViewModel()
     var searChedData:[ListVehicleTableViewModel] = []
     var searching:Bool = false
     var vehicleDataSource:[ListVehicleTableViewModel] = []
     var dispatcher: Dispatcher?
     var dispatchGroup: DispatchGroup?
     var vehiclelist = [Vehicle]()
-    var type:String?
+    var clickType:String?
     
     deinit {
         printLog("ViewController Released from memory : ListVehicleController")
@@ -40,7 +42,7 @@ class ListVehicleController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.dispatchGroup = nil
         self.dispatcher = nil
-       // self.listVehicleviewmodel = nil
+        self.listVehicleviewmodel = nil
                 if searching{
                 closeButton.sendActions(for: .allEvents)
                     searchTextfeild.text = ""
@@ -57,22 +59,89 @@ class ListVehicleController: BaseViewController {
     /// View lifecycle method
     override func viewDidLoad() {
         super.viewDidLoad()
-        listVehicleviewmodel = ListVehicleViewModel()
+        
+        
         mainTableView.register(cellType: VehicleTableViewCell.self)
-        refreshDataSource()
-        cheeckEmpty()
         setupUi()
+        //  refreshDataSource()
+        // cheeckEmpty()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       // getAllAddress()
+         noResultStackView.isHidden = true
+         listVehicleviewmodel = ListVehicleViewModel()
+         getVehiclesList()
+    }
+    
+    func setDatas(vehicleList:[Vehicle]){
+        let sortedArray = vehicleList.sorted(by: { ($0.vehicle_registration!) < ($1.vehicle_registration!) })
+        vehiclelist = sortedArray
+        refreshDataSource()
+        cheeckEmpty()
         getAllAddress()
+    
+        
+        
+    }
+    
+    func getVehiclesList(){
+         MBProgressHUD.showAdded(to: view, animated: true)
+                dashboardViewmodel.getVehicleList { [weak self] (result) in
+                     guard let this = self else {
+                                   return
+                               }
+                    MBProgressHUD.hide(for: this.view, animated: false)
+                    printLog(result)
+                    switch result{
+                        
+                        case .success(let result):
+                            if type == "Dashboard"{
+                                this.setDatas(vehicleList:this.dashboardViewmodel.allVehicleData(data:result))
+                            }
+                            else if type == "Moving"{
+                                 this.dashboardViewmodel.filterVehicleData(type:DashboardLocalization.movingVehicleKey.rawValue , data: result) { (filterdResult) in
+                                    this.setDatas(vehicleList: filterdResult)
+                                }
+                             }
+                            else if type == "Idle"{
+                                this.dashboardViewmodel.filterVehicleData(type:DashboardLocalization.idleVehicleKey.rawValue, data:result) { (filteredResult ) in
+                                    this.setDatas(vehicleList: filteredResult)
+                                }
+                        }
+                            else if type == "Sleep"{
+                                this.dashboardViewmodel.filterVehicleData(type:DashboardLocalization.sleepVehicleKey.rawValue, data:result) { (filterdResult ) in
+                                    this.setDatas(vehicleList: filterdResult)
+                                }
+                        }
+                        
+                            else if type == "Online"{
+                                
+                                 this.dashboardViewmodel.filterOnlineData(data: result) { (filterdResult ) in
+                                               printLog(filterdResult.count)
+                                    self?.setDatas(vehicleList:filterdResult)
+                                        }
+                        }
+                        
+                            else if type == "Offline" {
+                                this.dashboardViewmodel.filterOfflineData(data:result) { (filterdResult ) in
+                                    this.setDatas(vehicleList: filterdResult)
+                            }
+                        }
+                        
+                      
+                        case .failure(let error) :
+                        MBProgressHUD.hide(for: this.view, animated: false)
+                        printLog(error)
+                    }
+        }
     }
     
     
     func cheeckEmpty(){
         if vehiclelist.count == 0{
             noResultStackView.isHidden = false
-            if let vehicleType = type{
+            if let vehicleType = clickType{
             noResultLabel.text = "There are no \(vehicleType) vehicles"
             }
         }else{
@@ -196,8 +265,11 @@ extension ListVehicleController:UITableViewDelegate,UITableViewDataSource,ListVe
             return section.numberOfRowsInSection()
         }
         else{
+            if vehicleDataSource.count != 0{
             let section = vehicleDataSource[section]
             return section.numberOfRowsInSection()
+            }
+            return 0
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

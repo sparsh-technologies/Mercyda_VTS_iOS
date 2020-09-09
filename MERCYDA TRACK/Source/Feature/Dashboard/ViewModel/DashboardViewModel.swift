@@ -41,11 +41,11 @@ extension DashboardViewModel {
                 let components: DateComponents = calender.dateComponents([.year, .month, .day, .hour, .minute, .second], from:sourceDate, to: currentDateFormat!)
                 printLog("Minute :\(String(components.minute!))")
                 if components.day! > 0 {
-                    printLog("day: \(components.minute!)")
+                    printLog("day: \(components.day!)")
                     filteredData.append(data[i])
                 }
                 else if components.hour! > 1{
-                    printLog("hour: \(components.minute!)")
+                    printLog("hour: \(components.hour!)")
                     filteredData.append(data[i])
                 }
                 else if components.minute! > 20{
