@@ -44,6 +44,18 @@ extension Utility {
         view.layer.masksToBounds = false
     }
     
+    class func uniq<S : Sequence, T : Hashable>(source: S) -> [T] where S.Element == T {
+        var buffer = [T]()
+        var added = Set<T>()
+        for elem in source {
+            if !added.contains(elem) {
+                buffer.append(elem)
+                added.insert(elem)
+            }
+        }
+        return buffer
+    }
+    
     
      class  func topMostController() -> UIViewController {
            var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!

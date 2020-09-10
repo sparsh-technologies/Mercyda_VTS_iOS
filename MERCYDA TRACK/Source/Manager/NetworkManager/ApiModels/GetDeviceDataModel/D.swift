@@ -13,7 +13,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 
-struct D : Codable {
+struct D : Codable, Hashable, Equatable {
     let emergency_alert_count : Int?
     let speed : Int?
     let vehicle_mode : String?
@@ -101,6 +101,14 @@ struct D : Codable {
         overspeed_alert_count = aDecoder.decodeObject(forKey: "overspeed_alert_count") as? Int
         wire_cut_alert_count = aDecoder.decodeObject(forKey: "wire_cut_alert_count") as? Int
         main_power_removal_alert_count = aDecoder.decodeObject(forKey: "main_power_removal_alert_count") as? Int
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(source_date)
+    }
+    
+    static func == (lhs: D, rhs: D) -> Bool {
+        return lhs.source_date == rhs.source_date
     }
     
 }

@@ -414,7 +414,7 @@ class MapVC: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: dispTime, execute: {
                 self.animatePolylinePath()
             })
-            self.dispTime = self.dispTime + 0.015
+            self.dispTime = self.dispTime + 0.028
         }
         
     }
