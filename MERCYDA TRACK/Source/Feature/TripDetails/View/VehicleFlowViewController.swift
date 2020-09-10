@@ -186,7 +186,7 @@ final class VehicleFlowViewController: BaseViewController {
     
     @objc func getDeviceDetailsWithOutActivityInd()  {
         
-        vehicleFlowViewModel?.getDeviceData(serialNO: serialNumber) { [weak self] (result) in
+        vehicleFlowViewModel?.getDeviceDataForBackgroundUpdate(serialNO: serialNumber) { [weak self] (result) in
             guard let this = self else {
                 return
             }
