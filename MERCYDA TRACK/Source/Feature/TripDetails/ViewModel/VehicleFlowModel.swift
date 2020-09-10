@@ -243,6 +243,29 @@ extension VehicleFlow {
         //        print("******DATE******* \n", diff)
         return diff
     }
+    
+    func getDeviceDataForBackgroundUpdate(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
+        
+        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
+            guard let this = self else {
+                return
+            }
+            switch state {
+            case .success(let result as [DeviceDataResponse]):
+                completion(.success(result))
+                let gnssFixFilterArray = result.getActiveDevicePackets()
+                
+                let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
+                this.performFiltering(packets: gnssFixFilterArray)
+                this.writePacketsToDB(deviceID: serialNO, date: this.getTimeStampForAPI(flag: 1), devicePackets: wrapperArray)
+            case .failure(let error):
+                completion(.failure(error))
+                printLog(error)
+            default:
+                completion(.failure(AppSpecificError.unknownError.rawValue))
+            }
+        }
+    }
 
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
