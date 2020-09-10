@@ -1745,9 +1745,9 @@
 			baseConfigurationReference = 0E8519C54DD89922301E83E7 /* Pods-MERCYDA TRACK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 05;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 06;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9SSFCB745R;
 				INFOPLIST_FILE = "MERCYDA TRACK/Info.plist";
@@ -1757,7 +1757,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinicom.MercydaTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Mtrack Dev Provisioning Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1768,9 +1768,9 @@
 			baseConfigurationReference = A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 05;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 06;
 				DEVELOPMENT_TEAM = 9SSFCB745R;
 				INFOPLIST_FILE = "MERCYDA TRACK/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1779,7 +1779,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinicom.MercydaTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Mtrack Dev Provisioning Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
