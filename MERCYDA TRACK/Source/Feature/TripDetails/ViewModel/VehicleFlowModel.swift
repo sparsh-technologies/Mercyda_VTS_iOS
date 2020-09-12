@@ -30,8 +30,6 @@ final class VehicleFlow  {
     var dispatchGroup: DispatchGroup?
     var managedContext: NSManagedObjectContext!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-
     
 }
 extension VehicleFlow {
@@ -54,18 +52,18 @@ extension VehicleFlow {
 
 extension VehicleFlow {
     
-    @discardableResult func performFiltering(packets: [D]) -> Double  {
+    @discardableResult func performFiltering(packets: [D], isPlaceAPI: Bool) -> Double  {
         
         
-         //        ************************************************
-         //        Use this function only for Debug Purpose.
-         //        Check Packets Mode
-         
-//         debugForPacketsModes(rawPackets: packets)
-         
-         //        END
-         //        ************************************************
-         
+        //        ************************************************
+        //        Use this function only for Debug Purpose.
+        //        Check Packets Mode
+        
+        //         debugForPacketsModes(rawPackets: packets)
+        
+        //        END
+        //        ************************************************
+        
         
         packetsFiltered.removeAll()
         processedResult.removeAll()
@@ -77,7 +75,7 @@ extension VehicleFlow {
         let twoDimArray = packets.get2DimensionalFilterArray()
         // let singleDimensionArray = Array(twoDimArray.joined())
         // let filteredTwoDimArray = singleDimensionArray.get2DimensionalFilterArray()
-        return calculateDistance(packets: twoDimArray)
+        return calculateDistance(packets: twoDimArray, isAPI: isPlaceAPI)
     }
     
     func debugForPacketsModes(rawPackets: [DeviceDataResponse]) {
@@ -89,7 +87,7 @@ extension VehicleFlow {
         print("************************\n", debugArray)
     }
     
-    func calculateDistance(packets: [[D]]) -> Double {
+    func calculateDistance(packets: [[D]], isAPI: Bool) -> Double {
         var distanceFromCoordinates = Double()
         var distanceFromSpeed = Double()
         var totalDistanceFromPacket = Double()
@@ -98,68 +96,121 @@ extension VehicleFlow {
         maxSpeed = 0
         minSpeed = 0
         
-        
-        packets.forEach({ eachPacket in
-            totalDistanceFromPacket = 0.0
-            mode = eachPacket.contains { value in value.vehicle_mode == "M" || value.vehicle_mode == "H"
-                } ? "M": "S"
-            for index in 0..<eachPacket.count - 1{
-                let packet1 = eachPacket[index]
-                let packet2 = eachPacket[index + 1]
-                let maxSpeedPkt1 = packet1.speed ?? 0
-                let maxSpeedPkt2 = packet2.speed ?? 0
-                let minSpeedPkt1 = packet1.speed ?? 0
-                let minSpeedPkt2 = packet2.speed ?? 0
-                let tempMax = Double(maxSpeedPkt1 > maxSpeedPkt2 ? maxSpeedPkt1 : maxSpeedPkt2)
-                
-                
-                maxSpeed = maxSpeed < tempMax ? tempMax : maxSpeed
-                minSpeed = Double(minSpeedPkt1 < minSpeedPkt2 ? minSpeedPkt1 : minSpeedPkt2)
-                
-                distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
-                let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
-                let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
-                
-                distanceFromSpeed = time < 600 ? distance : 0
-                let maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
-                if distance.isNaN {
-                    
+        switch isAPI {
+        case true:
+            do {
+                packets.forEach({ eachPacket in
+                    totalDistanceFromPacket = 0.0
+                    mode = eachPacket.contains { value in value.vehicle_mode == "M" || value.vehicle_mode == "H"
+                        } ? "M": "S"
+                    for index in 0..<eachPacket.count - 1{
+                        let packet1 = eachPacket[index]
+                        let packet2 = eachPacket[index + 1]
+                        let maxSpeedPkt1 = packet1.speed ?? 0
+                        let maxSpeedPkt2 = packet2.speed ?? 0
+                        let minSpeedPkt1 = packet1.speed ?? 0
+                        let minSpeedPkt2 = packet2.speed ?? 0
+                        let tempMax = Double(maxSpeedPkt1 > maxSpeedPkt2 ? maxSpeedPkt1 : maxSpeedPkt2)
+                        
+                        
+                        maxSpeed = maxSpeed < tempMax ? tempMax : maxSpeed
+                        minSpeed = Double(minSpeedPkt1 < minSpeedPkt2 ? minSpeedPkt1 : minSpeedPkt2)
+                        
+                        distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
+                        let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
+                        let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                        
+                        distanceFromSpeed = time < 600 ? distance : 0
+                        let maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
+                        if distance.isNaN {
+                            
+                        }
+                        //                                print("\n Coordinates ", distanceFromCoordinates)
+                        //                                print("Speed ", distanceFromSpeed)
+                        //                                print("Highest Distance ", maxDistance)
+                        totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
+                        //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
+                        //                print("Total Distanec ", totalDistanceFromPacket)
+                    }
+                    let trip = TripDetailsModel.init(
+                        mode: mode,
+                        distance: String(totalDistanceFromPacket.truncate(places: 2)),
+                        startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)),
+                        avrgSpeed: String(averageSpeedForNode(duration: (durationInSeconds(packet1Duration: Double(eachPacket.first?.source_date ?? 0), packet2Duration: Double(eachPacket.last?.source_date ?? 0))) / 60, distance: totalDistanceFromPacket).truncate(places: 2)),
+                        duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)),
+                        lat: Double(eachPacket.last?.latitude ?? "0")!,
+                        long: Double(eachPacket.last?.longitude ?? "0")!, place: ""
+                    )
+                    tripDetails.append(trip)
+                    totalDistance = totalDistance + totalDistanceFromPacket
+                })
+                //        print("\n\n\n Result Array ", tripDetails)
+                processedResult = tripDetails
+                restorePlacesName()
+                self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: totalAvrgSpeed(), distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M", lastLocationName: "")
+                if self.dispatchGroup == nil {
+                    self.dispatchGroup = DispatchGroup()
                 }
-                //                                print("\n Coordinates ", distanceFromCoordinates)
-                //                                print("Speed ", distanceFromSpeed)
-                //                                print("Highest Distance ", maxDistance)
-                totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
-                //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
-                //                print("Total Distanec ", totalDistanceFromPacket)
+                for (index, item) in processedResult.enumerated() {
+                    if item.vehicleMode != "M" {
+                        self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+                    }
+                }
+                dispatchGroup?.notify(queue: .main) {
+                    printLog("Dispatch works completed")
+                    self.dispatcher = nil
+                }
             }
-            let trip = TripDetailsModel.init(
-                mode: mode,
-                distance: String(totalDistanceFromPacket.truncate(places: 2)),
-                startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)),
-                avrgSpeed: String(averageSpeedForNode(duration: (durationInSeconds(packet1Duration: Double(eachPacket.first?.source_date ?? 0), packet2Duration: Double(eachPacket.last?.source_date ?? 0))) / 60, distance: totalDistanceFromPacket).truncate(places: 2)),
-                duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)),
-                lat: Double(eachPacket.last?.latitude ?? "0")!,
-                long: Double(eachPacket.last?.longitude ?? "0")!, place: ""
-            )
-            tripDetails.append(trip)
-            totalDistance = totalDistance + totalDistanceFromPacket
-        })
-        //        print("\n\n\n Result Array ", tripDetails)
-        processedResult = tripDetails
-        restorePlacesName()
-        self.delegate?.loadData(vm: tripDetails, maxSpd: maxSpeed, minSpd: totalAvrgSpeed(), distance: totalDistance, mode: packets.last?.last?.vehicle_mode ?? "M", lastLocationName: "")
-        if self.dispatchGroup == nil {
-            self.dispatchGroup = DispatchGroup()
-        }
-        for (index, item) in processedResult.enumerated() {
-            if item.vehicleMode != "M" {
-                self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+        case false:
+            do {
+                packets.forEach({ eachPacket in
+                    totalDistanceFromPacket = 0.0
+                    mode = eachPacket.contains { value in value.vehicle_mode == "M" || value.vehicle_mode == "H"
+                        } ? "M": "S"
+                    for index in 0..<eachPacket.count - 1{
+                        let packet1 = eachPacket[index]
+                        let packet2 = eachPacket[index + 1]
+                        let maxSpeedPkt1 = packet1.speed ?? 0
+                        let maxSpeedPkt2 = packet2.speed ?? 0
+                        let minSpeedPkt1 = packet1.speed ?? 0
+                        let minSpeedPkt2 = packet2.speed ?? 0
+                        let tempMax = Double(maxSpeedPkt1 > maxSpeedPkt2 ? maxSpeedPkt1 : maxSpeedPkt2)
+                        
+                        
+                        maxSpeed = maxSpeed < tempMax ? tempMax : maxSpeed
+                        minSpeed = Double(minSpeedPkt1 < minSpeedPkt2 ? minSpeedPkt1 : minSpeedPkt2)
+                        
+                        distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
+                        let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
+                        let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                        
+                        distanceFromSpeed = time < 600 ? distance : 0
+                        let maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
+                        if distance.isNaN {
+                            
+                        }
+                        //                                print("\n Coordinates ", distanceFromCoordinates)
+                        //                                print("Speed ", distanceFromSpeed)
+                        //                                print("Highest Distance ", maxDistance)
+                        totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
+                        //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
+                        //                print("Total Distanec ", totalDistanceFromPacket)
+                    }
+                    let trip = TripDetailsModel.init(
+                        mode: mode,
+                        distance: String(totalDistanceFromPacket.truncate(places: 2)),
+                        startTime: milliSecondsToTime(milliSeconds: Double(eachPacket.first?.source_date ?? 0)),
+                        avrgSpeed: String(averageSpeedForNode(duration: (durationInSeconds(packet1Duration: Double(eachPacket.first?.source_date ?? 0), packet2Duration: Double(eachPacket.last?.source_date ?? 0))) / 60, distance: totalDistanceFromPacket).truncate(places: 2)),
+                        duration: durationInEachPacketSet(startDuration: Double(eachPacket.first?.source_date ?? 0) , endDuration: Double(eachPacket.last?.source_date ?? 0)),
+                        lat: Double(eachPacket.last?.latitude ?? "0")!,
+                        long: Double(eachPacket.last?.longitude ?? "0")!, place: ""
+                    )
+                    tripDetails.append(trip)
+                    totalDistance = totalDistance + totalDistanceFromPacket
+                })
             }
         }
-        dispatchGroup?.notify(queue: .main) {
-            printLog("Dispatch works completed")
-            self.dispatcher = nil
-        }
+        
         return totalDistance
     }
     
@@ -256,7 +307,7 @@ extension VehicleFlow {
                 let gnssFixFilterArray = result.getActiveDevicePackets()
                 
                 let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
-                this.performFiltering(packets: gnssFixFilterArray)
+                this.performFiltering(packets: gnssFixFilterArray, isPlaceAPI: true)
                 this.writePacketsToDB(deviceID: serialNO, date: this.getTimeStampForAPI(flag: 1), devicePackets: wrapperArray)
             case .failure(let error):
                 completion(.failure(error))
@@ -266,35 +317,35 @@ extension VehicleFlow {
             }
         }
     }
-
+    
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
         
         let packetsFromDB = fetchPacketsFromDB(deviceID: serialNO, date: getTimeStampForAPI(flag: 1))
         if packetsFromDB.count > 0 {
-            performFiltering(packets: packetsFromDB)
+            performFiltering(packets: packetsFromDB, isPlaceAPI: true)
             completion(.success([]))
         } else {
-        
-        self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
-            guard let this = self else {
-                return
+            
+            self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
+                guard let this = self else {
+                    return
+                }
+                switch state {
+                case .success(let result as [DeviceDataResponse]):
+                    completion(.success(result))
+                    let gnssFixFilterArray = result.getActiveDevicePackets()
+                    
+                    let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
+                    this.performFiltering(packets: gnssFixFilterArray, isPlaceAPI: true)
+                    this.writePacketsToDB(deviceID: serialNO, date: this.getTimeStampForAPI(flag: 1), devicePackets: wrapperArray)
+                case .failure(let error):
+                    completion(.failure(error))
+                    printLog(error)
+                default:
+                    completion(.failure(AppSpecificError.unknownError.rawValue))
+                }
             }
-            switch state {
-            case .success(let result as [DeviceDataResponse]):
-                completion(.success(result))
-                let gnssFixFilterArray = result.getActiveDevicePackets()
-                
-                let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
-                this.performFiltering(packets: gnssFixFilterArray)
-                this.writePacketsToDB(deviceID: serialNO, date: this.getTimeStampForAPI(flag: 1), devicePackets: wrapperArray)
-            case .failure(let error):
-                completion(.failure(error))
-                printLog(error)
-            default:
-                completion(.failure(AppSpecificError.unknownError.rawValue))
-            }
-        }
             
         }
     }
@@ -337,30 +388,30 @@ extension VehicleFlow {
         
         let packetsFromDB = fetchPacketsFromDB(deviceID: serialNo, date: String(Int(startDate)))
         if packetsFromDB.count > 0 {
-            performFiltering(packets: packetsFromDB)
+            performFiltering(packets: packetsFromDB, isPlaceAPI: true)
             completion(.success([]))
         } else {
-        
-        self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
-            guard let this = self else {
-                return
-            }
-            switch state {
-            case .success(let result as [DeviceDataResponse]):
-                this.placesArray.removeAll()
-                let gnssFixFilterArray = result.getActiveDevicePackets()
-                let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
-                this.performFiltering(packets: gnssFixFilterArray)
-                this.writePacketsToDB(deviceID: serialNo, date: String(Int(startDate)), devicePackets: wrapperArray)
-                completion(.success(result))
-            case .failure(let error):
-                completion(.failure(error))
-                self?.processedResult.removeAll()
-                self?.placesArray.removeAll()
-                self?.delegate?.reloadData()
-            default:
-                printLog(AppSpecificError.unknownError.rawValue)
-            }
+            
+            self.networkServiceCalls.getDeviceData(serialNumber: serialNo, enableSourceDate: "true", startTime: String(Int(startDate)), endTime: String(Int(endDate))) { [weak self] (state) in
+                guard let this = self else {
+                    return
+                }
+                switch state {
+                case .success(let result as [DeviceDataResponse]):
+                    this.placesArray.removeAll()
+                    let gnssFixFilterArray = result.getActiveDevicePackets()
+                    let wrapperArray : [vehicleDataWrapper] = gnssFixFilterArray.compactMap {(vehicleDataWrapper.init(d: $0))}
+                    this.performFiltering(packets: gnssFixFilterArray, isPlaceAPI: true)
+                    this.writePacketsToDB(deviceID: serialNo, date: String(Int(startDate)), devicePackets: wrapperArray)
+                    completion(.success(result))
+                case .failure(let error):
+                    completion(.failure(error))
+                    self?.processedResult.removeAll()
+                    self?.placesArray.removeAll()
+                    self?.delegate?.reloadData()
+                default:
+                    printLog(AppSpecificError.unknownError.rawValue)
+                }
             }
         }
     }

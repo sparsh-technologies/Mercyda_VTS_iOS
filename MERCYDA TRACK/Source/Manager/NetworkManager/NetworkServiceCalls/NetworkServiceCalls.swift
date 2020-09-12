@@ -111,4 +111,17 @@ class NetworkServiceCalls: NetworkAdapter {
         }
     }
     
+    func  registerFcm(fcmKey: FcmRegister, _ completion: @escaping CompletionWithSuccessOrFailure) {
+        let params = FcmRegisterParams(fcm: fcmKey)
+        fetch(params, CommonParser<PushTokenResponse>.self) { (state) in
+            switch state {
+            case .success(let response):
+                completion(.success(response: response))
+            case .failure(let error):
+                completion(.failure(error: error))
+            }
+        }
+
+    }
+    
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import Firebase
 
 class DashboardViewController: BaseViewController {
     
@@ -49,14 +50,11 @@ class DashboardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-            configureViewUI()
-            self.getDashboardVehicleCount()
-          
-            
-        
+        configureViewUI()
+        self.getDashboardVehicleCount()
+        dashboardViewModel.registerForFCM()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
          self.navigationController?.navigationBar.isHidden = true
         getDashboardVehicleCountWithoutActInd()

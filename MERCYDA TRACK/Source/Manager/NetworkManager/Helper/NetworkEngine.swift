@@ -36,6 +36,8 @@ class NetworkAdapter {
             .request(buildable)
             .validate()
             .responseJSON { (response) in
+                printLog(response.result)
+
                 switch response.result {
                 case .success(let value):
                     self.networkEngine.fetch(parser, response: value, completion)

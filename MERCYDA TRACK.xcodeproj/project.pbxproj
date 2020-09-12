@@ -78,6 +78,9 @@
 		52457DF924AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
+		524F25BC250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
+		524F25BD250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
+		524F25BE250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
 		5260059024C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
 		5260059124C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
 		5260059224C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */; };
@@ -94,6 +97,15 @@
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		529CED24250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
+		529CED25250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
+		529CED26250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
+		529CED28250A651700095184 /* FcmRegisterParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED27250A651700095184 /* FcmRegisterParams.swift */; };
+		529CED29250A651700095184 /* FcmRegisterParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED27250A651700095184 /* FcmRegisterParams.swift */; };
+		529CED2A250A651700095184 /* FcmRegisterParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED27250A651700095184 /* FcmRegisterParams.swift */; };
+		529E2E0B250CC53E0020004A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529E2E0A250CC53E0020004A /* GoogleService-Info.plist */; };
+		529E2E0C250CC53E0020004A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529E2E0A250CC53E0020004A /* GoogleService-Info.plist */; };
+		529E2E0D250CC53E0020004A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529E2E0A250CC53E0020004A /* GoogleService-Info.plist */; };
 		52B7E54E24BA003700A9881C /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
 		52B7E54F24BA003800A9881C /* VehicleFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84410DA924B8F18700E6047D /* VehicleFlowModel.swift */; };
 		52B7E55224BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */; };
@@ -113,9 +125,6 @@
 		52CDB3C224FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
 		52CDB3C324FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
 		52CDB3C424FA26C40086EBF4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */; };
-		52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
-		52DC0E9224F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
-		52DC0E9324F24C5F001130F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */; };
 		8415080824B4D7CA00953660 /* ListVehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080724B4D7CA00953660 /* ListVehicleController.swift */; };
 		8415081024B4F15300953660 /* VehicleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415080E24B4F15300953660 /* VehicleTableViewCell.swift */; };
 		8415081124B4F15300953660 /* VehicleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8415080F24B4F15300953660 /* VehicleTableViewCell.xib */; };
@@ -314,18 +323,22 @@
 		52457DF024AB802F0078487A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
+		524F25BB250BA15D00861728 /* PushTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTokenResponse.swift; sourceTree = "<group>"; };
+		524F25C3250BE16600861728 /* MERCYDA TRACK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MERCYDA TRACK.entitlements"; sourceTree = "<group>"; };
 		5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlow+UIDatePicker.swift"; sourceTree = "<group>"; };
 		52698AB62504DE2000063492 /* DatabaseModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DatabaseModel1.xcdatamodel; sourceTree = "<group>"; };
 		52698ABB2504DE7F00063492 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleFlowModel+Coredata.swift"; sourceTree = "<group>"; };
 		52698B1025065E1B00063492 /* VehicleDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataWrapper.swift; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		529CED23250A634A00095184 /* FcmRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FcmRegister.swift; sourceTree = "<group>"; };
+		529CED27250A651700095184 /* FcmRegisterParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmRegisterParams.swift; sourceTree = "<group>"; };
+		529E2E0A250CC53E0020004A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+UITableView.swift"; sourceTree = "<group>"; };
 		52B7E55624BB3FE000A9881C /* VehicleDataFlowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataFlowTableViewCell.swift; sourceTree = "<group>"; };
 		52B7E55724BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleDataFlowTableViewCell.xib; sourceTree = "<group>"; };
 		52B7E55E24BB4AF900A9881C /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		52CDB3C124FA26C40086EBF4 /* Alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
-		52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B9C90438D09EB7B663FEFCA /* Pods-MERCYDA TRACKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.release.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.release.xcconfig"; sourceTree = "<group>"; };
 		73BE8128D4E4C5750C82229F /* Pods-MERCYDA TRACKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MERCYDA TRACKTests.debug.xcconfig"; path = "Target Support Files/Pods-MERCYDA TRACKTests/Pods-MERCYDA TRACKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABD410BDEE66698CA5B7150 /* Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MERCYDA_TRACK_MERCYDA_TRACKUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -675,6 +688,15 @@
 			path = CoreDataManger;
 			sourceTree = "<group>";
 		};
+		529CED22250A633400095184 /* FCM */ = {
+			isa = PBXGroup;
+			children = (
+				529CED23250A634A00095184 /* FcmRegister.swift */,
+				524F25BB250BA15D00861728 /* PushTokenResponse.swift */,
+			);
+			path = FCM;
+			sourceTree = "<group>";
+		};
 		52B7E55024BB3B0E00A9881C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +832,7 @@
 		C6623AB724AB970C003C3519 /* ApiModels */ = {
 			isa = PBXGroup;
 			children = (
+				529CED22250A633400095184 /* FCM */,
 				8491AB1D24F0EC88008F3C0B /* AlertModel */,
 				C627F10D24BC95E40026F1E7 /* LocationDetailsModels */,
 				C6623AB824AB970C003C3519 /* LoginModels */,
@@ -874,6 +897,7 @@
 				C6623AEF24AB9A29003C3519 /* GetDeviceDataParams.swift */,
 				84639DEE24F17C7300A97191 /* GetAlertParams.swift */,
 				C6623ADF24AB9736003C3519 /* GetVehiclesCountParams.swift */,
+				529CED27250A651700095184 /* FcmRegisterParams.swift */,
 			);
 			path = RequestParams;
 			sourceTree = "<group>";
@@ -1013,11 +1037,12 @@
 		C6C9D7ED24A925A700BA7651 /* MERCYDA TRACK */ = {
 			isa = PBXGroup;
 			children = (
+				524F25C3250BE16600861728 /* MERCYDA TRACK.entitlements */,
 				52698AB52504DE2000063492 /* DatabaseModel1.xcdatamodeld */,
 				52457DA524AB7A370078487A /* Source */,
 				C6C9D7F224A925A700BA7651 /* ViewController.swift */,
 				C6C9D7FF24A925A800BA7651 /* Info.plist */,
-				52DC0E9024F24C5F001130F0 /* GoogleService-Info.plist */,
+				529E2E0A250CC53E0020004A /* GoogleService-Info.plist */,
 				C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */,
 				C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */,
 			);
@@ -1190,11 +1215,11 @@
 				84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				844F2D7D24F43232003AF25F /* AlertDetailTableViewCell.xib in Resources */,
+				529E2E0B250CC53E0020004A /* GoogleService-Info.plist in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55B24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				52CDB3C224FA26C40086EBF4 /* Alerts.storyboard in Resources */,
 				C6C9D7F624A925A700BA7651 /* Main.storyboard in Resources */,
-				52DC0E9124F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,7 +1233,7 @@
 				527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55C24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
-				52DC0E9224F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
+				529E2E0C250CC53E0020004A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,7 +1247,7 @@
 				527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55D24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
-				52DC0E9324F24C5F001130F0 /* GoogleService-Info.plist in Resources */,
+				529E2E0D250CC53E0020004A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1454,7 @@
 				8470049F24B5DE32009EDD18 /* CardView.swift in Sources */,
 				84410DAF24B8F18800E6047D /* VehicleFlowViewController.swift in Sources */,
 				52698ABC2504DE7F00063492 /* CoreDataStack.swift in Sources */,
+				529CED28250A651700095184 /* FcmRegisterParams.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				84FE4D8C24F1937A00DA310C /* AlertTableviewModel.swift in Sources */,
@@ -1444,6 +1470,7 @@
 				52457DBE24AB7B980078487A /* UIApplication+AppVersion.swift in Sources */,
 				84639DF124F17F0100A97191 /* AlertViewModel.swift in Sources */,
 				C627F10A24BC85340026F1E7 /* LocationParser.swift in Sources */,
+				524F25BC250BA15D00861728 /* PushTokenResponse.swift in Sources */,
 				5260059024C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift in Sources */,
 				84639DEF24F17C7300A97191 /* GetAlertParams.swift in Sources */,
 				84410DAE24B8F18800E6047D /* TripDetailsModel.swift in Sources */,
@@ -1480,6 +1507,7 @@
 				520D57DA24AF687D002A775F /* DashboardLocalization.swift in Sources */,
 				C6623AE624AB9736003C3519 /* GetVehicleDetailParams.swift in Sources */,
 				844F2D7C24F43232003AF25F /* AlertDetailTableViewCell.swift in Sources */,
+				529CED24250A634A00095184 /* FcmRegister.swift in Sources */,
 				84617A2424BDAA0B002EE1C4 /* ListVehicleViewModel.swift in Sources */,
 				C6623ACE24AB970C003C3519 /* GetVehicleDetailResponse.swift in Sources */,
 				8429211324B064C7002A3CB1 /* MessageConstants.swift in Sources */,
@@ -1540,7 +1568,10 @@
 				C6669FE324AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD224AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AF524B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
+				529CED25250A634A00095184 /* FcmRegister.swift in Sources */,
 				52698AC1250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */,
+				524F25BD250BA15D00861728 /* PushTokenResponse.swift in Sources */,
+				529CED29250A651700095184 /* FcmRegisterParams.swift in Sources */,
 				52B7E56024BB4AF900A9881C /* Double+Extensions.swift in Sources */,
 				52457DD724AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6623AF924B0CA65003C3519 /* D.swift in Sources */,
@@ -1609,7 +1640,10 @@
 				C6669FE424AA29750024527E /* APIConstants.swift in Sources */,
 				C6623AD324AB970C003C3519 /* Meta_d.swift in Sources */,
 				C6623AF624B0CA5D003C3519 /* DeviceDataResponse.swift in Sources */,
+				529CED26250A634A00095184 /* FcmRegister.swift in Sources */,
 				52698AC2250532F100063492 /* VehicleFlowModel+Coredata.swift in Sources */,
+				524F25BE250BA15D00861728 /* PushTokenResponse.swift in Sources */,
+				529CED2A250A651700095184 /* FcmRegisterParams.swift in Sources */,
 				52B7E56124BB4AF900A9881C /* Double+Extensions.swift in Sources */,
 				52457DD824AB7C560078487A /* BaseViewController.swift in Sources */,
 				C6623AFA24B0CA65003C3519 /* D.swift in Sources */,
@@ -1781,6 +1815,7 @@
 			baseConfigurationReference = 0E8519C54DD89922301E83E7 /* Pods-MERCYDA TRACK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MERCYDA TRACK/MERCYDA TRACK.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 06;
@@ -1804,6 +1839,7 @@
 			baseConfigurationReference = A3642831015A90ADC06D6F53 /* Pods-MERCYDA TRACK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MERCYDA TRACK/MERCYDA TRACK.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 06;

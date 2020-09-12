@@ -8,6 +8,7 @@ target 'MERCYDA TRACK' do
   pod 'SwiftMessages'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'Firebase/Messaging'
   pod 'GoogleMaps'
   pod 'MBProgressHUD', '~> 1.2'
   pod 'TPKeyboardAvoiding'

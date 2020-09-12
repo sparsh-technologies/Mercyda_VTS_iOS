@@ -13,7 +13,7 @@ import GoogleMaps
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack(modelName: "DatabaseModel1")
@@ -25,10 +25,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(APIKeys.GOOGLE_API_KEY)
         IQKeyboardManager.shared.enable = true
         checklogin()
+        
+        
+        if #available(iOS 10.0, *) {
+                // For iOS 10 display notification (sent via APNS)
+                UNUserNotificationCenter.current().delegate = self
+
+                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+                UNUserNotificationCenter.current().requestAuthorization(
+                  options: authOptions,
+                  completionHandler: {_, _ in })
+              } else {
+                let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                application.registerUserNotificationSettings(settings)
+              }
+
+              application.registerForRemoteNotifications()
+        
+        Messaging.messaging().delegate = self
+
+        
         return true
     }
+    
+    private func application(application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        Messaging.messaging().apnsToken = deviceToken as Data
+    }
+
     // MARK: UISceneSession Lifecycle
     
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        InstanceID.instanceID().instanceID { (result, error) in
+          if let error = error {
+            print("Error fetching remote instance ID: \(error)")
+          } else if let result = result {
+            print("Remote instance ID token: \(result.token)")
+    
+          }
+        }
+        let dataDict:[String: String] = ["token": fcmToken]
+        UserDefaults.saveCustomDict(withKey: "APN", dict:
+            dataDict, type: [AnyHashable: Any].self)
+    }
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
     
     func checklogin(){
          if let userInfo = UserLoginInfo.getUserInfo(){
