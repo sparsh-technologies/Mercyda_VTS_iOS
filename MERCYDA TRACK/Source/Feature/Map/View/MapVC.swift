@@ -40,10 +40,10 @@ class MapVC: UIViewController {
     var polyLineLocations:[CLLocationCoordinate2D] = []
     var animationPolyline = GMSPolyline()
     var animationPolylineBase = GMSPolyline()
-    var path : GMSMutablePath?
+    //var path : GMSMutablePath?
     var animationPath = GMSMutablePath()
-    var i: UInt = 0
-    var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
+   // var i: UInt = 0
+   // var dispTime : DispatchTime = DispatchTime(uptimeNanoseconds: UInt64(0.00))
     var vehicleObject:Vehicle?
     let lineGradient = GMSStrokeStyle.gradient(from: .systemBlue, to: .systemBlue)
     var mapViewTopConstraint : NSLayoutConstraint!
@@ -54,7 +54,7 @@ class MapVC: UIViewController {
     
     private var dispatcher: Dispatcher?
     
-    var timer: Timer!
+   // var timer: Timer!
     var mapFlag = 1
     var isNavFlag = 0
     
@@ -273,7 +273,7 @@ class MapVC: UIViewController {
     }
     
     func updateParkingMarkers(Locations locationsArray: [CLLocationCoordinate2D], Devices deviceArray: [TripDetailsModel]) {
-        var yAnchor: CGFloat = -500
+      //  var yAnchor: CGFloat = -500
         
         for (index,latlon) in locationsArray.enumerated() {
             let marker:GMSMarker = GMSMarker.init(position: latlon)
@@ -288,7 +288,7 @@ class MapVC: UIViewController {
             marker.iconView = iconView
            // iconView.transform = CGAffineTransform.init(translationX: 0, y: yAnchor )
             iconView.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
-            yAnchor -= 100
+           // yAnchor -= 100
             marker.map = self.mapView
             
             CATransaction.begin()
@@ -373,8 +373,8 @@ class MapVC: UIViewController {
         carMarker = marker
         carMarker.tracksInfoWindowChanges = true
         carMarker.map = mapView
-        self.lastLocation = position1
-        self.secondLastLocation = position2
+        self.lastLocation = position2
+        self.secondLastLocation = position1
         //marker.userData = position
     }
     
@@ -397,26 +397,35 @@ class MapVC: UIViewController {
     
     
     func draw_polylines(loctions: [CLLocationCoordinate2D]) {
-        let path = GMSMutablePath()
-        for loc in loctions {
-            path.addLatitude(loc.latitude, longitude:loc.longitude)
-        }
-        self.path = path
-        //        let nonAnimatingPolyline = GMSPolyline()
-        //        nonAnimatingPolyline.path = path
-        //        nonAnimatingPolyline.strokeColor = UIColor(red: 05.0, green: 10.5, blue: 0, alpha: 0.5)
-        //        nonAnimatingPolyline.strokeWidth = 5.0
-        //        nonAnimatingPolyline.geodesic = true
-        //        nonAnimatingPolyline.map = self.mapView
-        self.dispTime = DispatchTime.now()
-        CATransaction.flush()
-        for _ in 0..<self.polyLineLocations.count + 1 {
-            DispatchQueue.main.asyncAfter(deadline: dispTime, execute: {
-                self.animatePolylinePath()
-            })
-            self.dispTime = self.dispTime + 0.028
-        }
-        
+//            let path = GMSMutablePath()
+//            for loc in loctions {
+//                path.addLatitude(loc.latitude, longitude:loc.longitude)
+//            }
+//            self.path = path
+            var timer = DispatchTime.now()
+            CATransaction.flush()
+            for i in 0..<loctions.count {
+                DispatchQueue.main.asyncAfter(deadline: timer, execute: { [weak self] in
+                    self?.animationPath.add(loctions[i])
+                    self?.animationPolylineBase.path = self?.animationPath
+                    self?.animationPolylineBase.map = self?.mapView
+                    self?.animationPolyline.path = self?.animationPath
+                    self?.animationPolyline.map = self?.mapView
+                    CATransaction.begin()
+                    if loctions.count == 1 {
+                        self?.setCarMarkers(carPosition: loctions[i], position1: self?.lastLocation ?? loctions[i], position2: loctions[i])
+                    } else {
+                        self?.setCarMarkers(carPosition: loctions[i], position1: loctions[i == loctions.count - 1 ? i-1 : i], position2: loctions[i == loctions.count - 1 ? i : i+1])
+                    }
+                    CATransaction.commit()
+                    if i == loctions.count - 1 {
+                        self?.viewModel?.startUpdateLocations()
+                        print("last execution")
+                    }
+                    
+                })
+                timer = timer + 0.015
+            }
     }
     
     
@@ -436,6 +445,7 @@ class MapVC: UIViewController {
         }
     }
     
+    /*
     @objc func animatePolylinePath() {
         if let gmsPath = self.path {
             CATransaction.begin()
@@ -460,4 +470,5 @@ class MapVC: UIViewController {
             CATransaction.commit()
         }
     }
+ */
 }

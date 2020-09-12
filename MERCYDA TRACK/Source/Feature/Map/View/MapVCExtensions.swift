@@ -23,7 +23,7 @@ extension MapVC : MapVCViewModelDelegate {
         let coordinatesArray = locationsArray.toGoogleCoordinates()
         if coordinatesArray.count > 0 {
             self.focusMapToLocation(loctions: coordinatesArray,duration: 2.0, completionFunction: {
-                self.draw_polylines(loctions: coordinatesArray)
+                self.setCarMarkers(carPosition: coordinatesArray.last!, position1: coordinatesArray.last!, position2: coordinatesArray.last!)
             }) {
                 // Removed updating markers for now later if needed uncomment the line
                  self.viewModel?.updateParkingMarkers()
@@ -40,15 +40,13 @@ extension MapVC : MapVCViewModelDelegate {
             DispatchQueue.main.asyncAfter(deadline: timer, execute: {
                 CATransaction.begin()
                 self.animationPath.add(locArray[i])
-                self.path?.add(locArray[i])
+              //  self.path?.add(locArray[i])
                 self.animationPolylineBase.path = self.animationPath
                 self.animationPolylineBase.map = self.mapView
                 self.animationPolyline.path = self.animationPath
                 self.animationPolyline.map = self.mapView
-                if locArray.count == 1 {
-                    self.setCarMarkers(carPosition: locArray[i], position1: self.lastLocation ?? locArray[i], position2: locArray[i])
-                } else {
-                self.setCarMarkers(carPosition: locArray[i], position1: self.lastLocation ?? locArray[i], position2: locArray[i == locArray.count - 1 ? i : i+1])
+                if locArray.count > 1 {
+                self.setCarMarkers(carPosition: locArray[i], position1: locArray[i == locArray.count - 1 ? i-1 : i], position2: locArray[i == locArray.count - 1 ? i : i+1])
                 }
                 if !self.isPositionWithinScreen(position: locArray[i]) {
                     let camera = GMSCameraPosition.camera(withTarget: locArray[i], zoom: 17)
@@ -56,7 +54,7 @@ extension MapVC : MapVCViewModelDelegate {
                 }
                 CATransaction.commit()
             })
-            timer = timer + 0.35
+            timer = timer + 0.015
         }
     }
     

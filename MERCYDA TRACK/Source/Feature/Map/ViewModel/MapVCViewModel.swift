@@ -67,10 +67,22 @@ extension MapVCViewModel {
     
     func updateViewController() {
         guard let array = self.originalDeviceList else { return }
-        //if totalDistance >= 15.00 && maximumSpeed >= 10.00 {
+        
             let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
                 self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+                
+                if totalDistance < 15.00  {
+                    let ignitionArray = movingDeviceArray.filterIgnitionONPackets()
+                    if ignitionArray.count > 0 && ignitionArray.contains(where: { $0.speed ?? 0 > 10 }) {
+                       delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+                    } else {
+                        delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: self.arrForMovingLocations.reversed())
+                    }
+                } else {
+                    delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+                }
+             
+                
             } else if array.count > 0 {
                 let locations = array.getCoordinates(); if locations.count > 0 {
                     delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())

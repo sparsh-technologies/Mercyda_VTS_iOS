@@ -15,7 +15,7 @@ import Foundation
 
 struct D : Codable, Hashable, Equatable {
     let emergency_alert_count : Int?
-    let speed : Int?
+    let speed : Double?
     let vehicle_mode : String?
     let ignition : String?
     let gsm_signal_strength : Int?
@@ -64,7 +64,7 @@ struct D : Codable, Hashable, Equatable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         emergency_alert_count = try? values.decodeIfPresent(Int.self, forKey: .emergency_alert_count)
-        speed = try? values.decodeIfPresent(Int.self, forKey: .speed)
+        speed = try? values.decodeIfPresent(Double.self, forKey: .speed)
         vehicle_mode = try? values.decodeIfPresent(String.self, forKey: .vehicle_mode)
         ignition = try? values.decodeIfPresent(String.self, forKey: .ignition)
         gsm_signal_strength = try? values.decodeIfPresent(Int.self, forKey: .gsm_signal_strength)
@@ -87,7 +87,7 @@ struct D : Codable, Hashable, Equatable {
         longitude = aDecoder.decodeObject(forKey: "longitude") as? String
         latitude = aDecoder.decodeObject(forKey: "latitude") as? String
         emergency_alert_count = aDecoder.decodeObject(forKey: "emergency_alert_count") as? Int
-        speed = aDecoder.decodeObject(forKey: "speed") as? Int
+        speed = aDecoder.decodeObject(forKey: "speed") as? Double
         vehicle_mode = aDecoder.decodeObject(forKey: "vehicle_mode") as? String
         ignition = aDecoder.decodeObject(forKey: "ignition") as? String
         gsm_signal_strength = aDecoder.decodeObject(forKey: "gsm_signal_strength") as? Int
@@ -116,6 +116,10 @@ struct D : Codable, Hashable, Equatable {
 extension Array where Element == D {
     func filterActivePackets() -> [D] {
         return self.filter({$0.gnss_fix == 1})
+    }
+    
+    func filterIgnitionONPackets() -> [D] {
+        return self.filter({$0.ignition?.lowercased() == "on"})
     }
     func getMovingPackets() -> [D] {
         return self.filter({($0.vehicle_mode == "M" || $0.vehicle_mode == "H") && $0.speed ?? 0 > 0})
