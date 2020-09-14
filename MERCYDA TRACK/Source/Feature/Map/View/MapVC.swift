@@ -421,7 +421,9 @@ class MapVC: UIViewController {
                     }
                     CATransaction.commit()
                     if i == loctions.count - 1 {
-                        self?.viewModel?.startUpdateLocations()
+                        if self?.isToday ?? false {
+                            self?.viewModel?.startUpdateLocations()
+                        }
                         print("last execution")
                     }
                     

@@ -61,7 +61,7 @@ extension VehicleFlow {
         //        Use this function only for Debug Purpose.
         //        Check Packets Mode
         
-        //         debugForPacketsModes(rawPackets: packets)
+                 debugForPacketsModes(rawPackets: packets)
         
         //        END
         //        ************************************************
@@ -80,10 +80,10 @@ extension VehicleFlow {
         return calculateDistance(packets: twoDimArray, isAPI: isPlaceAPI)
     }
     
-    func debugForPacketsModes(rawPackets: [DeviceDataResponse]) {
+    func debugForPacketsModes(rawPackets: [D]) {
         var debugArray = ["START"]
         _ = rawPackets.map({ value in
-            let temp = value.d?.vehicle_mode
+            let temp = value.vehicle_mode
             debugArray.append(temp ?? "UN")
         })
         print("************************\n", debugArray)
@@ -298,7 +298,7 @@ extension VehicleFlow {
     }
     
     func getDeviceDataForBackgroundUpdate(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        
+                   
         self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
@@ -318,6 +318,7 @@ extension VehicleFlow {
                 completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
+            
     }
     
     
