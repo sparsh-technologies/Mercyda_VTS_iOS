@@ -61,7 +61,7 @@ extension VehicleFlow {
         //        Use this function only for Debug Purpose.
         //        Check Packets Mode
         
-                 debugForPacketsModes(rawPackets: packets)
+//        debugForPacketsModes(rawPackets: packets)
         
         //        END
         //        ************************************************
@@ -155,7 +155,16 @@ extension VehicleFlow {
                 }
                 for (index, item) in processedResult.enumerated() {
                     if item.vehicleMode != "M" {
-                        self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+                        dispatchGroup?.enter()
+                        if let address = fetchAddressFromDB(lat: item.latitude, long: item.longitude) {
+                            if index <= self.processedResult.count {
+                                self.processedResult[index].placeName = address
+                                dispatchGroup?.leave()
+                            }
+                        }
+                        else {
+                            self.getLocationDetails(locationCoordinates: (lat: item.latitude, lon: item.longitude), count: index)
+                        }
                     }
                 }
                 dispatchGroup?.notify(queue: .main) {
@@ -298,7 +307,7 @@ extension VehicleFlow {
     }
     
     func getDeviceDataForBackgroundUpdate(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-                   
+        
         self.networkServiceCalls.getDeviceData(serialNumber: serialNO, enableSourceDate: "true", startTime: getTimeStampForAPI(flag: 1), endTime: getTimeStampForAPI(flag: 2)) { [weak self] (state) in
             guard let this = self else {
                 return
@@ -318,7 +327,7 @@ extension VehicleFlow {
                 completion(.failure(AppSpecificError.unknownError.rawValue))
             }
         }
-            
+        
     }
     
     
@@ -428,8 +437,9 @@ extension VehicleFlow {
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
                 self?.placesArray.append((name: cityAddress, index: count))
                 if count <= self?.processedResult.count ?? 0 {
-                self?.processedResult[count].placeName = cityAddress
+                    self?.processedResult[count].placeName = cityAddress
                 }
+                self?.writeAddressToDB(lat: locationCoordinates.lat, long: locationCoordinates.lon, address: cityAddress)
                 self?.updateVehicleAddress()
                 self?.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
@@ -498,7 +508,7 @@ extension VehicleFlow {
             return true
         }
         else {
-        return false
+            return false
         }
     }
 }

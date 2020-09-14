@@ -81,6 +81,9 @@
 		524882A3250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
 		524882A4250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
 		524882A5250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
+		524882A7250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
+		524882A8250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
+		524882A9250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
 		524F25BC250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
 		524F25BD250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
 		524F25BE250BA15D00861728 /* PushTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F25BB250BA15D00861728 /* PushTokenResponse.swift */; };
@@ -324,6 +327,7 @@
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
 		524882A2250F7F1E005649AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleFlowModel+CoredataPlaces.swift"; sourceTree = "<group>"; };
 		524F25BB250BA15D00861728 /* PushTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTokenResponse.swift; sourceTree = "<group>"; };
 		524F25C3250BE16600861728 /* MERCYDA TRACK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MERCYDA TRACK.entitlements"; sourceTree = "<group>"; };
 		5260058F24C336FA005C338F /* VehicleDataFlow+UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlow+UIDatePicker.swift"; sourceTree = "<group>"; };
@@ -758,6 +762,7 @@
 			children = (
 				84410DA924B8F18700E6047D /* VehicleFlowModel.swift */,
 				52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */,
+				524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */,
 				84410DAA24B8F18700E6047D /* TripDetailsModel.swift */,
 				52698B1025065E1B00063492 /* VehicleDataWrapper.swift */,
 			);
@@ -1456,6 +1461,7 @@
 				52698ABC2504DE7F00063492 /* CoreDataStack.swift in Sources */,
 				529CED28250A651700095184 /* FcmRegisterParams.swift in Sources */,
 				C6623AE924AB9736003C3519 /* GetVehicleListParams.swift in Sources */,
+				524882A7250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */,
 				84E3E52924AD0974004CC622 /* LoginTableviewCell.swift in Sources */,
 				84FE4D8C24F1937A00DA310C /* AlertTableviewModel.swift in Sources */,
 				C6623AE324AB9736003C3519 /* LoginParams.swift in Sources */,
@@ -1528,6 +1534,7 @@
 				C698D1BD24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACC24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C627F11024BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
+				524882A8250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */,
 				C6623AFF24B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCB24AB7BE70078487A /* UIView+Extension.swift in Sources */,
 				52B7E56224BB507C00A9881C /* URLBuildable.swift in Sources */,
@@ -1600,6 +1607,7 @@
 				C698D1BE24B5FABA00F9B32B /* MapVCExtensions.swift in Sources */,
 				C6623ACD24AB970C003C3519 /* Vehicle.swift in Sources */,
 				C627F11124BC96630026F1E7 /* LocationDetailsResponse.swift in Sources */,
+				524882A9250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */,
 				C6623B0024B1FF2D003C3519 /* ListVehicleTableViewModel.swift in Sources */,
 				52457DCC24AB7BE70078487A /* UIView+Extension.swift in Sources */,
 				52B7E56324BB507D00A9881C /* URLBuildable.swift in Sources */,
