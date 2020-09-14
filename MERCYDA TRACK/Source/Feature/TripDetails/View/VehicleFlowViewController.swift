@@ -71,7 +71,7 @@ final class VehicleFlowViewController: BaseViewController {
         if isDeviceListCalled != 1 {
             getDeviceDetailsWithOutActivityInd()
         }
-        APItimer = Timer.scheduledTimer(timeInterval: 25, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+        APItimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -174,7 +174,7 @@ final class VehicleFlowViewController: BaseViewController {
             MBProgressHUD.hide(for: this.view, animated: false)
             switch result {
             case .success(_):
-                //                this.APItimer = Timer.scheduledTimer(timeInterval: 60, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+//                this.APItimer = Timer.scheduledTimer(timeInterval: 30, target: this, selector: #selector(this.getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
                 this.mapButton.isHidden = false
                 print("")
             case .failure(let error):
@@ -330,6 +330,7 @@ extension VehicleFlowViewController: VehicleFlowControllerDelegate {
         
         mapVC.viewModel = viewModel
         mapVC.vehicleObject = vehicleObj
+        mapVC.isToday = vehicleFlowViewModel?.isToday() ?? false
         self.show(mapVC, sender: self)
     }
     

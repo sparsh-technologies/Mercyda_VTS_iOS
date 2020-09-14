@@ -57,6 +57,8 @@ class MapVC: UIViewController {
    // var timer: Timer!
     var mapFlag = 1
     var isNavFlag = 0
+    var isToday =  Bool()
+    
     
     deinit {
         viewModel?.APItimer?.invalidate()

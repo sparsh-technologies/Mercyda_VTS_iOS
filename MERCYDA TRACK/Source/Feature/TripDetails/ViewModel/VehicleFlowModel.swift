@@ -30,6 +30,8 @@ final class VehicleFlow  {
     var dispatchGroup: DispatchGroup?
     var managedContext: NSManagedObjectContext!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var todayDate: String = ""
+    var specficDate: String = ""
     
 }
 extension VehicleFlow {
@@ -320,7 +322,8 @@ extension VehicleFlow {
     
     
     func getDeviceData(serialNO: String, completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
-        
+        todayDate = getTimeStampForAPI(flag: 1)
+        specficDate = getTimeStampForAPI(flag: 1)
         let packetsFromDB = fetchPacketsFromDB(deviceID: serialNO, date: getTimeStampForAPI(flag: 1))
         if packetsFromDB.count > 0 {
             performFiltering(packets: packetsFromDB, isPlaceAPI: true)
@@ -374,6 +377,7 @@ extension VehicleFlow {
     
     
     func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
+        specficDate = date
         self.dispatcher = nil
         self.dispatchGroup = nil
         let startDateType = "00:00:00 " + date
@@ -422,7 +426,9 @@ extension VehicleFlow {
             dispatchGroup?.enter()
             self.dispatcher?.getLocationDetails(locationCoordinates: locationCoordinates) { [weak self] (cityAddress) in
                 self?.placesArray.append((name: cityAddress, index: count))
+                if count <= self?.processedResult.count ?? 0 {
                 self?.processedResult[count].placeName = cityAddress
+                }
                 self?.updateVehicleAddress()
                 self?.delegate?.reloadData()
                 printLog("\(cityAddress) count:  \(count) \n")
@@ -484,5 +490,14 @@ extension VehicleFlow {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yy"
         return formatter.string(from: date as Date)
+    }
+    
+    func isToday() -> Bool {
+        if todayDate == specficDate {
+            return true
+        }
+        else {
+        return false
+        }
     }
 }
