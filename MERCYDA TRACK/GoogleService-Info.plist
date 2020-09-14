@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>836302381883-r9e9qpmu088dcm3tdg7s7ad5a7ti0hvm.apps.googleusercontent.com</string>
+	<string>272935731519-ssvhg0rodj6j0hclb6shl2mockl9tk5d.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.836302381883-r9e9qpmu088dcm3tdg7s7ad5a7ti0hvm</string>
+	<string>com.googleusercontent.apps.272935731519-ssvhg0rodj6j0hclb6shl2mockl9tk5d</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAiKCYuSLx_RFfxvRss7p9BgcBnbTYxoPI</string>
+	<string>AIzaSyAjcRmEam13vtv1JMjNEUIfBclvRr83XHs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>836302381883</string>
+	<string>272935731519</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.infinicom.MercydaTrack</string>
 	<key>PROJECT_ID</key>
-	<string>mercyda-track</string>
+	<string>mercyda-notifications</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mercyda-track.appspot.com</string>
+	<string>mercyda-notifications.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:836302381883:ios:250131f215dc9e317f0d1e</string>
+	<string>1:272935731519:ios:66f8d5d78a41b995bfd38a</string>
 	<key>DATABASE_URL</key>
-	<string>https://mercyda-track.firebaseio.com</string>
+	<string>https://mercyda-notifications.firebaseio.com</string>
 </dict>
 </plist>
