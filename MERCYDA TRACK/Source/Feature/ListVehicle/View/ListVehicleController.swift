@@ -41,7 +41,7 @@ class ListVehicleController: BaseViewController {
     /// view lifecycle method
     /// - Parameter animated:
     override func viewWillDisappear(_ animated: Bool) {
-        self.dispatchGroup = nil
+//        self.dispatchGroup = nil
         self.dispatcher = nil
         self.vehicleFlowModelObject = nil
         self.listVehicleviewmodel = nil
@@ -173,7 +173,7 @@ class ListVehicleController: BaseViewController {
             if let coordinates =  item.last_updated_data {
                 if let address = vehicleFlowModelObject?.fetchAddressFromDB(lat: coordinates.coordinates.lat, long: coordinates.coordinates.lon) {
                     self.vehiclelist[index].address2 = address
- 
+
                 }
                 else {
                 self.getLocationDetails(locationCoordinates: coordinates.coordinates, count: index)
