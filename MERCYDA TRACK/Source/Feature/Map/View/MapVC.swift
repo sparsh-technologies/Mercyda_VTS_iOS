@@ -32,6 +32,7 @@ class MapVC: UIViewController {
     @IBOutlet weak var lastUpdatedDateLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    @IBOutlet var bottomButtonCollection: [UIButton]!
     
     var viewModel : MapVCViewModel?
     weak var delegateForMapPicker : MapPickerDelegate?
@@ -103,6 +104,7 @@ class MapVC: UIViewController {
     }
     
     @IBAction func routePlayBtn(_ sender: Any) {
+        bottomButtonCollection.forEach({$0.isUserInteractionEnabled = false})
         mapView?.clear()
         self.animationPolyline = GMSPolyline()
         self.animationPolylineBase = GMSPolyline()
@@ -114,9 +116,9 @@ class MapVC: UIViewController {
     
     @IBAction func currentLocationBtn(_ sender: Any) {
         if let location = self.polyLineLocations.last {
-            let camera = GMSCameraPosition.camera(withTarget: location, zoom: 55)
+            let camera = GMSCameraPosition.camera(withTarget: location, zoom: 15)
             CATransaction.begin()
-            CATransaction.setAnimationDuration(2.00)
+            CATransaction.setAnimationDuration(1.25)
             self.mapView?.animate(with: GMSCameraUpdate.setCamera(camera))
             CATransaction.commit()
         }
@@ -128,6 +130,7 @@ class MapVC: UIViewController {
     }
     
     func setuiDatas(){
+        bottomButtonCollection.forEach({$0.isUserInteractionEnabled = false})
         self.vehicleNumber.text = vehicleObject?.vehicle_registration
         self.addressLabel.text = vehicleObject?.address2
         if let speed =  vehicleObject?.last_updated_data?.speed{
@@ -299,7 +302,7 @@ class MapVC: UIViewController {
             })
             CATransaction.commit()
         }
-        CATransaction.flush()
+      //  CATransaction.flush()
     }
     
     @objc func dismissView() {
@@ -357,7 +360,7 @@ class MapVC: UIViewController {
         }
         mapView?.animate(with: GMSCameraUpdate.fit(bounds, withPadding: padding))
         CATransaction.commit()
-        CATransaction.flush()
+       // CATransaction.flush()
     }
     
     
@@ -405,6 +408,7 @@ class MapVC: UIViewController {
 //            }
 //            self.path = path
             var timer = DispatchTime.now()
+            bottomButtonCollection.forEach({$0.isUserInteractionEnabled = false})
             CATransaction.flush()
             for i in 0..<loctions.count {
                 DispatchQueue.main.asyncAfter(deadline: timer, execute: { [weak self] in
@@ -425,6 +429,7 @@ class MapVC: UIViewController {
                             self?.viewModel?.startUpdateLocations()
                         }
                         print("last execution")
+                        self?.bottomButtonCollection.forEach({$0.isUserInteractionEnabled = true})
                     }
                     
                 })

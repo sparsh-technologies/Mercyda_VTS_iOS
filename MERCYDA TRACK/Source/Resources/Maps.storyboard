@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rK8-JH-rvH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rK8-JH-rvH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -356,6 +356,9 @@
                         <outlet property="vehicleContainerView" destination="uXT-2n-eQO" id="1vR-Qh-yR7"/>
                         <outlet property="vehicleImageview" destination="spV-BW-fuv" id="ZxM-cf-8YP"/>
                         <outlet property="vehicleNumber" destination="P1j-rH-JjR" id="Iid-jK-BVC"/>
+                        <outletCollection property="bottomButtonCollection" destination="OTx-Vq-a53" collectionClass="NSMutableArray" id="God-Ii-1nq"/>
+                        <outletCollection property="bottomButtonCollection" destination="9HA-VE-cPv" collectionClass="NSMutableArray" id="FBC-Aa-R5v"/>
+                        <outletCollection property="bottomButtonCollection" destination="cuR-MQ-dlo" collectionClass="NSMutableArray" id="ER9-WL-Agh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7c-ci-Prh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
