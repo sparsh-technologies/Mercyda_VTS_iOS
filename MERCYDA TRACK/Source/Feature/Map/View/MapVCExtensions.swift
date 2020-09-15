@@ -49,7 +49,7 @@ extension MapVC : MapVCViewModelDelegate {
                 self.setCarMarkers(carPosition: locArray[i], position1: locArray[i == locArray.count - 1 ? i-1 : i], position2: locArray[i == locArray.count - 1 ? i : i+1])
                 }
                 if !self.isPositionWithinScreen(position: locArray[i]) {
-                    let camera = GMSCameraPosition.camera(withTarget: locArray[i], zoom: 17)
+                    let camera = GMSCameraPosition.camera(withTarget: locArray[i], zoom: 14)
                     self.mapView?.animate(with: GMSCameraUpdate.setCamera(camera))
                 }
                 CATransaction.commit()
