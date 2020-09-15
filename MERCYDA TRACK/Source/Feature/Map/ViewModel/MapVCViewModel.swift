@@ -77,6 +77,7 @@ extension MapVCViewModel {
                        delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
                     } else {
                         delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: self.arrForMovingLocations.reversed())
+                        self.totalDistance = 0.00
                     }
                 } else {
                     delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
@@ -86,6 +87,7 @@ extension MapVCViewModel {
             } else if array.count > 0 {
                 let locations = array.getCoordinates(); if locations.count > 0 {
                     delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+                    self.totalDistance = 0.0
                 }
             }
             /*
