@@ -30,6 +30,7 @@ class ListVehicleController: BaseViewController {
     var dispatchGroup: DispatchGroup?
     var vehiclelist = [Vehicle]()
     var clickType:String?
+    var vehicleFlowModelObject: VehicleFlow?
     
     deinit {
         printLog("ViewController Released from memory : ListVehicleController")
@@ -42,6 +43,7 @@ class ListVehicleController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.dispatchGroup = nil
         self.dispatcher = nil
+        self.vehicleFlowModelObject = nil
         self.listVehicleviewmodel = nil
                 if searching{
                 closeButton.sendActions(for: .allEvents)
@@ -70,6 +72,7 @@ class ListVehicleController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
        // getAllAddress()
          noResultStackView.isHidden = true
+        vehicleFlowModelObject = VehicleFlow()
          listVehicleviewmodel = ListVehicleViewModel()
          getVehiclesList()
     }
@@ -168,7 +171,13 @@ class ListVehicleController: BaseViewController {
         }
         for (index, item) in vehiclelist.enumerated()  {
             if let coordinates =  item.last_updated_data {
+                if let address = vehicleFlowModelObject?.fetchAddressFromDB(lat: coordinates.coordinates.lat, long: coordinates.coordinates.lon) {
+                    self.vehiclelist[index].address2 = address
+ 
+                }
+                else {
                 self.getLocationDetails(locationCoordinates: coordinates.coordinates, count: index)
+                }
             }
         }
         dispatchGroup?.notify(queue: .main) {
@@ -200,6 +209,7 @@ class ListVehicleController: BaseViewController {
                 //                  self?.processedResult[count].placeName = cityAddress
                 //                  self?.delegate?.reloadData()
                 self?.vehiclelist[count].address2 = cityAddress
+                self?.vehicleFlowModelObject?.writeAddressToDB(lat: locationCoordinates.lat, long: locationCoordinates.lon, address: cityAddress)
                 self?.refreshDataSource()
                 self?.dispatchGroup?.leave()
             }
