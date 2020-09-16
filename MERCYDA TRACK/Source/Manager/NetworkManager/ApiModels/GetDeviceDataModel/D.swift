@@ -104,7 +104,7 @@ struct D : Codable, Hashable, Equatable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(source_date)
+       // hasher.combine(source_date)
     }
     
     static func == (lhs: D, rhs: D) -> Bool {
