@@ -108,7 +108,7 @@ struct D : Codable, Hashable, Equatable {
     }
     
     static func == (lhs: D, rhs: D) -> Bool {
-        return lhs.source_date == rhs.source_date
+        return lhs.source_date == rhs.source_date && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude && lhs.vehicle_mode == rhs.vehicle_mode
     }
     
 }
