@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -196,19 +196,19 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FNE-2F-atI">
-                                                <rect key="frame" x="278" y="23" width="116" height="23"/>
+                                                <rect key="frame" x="193" y="23" width="201" height="23"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signal" translatesAutoresizingMaskIntoConstraints="NO" id="feV-O6-2d3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="26.666666666666668" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="23"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="23" id="tHG-sh-PNP"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dishActive" translatesAutoresizingMaskIntoConstraints="NO" id="36X-Bz-5cj">
-                                                        <rect key="frame" x="41.666666666666686" y="0.0" width="27.333333333333329" height="23"/>
+                                                        <rect key="frame" x="68" y="0.0" width="54" height="23"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ignition" translatesAutoresizingMaskIntoConstraints="NO" id="CJS-XH-2a7">
-                                                        <rect key="frame" x="84" y="0.0" width="32" height="23"/>
+                                                        <rect key="frame" x="137" y="0.0" width="64" height="23"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -362,8 +362,17 @@
                     <navigationItem key="navigationItem" id="45N-Qm-iEt">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="f8q-Dk-w5S"/>
+                        <leftBarButtonItems>
+                            <barButtonItem width="70" id="HKp-ge-ccX"/>
+                            <barButtonItem image="left" id="XWU-Ve-uzM">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="leftBarButtonAction:" destination="wy4-aQ-K48" id="hPO-lC-NfA"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="LEL-Pm-emZ">
-                            <rect key="frame" x="132" y="6" width="150" height="32"/>
+                            <rect key="frame" x="150" y="6" width="115" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal">
@@ -386,6 +395,15 @@
                                 <action selector="pickerBtnAction:" destination="wy4-aQ-K48" eventType="touchUpInside" id="gLj-dZ-um7"/>
                             </connections>
                         </button>
+                        <rightBarButtonItems>
+                            <barButtonItem width="70" id="Xlp-xH-T9F"/>
+                            <barButtonItem image="right" id="yWP-cY-pnu">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="rightBarButtonAction:" destination="wy4-aQ-K48" id="ugv-4N-LEq"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="PickerCancelBtn" destination="EoK-xj-Ybq" id="O6H-j1-ZlJ"/>
@@ -438,10 +456,12 @@
         <image name="dishActive" width="27.333333969116211" height="27.333333969116211"/>
         <image name="ignition" width="32" height="32"/>
         <image name="kmhr" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="left" width="32" height="32"/>
         <image name="location" width="8.6666669845581055" height="8.6666669845581055"/>
         <image name="locationMarker" width="32" height="32"/>
         <image name="max_speed" width="8.6666669845581055" height="8.6666669845581055"/>
         <image name="min_speed" width="8.6666669845581055" height="8.6666669845581055"/>
+        <image name="right" width="20" height="20"/>
         <image name="signal" width="26.666666030883789" height="19.333333969116211"/>
         <namedColor name="ThemeBlue">
             <color red="0.0078431372549019607" green="0.6588235294117647" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

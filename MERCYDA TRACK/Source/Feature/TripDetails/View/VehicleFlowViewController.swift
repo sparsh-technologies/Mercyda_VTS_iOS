@@ -46,7 +46,8 @@ final class VehicleFlowViewController: BaseViewController {
     private var totalDistance: Double?
     private var maximumSpeed: Double?
     var isDeviceListCalled = 0
-    
+    let rightBarButton = UIButton()
+     var curentDate:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +62,70 @@ final class VehicleFlowViewController: BaseViewController {
         // vehicleContainerView.addGradientBackground(firstColor:Utility.hexStringToUIColor("#EFD61C"), secondColor: UIColor.orange)
         showDatePicker()
         setuiDatas()
-        
+        self.navigationItem.leftItemsSupplementBackButton = true
+//        self.rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+//        self.rightBarButton.setImage(UIImage.init(named:"right"), for: .normal)
+//        let one =  rightBarButton.leadingAnchor.constraint(equalTo:pickerBtn.leadingAnchor, constant: 20)
+//        rightBarButton.centerYAnchor.constraint(equalTo: pickerBtn.centerYAnchor).isActive = true
+//         NSLayoutConstraint.activate([one])
+//        self.navigationController?.navigationBar.addSubview(rightBarButton)
+        curentDate = Utility.getCurrentDate()
+
     }
+    @objc func buttonClick(){
+      
+    }
+    
+    override func viewDidLayoutSubviews() {
+//        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named:"right.png"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(buttonClick))
+//                    rightBarButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 80)
+//
+//                    self.navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
+
+        
+        
+//         let suggestImage  = UIImage(named: "right.png")!
+//         let suggestButton = UIButton(frame: CGRect(x:0, y:0, width:20, height:20))
+//         suggestButton.setBackgroundImage(suggestImage, for: .normal)
+//        // suggestButton.addTarget(self, action: #selector(self.showPopover(sender:)), for:.touchUpInside)
+//         //suggestButton.transform = CGAffineTransform(translationX: 0, y: -8)
+//         // add the button to a container, otherwise the transform will be ignored
+//         let suggestButtonContainer = UIView(frame: suggestButton.frame)
+//         suggestButtonContainer.addSubview(suggestButton)
+//         let suggestButtonItem = UIBarButtonItem(customView: suggestButtonContainer)
+//         // add button shift to the side
+//         navigationItem.rightBarButtonItem = suggestButtonItem
+        
+
+           
+           
+    }
+    
+    @IBAction func leftBarButtonAction(_ sender: Any) {
+        print("left")
+          let day = Utility.stringToDate(dateString:curentDate)
+          let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: day)
+         curentDate = Utility.dataDatefornextDay(dateString: previousDay!)
+        let previousDate = Utility.showDate(dateString: previousDay!)
+               print(previousDate)
+        
+       
+    }
+    
+    @IBAction func rightBarButtonAction(_ sender: Any) {
+        print("right")
+        let day = Utility.stringToDate(dateString:curentDate)
+        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: day)
+       // currentDate = generalUtil.dataDatefornextDay(dateString: nextDay!)
+       // dayDateText = generalUtil.showDate(dateString: nextDay!
+         curentDate = Utility.dataDatefornextDay(dateString: nextDay!)
+        let nextDate = Utility.showDate(dateString: nextDay!)
+        print(nextDate)
+        
+              
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if vehicleFlowViewModel == nil {

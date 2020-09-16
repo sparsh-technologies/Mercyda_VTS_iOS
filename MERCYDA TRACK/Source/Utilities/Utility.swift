@@ -150,6 +150,14 @@ extension Utility {
            )
        }
        
+    
+    
+   class func stringToDate(dateString:String) -> Date {
+           let inputFormatter = DateFormatter()
+           inputFormatter.dateFormat = "yyyy-MM-dd"
+           let date = inputFormatter.date(from: dateString)
+           return date!
+       }
  class func getTimeStampForAPI(flag: Int) -> String {
         
         let startDateFormatter = DateFormatter()
@@ -170,6 +178,38 @@ extension Utility {
             return String(Int(endDate))
         }
         return ""
+    }
+    
+    
+  class func getCurrentDate() -> String {
+        let date = Date()
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd"
+        let currentDate = formatter1.string(from: date)
+        return currentDate
+    }
+ class func showDateFromString(dateString:String) -> String {
+          let inputFormatter = DateFormatter()
+          inputFormatter.dateFormat = "yyyy-MM-dd"
+          let showDate = inputFormatter.date(from: dateString)
+          inputFormatter.dateFormat = "dd MMM yyyy"
+          let date = inputFormatter.string(from: showDate!)
+          return date
+      }
+    
+class  func showDate(dateString:Date) -> String {
+           let dateFormatter = DateFormatter()
+         //  dateFormatter.dateFormat = "EEEE, dd MMM "
+     dateFormatter.dateFormat = "dd-MMM-YY"
+           let date = dateFormatter.string(from: dateString)
+           return date
+       }
+    
+ class  func dataDatefornextDay(dateString:Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.string(from: dateString)
+        return date
     }
 }
 
