@@ -47,6 +47,8 @@ class MapVCViewModel  {
                 if let pkts = originalDeviceList, pkts.count > 0 {
                     let uniqePackets = Utility.uniq(source: pkts)
                     self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: uniqePackets, isPlaceAPI: false))) KM")
+//                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
+//                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
                 }
             }
         }
@@ -77,6 +79,7 @@ extension MapVCViewModel {
                        delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
                     } else {
                         delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: self.arrForMovingLocations.reversed())
+                        self.totalDistance = 0.00
                     }
                 } else {
                     delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
@@ -86,6 +89,7 @@ extension MapVCViewModel {
             } else if array.count > 0 {
                 let locations = array.getCoordinates(); if locations.count > 0 {
                     delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+                    self.totalDistance = 0.0
                 }
             }
             /*

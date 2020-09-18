@@ -105,10 +105,14 @@ struct D : Codable, Hashable, Equatable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(source_date)
+        hasher.combine(longitude)
+        hasher.combine(latitude)
+        hasher.combine(vehicle_mode)
+        
     }
     
     static func == (lhs: D, rhs: D) -> Bool {
-        return lhs.source_date == rhs.source_date
+        return lhs.source_date == rhs.source_date && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude && lhs.vehicle_mode == rhs.vehicle_mode
     }
     
 }

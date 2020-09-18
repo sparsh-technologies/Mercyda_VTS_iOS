@@ -105,6 +105,7 @@ extension VehicleFlow {
                     totalDistanceFromPacket = 0.0
                     mode = eachPacket.contains { value in value.vehicle_mode == "M" || value.vehicle_mode == "H"
                         } ? "M": "S"
+                    if mode == "M" || mode == "H" {
                     for index in 0..<eachPacket.count - 1{
                         let packet1 = eachPacket[index]
                         let packet2 = eachPacket[index + 1]
@@ -133,6 +134,7 @@ extension VehicleFlow {
                         totalDistanceFromPacket = totalDistanceFromPacket + maxDistance
                         //                print("\n\n\n Distance in each Set ", totalDistanceFromPacket)
                         //                print("Total Distanec ", totalDistanceFromPacket)
+                    }
                     }
                     let trip = TripDetailsModel.init(
                         mode: mode,
@@ -181,10 +183,10 @@ extension VehicleFlow {
                     for index in 0..<eachPacket.count - 1{
                         let packet1 = eachPacket[index]
                         let packet2 = eachPacket[index + 1]
-                        let maxSpeedPkt1 = packet1.speed ?? 0
-                        let maxSpeedPkt2 = packet2.speed ?? 0
-                        let minSpeedPkt1 = packet1.speed ?? 0
-                        let minSpeedPkt2 = packet2.speed ?? 0
+                        let maxSpeedPkt1 = packet1.speed ?? 1
+                        let maxSpeedPkt2 = packet2.speed ?? 1
+                        let minSpeedPkt1 = packet1.speed ?? 1
+                        let minSpeedPkt2 = packet2.speed ?? 1
                         let tempMax = Double(maxSpeedPkt1 > maxSpeedPkt2 ? maxSpeedPkt1 : maxSpeedPkt2)
                         
                         
@@ -193,9 +195,9 @@ extension VehicleFlow {
                         
                         distanceFromCoordinates = calculateDistanceFormCoordinates(packet1Lat: Double(packet1.latitude ?? "0")!, packet2Lat: Double(packet2.latitude ?? "0")!, packet1Lon: Double(packet1.longitude ?? "0")!, packet2Lon:Double(packet2.longitude ?? "0")!)
                         let time = durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0))
-                        let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 0), secondPktSpeed: Double(packet2.speed ?? 0), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 0), packet2Duration: Double(packet2.source_date ?? 0)))
+                        let distance = calculateDistanceFormSpeed(firstPktSpeed: Double(packet1.speed ?? 1), secondPktSpeed: Double(packet2.speed ?? 1), duration: durationInSeconds(packet1Duration: Double(packet1.source_date ?? 1), packet2Duration: Double(packet2.source_date ?? 1)))
                         
-                        distanceFromSpeed = time < 600 ? distance : 0
+                        distanceFromSpeed = time < 600 ? distance : 0.01
                         let maxDistance = distanceFromCoordinates > distanceFromSpeed ? distanceFromCoordinates: distanceFromSpeed
                         if distance.isNaN {
                             
@@ -258,7 +260,7 @@ extension VehicleFlow {
             return result
             
         }
-        return 0
+        return 0.01
     }
     
     func milliSecondsToTime(milliSeconds: Double) -> String {
@@ -284,6 +286,9 @@ extension VehicleFlow {
         //        print(dateFormatter.string(from: date))
         //        print(dateFormatter.string(from: date2))
         let timeInSeconds = pkt1Duration.timeIntervalSince(pkt2Duration)
+        if timeInSeconds == 0 {
+            return 0.1
+        }
         return timeInSeconds
     }
     
