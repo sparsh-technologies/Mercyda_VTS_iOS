@@ -47,6 +47,8 @@ class MapVCViewModel  {
                 if let pkts = originalDeviceList, pkts.count > 0 {
                     let uniqePackets = Utility.uniq(source: pkts)
                     self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: uniqePackets, isPlaceAPI: false))) KM")
+//                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
+//                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
                 }
             }
         }
