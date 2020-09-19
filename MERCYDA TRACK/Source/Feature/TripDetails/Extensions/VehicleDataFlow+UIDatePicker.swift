@@ -48,4 +48,54 @@ extension VehicleFlowViewController {
         pickerView.isHidden = true
         pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: Date())
     }
+    
+    @IBAction func leftBarButtonAction(_ sender: Any) {
+        leftBarBtnOutlet.isEnabled = false
+        rightBarButton.isEnabled = false
+        flagForDateTitle = false
+        APItimer?.invalidate()
+        APItimer = nil
+        let day = Utility.stringToDate(dateString:curentDate)
+        let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: day)
+        curentDate = Utility.dataDatefornextDay(dateString: previousDay!)
+        let previousDate = Utility.showDate(dateString: previousDay!)
+        pickerBtn.titleLabel?.text = Utility.showDateForTitle(dateString: previousDay ?? NSDate() as Date)
+        triggerApiCall(date: previousDate)
+    }
+    
+    @IBAction func rightBarButtonAction(_ sender: Any) {
+        leftBarBtnOutlet.isEnabled = false
+        rightBarButton.isEnabled = false
+        flagForDateTitle = false
+        APItimer?.invalidate()
+        APItimer = nil
+        let day = Utility.stringToDate(dateString:curentDate)
+        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: day)
+        // currentDate = generalUtil.dataDatefornextDay(dateString: nextDay!)
+        // dayDateText = generalUtil.showDate(dateString: nextDay!
+        curentDate = Utility.dataDatefornextDay(dateString: nextDay!)
+        let nextDate = Utility.showDate(dateString: nextDay!)
+        pickerBtn.titleLabel?.text = Utility.showDateForTitle(dateString: nextDay ?? NSDate() as Date)
+        triggerApiCall(date: nextDate)        
+    }
+    
+    func triggerApiCall(date: String) {
+        MBProgressHUD.showAdded(to: view, animated: true)
+               vehicleFlowViewModel?.getDetailsForSpecficDate(serialNo: serialNumber, date: date) {[weak self] result in
+                   guard let self = self else {
+                       return
+                   }
+                   MBProgressHUD.hide(for: self.view, animated: false)
+                    self.leftBarBtnOutlet.isEnabled = true
+                    self.rightBarButton.isEnabled = true
+                   switch result {
+                   case .success(_):
+                       print("")
+                       self.mapButton.isHidden = false
+                   case .failure(let error):
+                       statusBarMessage(.CustomError, error)
+                       self.mapButton.isHidden = true
+                   }
+               }
+    }
 }

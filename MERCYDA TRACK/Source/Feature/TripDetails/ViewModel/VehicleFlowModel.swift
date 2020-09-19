@@ -394,7 +394,7 @@ extension VehicleFlow {
     func getDetailsForSpecficDate(serialNo: String, date: String, _ completion: @escaping (WebServiceResult<[DeviceDataResponse], String>) -> Void) {
         specficDate = date
         self.dispatcher = nil
-        self.dispatchGroup = nil
+//        self.dispatchGroup = nil
         let startDateType = "00:00:00 " + date
         let endDateType = "23:59:00 " + date
         let dateFormatter = DateFormatter()

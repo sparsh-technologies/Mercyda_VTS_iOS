@@ -18,6 +18,8 @@ protocol VehicleFlowControllerDelegate: class {
 
 final class VehicleFlowViewController: BaseViewController {
     
+    @IBOutlet weak var rigthBtnOutlet: UIBarButtonItem!
+    @IBOutlet weak var leftBarBtnOutlet: UIBarButtonItem!
     @IBOutlet weak var pickerContainView: UIView!
     @IBOutlet  weak var pickerView: UIView!
     @IBOutlet  weak var datePicker: UIDatePicker!
@@ -47,7 +49,7 @@ final class VehicleFlowViewController: BaseViewController {
     private var maximumSpeed: Double?
     var isDeviceListCalled = 0
     let rightBarButton = UIButton()
-     var curentDate:String = ""
+    var curentDate:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,32 +102,7 @@ final class VehicleFlowViewController: BaseViewController {
            
            
     }
-    
-    @IBAction func leftBarButtonAction(_ sender: Any) {
-        print("left")
-          let day = Utility.stringToDate(dateString:curentDate)
-          let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: day)
-         curentDate = Utility.dataDatefornextDay(dateString: previousDay!)
-        let previousDate = Utility.showDate(dateString: previousDay!)
-               print(previousDate)
-        
-       
-    }
-    
-    @IBAction func rightBarButtonAction(_ sender: Any) {
-        print("right")
-        let day = Utility.stringToDate(dateString:curentDate)
-        let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: day)
-       // currentDate = generalUtil.dataDatefornextDay(dateString: nextDay!)
-       // dayDateText = generalUtil.showDate(dateString: nextDay!
-         curentDate = Utility.dataDatefornextDay(dateString: nextDay!)
-        let nextDate = Utility.showDate(dateString: nextDay!)
-        print(nextDate)
-        
-              
-    }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if vehicleFlowViewModel == nil {
