@@ -52,9 +52,14 @@ class DashboardViewController: BaseViewController {
         super.viewDidLoad()
         configureViewUI()
         self.getDashboardVehicleCount()
-        dashboardViewModel.registerForFCM()
+        registerForPushNotification()
+      
     }
     
+    func registerForPushNotification(){
+        fcmRegisterType = "Register"
+        dashboardViewModel.registerForFCM()
+    }
     override func viewWillAppear(_ animated: Bool) {
          self.navigationController?.navigationBar.isHidden = true
         getDashboardVehicleCountWithoutActInd()
@@ -108,10 +113,15 @@ class DashboardViewController: BaseViewController {
         
     }
     
+    func unRegisterPushNotification(){
+         fcmRegisterType = "Unregister"
+          dashboardViewModel.registerForFCM()
+    }
     
     /// 
     /// - Parameter sender: <#sender description#>
     @IBAction func logoutButtonAction(_ sender: Any) {
+        unRegisterPushNotification()
         UserLoginInfo.flushData()
         let story = UIStoryboard(name: StoryboardName.Login.rawValue, bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: StoryboardID.LOginViewControllerID.rawValue)as! LoginViewController

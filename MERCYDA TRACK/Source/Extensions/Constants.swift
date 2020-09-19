@@ -13,7 +13,7 @@ var uame = ""
 var passWord = ""
 var vehicleNumber = ""
 var type = ""
-
+var fcmRegisterType = ""
 
 enum CellID:String {
     

@@ -18,12 +18,15 @@ class DashboardViewModel  {
 extension DashboardViewModel {
     
     func registerForFCM() {
+       
         let token = UserDefaults.getObject(withKey: "APN", type: [AnyHashable: Any].self)
         let fcm = FcmRegister.init(id: token?["token"] as! String, userName: Utility.getUserName(), password:Utility.getPassword() )
         networkServiceCalls.registerFcm(fcmKey: fcm) { (result) in
 
         }
     }
+    
+    
     func filterVehicleData(type:String, data:[Vehicle],completion:@escaping([Vehicle]) -> Void){
         let OnlineDat = filterOnlineData(data:data)
         let resultData = OnlineDat.filter { $0.last_updated_data?.vehicle_mode == type}

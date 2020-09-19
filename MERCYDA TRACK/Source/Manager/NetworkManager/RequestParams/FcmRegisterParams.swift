@@ -25,7 +25,12 @@ extension FcmRegisterParams: URLBuildable {
         return WebService.fcmRegisterPath
     }
     var httpMethod: HTTPMethod {
+        if fcmRegisterType == "Register" {
         return .post
+        }
+        else{
+         return .delete
+        }
     }
     var acceptType: ContentType {
         return .json
