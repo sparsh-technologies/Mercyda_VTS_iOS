@@ -12,5 +12,5 @@ enum AppSpecificError: String, Error {
     case unknownError = "Unknown Error"
     case responseValidationError = "Response Validation not Available"
     case resultFieldMissingError = "Result Field Missing"
-    case errorFieldMissingError = "Error Field Missing"
+    case errorFieldMissingError = "Please try after some time..!"
 }
