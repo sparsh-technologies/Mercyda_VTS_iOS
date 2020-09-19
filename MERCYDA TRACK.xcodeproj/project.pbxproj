@@ -78,9 +78,6 @@
 		52457DF924AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFA24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
 		52457DFB24AB83120078487A /* LoginLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52457DF824AB83120078487A /* LoginLocalization.swift */; };
-		524882A3250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
-		524882A4250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
-		524882A5250F7F1F005649AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 524882A2250F7F1E005649AE /* GoogleService-Info.plist */; };
 		524882A7250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
 		524882A8250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
 		524882A9250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */; };
@@ -103,6 +100,9 @@
 		527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
 		527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527B39E924AE57DA005BA95A /* Dashboard.storyboard */; };
+		528F7D49251602DE00E05DA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 528F7D48251602DD00E05DA2 /* GoogleService-Info.plist */; };
+		528F7D4A251602DE00E05DA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 528F7D48251602DD00E05DA2 /* GoogleService-Info.plist */; };
+		528F7D4B251602DE00E05DA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 528F7D48251602DD00E05DA2 /* GoogleService-Info.plist */; };
 		529CED24250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
 		529CED25250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
 		529CED26250A634A00095184 /* FcmRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529CED23250A634A00095184 /* FcmRegister.swift */; };
@@ -326,7 +326,6 @@
 		52457DF024AB802F0078487A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		52457DF424AB81700078487A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52457DF824AB83120078487A /* LoginLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLocalization.swift; sourceTree = "<group>"; };
-		524882A2250F7F1E005649AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		524882A6250FF379005649AE /* VehicleFlowModel+CoredataPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleFlowModel+CoredataPlaces.swift"; sourceTree = "<group>"; };
 		524F25BB250BA15D00861728 /* PushTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTokenResponse.swift; sourceTree = "<group>"; };
 		524F25C3250BE16600861728 /* MERCYDA TRACK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MERCYDA TRACK.entitlements"; sourceTree = "<group>"; };
@@ -336,6 +335,7 @@
 		52698ABF250532F100063492 /* VehicleFlowModel+Coredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleFlowModel+Coredata.swift"; sourceTree = "<group>"; };
 		52698B1025065E1B00063492 /* VehicleDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDataWrapper.swift; sourceTree = "<group>"; };
 		527B39E924AE57DA005BA95A /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		528F7D48251602DD00E05DA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529CED23250A634A00095184 /* FcmRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FcmRegister.swift; sourceTree = "<group>"; };
 		529CED27250A651700095184 /* FcmRegisterParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcmRegisterParams.swift; sourceTree = "<group>"; };
 		52B7E55124BB3B5E00A9881C /* VehicleDataFlowVC+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VehicleDataFlowVC+UITableView.swift"; sourceTree = "<group>"; };
@@ -1047,8 +1047,8 @@
 				52457DA524AB7A370078487A /* Source */,
 				C6C9D7F224A925A700BA7651 /* ViewController.swift */,
 				C6C9D7FF24A925A800BA7651 /* Info.plist */,
-				524882A2250F7F1E005649AE /* GoogleService-Info.plist */,
 				C6C9D7FC24A925A800BA7651 /* LaunchScreen.storyboard */,
+				528F7D48251602DD00E05DA2 /* GoogleService-Info.plist */,
 				C6C9D7F724A925A700BA7651 /* MERCYDA_TRACK.xcdatamodeld */,
 			);
 			path = "MERCYDA TRACK";
@@ -1220,7 +1220,7 @@
 				84410DA624B8F17300E6047D /* VehicleFlow.storyboard in Resources */,
 				C6C9D7FB24A925A800BA7651 /* Assets.xcassets in Resources */,
 				844F2D7D24F43232003AF25F /* AlertDetailTableViewCell.xib in Resources */,
-				524882A3250F7F1F005649AE /* GoogleService-Info.plist in Resources */,
+				528F7D49251602DE00E05DA2 /* GoogleService-Info.plist in Resources */,
 				527B39EA24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55B24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				52CDB3C224FA26C40086EBF4 /* Alerts.storyboard in Resources */,
@@ -1238,7 +1238,7 @@
 				527B39EB24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55C24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52724AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
-				524882A4250F7F1F005649AE /* GoogleService-Info.plist in Resources */,
+				528F7D4A251602DE00E05DA2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,7 +1252,7 @@
 				527B39EC24AE57DA005BA95A /* Dashboard.storyboard in Resources */,
 				52B7E55D24BB3FE000A9881C /* VehicleDataFlowTableViewCell.xib in Resources */,
 				84E3E52824AD0974004CC622 /* LoginTableviewCell.xib in Resources */,
-				524882A5250F7F1F005649AE /* GoogleService-Info.plist in Resources */,
+				528F7D4B251602DE00E05DA2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
