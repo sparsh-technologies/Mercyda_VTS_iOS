@@ -37,6 +37,7 @@ class vehicleDataWrapper: NSObject, NSSecureCoding {
         coder.encode(self.innerD?.overspeed_alert_count, forKey: "overspeed_alert_count")
         coder.encode(self.innerD?.wire_cut_alert_count, forKey: "wire_cut_alert_count")
         coder.encode(self.innerD?.main_power_removal_alert_count, forKey: "main_power_removal_alert_count")
+        coder.encode(self.innerD?.id, forKey: "id")
     }
     
 }

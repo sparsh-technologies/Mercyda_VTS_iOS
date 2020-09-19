@@ -31,6 +31,7 @@ struct D : Codable, Hashable, Equatable {
     let overspeed_alert_count : Int?
     let wire_cut_alert_count : Int?
     let main_power_removal_alert_count : Int?
+    var id : String?
     
     var coordinates : Latlon {
         get {
@@ -44,6 +45,7 @@ struct D : Codable, Hashable, Equatable {
         
         case emergency_alert_count = "emergency_alert_count"
         case speed = "speed"
+        case id = "id"
         case vehicle_mode = "vehicle_mode"
         case ignition = "ignition"
         case gsm_signal_strength = "gsm_signal_strength"
@@ -80,6 +82,7 @@ struct D : Codable, Hashable, Equatable {
         overspeed_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
         wire_cut_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
         main_power_removal_alert_count = try? values.decodeIfPresent(Int.self, forKey: .overspeed_alert_count)
+        id = try? values.decodeIfPresent(String.self, forKey: .id)
     }
     
     init(coder aDecoder: NSCoder) {
@@ -101,18 +104,16 @@ struct D : Codable, Hashable, Equatable {
         overspeed_alert_count = aDecoder.decodeObject(forKey: "overspeed_alert_count") as? Int
         wire_cut_alert_count = aDecoder.decodeObject(forKey: "wire_cut_alert_count") as? Int
         main_power_removal_alert_count = aDecoder.decodeObject(forKey: "main_power_removal_alert_count") as? Int
+        id = aDecoder.decodeObject(forKey: "id") as? String
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(source_date)
-        hasher.combine(longitude)
-        hasher.combine(latitude)
-        hasher.combine(vehicle_mode)
+        hasher.combine(id)
         
     }
     
     static func == (lhs: D, rhs: D) -> Bool {
-        return lhs.source_date == rhs.source_date && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude && lhs.vehicle_mode == rhs.vehicle_mode
+        return lhs.id == rhs.id
     }
     
 }

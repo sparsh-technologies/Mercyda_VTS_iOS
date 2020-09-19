@@ -29,9 +29,10 @@ struct DeviceDataResponse : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		d = try? values.decodeIfPresent(D.self, forKey: .d)
-		id = try? values.decodeIfPresent(String.self, forKey: .id)
+		id = try? values.decodeIfPresent(String.self, forKey: .id) ?? ""
 		serial_no = try? values.decodeIfPresent(String.self, forKey: .serial_no)
 		source_date = try? values.decodeIfPresent(Int.self, forKey: .source_date)
+        d?.id = self.id
 	}
 
 }
