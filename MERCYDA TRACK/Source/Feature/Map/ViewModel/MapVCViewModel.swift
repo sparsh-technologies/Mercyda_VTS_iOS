@@ -24,6 +24,7 @@ class MapVCViewModel  {
     // MARK: - Properties
     let networkServiceCalls = NetworkServiceCalls()
     var originalDeviceList : [D]?
+    var additionalDeviceList = [D]()
     var lastDevicePacket : D? {
         didSet {
             self.updateLastDate()
@@ -41,12 +42,23 @@ class MapVCViewModel  {
     var latestPackets : [D]? {
         didSet {
             self.lastDevicePacket = latestPackets?.first
+            
             if let packets = latestPackets, packets.count > 0 {
-                originalDeviceList?.append(contentsOf: packets)
+                additionalDeviceList.append(contentsOf: packets)
                 self.delegate?.updatePolyLines(Locations: packets.getCoordinates())
-                if let pkts = originalDeviceList, pkts.count > 0 {
-                    let uniqePackets = Utility.uniq(source: pkts)
-                    self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: uniqePackets, isPlaceAPI: false))) KM")
+                if additionalDeviceList.count > 0 {
+                    let uniqePackets = Utility.uniq(source: additionalDeviceList)
+                    
+                    
+                    if let orignArray = originalDeviceList {
+                        var finalArray = [D]()
+                        finalArray.append(contentsOf: orignArray)
+                        finalArray.append(contentsOf: uniqePackets)
+                        self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: finalArray, isPlaceAPI: false))) KM")
+                    }
+                    
+                    
+                    
 //                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
 //                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
                 }
