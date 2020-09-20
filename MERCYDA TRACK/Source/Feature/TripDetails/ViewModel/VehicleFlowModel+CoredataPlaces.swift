@@ -10,16 +10,14 @@ extension VehicleFlow {
     
     func writeAddressToDB(lat: Double, long: Double, address: String) {
         var isFound = false
-        
         managedContext = appDelegate.coreDataStack.managedContext
-
         
         let fetchVehicles: NSFetchRequest<PlacesTable> = PlacesTable.fetchRequest()
         do{
             
             let results =  try managedContext.fetch(fetchVehicles)
             for item in results {
-                if item.lat == lat && item.long == long {
+                if item.lat == lat.truncate(places: 2) && item.long == long.truncate(places: 2) {
                     isFound = true
                     item.setValue(address, forKey: "address")
                 }

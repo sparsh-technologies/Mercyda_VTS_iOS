@@ -407,6 +407,26 @@ class MapVC: UIViewController {
 //                path.addLatitude(loc.latitude, longitude:loc.longitude)
 //            }
 //            self.path = path
+        var delayForRoute = 0.0
+        if loctions.count < 250 {
+            delayForRoute = 0.8
+        }
+        else if loctions.count < 500 {
+            delayForRoute = 0.04
+        }
+        else if loctions.count < 750 {
+            delayForRoute = 0.015
+        }
+        else if loctions.count < 1000 {
+            delayForRoute = 0.020
+        }
+        else if loctions.count < 1500 {
+            delayForRoute = 0.025
+
+        }
+        else {
+            delayForRoute = 0.030
+        }
             var timer = DispatchTime.now()
             bottomButtonCollection.forEach({$0.isUserInteractionEnabled = false})
             CATransaction.flush()
@@ -433,7 +453,7 @@ class MapVC: UIViewController {
                     }
                     
                 })
-                timer = timer + 0.015
+                timer = timer + delayForRoute
             }
     }
     
