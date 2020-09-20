@@ -36,6 +36,7 @@ class MapVCViewModel  {
     var serialNumber : String?
     weak var APItimer: Timer?
     private var totalDistance: Double = 0.00
+    private var totalDistanceAtBegining: Double = 0.00
     private var maximumSpeed: Double = 0.00
     private let vehicleFlowObj = VehicleFlow()
     
@@ -49,15 +50,9 @@ class MapVCViewModel  {
                 if additionalDeviceList.count > 0 {
                     let uniqePackets = Utility.uniq(source: additionalDeviceList)
                     
-                    
-                    if let orignArray = originalDeviceList {
-                        var finalArray = [D]()
-                        finalArray.append(contentsOf: orignArray)
-                        finalArray.append(contentsOf: uniqePackets)
-                        self.delegate?.updateDistance(distance: "\(String(format: "%.2f",vehicleFlowObj.performFiltering(packets: finalArray, isPlaceAPI: false))) KM")
-                    }
-                    
-                    
+                    self.totalDistance = totalDistanceAtBegining + vehicleFlowObj.performFiltering(packets: uniqePackets, isPlaceAPI: false)
+                  
+                        self.delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
                     
 //                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
 //                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
@@ -72,6 +67,7 @@ class MapVCViewModel  {
         self.serialNumber = serialNumber
         self.arrForHaltAndStopLocations = parkingLocations
         self.totalDistance = totalDistance
+        self.totalDistanceAtBegining = totalDistance
         self.maximumSpeed = maximumSpeed
     }
 
