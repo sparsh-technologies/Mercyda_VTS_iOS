@@ -24,7 +24,7 @@ extension getVehicleListParams: URLBuildable {
     }
     var path: String? {
       //  return WebService.getVehiclesListPath
-        return "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v2"
+        return "mtrack/users?role=vehicle&start=0&length=100&username=\(Utility.getUserName())&password=\(Utility.getPassword())&version=v3"
     }
     var httpMethod: HTTPMethod {
         return .get
