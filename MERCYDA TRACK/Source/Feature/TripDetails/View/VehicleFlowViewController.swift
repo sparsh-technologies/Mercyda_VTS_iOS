@@ -111,7 +111,7 @@ final class VehicleFlowViewController: BaseViewController {
         if isDeviceListCalled != 1 {
             getDeviceDetailsWithOutActivityInd()
         }
-        APItimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
+        APItimer = Timer.scheduledTimer(timeInterval: 24, target: self, selector: #selector(getDeviceDetailsWithOutActivityInd), userInfo: nil, repeats: true)
     }
     
     override func viewWillLayoutSubviews() {

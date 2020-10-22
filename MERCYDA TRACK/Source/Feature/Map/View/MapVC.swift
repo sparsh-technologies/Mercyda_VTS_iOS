@@ -408,24 +408,27 @@ class MapVC: UIViewController {
 //            }
 //            self.path = path
         var delayForRoute = 0.0
-        if loctions.count < 250 {
-            delayForRoute = 0.8
+        if loctions.count < 100 {
+            delayForRoute = 0.1
         }
-        else if loctions.count < 500 {
+        else if loctions.count < 250 {
             delayForRoute = 0.04
         }
+        else if loctions.count < 500 {
+            delayForRoute = 0.03
+        }
         else if loctions.count < 750 {
-            delayForRoute = 0.015
+            delayForRoute = 0.040
         }
         else if loctions.count < 1000 {
-            delayForRoute = 0.020
+            delayForRoute = 0.035
         }
         else if loctions.count < 1500 {
-            delayForRoute = 0.025
+            delayForRoute = 0.030
 
         }
         else {
-            delayForRoute = 0.030
+            delayForRoute = 0.026
         }
             var timer = DispatchTime.now()
             bottomButtonCollection.forEach({$0.isUserInteractionEnabled = false})

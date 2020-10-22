@@ -460,8 +460,9 @@ extension VehicleFlow {
     func restorePlacesName() {
         for item in placesArray.enumerated() {
             if item.element.index <= processedResult.count {
+                if item.element.index < processedResult.count {
                 processedResult[item.element.index].placeName = item.element.name
-                
+                }
             }
         }
         self.delegate?.reloadData()
