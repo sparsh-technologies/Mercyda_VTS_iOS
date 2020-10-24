@@ -69,7 +69,9 @@ extension MapVC : MapVCViewModelDelegate {
     }
     
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel]) {
-        self.updateParkingMarkers(Locations: locationsArray.toGoogleCoordinates(), Devices: deviceArray)
+        if vehicleObject?.route_required ?? false {
+            self.updateParkingMarkers(Locations: locationsArray.toGoogleCoordinates(), Devices: deviceArray)
+        }
     }
     
     func updateMovingLocationsOnMap(Locations locationsArray: [Latlon]) {
