@@ -41,10 +41,12 @@ extension MapVC : MapVCViewModelDelegate {
                 CATransaction.begin()
                 self.animationPath.add(locArray[i])
               //  self.path?.add(locArray[i])
-                self.animationPolylineBase.path = self.animationPath
-                self.animationPolylineBase.map = self.mapView
-                self.animationPolyline.path = self.animationPath
-                self.animationPolyline.map = self.mapView
+                if self.vehicleObject?.route_required ?? false {
+                    self.animationPolylineBase.path = self.animationPath
+                    self.animationPolylineBase.map = self.mapView
+                    self.animationPolyline.path = self.animationPath
+                    self.animationPolyline.map = self.mapView
+                }
                 if locArray.count > 1 {
                 self.setCarMarkers(carPosition: locArray[i], position1: locArray[i == locArray.count - 1 ? i-1 : i], position2: locArray[i == locArray.count - 1 ? i : i+1])
                 }

@@ -436,10 +436,12 @@ class MapVC: UIViewController {
             for i in 0..<loctions.count {
                 DispatchQueue.main.asyncAfter(deadline: timer, execute: { [weak self] in
                     self?.animationPath.add(loctions[i])
-                    self?.animationPolylineBase.path = self?.animationPath
-                    self?.animationPolylineBase.map = self?.mapView
-                    self?.animationPolyline.path = self?.animationPath
-                    self?.animationPolyline.map = self?.mapView
+                    if self?.vehicleObject?.route_required ?? false {
+                        self?.animationPolylineBase.path = self?.animationPath
+                        self?.animationPolylineBase.map = self?.mapView
+                        self?.animationPolyline.path = self?.animationPath
+                        self?.animationPolyline.map = self?.mapView
+                    }
                     CATransaction.begin()
                     if loctions.count == 1 {
                         self?.setCarMarkers(carPosition: loctions[i], position1: self?.lastLocation ?? loctions[i], position2: loctions[i])

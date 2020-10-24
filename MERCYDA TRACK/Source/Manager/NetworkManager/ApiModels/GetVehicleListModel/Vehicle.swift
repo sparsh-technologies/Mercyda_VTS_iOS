@@ -44,6 +44,7 @@ struct Vehicle : Codable {
     let main_power_removal_alert_count: Int?
     let wire_cut_alert_count:Int?
     var type:String?
+    let route_required : Bool?
 
 	enum CodingKeys: String, CodingKey {
         case modifiedBy = "modifiedBy"
@@ -75,6 +76,7 @@ struct Vehicle : Codable {
         case use_infinimap_api = "use_infinimap_api"
         case main_power_removal_alert_count = "main_power_removal_alert_count"
         case wire_cut_alert_count = "wire_cut_alert_count"
+        case route_required = "route_required"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -108,6 +110,7 @@ struct Vehicle : Codable {
         use_infinimap_api = try? values.decodeIfPresent(Bool.self, forKey: .use_infinimap_api)
         main_power_removal_alert_count =  try? values.decodeIfPresent(Int.self, forKey: .main_power_removal_alert_count)
         wire_cut_alert_count =  try? values.decodeIfPresent(Int.self, forKey: .wire_cut_alert_count)
+        route_required = try? values.decodeIfPresent(Bool.self, forKey: .route_required)
 	}
 
 }
