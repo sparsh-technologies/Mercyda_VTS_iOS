@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 protocol MapVCViewModelDelegate : class {
     func updateParkingLocationsOnMap(Locations locationsArray: [Latlon], Devices deviceArray: [TripDetailsModel])
@@ -51,11 +53,11 @@ class MapVCViewModel  {
                     let uniqePackets = Utility.uniq(source: additionalDeviceList)
                     
                     self.totalDistance = totalDistanceAtBegining + vehicleFlowObj.performFiltering(packets: uniqePackets, isPlaceAPI: false)
-                  
-                        self.delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
                     
-//                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
-//                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
+                    self.delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
+                    
+                    //                    let wrapperArray : [vehicleDataWrapper] = originalDeviceList?.compactMap {(vehicleDataWrapper.init(d: $0))} ?? []
+                    //                    vehicleFlowObj.writePacketsToDB(deviceID: serialNumber ?? "", date: String(originalDeviceList?.first?.source_date ?? 0), devicePackets: wrapperArray)
                 }
             }
         }
@@ -70,7 +72,7 @@ class MapVCViewModel  {
         self.totalDistanceAtBegining = totalDistance
         self.maximumSpeed = maximumSpeed
     }
-
+    
 }
 
 extension MapVCViewModel {
@@ -78,40 +80,40 @@ extension MapVCViewModel {
     func updateViewController() {
         guard let array = self.originalDeviceList else { return }
         
-            let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
-                self.arrForMovingLocations = movingDeviceArray.getCoordinates()
-                
-                if totalDistance < 15.00  {
-                    let ignitionArray = movingDeviceArray.filterIgnitionONPackets()
-                    if ignitionArray.count > 0 && ignitionArray.contains(where: { $0.speed ?? 0 > 10 }) {
-                       delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
-                    } else {
-                        delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: self.arrForMovingLocations.reversed())
-                        self.totalDistance = 0.00
-                    }
-                } else {
+        let movingDeviceArray = array.getMovingPackets(); if movingDeviceArray.count > 0 {
+            self.arrForMovingLocations = movingDeviceArray.getCoordinates()
+            
+            if totalDistance < 15.00  {
+                let ignitionArray = movingDeviceArray.filterIgnitionONPackets()
+                if ignitionArray.count > 0 && ignitionArray.contains(where: { $0.speed ?? 0 > 10 }) {
                     delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
+                } else {
+                    delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: self.arrForMovingLocations.reversed())
+                    self.totalDistance = 0.00
                 }
-             
-                
-            } else if array.count > 0 {
-                let locations = array.getCoordinates(); if locations.count > 0 {
-                    delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
-                    self.totalDistance = 0.0
-                }
+            } else {
+                delegate?.updateMovingLocationsOnMap(Locations: self.arrForMovingLocations.reversed())
             }
-            /*
+            
+            
         } else if array.count > 0 {
             let locations = array.getCoordinates(); if locations.count > 0 {
                 delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+                self.totalDistance = 0.0
             }
         }
-          */
+        /*
+         } else if array.count > 0 {
+         let locations = array.getCoordinates(); if locations.count > 0 {
+         delegate?.updateCarLocationWhenNoMovingLocationFound(Locations: locations.reversed())
+         }
+         }
+         */
         updateLastDate()
         delegate?.updateDistance(distance: "\(String(format: "%.2f",self.totalDistance)) KM")
     }
     func updateLastDate() {
-       if let packet = self.lastDevicePacket {
+        if let packet = self.lastDevicePacket {
             let dateString = Utility.getDate(unixdateinMilliSeconds:packet.source_date ?? 0)
             self.delegate?.updateSourceDateOfLastPacket(dateString: dateString)
         }
@@ -171,5 +173,11 @@ extension MapVCViewModel {
             let locationCoordinates = array.getCoordinates()
             delegate?.updateParkingLocationsOnMap(Locations: locationCoordinates, Devices: array)
         }
+    }
+    
+    func openAppleMapForDirection(location:CLLocation) {
+        let coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
 }
