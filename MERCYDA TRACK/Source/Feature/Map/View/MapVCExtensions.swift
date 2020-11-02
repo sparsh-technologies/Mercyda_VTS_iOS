@@ -97,6 +97,13 @@ extension MapVC: GMSMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let device = marker.userData as? D {
+            self.showGoogleMapsRedirection(locationCoordinates: device.coordinates)
+        }
+        return true
+    }
+    
     func getLocationDetails(mapView: GMSMapView, marker: GMSMarker, device: D) {
         self.viewModel?.networkServiceCalls.getLocationDetails(locationCoordinates: device.coordinates) { (result) in
             switch result {
@@ -109,6 +116,16 @@ extension MapVC: GMSMapViewDelegate {
             }
         }
         //  self.delegateForMapPicker?.didSelectMarkerFromMap(selectedD: device)
+    }
+    
+    func showGoogleMapsRedirection(locationCoordinates: Latlon) {
+        let alertController = UIAlertController(title: "Get Directions", message: nil, preferredStyle: .actionSheet)
+        let searchAction =  UIAlertAction.init(title: "Google Maps", style: .default) { (action) in
+            self.viewModel?.openAppleMapForDirection(location: CLLocation.init(latitude: locationCoordinates.lat, longitude: locationCoordinates.lon))
+        }
+        alertController.addAction(searchAction)
+        alertController.addAction(UIAlertAction.init(title: "Cancel", style:.cancel, handler:nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
