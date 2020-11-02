@@ -93,7 +93,8 @@ extension MapVC : MapVCViewModelDelegate {
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         if let device = marker.userData as? D {
-            self.getLocationDetails(mapView: mapView, marker: marker, device: device)
+           // self.getLocationDetails(mapView: mapView, marker: marker, device: device)
+            self.showGoogleMapsRedirection(locationCoordinates: device.coordinates)
         }
     }
     
