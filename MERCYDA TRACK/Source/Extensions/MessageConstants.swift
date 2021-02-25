@@ -17,6 +17,7 @@ case ForotPasswordMessage = "Please contact MERCYDA TRACK support for your passw
 case EmptyPasswordErrorMessage = "Please enter password to continue"
 case InvalidEmail = "Please enter a correct email"
 case EmptyUserName = "Please enter username to continue "
+case Invalidusername = "Please enter valid username"
     
 
 }

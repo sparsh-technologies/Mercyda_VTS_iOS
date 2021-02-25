@@ -92,12 +92,18 @@ class LoginViewController: BaseViewController {
             Utility.errorTextFiled(userNameTextfeild)
             return false
         }
-        guard userNameTextfeild.text!.isValidEmail else {
-            userNameTextfeild.text = nil
-            userNameTextfeild.placeholder = MessageConstants.InvalidEmail.rawValue
-            Utility.errorTextFiled( userNameTextfeild)
-            return false
-        }
+//        guard userNameTextfeild.text!.isValidEmail else {
+//            userNameTextfeild.text = nil
+//            userNameTextfeild.placeholder = MessageConstants.InvalidEmail.rawValue
+//            Utility.errorTextFiled( userNameTextfeild)
+//            return false
+//        }
+//         guard userNameTextfeild.text!.count > 2 else {
+//                   userNameTextfeild.text = nil
+//                    userNameTextfeild.placeholder = MessageConstants.Invalidusername.rawValue
+//                   Utility.errorTextFiled( userNameTextfeild)
+//                    return false
+//                }
         guard !passwordTextfeild.text!.isEmptyStr else {
             passwordTextfeild.placeholder = MessageConstants.EmptyPasswordErrorMessage.rawValue
             Utility.errorTextFiled(passwordTextfeild)
