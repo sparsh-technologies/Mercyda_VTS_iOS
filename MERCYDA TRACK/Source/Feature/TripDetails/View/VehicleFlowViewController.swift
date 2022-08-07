@@ -118,7 +118,7 @@ final class VehicleFlowViewController: BaseViewController {
         super.viewWillLayoutSubviews()
         vehicleContainerView.roundCorners(.allCorners, radius: 15)
         if flagForDateTitle {
-            pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: Date())
+            pickerBtn.setTitle(vehicleFlowViewModel?.titleDateForNavBtn(date: Date()), for: .normal)
         }
     }
     

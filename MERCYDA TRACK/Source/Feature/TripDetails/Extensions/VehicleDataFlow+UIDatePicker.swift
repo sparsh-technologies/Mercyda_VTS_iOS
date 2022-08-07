@@ -26,7 +26,7 @@ extension VehicleFlowViewController {
         APItimer = nil
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: datePicker.date)
+        pickerBtn.setTitle(vehicleFlowViewModel?.titleDateForNavBtn(date: datePicker.date), for: .normal)
         MBProgressHUD.showAdded(to: view, animated: true)
         vehicleFlowViewModel?.getDetailsForSpecficDate(serialNo: serialNumber, date: formatter.string(from: datePicker.date)) {[weak self] result in
             guard let self = self else {
@@ -46,7 +46,7 @@ extension VehicleFlowViewController {
     
     @objc func cancelDatePicker(){
         pickerView.isHidden = true
-        pickerBtn.titleLabel?.text = vehicleFlowViewModel?.titleDateForNavBtn(date: Date())
+        pickerBtn.setTitle(vehicleFlowViewModel?.titleDateForNavBtn(date: Date()), for: .normal)
     }
     
     @IBAction func leftBarButtonAction(_ sender: Any) {
@@ -59,7 +59,7 @@ extension VehicleFlowViewController {
         let previousDay = Calendar.current.date(byAdding: .day, value: -1, to: day)
         curentDate = Utility.dataDatefornextDay(dateString: previousDay!)
         let previousDate = Utility.showDate(dateString: previousDay!)
-        pickerBtn.titleLabel?.text = Utility.showDateForTitle(dateString: previousDay ?? NSDate() as Date)
+        pickerBtn.setTitle(Utility.showDateForTitle(dateString: previousDay ?? NSDate() as Date), for: .normal)
         triggerApiCall(date: previousDate)
     }
     
@@ -75,7 +75,7 @@ extension VehicleFlowViewController {
         // dayDateText = generalUtil.showDate(dateString: nextDay!
         curentDate = Utility.dataDatefornextDay(dateString: nextDay!)
         let nextDate = Utility.showDate(dateString: nextDay!)
-        pickerBtn.titleLabel?.text = Utility.showDateForTitle(dateString: nextDay ?? NSDate() as Date)
+        pickerBtn.setTitle(Utility.showDateForTitle(dateString: nextDay ?? NSDate() as Date), for: .normal)
         triggerApiCall(date: nextDate)        
     }
     
